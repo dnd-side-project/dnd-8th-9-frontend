@@ -1,8 +1,11 @@
 import { Global, css } from "@emotion/react";
+import emotionReset from "emotion-reset";
 
 export const supportDeviceSize = 768;
 
 const style = css`
+  ${emotionReset}
+
   html {
     font-size: 62.5%;
 
