@@ -33,8 +33,6 @@ const style = css`
   button {
     border: none;
     background-color: transparent;
-    width: 100%;
-    height: 100%;
     cursor: pointer;
   }
 
