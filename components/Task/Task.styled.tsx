@@ -6,6 +6,7 @@ const Paragraph = styled.p<{ hoverColor: string }>`
 
   &:hover {
     color: ${props => props.hoverColor};
+    background-color: ${({ theme }) => theme.colors.dark[300]};
   }
 `;
 
