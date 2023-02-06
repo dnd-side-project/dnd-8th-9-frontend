@@ -24,6 +24,7 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
+  "ignorePatterns": ["next.config.js"],
   "rules": {
     "react/react-in-jsx-scope": 0,
     "react/jsx-props-no-spreading": 0,
@@ -34,11 +35,6 @@
         "unnamedComponents": "arrow-function"
       }
     ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": [".storybook/**", "**/*.stories.@(js|jsx|ts|tsx)"]
-      }
-    ]
+    "import/no-extraneous-dependencies": 0
   }
 }
