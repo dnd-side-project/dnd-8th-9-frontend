@@ -9,7 +9,6 @@ export default {
   },
 } as Meta;
 
-// eslint-disable-next-line react/function-component-definition
 const Template: Story<IButton> = args => <Button {...args} />;
 
 export const Primary = Template.bind({});
