@@ -4,6 +4,8 @@ import emotionNormalize from "emotion-normalize";
 export const supportDeviceSize = 768;
 
 const style = css`
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
   ${emotionNormalize}
 
   html {
@@ -20,6 +22,12 @@ const style = css`
     box-sizing: border-box;
     font-size: 1.6rem;
     line-height: 2.4rem;
+  }
+
+  body {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+      Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   }
 
   button {
