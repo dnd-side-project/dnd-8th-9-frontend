@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import GlobalStyle from "@/styles/Global";
 import theme from "@/styles/theme";
+import Layout from "@/components/Layout/Layout";
 
 const queryClient = new QueryClient();
 
@@ -13,7 +14,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <GlobalStyle />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
         <ReactQueryDevtools position="bottom-right" initialIsOpen={false} />
       </QueryClientProvider>
     </ThemeProvider>
