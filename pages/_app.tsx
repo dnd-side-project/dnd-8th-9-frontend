@@ -11,14 +11,14 @@ const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <ThemeProvider theme={theme}>
-        <QueryClientProvider client={queryClient}>
-          <GlobalStyle />
+    <ThemeProvider theme={theme}>
+      <QueryClientProvider client={queryClient}>
+        <GlobalStyle />
+        <Layout>
           <Component {...pageProps} />
-          <ReactQueryDevtools position="bottom-right" initialIsOpen={false} />
-        </QueryClientProvider>
-      </ThemeProvider>
-    </Layout>
+        </Layout>
+        <ReactQueryDevtools position="bottom-right" initialIsOpen={false} />
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }
