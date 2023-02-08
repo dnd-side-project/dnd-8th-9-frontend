@@ -24,7 +24,7 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
-  "ignorePatterns": ["next.config.js"],
+  "ignorePatterns": ["next.config.js", "mockServiceWorker.js"],
   "rules": {
     "@typescript-eslint/no-floating-promises": 0,
     "react/react-in-jsx-scope": 0,
