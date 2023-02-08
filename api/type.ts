@@ -21,3 +21,9 @@ export interface IUser {
     bs: string;
   };
 }
+
+export interface ITodo {
+  id: number;
+  todo: string;
+  isCompleted: boolean;
+}

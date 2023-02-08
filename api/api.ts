@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IUser } from "./type";
+import { ITodo, IUser } from "./type";
 
 const api = axios.create({
   baseURL: "https://jsonplaceholder.typicode.com",
@@ -9,9 +9,12 @@ const api = axios.create({
   },
 });
 
-const fetchUser = async () => {
+export const fetchUser = async () => {
   const response = await api.get<IUser[]>("/users");
   return response.data;
 };
 
-export default fetchUser;
+export const fetchTodos = async () => {
+  const response = await api.get<ITodo[]>("/todo");
+  return response.data;
+};

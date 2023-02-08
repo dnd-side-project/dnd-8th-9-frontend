@@ -2,16 +2,25 @@ import { useTheme } from "@emotion/react";
 import { useQuery } from "@tanstack/react-query";
 
 import useBearStore from "@/store/store";
-import fetchUser from "@/api/api";
+import { fetchUser, fetchTodos } from "@/api/api";
 import Paragraph from "./Task.styled";
 
 export default function Task() {
   const { colors } = useTheme();
   const { bears, increase, decrease } = useBearStore(state => state);
-  const { isLoading, data: users, isError } = useQuery(["users"], fetchUser);
+  const {
+    isLoading: isLoadingUsers,
+    data: users,
+    isError: isErrorUsers,
+  } = useQuery(["users"], fetchUser);
+  const {
+    isLoading: isLoadingTodos,
+    data: todos,
+    isError: isErrorTodos,
+  } = useQuery(["todos"], fetchTodos);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error</p>;
+  if (isLoadingUsers || isLoadingTodos) return <p>Loading...</p>;
+  if (isErrorUsers || isErrorTodos) return <p>Error</p>;
 
   return (
     <>
@@ -30,6 +39,11 @@ export default function Task() {
       <div>
         {users.map(user => (
           <p key={user.id}>{user.name}</p>
+        ))}
+      </div>
+      <div>
+        {todos.map(todo => (
+          <p key={todo.id}>{todo.todo}</p>
         ))}
       </div>
     </>
