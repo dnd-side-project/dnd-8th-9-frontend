@@ -1,8 +1,6 @@
-import InfoTable from "@/components/Table/InfoTable";
-import NoticeTable from "@/components/Table/NoticeTable";
+import Table from "@/components/Table/Table";
 
 import React from "react";
-// import * as S from "./info.styled";
 
 const pickupHours = [
   { day: "월화목금", hour: "10:00 ~ 20:00" },
@@ -20,12 +18,9 @@ const sellerInfo = [
 
 function InfoPage() {
   return (
-    // <S.Container>
-    //   <S.Text>Store Notice Page</S.Text>
-    // </S.Container>
     <>
-      <NoticeTable data={pickupHours} />
-      <InfoTable data={sellerInfo} />
+      <Table option="notice" data={pickupHours} />
+      <Table option="info" data={sellerInfo} />
     </>
   );
 }
