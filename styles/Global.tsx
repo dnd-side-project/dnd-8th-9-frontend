@@ -1,5 +1,7 @@
 import { Global, css } from "@emotion/react";
 import emotionNormalize from "emotion-normalize";
+import "swiper/css";
+import "swiper/css/pagination";
 
 export const supportDeviceSize = 768;
 
