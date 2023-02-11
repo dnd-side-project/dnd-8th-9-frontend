@@ -9,6 +9,10 @@ import Layout from "@/components/Layout/Layout";
 
 const queryClient = new QueryClient();
 
+if (process.env.NODE_ENV === "development") {
+  import("@/mocks");
+}
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>

@@ -45,7 +45,9 @@
         "js": "never",
         "jsx": "never"
       }
-    ]
+    ],
+    "import/prefer-default-export": 0,
+    "@typescript-eslint/no-floating-promises": 0
   },
   "settings": {
     "import/resolver": {
