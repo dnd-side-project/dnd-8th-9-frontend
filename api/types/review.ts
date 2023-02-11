@@ -1,4 +1,4 @@
-import { ICategory } from "./menu";
+import { TCategory } from "./menu";
 
 export interface IImage {
   id: number;
@@ -27,7 +27,7 @@ export interface IReviewItem {
 }
 
 export interface IReviewStatItem {
-  optionName: ICategory;
+  optionName: TCategory;
   count: number;
 }
 

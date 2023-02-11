@@ -1,4 +1,4 @@
-import { ICategory } from "./menu";
+import { TCategory } from "./menu";
 import { IImage } from "./review";
 
 export interface IStoreItem {
@@ -9,7 +9,7 @@ export interface IStoreItem {
   priceRange: { max: number; min: number };
   canPickup: boolean;
   canDelivery: boolean;
-  category: ICategory[];
+  category: TCategory[];
   storeImages: IImage[];
   links: {
     kakao?: string;

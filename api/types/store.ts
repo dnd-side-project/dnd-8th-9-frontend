@@ -1,4 +1,4 @@
-import { ICategory, ITable } from "./menu";
+import { TCategory, TTable } from "./menu";
 import { IImage } from "./review";
 
 export interface IStore {
@@ -6,7 +6,7 @@ export interface IStore {
   name: string;
   location: string;
   geoLocation: { latitude: number; longtitude: number };
-  category: ICategory[];
+  category: TCategory[];
   rating: number;
   canPickup: boolean;
   canDelivery: boolean;
@@ -27,8 +27,8 @@ export interface IStore {
       content: string;
     };
     info: {
-      sellerInfo: ITable[];
-      foodInfo: ITable[];
+      sellerInfo: TTable[];
+      foodInfo: TTable[];
     };
   };
 }
