@@ -1,3 +1,10 @@
+import Task from "@/components/Task/Task";
+
 export default function Home() {
-  return <>Hello World</>;
+  return (
+    <>
+      Hello World
+      <Task />
+    </>
+  );
 }

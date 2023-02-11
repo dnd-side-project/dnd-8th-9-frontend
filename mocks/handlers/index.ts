@@ -1,1 +1,3 @@
-export const handlers = [];
+import { storeHandler } from "./store";
+
+export const handlers = [...storeHandler];
