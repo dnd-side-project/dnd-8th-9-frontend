@@ -4,12 +4,9 @@ import * as NextImage from "next/image";
 import theme from "../styles/theme";
 import GlobalStyle from "../styles/Global";
 
-const OriginalNextImage = NextImage.default;
-
-Object.defineProperty(NextImage, "default", {
-  configurable: true,
-  value: props => <OriginalNextImage {...props} unopitimized />,
-});
+NextImage.defaultProps = {
+  unoptimized: true,
+};
 
 export const decorators = [
   Story => (
