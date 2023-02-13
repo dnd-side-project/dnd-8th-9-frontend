@@ -20,6 +20,7 @@ export const HeaderLeft = styled.div`
     height: 26px;
     border-radius: 50%;
     margin-right: 10px;
+    object-fit: cover;
   }
 `;
 
