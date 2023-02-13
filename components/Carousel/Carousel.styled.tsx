@@ -5,6 +5,7 @@ export const Container = styled.div`
     width: 32rem;
     height: 27rem;
     border-radius: 8px;
+    object-fit: cover;
   }
   .swiper-pagination-bullet {
     background-color: ${({ theme }) => theme.colors.white};
