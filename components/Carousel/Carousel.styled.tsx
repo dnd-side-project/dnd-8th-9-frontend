@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   img {
-    width: 32rem;
     height: 27rem;
     border-radius: 8px;
     object-fit: cover;
