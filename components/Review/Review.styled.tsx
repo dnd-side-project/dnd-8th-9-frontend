@@ -14,7 +14,14 @@ export const Header = styled.div`
   justify-content: space-between;
 `;
 
-export const HeaderLeft = styled.div``;
+export const HeaderLeft = styled.div`
+  img {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+`;
 
 export const HeaderRight = styled.div`
   color: #b1b1b1;
@@ -54,7 +61,7 @@ export const Taste = styled.div`
   word-spacing: 3px;
   line-height: 18px;
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 17px;
   svg {
     margin-right: 5px;
   }
@@ -62,10 +69,10 @@ export const Taste = styled.div`
 
 export const Option = styled.div`
   font-size: ${({ theme }) => theme.fontSizes[12]};
-  color: ${({ theme }) => theme.colors.gray[300]};
+  color: ${({ theme }) => theme.colors.gray[500]};
   line-height: 18px;
   font-weight: 500;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 `;
 
 export const Text = styled.div`
@@ -74,6 +81,7 @@ export const Text = styled.div`
   font-size: ${({ theme }) => theme.fontSizes[12]};
   font-weight: 400;
   line-height: 18px;
+  margin-bottom: 16px;
 `;
 
 // TODO: 재사용 버튼으로 바꿔야 함
@@ -81,4 +89,6 @@ export const LikeButton = styled.button`
   border: 1px solid black;
   width: 90px;
   border-radius: 21px;
+  /* text-align: right; */
+  float: right;
 `;
