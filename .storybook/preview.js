@@ -1,9 +1,12 @@
 import * as NextImage from "next/image";
 import { ThemeProvider } from "@emotion/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { initialize, mswDecorator } from "msw-storybook-addon";
 
 import theme from "../styles/theme";
 import GlobalStyle from "../styles/Global";
+
+initialize();
 
 NextImage.defaultProps = {
   unoptimized: true,
@@ -12,6 +15,7 @@ NextImage.defaultProps = {
 const queryClient = new QueryClient();
 
 export const decorators = [
+  mswDecorator,
   Story => (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
