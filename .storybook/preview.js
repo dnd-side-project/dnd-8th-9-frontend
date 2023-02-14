@@ -2,6 +2,7 @@ import * as NextImage from "next/image";
 import { ThemeProvider } from "@emotion/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { initialize, mswDecorator } from "msw-storybook-addon";
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
 import theme from "../styles/theme";
 import GlobalStyle from "../styles/Global";
@@ -28,6 +29,11 @@ export const decorators = [
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
+  viewport: {
+    viewports: {
+      ...INITIAL_VIEWPORTS,
+    },
+  },
   controls: {
     matchers: {
       color: /(background|color)$/i,
