@@ -47,7 +47,10 @@
       }
     ],
     "import/prefer-default-export": 0,
-    "@typescript-eslint/no-floating-promises": 0
+    "@typescript-eslint/no-floating-promises": 0,
+    "react/require-default-props": 0,
+    "react/button-has-type": 0,
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
   },
   "settings": {
     "import/resolver": {
