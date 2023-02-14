@@ -1,7 +1,12 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+
+interface ITextProps {
+  isOpened: boolean;
+}
 
 export const Container = styled.div`
-  display: flex;
+  display: block;
 `;
 
 export const Review = styled.div`
@@ -41,7 +46,7 @@ export const NickNameSite = styled.div`
 `;
 
 export const NickName = styled.p`
-  color: #595959;
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const Source = styled.p`
@@ -62,7 +67,7 @@ export const Taste = styled.div`
   word-spacing: 3px;
   line-height: 18px;
   font-weight: 600;
-  margin-bottom: 17px;
+  margin-bottom: 12px;
   svg {
     margin-right: 5px;
   }
@@ -73,23 +78,44 @@ export const Option = styled.div`
   color: ${({ theme }) => theme.colors.gray[500]};
   line-height: 18px;
   font-weight: 500;
-  /* margin-bottom: 5px; */
 `;
 
-export const Text = styled.div`
+export const Text = styled.div<ITextProps>`
   white-space: pre-wrap;
-  color: #595959;
+  color: ${({ theme }) => theme.colors.gray[500]};
   font-size: ${({ theme }) => theme.fontSizes[12]};
   font-weight: 400;
   line-height: 18px;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
+
+  /* text overflow */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  ${props => {
+    return props.isOpened
+      ? css`
+          -webkit-line-clamp: 100;
+        `
+      : css`
+          -webkit-line-clamp: 3;
+        `;
+  }}
 `;
 
-// TODO: 재사용 버튼으로 바꿔야 함
+export const ArrowDown = styled.div`
+  margin-bottom: 12px;
+  svg {
+    display: block;
+    margin: 0 auto;
+    stroke: ${({ theme }) => theme.colors.gray[200]};
+  }
+`;
+
 export const LikeButton = styled.button`
   border: 1px solid black;
   width: 90px;
   border-radius: 21px;
-  /* text-align: right; */
   float: right;
 `;
