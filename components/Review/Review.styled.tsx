@@ -5,6 +5,10 @@ interface ITextProps {
   isOpened: boolean;
 }
 
+interface IArrowDown {
+  isOverflow: boolean;
+}
+
 export const Container = styled.div`
   display: block;
 `;
@@ -104,7 +108,17 @@ export const Text = styled.div<ITextProps>`
   }}
 `;
 
-export const ArrowDown = styled.div`
+export const ArrowDown = styled.div<IArrowDown>`
+  ${props => {
+    return props.isOverflow
+      ? css`
+          display: block;
+        `
+      : css`
+          display: none;
+        `;
+  }}
+
   margin-bottom: 12px;
   svg {
     display: block;

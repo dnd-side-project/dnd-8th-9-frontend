@@ -27,6 +27,7 @@ const TIME = "2023-02-13";
 
 export default function Review({ review }: IReview) {
   const [isOpened, setIsOpened] = useState(false);
+  const [isOverflow, setIsOverflow] = useState(review.text.length >= 90);
 
   const handleIsOpened = () => {
     setIsOpened(() => !isOpened);
@@ -54,7 +55,7 @@ export default function Review({ review }: IReview) {
           당도 {review.rating}% {review.reviewOption}
         </S.Taste>
         <S.Text isOpened={isOpened}>{review.text}</S.Text>
-        <S.ArrowDown>
+        <S.ArrowDown isOverflow={isOverflow}>
           <ArrowDown onClick={handleIsOpened} />
         </S.ArrowDown>
         {/* TODO: 버튼 재사용 컴포넌트로 변경 */}
