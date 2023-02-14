@@ -5,10 +5,6 @@ interface ITextProps {
   isOpened: boolean;
 }
 
-interface IArrowDown {
-  isOverflow: boolean;
-}
-
 export const Container = styled.div`
   display: block;
 `;
@@ -23,6 +19,7 @@ export const Header = styled.div`
   justify-content: space-between;
 `;
 
+// TODO: 이미지 width, height 변경
 export const HeaderLeft = styled.div`
   img {
     width: 26px;
@@ -103,22 +100,12 @@ export const Text = styled.div<ITextProps>`
           -webkit-line-clamp: 100;
         `
       : css`
-          -webkit-line-clamp: 3;
+          -webkit-line-clamp: 2;
         `;
   }}
 `;
 
-export const ArrowDown = styled.div<IArrowDown>`
-  ${props => {
-    return props.isOverflow
-      ? css`
-          display: block;
-        `
-      : css`
-          display: none;
-        `;
-  }}
-
+export const Arrow = styled.div`
   margin-bottom: 12px;
   svg {
     display: block;

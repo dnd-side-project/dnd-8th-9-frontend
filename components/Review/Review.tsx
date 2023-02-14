@@ -1,6 +1,7 @@
 import Carousel from "@/components/Carousel/Carousel";
 import Heart from "assets/icons/heart.svg";
 import ArrowDown from "assets/icons/arrow-down.svg";
+import ArrowUp from "assets/icons/arrow-up.svg";
 import Image from "next/image";
 import { useState } from "react";
 import * as S from "./Review.styled";
@@ -27,7 +28,6 @@ const TIME = "2023-02-13";
 
 export default function Review({ review }: IReview) {
   const [isOpened, setIsOpened] = useState(false);
-  const [isOverflow, setIsOverflow] = useState(review.text.length >= 90);
 
   const handleIsOpened = () => {
     setIsOpened(() => !isOpened);
@@ -39,7 +39,7 @@ export default function Review({ review }: IReview) {
         <S.Header>
           <S.HeaderLeft>
             <S.NickNameSite>
-              <Image src={review.profileImage} width={26} height={26} alt="profile" />
+              <Image src={review.profileImage} width={50} height={50} alt="profile" />
               <S.NickName>{review.nickname}</S.NickName>
               <S.Source>{review.source}</S.Source>
             </S.NickNameSite>
@@ -55,9 +55,13 @@ export default function Review({ review }: IReview) {
           당도 {review.rating}% {review.reviewOption}
         </S.Taste>
         <S.Text isOpened={isOpened}>{review.text}</S.Text>
-        <S.ArrowDown isOverflow={isOverflow}>
-          <ArrowDown onClick={handleIsOpened} />
-        </S.ArrowDown>
+        <S.Arrow>
+          {isOpened ? (
+            <ArrowUp onClick={handleIsOpened} width={18} height={18} />
+          ) : (
+            <ArrowDown onClick={handleIsOpened} width={18} height={18} />
+          )}
+        </S.Arrow>
         {/* TODO: 버튼 재사용 컴포넌트로 변경 */}
         <S.LikeButton>{review.likes}</S.LikeButton>
       </S.Review>
