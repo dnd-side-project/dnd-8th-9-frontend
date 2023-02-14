@@ -3,7 +3,7 @@ import emotionNormalize from "emotion-normalize";
 import "swiper/css";
 import "swiper/css/pagination";
 
-export const supportDeviceSize = 768;
+export const supportDeviceSize = 480;
 
 const style = css`
   @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
@@ -12,10 +12,6 @@ const style = css`
 
   html {
     font-size: 62.5%;
-
-    @media all and (max-width: ${supportDeviceSize}px) {
-      font-size: 31.25%;
-    }
   }
 
   * {
