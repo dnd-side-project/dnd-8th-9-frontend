@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Pagination } from "swiper";
 import * as S from "./Carousel.styled";
 
-interface IImages {
+export interface IImages {
   images: {
     id: number;
     url: string;
