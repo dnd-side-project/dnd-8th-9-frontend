@@ -6,7 +6,7 @@ import ArrowDown from "assets/icons/arrow-down.svg";
 import ArrowUp from "assets/icons/arrow-up.svg";
 import * as S from "./Review.styled";
 
-interface IReview {
+export interface IReview {
   review: {
     nickname: string;
     profileImage: string;
