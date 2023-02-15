@@ -1,3 +1,4 @@
+import React from "react";
 import * as S from "./Table.styled";
 
 interface IContents {
