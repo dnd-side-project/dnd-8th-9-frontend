@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
+  width: 32rem;
+
   img {
-    width: 32rem; // NOTE: 설정하지 않으면 storybook에서 형태 무너짐
+    width: 100%;
     height: 27rem;
     border-radius: 8px;
     object-fit: cover;
