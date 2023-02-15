@@ -1,9 +1,9 @@
+import { useState } from "react";
+import Image from "next/image";
 import Carousel from "@/components/Carousel/Carousel";
 import Heart from "assets/icons/heart.svg";
 import ArrowDown from "assets/icons/arrow-down.svg";
 import ArrowUp from "assets/icons/arrow-up.svg";
-import Image from "next/image";
-import { useState } from "react";
 import * as S from "./Review.styled";
 
 interface IReview {
