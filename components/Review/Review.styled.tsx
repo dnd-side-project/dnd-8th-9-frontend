@@ -22,28 +22,28 @@ export const Header = styled.div`
 // TODO: 이미지 width, height 변경
 export const HeaderLeft = styled.div`
   img {
-    width: 26px;
-    height: 26px;
+    width: 2.6rem;
+    height: 2.6rem;
+    margin-right: 1rem;
     border-radius: 50%;
-    margin-right: 10px;
     object-fit: cover;
   }
 `;
 
 export const HeaderRight = styled.div`
-  color: #b1b1b1;
+  color: ${({ theme }) => theme.colors.gray[200]};
   font-weight: 400;
   font-size: ${({ theme }) => theme.fontSizes[12]};
-  line-height: 16px;
+  line-height: 1.6rem;
 `;
 
 export const NickNameSite = styled.div`
   font-size: ${({ theme }) => theme.fontSizes[12]};
   display: flex;
-  gap: 6px;
-  line-height: 16px;
+  gap: 0.6rem;
+  line-height: 1.6rem;
   font-weight: 600;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 `;
 
 export const NickName = styled.p`
@@ -55,9 +55,9 @@ export const Source = styled.p`
   :last-child {
     ::before {
       content: "|";
-      width: 1px;
+      width: 0.1rem;
       font-weight: 400;
-      margin-right: 10px;
+      margin-right: 1rem;
     }
   }
 `;
@@ -65,19 +65,19 @@ export const Source = styled.p`
 export const Taste = styled.div`
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.fontSizes[12]};
-  word-spacing: 3px;
-  line-height: 18px;
+  word-spacing: 0.3rem;
+  line-height: 1.8rem;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 1.2rem;
   svg {
-    margin-right: 5px;
+    margin-right: 0.5rem;
   }
 `;
 
 export const Option = styled.div`
   font-size: ${({ theme }) => theme.fontSizes[12]};
   color: ${({ theme }) => theme.colors.gray[500]};
-  line-height: 18px;
+  line-height: 1.8rem;
   font-weight: 500;
 `;
 
@@ -86,8 +86,8 @@ export const Text = styled.div<ITextProps>`
   color: ${({ theme }) => theme.colors.gray[500]};
   font-size: ${({ theme }) => theme.fontSizes[12]};
   font-weight: 400;
-  line-height: 18px;
-  margin-bottom: 4px;
+  line-height: 1.8rem;
+  margin-bottom: 0.4rem;
 
   /* text overflow */
   display: -webkit-box;
@@ -106,7 +106,7 @@ export const Text = styled.div<ITextProps>`
 `;
 
 export const Arrow = styled.div`
-  margin-bottom: 12px;
+  margin-bottom: 1.2rem;
   svg {
     display: block;
     margin: 0 auto;
@@ -116,7 +116,7 @@ export const Arrow = styled.div`
 
 export const LikeButton = styled.button`
   border: 1px solid black;
-  width: 90px;
-  border-radius: 21px;
+  width: 9rem;
+  border-radius: 2.1rem;
   float: right;
 `;
