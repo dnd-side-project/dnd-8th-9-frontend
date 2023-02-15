@@ -2,10 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ["images.unsplash.com", "i.pinimg.com"],
   },
   webpack: config => {
-    // 아래를 추가합니다.
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
