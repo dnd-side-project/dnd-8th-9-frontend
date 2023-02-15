@@ -94,15 +94,7 @@ export const Text = styled.div<ITextProps>`
   -webkit-box-orient: vertical;
   overflow: hidden;
 
-  ${props => {
-    return props.isOpened
-      ? css`
-          -webkit-line-clamp: 100;
-        `
-      : css`
-          -webkit-line-clamp: 2;
-        `;
-  }}
+  -webkit-line-clamp: ${({ isOpened }) => (isOpened ? 100 : 2)};
 `;
 
 export const Arrow = styled.div`
