@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Theme, css } from "@emotion/react";
 import Heart from "assets/icons/heart.svg";
 import Pencil from "assets/icons/pencil.svg";
@@ -8,7 +8,7 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 import Button from "../shared/Button/Button";
 import * as S from "./OverallStats.styled";
 
-interface IOverallStats {
+export interface IOverallStats {
   rating: number;
   totalReviews: number;
   stats: {
