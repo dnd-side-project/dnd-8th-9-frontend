@@ -33,6 +33,7 @@ declare module "@emotion/react" {
       };
       black: string;
       white: string;
+      darkBlue: string;
     };
   }
 }
