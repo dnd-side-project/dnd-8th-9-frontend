@@ -22,9 +22,18 @@ const SUBMIT_REVIEW = "리뷰쓰기";
 const SHOW_MORE = "더보기";
 const CLOSE = "접기";
 
+const getOverallComment = (rating: number) => {
+  if (rating === 100) return "매우 높아요!";
+  if (rating >= 80) return "훌륭해요!";
+  if (rating >= 60) return "괜찮아요!";
+  if (rating >= 40) return "아쉬워요";
+  if (rating >= 20) return "별로예요";
+  return "";
+};
+
 export default function OverallStats({ rating, totalReviews, stats }: IOverallStats) {
-  // TODO: 스토어의 당도는 휼륭해요 <- 이 데이터 없음
   const [isOpened, setIsOpened] = useState(false);
+  const OVERALL_COMMENT = getOverallComment(rating);
 
   const handleIsOpened = () => {
     setIsOpened(() => !isOpened);
@@ -38,7 +47,7 @@ export default function OverallStats({ rating, totalReviews, stats }: IOverallSt
         <S.TotalReviews>({totalReviews}명 참여)</S.TotalReviews>
       </S.Comment>
       <S.OverallComment>
-        이 스토의 당도는 <span>훌륭해요!</span>
+        이 스토의 당도는 <span>{OVERALL_COMMENT}</span>
       </S.OverallComment>
       <S.ProgressBox>
         <ProgressBar stats={stats} isOpened={isOpened} />
@@ -72,7 +81,6 @@ export default function OverallStats({ rating, totalReviews, stats }: IOverallSt
         }
       >
         <>
-          {/** 색상 바꿔야 함 */}
           <Pencil stroke="#F1424D" />
           {SUBMIT_REVIEW}
         </>
