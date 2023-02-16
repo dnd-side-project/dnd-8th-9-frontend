@@ -3,6 +3,7 @@ import { ThemeProvider } from "@emotion/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { initialize, mswDecorator } from "msw-storybook-addon";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { RouterContext } from "next/dist/shared/lib/router-context";
 
 import theme from "../styles/theme";
 import GlobalStyle from "../styles/Global";
@@ -29,6 +30,9 @@ export const decorators = [
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
+  nextRouter: {
+    Provider: RouterContext.Provider,
+  },
   viewport: {
     viewports: {
       ...INITIAL_VIEWPORTS,
