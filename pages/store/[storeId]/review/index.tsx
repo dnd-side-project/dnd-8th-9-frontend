@@ -5,10 +5,11 @@ import OverallStats from "@/components/OverallStats/OverallStats";
 
 function ReviewPage() {
   const review = reviews.reviewList[0];
+  const { rating, totalReviews, stats } = reviews.overallStats;
 
   return (
     <>
-      <OverallStats />
+      <OverallStats rating={rating} totalReviews={totalReviews} stats={stats} />
       <Review review={review} />
     </>
   );

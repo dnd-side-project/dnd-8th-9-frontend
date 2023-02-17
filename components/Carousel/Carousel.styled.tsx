@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  width: 32rem;
-
   img {
     width: 100%;
     height: 27rem;
