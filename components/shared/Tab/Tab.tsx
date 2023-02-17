@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { SerializedStyles, Theme } from "@emotion/react";
 import { tab, tabType } from "./tab.styled";
@@ -30,7 +31,7 @@ function Tab({ menuList, type, cssProp }: IProp) {
           role="presentation"
           className={menu.label === currentMenu ? "isSelected" : ""}
         >
-          <a
+          <Link
             role="tab"
             tabIndex={0}
             aria-selected={currentMenu === menu.label}
@@ -38,7 +39,7 @@ function Tab({ menuList, type, cssProp }: IProp) {
             onClick={() => handleClick(menu.label)}
           >
             {menu.label}
-          </a>
+          </Link>
         </li>
       ))}
     </ul>
