@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 32rem;
-  width: 66.6%;
   margin: 0 auto;
 `;
 
