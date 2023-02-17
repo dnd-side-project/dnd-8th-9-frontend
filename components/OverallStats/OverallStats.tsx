@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { Theme, css } from "@emotion/react";
 import Heart from "assets/icons/heart.svg";
 import Pencil from "assets/icons/pencil.svg";
@@ -34,6 +36,7 @@ const getOverallComment = (rating: number) => {
 export default function OverallStats({ rating, totalReviews, stats }: IOverallStats) {
   const [isOpened, setIsOpened] = useState(false);
   const OVERALL_COMMENT = getOverallComment(rating);
+  const { asPath } = useRouter();
 
   const handleIsOpened = () => {
     setIsOpened(() => !isOpened);
@@ -65,26 +68,28 @@ export default function OverallStats({ rating, totalReviews, stats }: IOverallSt
           )}
         </S.Arrow>
       </S.ProgressBox>
-      <Button
-        type="submit"
-        label="submit review"
-        shape="square"
-        cssProp={({ colors, fontSizes }: Theme) =>
-          css`
-            width: 100%;
-            max-width: 48rem;
-            color: ${colors.primary};
-            border: 1px solid ${colors.primary};
-            font-size: ${fontSizes[14]};
-            gap: 0.4rem;
-          `
-        }
-      >
-        <>
-          <Pencil stroke="#F1424D" />
-          {SUBMIT_REVIEW}
-        </>
-      </Button>
+      <Link href={`${asPath}/review`}>
+        <Button
+          type="button"
+          label="write a review"
+          shape="square"
+          cssProp={({ colors, fontSizes }: Theme) =>
+            css`
+              width: 100%;
+              max-width: 48rem;
+              color: ${colors.primary};
+              border: 1px solid ${colors.primary};
+              font-size: ${fontSizes[14]};
+              gap: 0.4rem;
+            `
+          }
+        >
+          <>
+            <Pencil stroke="#F1424D" />
+            {SUBMIT_REVIEW}
+          </>
+        </Button>
+      </Link>
     </S.Container>
   );
 }
