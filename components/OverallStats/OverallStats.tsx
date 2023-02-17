@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Theme, css } from "@emotion/react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { Theme } from "@emotion/react";
 import Heart from "assets/icons/heart.svg";
 import Pencil from "assets/icons/pencil.svg";
 import ArrowDown from "assets/icons/arrow-down.svg";
@@ -23,17 +25,18 @@ const SHOW_MORE = "더보기";
 const CLOSE = "접기";
 
 const getOverallComment = (rating: number) => {
-  if (rating === 100) return "매우 높아요!";
-  if (rating >= 80) return "훌륭해요!";
-  if (rating >= 60) return "괜찮아요!";
-  if (rating >= 40) return "아쉬워요";
-  if (rating >= 20) return "별로예요";
+  if (rating >= 80) return "매우 높아요!";
+  if (rating >= 60) return "훌륭해요!";
+  if (rating >= 40) return "괜찮아요!";
+  if (rating >= 20) return "아쉬워요";
+  if (rating >= 0) return "별로예요";
   return "";
 };
 
 export default function OverallStats({ rating, totalReviews, stats }: IOverallStats) {
   const [isOpened, setIsOpened] = useState(false);
   const OVERALL_COMMENT = getOverallComment(rating);
+  const { asPath } = useRouter();
 
   const handleIsOpened = () => {
     setIsOpened(() => !isOpened);
@@ -41,11 +44,11 @@ export default function OverallStats({ rating, totalReviews, stats }: IOverallSt
 
   return (
     <S.Container>
-      <S.Comment>
+      <S.Review>
         <Heart height={19} width={19} viewBox="0 0 17 17" fill="red" />
         <S.Rating>당도 {rating}%</S.Rating>
         <S.TotalReviews>({totalReviews}명 참여)</S.TotalReviews>
-      </S.Comment>
+      </S.Review>
       <S.OverallComment>
         이 스토의 당도는 <span>{OVERALL_COMMENT}</span>
       </S.OverallComment>
@@ -65,26 +68,21 @@ export default function OverallStats({ rating, totalReviews, stats }: IOverallSt
           )}
         </S.Arrow>
       </S.ProgressBox>
-      <Button
-        type="submit"
-        label="submit review"
-        shape="square"
-        cssProp={({ colors, fontSizes }: Theme) =>
-          css`
-            width: 100%;
-            max-width: 48rem;
-            color: ${colors.primary};
-            border: 1px solid ${colors.primary};
-            font-size: ${fontSizes[14]};
-            gap: 0.4rem;
-          `
-        }
-      >
-        <>
-          <Pencil stroke="#F1424D" />
-          {SUBMIT_REVIEW}
-        </>
-      </Button>
+      <Link href={`${asPath}/review`}>
+        <Button
+          type="button"
+          label="write a review"
+          shape="square"
+          cssProp={({ colors, fontSizes }: Theme) =>
+            S.Button(`${colors.primary}`, `${fontSizes[14]}`)
+          }
+        >
+          <>
+            <Pencil stroke="#F1424D" />
+            {SUBMIT_REVIEW}
+          </>
+        </Button>
+      </Link>
     </S.Container>
   );
 }

@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 export const Container = styled.div`
   width: 32rem;
-  width: 66.6%;
   margin: 0 auto;
 `;
 
-export const Comment = styled.div`
+export const Review = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -69,4 +69,13 @@ export const Arrow = styled.div`
   svg {
     stroke: ${({ theme }) => theme.colors.gray[200]};
   }
+`;
+
+export const Button = (color: string, fontSize: string) => css`
+  width: 100%;
+  max-width: 48rem;
+  color: ${color};
+  border: 1px solid ${color};
+  font-size: ${fontSize};
+  gap: 0.4rem;
 `;

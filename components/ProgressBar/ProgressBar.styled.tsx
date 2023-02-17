@@ -30,7 +30,7 @@ export const Background = styled.div`
 `;
 
 export const Progress = styled.div<IProgress>`
-  background-color: ${({ theme }) => theme.colors.darkBlue};
+  background-color: ${({ theme }) => theme.colors.dark[500]};
   width: ${({ count }) => `${count}%`};
   height: 100%;
   border-radius: 8px;
