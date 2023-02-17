@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Theme, css } from "@emotion/react";
+import { Theme } from "@emotion/react";
 import Heart from "assets/icons/heart.svg";
 import Pencil from "assets/icons/pencil.svg";
 import ArrowDown from "assets/icons/arrow-down.svg";
@@ -74,14 +74,7 @@ export default function OverallStats({ rating, totalReviews, stats }: IOverallSt
           label="write a review"
           shape="square"
           cssProp={({ colors, fontSizes }: Theme) =>
-            css`
-              width: 100%;
-              max-width: 48rem;
-              color: ${colors.primary};
-              border: 1px solid ${colors.primary};
-              font-size: ${fontSizes[14]};
-              gap: 0.4rem;
-            `
+            S.Button(`${colors.primary}`, `${fontSizes[14]}`)
           }
         >
           <>

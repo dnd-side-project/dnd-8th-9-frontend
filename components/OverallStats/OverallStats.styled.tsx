@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 export const Container = styled.div`
   width: 32rem;
@@ -68,4 +69,13 @@ export const Arrow = styled.div`
   svg {
     stroke: ${({ theme }) => theme.colors.gray[200]};
   }
+`;
+
+export const Button = (color: string, fontSize: string) => css`
+  width: 100%;
+  max-width: 48rem;
+  color: ${color};
+  border: 1px solid ${color};
+  font-size: ${fontSize};
+  gap: 0.4rem;
 `;
