@@ -34,6 +34,10 @@ const style = css`
     cursor: pointer;
   }
 
+  ul {
+    list-style: none;
+  }
+
   a {
     text-decoration: none;
     color: inherit;
