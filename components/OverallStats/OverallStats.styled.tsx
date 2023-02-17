@@ -5,7 +5,7 @@ export const Container = styled.div`
   margin: 0 auto;
 `;
 
-export const Comment = styled.div`
+export const Review = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
