@@ -1,12 +1,17 @@
 import React from "react";
-import * as S from "./notice.styled";
+import TableBox from "@/components/TableBox/TableBox";
+import { store } from "@/mocks/mockData/store";
 
-function NoticePage() {
+const SELLER_INFO = "판매자 정보";
+const FOOD_INFO = "식품 정보";
+
+function InfoPage() {
   return (
-    <S.Container>
-      <S.Text>Store Notice Page</S.Text>
-    </S.Container>
+    <>
+      <TableBox option="info" title={SELLER_INFO} data={store.info.sellerInfo} />
+      <TableBox option="info" title={FOOD_INFO} data={store.info.foodInfo} />
+    </>
   );
 }
 
-export default NoticePage;
+export default InfoPage;
