@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
+import { Theme, css } from "@emotion/react";
 import Carousel from "@/components/Carousel/Carousel";
+import Like from "assets/icons/like.svg";
 import Heart from "assets/icons/heart.svg";
 import ArrowDown from "assets/icons/arrow-down.svg";
 import ArrowUp from "assets/icons/arrow-up.svg";
@@ -23,13 +25,13 @@ export interface IReview {
     }[];
     likes: number;
   };
+  bestReviewDetail: string;
 }
 
 const TIME = "2023-02-13";
 
-export default function Review({ review }: IReview) {
+export default function Review({ review, bestReviewDetail }: IReview) {
   const [isOpened, setIsOpened] = useState(false);
-  const TASTE = "맛있어요";
 
   const handleIsOpened = () => {
     setIsOpened(() => !isOpened);
@@ -56,7 +58,7 @@ export default function Review({ review }: IReview) {
           당도 {review.rating}%
           <span>
             <Tag type="single" label="delicious">
-              {TASTE}
+              {bestReviewDetail}
             </Tag>
           </span>
         </S.Taste>
@@ -68,8 +70,22 @@ export default function Review({ review }: IReview) {
             <ArrowDown onClick={handleIsOpened} width={18} height={18} />
           )}
         </S.Arrow>
-        {/* TODO: 버튼 재사용 컴포넌트로 변경 */}
-        <S.LikeButton>{review.likes}</S.LikeButton>
+
+        <S.LikeButton>
+          <Tag
+            type="single"
+            label="delicious"
+            cssProp={({ colors }: Theme) => css`
+              color: ${colors.gray[200]};
+              border-color: ${colors.gray[100]};
+            `}
+          >
+            <>
+              <Like fill="#d9d9d9" />
+              {review.likes}
+            </>
+          </Tag>
+        </S.LikeButton>
       </S.Review>
     </S.Container>
   );

@@ -113,8 +113,8 @@ export const Arrow = styled.div`
 `;
 
 export const LikeButton = styled.button`
-  border: 1px solid black;
-  width: 9rem;
-  border-radius: 2.1rem;
   float: right;
+  svg {
+    margin-right: 0.6rem;
+  }
 `;
