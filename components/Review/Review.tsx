@@ -1,10 +1,13 @@
 import { useState } from "react";
 import Image from "next/image";
+import { Theme, css } from "@emotion/react";
 import Carousel from "@/components/Carousel/Carousel";
+import Like from "assets/icons/like.svg";
 import Heart from "assets/icons/heart.svg";
 import ArrowDown from "assets/icons/arrow-down.svg";
 import ArrowUp from "assets/icons/arrow-up.svg";
 import * as S from "./Review.styled";
+import Tag from "../shared/Tag/Tag";
 
 export interface IReview {
   review: {
@@ -22,11 +25,13 @@ export interface IReview {
     }[];
     likes: number;
   };
+  bestReviewDetail: string;
 }
 
 const TIME = "2023-02-13";
+const VIP = "단골";
 
-export default function Review({ review }: IReview) {
+export default function Review({ review, bestReviewDetail }: IReview) {
   const [isOpened, setIsOpened] = useState(false);
 
   const handleIsOpened = () => {
@@ -41,7 +46,21 @@ export default function Review({ review }: IReview) {
             <S.NickNameSite>
               <Image src={review.profileImage} width={50} height={50} alt="profile" />
               <S.NickName>{review.nickname}</S.NickName>
-              <S.Source>{review.source}</S.Source>
+              <S.Source>
+                {review.source === VIP ? (
+                  <Tag
+                    type="square"
+                    label="vip"
+                    cssProp={css`
+                      height: 1.7rem;
+                    `}
+                  >
+                    {VIP}
+                  </Tag>
+                ) : (
+                  review.source
+                )}
+              </S.Source>
             </S.NickNameSite>
             <S.Option>옵션: {review.menuOption}</S.Option>
           </S.HeaderLeft>
@@ -50,9 +69,13 @@ export default function Review({ review }: IReview) {
         </S.Header>
         <Carousel images={review.reviewImages} />
         <S.Taste>
-          {/* TODO: reviweOption 재사용 컴포넌트로 변경 */}
           <Heart height={10} width={10} viewBox="0 0 15 15" fill="red" />
-          당도 {review.rating}% {review.reviewOption}
+          당도 {review.rating}%
+          <span>
+            <Tag type="single" label="delicious">
+              {bestReviewDetail}
+            </Tag>
+          </span>
         </S.Taste>
         <S.Text isOpened={isOpened}>{review.text}</S.Text>
         <S.Arrow>
@@ -62,8 +85,22 @@ export default function Review({ review }: IReview) {
             <ArrowDown onClick={handleIsOpened} width={18} height={18} />
           )}
         </S.Arrow>
-        {/* TODO: 버튼 재사용 컴포넌트로 변경 */}
-        <S.LikeButton>{review.likes}</S.LikeButton>
+
+        <S.LikeButton>
+          <Tag
+            type="single"
+            label="delicious"
+            cssProp={({ colors }: Theme) => css`
+              color: ${colors.gray[200]};
+              border-color: ${colors.gray[100]};
+            `}
+          >
+            <>
+              <Like fill="#d9d9d9" />
+              {review.likes}
+            </>
+          </Tag>
+        </S.LikeButton>
       </S.Review>
     </S.Container>
   );
