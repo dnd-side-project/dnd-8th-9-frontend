@@ -68,8 +68,15 @@ export const Taste = styled.div`
   line-height: 1.8rem;
   font-weight: 600;
   margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+
   svg {
     margin-right: 0.5rem;
+  }
+
+  span {
+    margin-left: 1.2rem;
   }
 `;
 

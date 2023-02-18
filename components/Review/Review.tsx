@@ -5,6 +5,7 @@ import Heart from "assets/icons/heart.svg";
 import ArrowDown from "assets/icons/arrow-down.svg";
 import ArrowUp from "assets/icons/arrow-up.svg";
 import * as S from "./Review.styled";
+import Tag from "../shared/Tag/Tag";
 
 export interface IReview {
   review: {
@@ -28,6 +29,7 @@ const TIME = "2023-02-13";
 
 export default function Review({ review }: IReview) {
   const [isOpened, setIsOpened] = useState(false);
+  const TASTE = "맛있어요";
 
   const handleIsOpened = () => {
     setIsOpened(() => !isOpened);
@@ -50,9 +52,13 @@ export default function Review({ review }: IReview) {
         </S.Header>
         <Carousel images={review.reviewImages} />
         <S.Taste>
-          {/* TODO: reviweOption 재사용 컴포넌트로 변경 */}
           <Heart height={10} width={10} viewBox="0 0 15 15" fill="red" />
-          당도 {review.rating}% {review.reviewOption}
+          당도 {review.rating}%
+          <span>
+            <Tag type="single" label="delicious">
+              {TASTE}
+            </Tag>
+          </span>
         </S.Taste>
         <S.Text isOpened={isOpened}>{review.text}</S.Text>
         <S.Arrow>
