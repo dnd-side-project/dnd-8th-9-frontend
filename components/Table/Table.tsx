@@ -15,7 +15,7 @@ interface IOptions {
 }
 
 const optionList: IOptions = {
-  notice: {
+  seller: {
     key: "day",
     value: "hour",
   },
