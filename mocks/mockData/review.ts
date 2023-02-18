@@ -14,7 +14,7 @@ export const reviews = {
     {
       nickname: "빵순",
       profileImage: "https://i.pinimg.com/564x/05/ce/a0/05cea0031411da061d37cf5fcbe0a8f1.jpg",
-      source: "당도",
+      source: "단골",
       rating: "80",
       menuOption: "레터링케이크 1호",
       reviewOption: "맛있어요",
