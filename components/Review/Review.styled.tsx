@@ -39,6 +39,7 @@ export const HeaderRight = styled.div`
 export const NickNameSite = styled.div`
   font-size: ${({ theme }) => theme.fontSizes[12]};
   display: flex;
+  align-items: center;
   gap: 0.6rem;
   line-height: 1.6rem;
   font-weight: 600;
@@ -49,16 +50,10 @@ export const NickName = styled.p`
   color: ${({ theme }) => theme.colors.black};
 `;
 
-export const Source = styled.p`
+export const Source = styled.div`
   color: ${({ theme }) => theme.colors.gray[100]};
-  :last-child {
-    ::before {
-      content: "|";
-      width: 0.1rem;
-      font-weight: 400;
-      margin-right: 1rem;
-    }
-  }
+  display: flex;
+  align-items: center;
 `;
 
 export const Taste = styled.div`

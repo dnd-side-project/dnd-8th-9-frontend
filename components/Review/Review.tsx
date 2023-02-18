@@ -29,6 +29,7 @@ export interface IReview {
 }
 
 const TIME = "2023-02-13";
+const VIP = "단골";
 
 export default function Review({ review, bestReviewDetail }: IReview) {
   const [isOpened, setIsOpened] = useState(false);
@@ -45,7 +46,21 @@ export default function Review({ review, bestReviewDetail }: IReview) {
             <S.NickNameSite>
               <Image src={review.profileImage} width={50} height={50} alt="profile" />
               <S.NickName>{review.nickname}</S.NickName>
-              <S.Source>{review.source}</S.Source>
+              <S.Source>
+                {review.source === VIP ? (
+                  <Tag
+                    type="square"
+                    label="vip"
+                    cssProp={css`
+                      height: 1.7rem;
+                    `}
+                  >
+                    {VIP}
+                  </Tag>
+                ) : (
+                  review.source
+                )}
+              </S.Source>
             </S.NickNameSite>
             <S.Option>옵션: {review.menuOption}</S.Option>
           </S.HeaderLeft>
