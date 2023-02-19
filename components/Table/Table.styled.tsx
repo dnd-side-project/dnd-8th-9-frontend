@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 export const Cell = styled.div<ICellProps>`
   ${({ option, theme }) => {
-    return option === "seller"
+    return option === "notice"
       ? css`
           font-size: ${theme.fontSizes[14]};
           border-right: 1px solid ${theme.colors.gray[100]};
@@ -28,7 +28,7 @@ export const Cell = styled.div<ICellProps>`
           line-height: 4.1rem;
           :first-child {
             padding-left: 1.9rem;
-            background-color: ${theme.colors.gray[0]};
+            background-color: ${theme.colors.background};
           }
           :last-child {
             text-align: center;
@@ -41,7 +41,7 @@ export const Cell = styled.div<ICellProps>`
             font-weight: 500;
             width: 40%;
             padding: 1.4rem 1.6rem;
-            background-color: ${theme.colors.gray[0]};
+            background-color: ${theme.colors.background};
           }
           :last-child {
             font-size: ${theme.fontSizes[12]};

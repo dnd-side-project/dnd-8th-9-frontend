@@ -5,6 +5,7 @@ declare module "@emotion/react" {
     fontSizes: {
       10: string;
       12: string;
+      13: string;
       14: string;
       16: string;
       18: string;
@@ -25,13 +26,13 @@ declare module "@emotion/react" {
         500: string;
       };
       gray: {
-        0: string;
         50: string;
         100: string;
         200: string;
         300: string;
         500: string;
       };
+      background: string;
       black: string;
       white: string;
     };
