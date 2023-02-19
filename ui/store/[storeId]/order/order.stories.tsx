@@ -1,5 +1,5 @@
+import OrderTemplatePage from "@/pages/store/[storeId]/order";
 import { Meta, Story } from "@storybook/react";
-import OrderTemplatePage from ".";
 
 export default {
   title: "store/order",

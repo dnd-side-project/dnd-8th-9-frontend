@@ -1,11 +1,20 @@
 import React from "react";
-import * as S from "./notice.styled";
+import NoticeInfo from "@/components/NoticeInfo/NoticeInfo";
+import PickupHours from "@/components/PickupHours/PickupHours";
+import Packaging from "@/components/Packaging/Packaging";
+import { store } from "@/mocks/mockData/store";
+
+const NOTICE_INFO = "업체 공지";
+const PICKUP_TIME = "픽업 가능 시간";
+const PACKAGING = "포장 안내";
 
 function NoticePage() {
   return (
-    <S.Container>
-      <S.Text>Store Notice Page</S.Text>
-    </S.Container>
+    <>
+      <NoticeInfo title={NOTICE_INFO} data={store.notice.noticeInfo} />
+      <PickupHours option="notice" title={PICKUP_TIME} data={store.notice.pickupHours} />
+      <Packaging title={PACKAGING} data={store.notice.packaging} />
+    </>
   );
 }
 

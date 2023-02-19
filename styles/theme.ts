@@ -4,6 +4,7 @@ const theme: Theme = {
   fontSizes: {
     10: "10px",
     12: "12px",
+    13: "13px",
     14: "14px",
     16: "16px",
     18: "18px",
@@ -24,14 +25,13 @@ const theme: Theme = {
       500: "#0E1B47",
     },
     gray: {
-      0: "#F7F8FA",
       50: "#F0F0F0",
       100: "#D7D7D7",
       200: "#A2A2A2",
       300: "#A5A5A5",
       500: "#3C3C3C",
     },
-
+    background: "#F7F8FA",
     black: "#000",
     white: "#fff",
   },
