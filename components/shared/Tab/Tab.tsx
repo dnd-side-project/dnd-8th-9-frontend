@@ -19,6 +19,8 @@ function Tab({ menuList, type, cssProp }: IProp) {
   const [currentMenu, setCurrentMenu] = useState(menuList[0].label);
   const { asPath } = useRouter();
 
+  const path = asPath.split("/").slice(0, -1).join("/");
+
   const handleClick = (menu: string) => {
     setCurrentMenu(menu);
   };
@@ -35,7 +37,7 @@ function Tab({ menuList, type, cssProp }: IProp) {
             role="tab"
             tabIndex={0}
             aria-selected={currentMenu === menu.label}
-            href={`${asPath}${menu.link}`}
+            href={`${path}${menu.link}`}
             onClick={() => handleClick(menu.label)}
           >
             {menu.label}
