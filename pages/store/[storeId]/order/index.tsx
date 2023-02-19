@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./order.styled";
+import * as S from "@/ui/store/[storeId]/order/order.styled";
 
 function OrderTemplatePage() {
   return (

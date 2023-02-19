@@ -89,3 +89,22 @@ export const categoryTab = [
     link: "#",
   },
 ];
+
+export const navTab = [
+  {
+    label: "홈",
+    link: "/",
+  },
+  {
+    label: "검색",
+    link: "/search",
+  },
+  {
+    label: "북마크",
+    link: "/bookmark",
+  },
+  {
+    label: "마이페이지",
+    link: "/mypage",
+  },
+];

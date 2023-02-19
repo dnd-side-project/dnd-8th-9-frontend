@@ -1,5 +1,5 @@
 import { useGetStore } from "@/api/queries/store";
-import * as S from "./menu.styled";
+import * as S from "@/ui/store/[storeId]/menu/menu.styled";
 
 function MenuPage() {
   const { data, isLoading, isError } = useGetStore({ storeId: 1 });
