@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Theme } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 import Heart from "assets/icons/heart.svg";
 import Pencil from "assets/icons/pencil.svg";
 import ArrowDown from "assets/icons/arrow-down.svg";
@@ -37,6 +37,7 @@ export default function OverallStats({ rating, totalReviews, stats }: IOverallSt
   const [isOpened, setIsOpened] = useState(false);
   const OVERALL_COMMENT = getOverallComment(rating);
   const { asPath } = useRouter();
+  const { colors, fontSizes } = useTheme();
 
   const handleIsOpened = () => {
     setIsOpened(() => !isOpened);
@@ -73,12 +74,10 @@ export default function OverallStats({ rating, totalReviews, stats }: IOverallSt
           type="button"
           label="write a review"
           shape="square"
-          cssProp={({ colors, fontSizes }: Theme) =>
-            S.Button(`${colors.primary}`, `${fontSizes[14]}`)
-          }
+          cssProp={() => S.Button(`${colors.primary}`, `${fontSizes[14]}`)}
         >
           <>
-            <Pencil stroke="#F1424D" />
+            <Pencil stroke={colors.primary} width={16} height={16} fill="none" />
             {SUBMIT_REVIEW}
           </>
         </Button>

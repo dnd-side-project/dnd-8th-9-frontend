@@ -113,3 +113,12 @@ export const LikeButton = styled.button`
     margin-right: 0.6rem;
   }
 `;
+
+export const CarouselWrapper = styled.div`
+  img {
+    width: 100%;
+    height: 26.7rem;
+    border-radius: 0.8rem;
+    object-fit: cover;
+  }
+`;

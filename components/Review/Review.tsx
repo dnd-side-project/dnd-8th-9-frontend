@@ -67,7 +67,9 @@ export default function Review({ review, bestReviewDetail }: IReview) {
           {/* TODO: 시간 포맷 변경 */}
           <S.HeaderRight>{TIME}</S.HeaderRight>
         </S.Header>
-        <Carousel images={review.reviewImages} />
+        <S.CarouselWrapper>
+          <Carousel images={review.reviewImages} />
+        </S.CarouselWrapper>
         <S.Taste>
           <Heart height={10} width={10} viewBox="0 0 15 15" fill="red" />
           당도 {review.rating}%
