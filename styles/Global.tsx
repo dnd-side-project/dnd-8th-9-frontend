@@ -14,12 +14,22 @@ const style = css`
     font-size: 62.5%;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    padding: 0;
+  }
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-size: 1.6rem;
-    line-height: 2.4rem;
+    line-height: 119.3%;
   }
 
   body {
