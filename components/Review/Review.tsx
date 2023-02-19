@@ -18,7 +18,7 @@ export interface IReview {
     menuOption: string;
     reviewOption: string;
     text: string;
-    time: number;
+    date: string;
     reviewImages: {
       id: number;
       url: string;
