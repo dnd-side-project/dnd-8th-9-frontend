@@ -8,7 +8,7 @@ export interface IReviewItem {
   menuOption: string;
   reviewOption: TReviewOption;
   text: string;
-  time: number;
+  date: string;
   reviewImages: IImage[];
 }
 
