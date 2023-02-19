@@ -4,9 +4,11 @@ declare module "@emotion/react" {
   export interface Theme {
     fontSizes: {
       10: string;
+      11: string;
       12: string;
       13: string;
       14: string;
+      15: string;
       16: string;
       18: string;
       20: string;
