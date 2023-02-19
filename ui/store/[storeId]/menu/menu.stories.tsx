@@ -1,6 +1,6 @@
 import { Meta, Story } from "@storybook/react";
 import { storeHandler } from "@/mocks/handlers/store";
-import MenuPage from ".";
+import MenuPage from "@/pages/store/[storeId]/menu";
 
 export default {
   title: "store/menu",

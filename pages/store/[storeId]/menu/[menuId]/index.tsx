@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./menuItem.styled";
+import * as S from "@/ui/store/[storeId]/menu/[menuId]/menuItem.styled";
 
 function MenuDetailsPage() {
   return (
