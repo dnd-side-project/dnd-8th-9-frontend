@@ -1,4 +1,9 @@
 import { useGetStore } from "@/api/queries/store";
+import Card from "@/components/shared/Card/Card";
+import Tab from "@/components/shared/Tab/Tab";
+import StoreHero from "@/components/Store/StoreHero/StoreHero";
+import { storeTab } from "@/constants/navigations";
+import { menuList } from "@/mocks/mockData/menuList";
 import * as S from "@/ui/store/[storeId]/menu/menu.styled";
 
 function MenuPage() {
@@ -9,11 +14,13 @@ function MenuPage() {
 
   return (
     <S.Container>
-      <S.Text>Store Menu Page</S.Text>
-      <div>
-        <h2>{data.name}</h2>
-        <p>당도: {data.rating}</p>
-      </div>
+      <StoreHero />
+      <Tab type="swipeable" menuList={storeTab} />
+      <S.ListWrap>
+        {menuList.menus.map(menu => (
+          <Card menu={menu} key={menu.id} />
+        ))}
+      </S.ListWrap>
     </S.Container>
   );
 }
