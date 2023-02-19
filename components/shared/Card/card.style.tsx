@@ -6,10 +6,7 @@ export const Container = styled.div`
   column-gap: 1.2rem;
   margin-bottom: 0.8rem;
   position: relative;
-
-  :not(:last-child) {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.gray[90]};
-  }
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray[90]};
 `;
 
 export const ImageWrap = styled.div`
@@ -30,8 +27,10 @@ export const IconWrap = styled.div`
   border-radius: 0.8rem;
   background-color: ${({ theme }) => theme.colors.white};
   position: absolute;
-  bottom: clamp(13px, 14px, 15px);
-  left: clamp(31px, 60px, 70px);
+  bottom: 13px;
+  left: 45px;
+  /* bottom: clamp(13px, 14px, 15px);
+  left: clamp(31px, 60px, 70px); */
 `;
 
 export const InfoWrap = styled.div`
