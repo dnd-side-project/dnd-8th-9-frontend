@@ -1,6 +1,6 @@
 import React from "react";
 import NoticeInfo from "@/components/NoticeInfo/NoticeInfo";
-import TableBox from "@/components/TableBox/TableBox";
+import PickupHours from "@/components/PickupHours/PickupHours";
 import Packaging from "@/components/Packaging/Packaging";
 import { store } from "@/mocks/mockData/store";
 
@@ -12,8 +12,7 @@ function NoticePage() {
   return (
     <>
       <NoticeInfo title={NOTICE_INFO} data={store.notice.noticeInfo} />
-      {/* PickUpTime 으로 분리  */}
-      <TableBox option="notice" title={PICKUP_TIME} data={store.notice.pickupHours} />
+      <PickupHours option="notice" title={PICKUP_TIME} data={store.notice.pickupHours} />
       <Packaging title={PACKAGING} data={store.notice.packaging} />
     </>
   );
