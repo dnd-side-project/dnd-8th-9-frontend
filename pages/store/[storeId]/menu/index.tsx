@@ -18,7 +18,7 @@ function MenuPage() {
   return (
     <S.Container>
       <StoreHero />
-      <Tab type="swipeable" menuList={storeTab} />
+      <Tab type="swipeable" menuList={storeTab} target="storeTab" />
       <S.ListWrap>
         {menuList.menus.map(menu => (
           <Link key={menu.id} href={`${asPath}/${menu.id}`}>
