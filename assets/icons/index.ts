@@ -17,3 +17,4 @@ export { default as Thinking } from "./ms_thinking.svg";
 export { default as Warning } from "./ms_warning.svg";
 export { default as Share } from "./share.svg";
 export { default as Store } from "./store.svg";
+export { default as SaveBookmark } from "./save_bookmark.svg";
