@@ -1,6 +1,7 @@
 import { IImage, TCategory, TReviewOption, TSource } from "./shared";
 
 export interface IReviewItem {
+  id: number;
   nickname: string;
   profileImage: string;
   source: TSource;
