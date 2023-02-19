@@ -9,17 +9,39 @@ export interface ITabItem {
   link: string;
 }
 
+export type TTarget = "homeTab" | "resultTab" | "categoryTab" | "storeMenuTab" | "storeTab";
+
 export interface IProp {
   menuList: ITabItem[];
   type: "swipeable" | "fixed";
+  target: TTarget;
   cssProp?: SerializedStyles | (({ colors, fontSizes }: Theme) => SerializedStyles);
 }
 
-function Tab({ menuList, type, cssProp }: IProp) {
+const generatePath = (type: TTarget, asPath: string): string => {
+  let path;
+  switch (type) {
+    case "storeTab":
+      path = asPath.split("/").slice(0, -1).join("/");
+      return path;
+      break;
+    case "storeMenuTab":
+      if (asPath.indexOf("#") !== -1) {
+        path = asPath.split("#");
+      }
+      return path ? path[0] : "/";
+      break;
+    default:
+      return "/";
+      break;
+  }
+};
+
+function Tab({ menuList, type, cssProp, target }: IProp) {
   const [currentMenu, setCurrentMenu] = useState(menuList[0].label);
   const { asPath } = useRouter();
 
-  const path = asPath.split("/").slice(0, -1).join("/");
+  const path = generatePath(target, asPath);
 
   const handleClick = (menu: string) => {
     setCurrentMenu(menu);
