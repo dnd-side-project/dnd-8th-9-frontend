@@ -1,8 +1,8 @@
-import React from "react";
 import { menu } from "@/mocks/mockData/menu";
 import MenuHero from "@/components/Store/MenuHero/MenuHero";
 import Tab from "@/components/shared/Tab/Tab";
 import { storeMenuTab } from "@/constants/navigations";
+import { Caution, Size, Option, Flavor } from "@/assets/images/index";
 import * as S from "@/ui/store/[storeId]/menu/[menuId]/menuItem.styled";
 
 function MenuDetailsPage() {
@@ -17,6 +17,10 @@ function MenuDetailsPage() {
         category={category}
       />
       <Tab menuList={storeMenuTab} type="swipeable" target="storeMenuTab" />
+      <Size />
+      <Flavor />
+      <Option />
+      <Caution />
     </S.Container>
   );
 }
