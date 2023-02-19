@@ -4,6 +4,7 @@ const theme: Theme = {
   fontSizes: {
     10: "10px",
     12: "12px",
+    13: "13px",
     14: "14px",
     16: "16px",
     18: "18px",
