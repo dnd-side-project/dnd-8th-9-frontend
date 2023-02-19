@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  max-width: 36rem;
+  width: 36rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,4 +9,9 @@ export const Container = styled.div`
   margin: auto;
   height: 7.4rem;
   box-shadow: 0px -4px 12px rgba(80, 83, 105, 0.08);
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
