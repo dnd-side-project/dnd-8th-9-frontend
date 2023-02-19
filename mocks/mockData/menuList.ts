@@ -10,16 +10,14 @@ export const menuList = {
     {
       id: 2,
       name: "레터링 케이크 1호",
-      menuImage:
-        "https://images.unsplash.com/photo-1560173045-beaf11c65dce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2835&q=80",
+      menuImage: "https://i.pinimg.com/564x/b5/8d/4d/b58d4d8f1a314c57eb221acb748f33ef.jpg",
       summary: "색상, 레터링, 사이즈 변경가능, 데코는 기본가에 금액추가",
       price: 20000,
     },
     {
       id: 3,
       name: "레터링 케이크 2호",
-      menuImage:
-        "https://images.unsplash.com/photo-1565661834013-d196ca46e14e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80",
+      menuImage: "https://i.pinimg.com/564x/fd/84/6a/fd846aaf2f9b7bf8b47af18ce1bc5512.jpg",
       summary: "색상, 레터링, 사이즈 변경가능, 데코는 기본가에 금액추가",
       price: 30000,
     },
@@ -29,6 +27,20 @@ export const menuList = {
       menuImage: "https://i.pinimg.com/564x/c3/34/a0/c334a04e6924a0482e536c778549cd5d.jpg",
       summary: "색상, 레터링, 사이즈 변경가능, 데코는 기본가에 금액추가",
       price: 40000,
+    },
+    {
+      id: 5,
+      name: "레터링 케이크 5호",
+      menuImage: "https://i.pinimg.com/564x/a2/54/89/a254899619572c676be07a96d0c64e15.jpg",
+      summary: "색상, 레터링, 사이즈 변경가능, 데코는 기본가에 금액추가",
+      price: 50000,
+    },
+    {
+      id: 6,
+      name: "레터링 케이크 6호",
+      menuImage: "https://i.pinimg.com/564x/4a/df/79/4adf79a54b55ff828832636d7e3b62c9.jpg",
+      summary: "색상, 레터링, 사이즈 변경가능, 데코는 기본가에 금액추가",
+      price: 60000,
     },
   ],
 };

@@ -1,4 +1,4 @@
-export const BASE_URL = "https://dangdo.com";
+export const BASE_URL = "http://jsonplaceholder.typicode.com";
 
 export const REQUEST_URL = {
   STORE_LIST: "/store",

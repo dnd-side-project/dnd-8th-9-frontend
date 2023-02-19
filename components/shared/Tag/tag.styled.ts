@@ -4,10 +4,10 @@ export const tagStyle = {
   square: ({ colors, fontSizes }: Theme) => css`
     background-color: ${colors.dark[500]};
     color: ${colors.white};
-    padding: 0 0.4rem;
+    padding: 0.2rem 0.4rem;
     font-size: ${fontSizes[10]};
     line-height: ${fontSizes[12]};
-    width: 2.6rem;
+    min-width: 2.6rem;
   `,
   icon: ({ colors, fontSizes }: Theme) => css`
     background-color: ${colors.dark[500]};
@@ -36,6 +36,19 @@ export const tagStyle = {
     border-radius: 1.4rem;
     gap: 0.4rem;
     max-width: 15rem;
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1.6rem;
+      background-color: ${colors.white};
+      color: ${colors.primary};
+      font-size: 1.1rem;
+      font-weight: 600;
+      height: 1.5rem;
+      width: 2rem;
+    }
   `,
 };
 

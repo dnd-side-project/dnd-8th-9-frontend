@@ -1,5 +1,4 @@
-import { TCategory } from "./menu";
-import { IImage } from "./review";
+import { IImage, TCategory } from "./shared";
 
 export interface IStoreItem {
   id: number;
