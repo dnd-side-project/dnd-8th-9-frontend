@@ -6,6 +6,7 @@ import Heart from "assets/icons/heart.svg";
 import Pencil from "assets/icons/pencil.svg";
 import ArrowDown from "assets/icons/arrow-down.svg";
 import ArrowUp from "assets/icons/arrow-up.svg";
+import { getOverallComment } from "@/utils/util";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Button from "../shared/Button/Button";
 import * as S from "./OverallStats.styled";
@@ -23,15 +24,6 @@ export interface IOverallStats {
 const SUBMIT_REVIEW = "리뷰쓰기";
 const SHOW_MORE = "더보기";
 const CLOSE = "접기";
-
-const getOverallComment = (rating: number) => {
-  if (rating >= 80) return "매우 높아요!";
-  if (rating >= 60) return "훌륭해요!";
-  if (rating >= 40) return "괜찮아요!";
-  if (rating >= 20) return "아쉬워요";
-  if (rating >= 0) return "별로예요";
-  return "";
-};
 
 export default function OverallStats({ rating, totalReviews, stats }: IOverallStats) {
   const [isOpened, setIsOpened] = useState(false);

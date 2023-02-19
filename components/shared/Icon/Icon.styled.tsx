@@ -15,6 +15,9 @@ const SIZE_STYLE = {
 };
 
 const sizeCss = ({ size }: IProp) => css`
+  width: ${SIZE_STYLE[size].width};
+  height: ${SIZE_STYLE[size].height};
+
   svg {
     width: ${SIZE_STYLE[size].width};
     height: ${SIZE_STYLE[size].height};
@@ -34,7 +37,6 @@ const lineCss = ({ color }: IProp) => css`
 const fillCss = ({ fill }: IProp) => css`
   svg {
     fill: ${fill};
-
     path {
       stroke: ${fill};
     }
