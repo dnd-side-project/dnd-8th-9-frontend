@@ -4,6 +4,8 @@ import { css } from "@emotion/react";
 export const Container = styled.div`
   width: 32rem;
   margin: 0 auto;
+  padding: 2.4rem 0;
+  border-bottom: 7px solid ${({ theme }) => theme.colors.gray[70]};
 `;
 
 export const Review = styled.div`
