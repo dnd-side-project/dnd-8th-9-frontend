@@ -5,12 +5,11 @@ interface ITextProps {
 }
 
 export const Container = styled.div`
-  display: block;
-`;
-
-export const Review = styled.div`
   width: 66.6%;
   margin: 0 auto;
+  overflow: auto;
+  padding: 2.4rem 0;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray[90]};
 `;
 
 export const Header = styled.div`
@@ -18,7 +17,6 @@ export const Header = styled.div`
   justify-content: space-between;
 `;
 
-// TODO: 이미지 width, height 변경
 export const HeaderLeft = styled.div`
   img {
     width: 2.6rem;
@@ -33,7 +31,7 @@ export const HeaderRight = styled.div`
   color: ${({ theme }) => theme.colors.gray[200]};
   font-weight: 400;
   font-size: ${({ theme }) => theme.fontSizes[12]};
-  line-height: 1.6rem;
+  line-height: 2.6rem;
 `;
 
 export const NickNameSite = styled.div`
@@ -62,7 +60,7 @@ export const Taste = styled.div`
   word-spacing: 0.3rem;
   line-height: 1.8rem;
   font-weight: 600;
-  margin-bottom: 1.2rem;
+  margin: 1.2rem 0;
   display: flex;
   align-items: center;
 
@@ -79,6 +77,7 @@ export const Option = styled.div`
   font-size: ${({ theme }) => theme.fontSizes[12]};
   color: ${({ theme }) => theme.colors.gray[500]};
   line-height: 1.8rem;
+  margin-bottom: 0.8rem;
   font-weight: 500;
 `;
 
@@ -108,6 +107,7 @@ export const Arrow = styled.div`
 `;
 
 export const LikeButton = styled.button`
+  display: block;
   float: right;
   svg {
     margin-right: 0.6rem;
