@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: block;
   margin: auto;
   width: 32rem;
+  margin-top: 2.4rem;
 `;
 
 export const Title = styled.div`
