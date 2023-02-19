@@ -1,12 +1,12 @@
 import { Meta, Story } from "@storybook/react";
-import Carousel, { IImages } from "./Carousel";
+import Carousel, { IProp } from "./Carousel";
 
 export default {
   title: "Carousel",
   component: Carousel,
 } as Meta;
 
-const Template: Story<IImages> = args => <Carousel {...args} />;
+const Template: Story<IProp> = args => <Carousel {...args} />;
 
 const MediumImages = [
   {
