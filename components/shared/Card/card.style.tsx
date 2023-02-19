@@ -4,6 +4,8 @@ export const Container = styled.div`
   padding: 0.8rem 0;
   display: flex;
   column-gap: 1.2rem;
+  margin-bottom: 0.8rem;
+  position: relative;
 
   :not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray[90]};
@@ -15,6 +17,21 @@ export const ImageWrap = styled.div`
   overflow: hidden;
   width: 11rem;
   height: auto;
+`;
+
+export const IconWrap = styled.div`
+  max-width: 3.2rem;
+  max-height: 3.2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8rem;
+  background-color: ${({ theme }) => theme.colors.white};
+  position: absolute;
+  bottom: clamp(13px, 14px, 15px);
+  left: clamp(31px, 60px, 70px);
 `;
 
 export const InfoWrap = styled.div`
