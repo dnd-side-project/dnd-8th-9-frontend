@@ -62,22 +62,7 @@ DoubleTag.args = {
   children: (
     <>
       맛있어요
-      <span
-        css={({ colors }: Theme) => css`
-          border-radius: 1.6rem;
-          background-color: ${colors.white};
-          color: ${colors.primary};
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.1rem;
-          font-weight: 600;
-          height: 1.5rem;
-          width: 2rem;
-        `}
-      >
-        12
-      </span>
+      <span>12</span>
     </>
   ),
 };
