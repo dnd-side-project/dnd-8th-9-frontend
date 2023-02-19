@@ -1,5 +1,5 @@
+import NoticePage from "@/pages/store/[storeId]/notice";
 import { Meta, Story } from "@storybook/react";
-import NoticePage from ".";
 
 export default {
   title: "store/notice",
