@@ -24,4 +24,5 @@ export const ICONS: IIcon = {
   share: <i.Share />,
   tasty: <i.Tasty />,
   saveBookmark: <i.SaveBookmark />,
+  arrowRight: <i.ArrowRight />,
 };

@@ -18,3 +18,4 @@ export { default as Warning } from "./ms_warning.svg";
 export { default as Share } from "./share.svg";
 export { default as Store } from "./store.svg";
 export { default as SaveBookmark } from "./save_bookmark.svg";
+export { default as ArrowRight } from "./arrow-right.svg";
