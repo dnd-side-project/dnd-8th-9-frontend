@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
 export const Container = styled.div`
-  width: 32rem;
+  width: 100%;
   margin: 0 auto;
-  padding: 2.4rem 0;
+  padding: 3.2em 1.6rem 2.2rem;
   border-bottom: 7px solid ${({ theme }) => theme.colors.gray[70]};
 `;
 

@@ -3,8 +3,9 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   display: block;
   margin: auto;
-  width: 32rem;
-  margin-top: 2.4rem;
+  width: 100%;
+  padding: 2.4rem 1.6rem 3.2rem;
+  border-bottom: 0.7rem solid ${({ theme }) => theme.colors.gray[70]};
 `;
 
 export const Title = styled.div`

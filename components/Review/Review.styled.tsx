@@ -5,7 +5,7 @@ interface ITextProps {
 }
 
 export const Container = styled.div`
-  width: 66.6%;
+  width: 100%;
   margin: 0 auto;
   overflow: auto;
   padding: 2.4rem 0;

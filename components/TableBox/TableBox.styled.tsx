@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  width: 66.6%;
+  padding: 2.4rem 1.6rem 3.2rem;
+  width: 100%;
   margin: 0 auto;
+  border-bottom: 0.7rem solid ${({ theme }) => theme.colors.gray[70]};
 `;
 
 export const Title = styled.div`
