@@ -1,4 +1,4 @@
-import NoticePage from "@/pages/store/[storeId]/notice";
+import NoticePage from "@/pages/store/[storeId]/notice/index.page";
 import { Meta, Story } from "@storybook/react";
 
 export default {

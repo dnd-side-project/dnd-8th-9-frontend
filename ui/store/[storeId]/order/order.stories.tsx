@@ -1,4 +1,4 @@
-import OrderTemplatePage from "@/pages/store/[storeId]/order";
+import OrderTemplatePage from "@/pages/store/[storeId]/order/index.page";
 import { Meta, Story } from "@storybook/react";
 
 export default {
