@@ -16,6 +16,6 @@ export const buttonCss = ({ colors, fontSizes }: Theme) => css`
   width: 100%;
   margin-bottom: 3rem;
   font-size: ${fontSizes[14]};
-  color: ${colors.gray[700]};
+  color: ${colors.gray[400]};
   font-weight: 500;
 `;

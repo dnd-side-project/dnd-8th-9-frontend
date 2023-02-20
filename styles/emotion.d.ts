@@ -22,27 +22,29 @@ declare module "@emotion/react" {
     colors: {
       primary: string;
       secondary: string;
-      dark: {
-        100: string;
-        300: string;
-        500: string;
-      };
-      gray: {
-        50: string;
-        70: string;
-        80: string;
-        90: string;
-        95: string;
+      navy: {
         100: string;
         200: string;
         300: string;
-        500: string;
-        700: string;
-        900: string;
+        400: string;
       };
-      background: string;
+      gray: {
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+      };
+      white: {
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        500: string;
+        600: string;
+      };
       black: string;
-      white: string;
     };
   }
 }

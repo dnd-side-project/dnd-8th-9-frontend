@@ -24,9 +24,9 @@ TextSquareButton.args = {
     css`
       width: 100%;
       max-width: 48rem;
-      color: ${colors.white};
+      color: ${colors.white[100]};
       font-size: ${fontSizes[16]};
-      background-color: ${colors.dark[500]};
+      background-color: ${colors.navy[400]};
     `,
 };
 
@@ -90,9 +90,9 @@ IconTextButton.args = {
     css`
       width: 100%;
       max-width: 48rem;
-      color: ${colors.dark[500]};
+      color: ${colors.navy[400]};
       font-size: ${fontSizes[12]};
-      border: 1px solid ${colors.dark[500]};
+      border: 1px solid ${colors.navy[400]};
       background-color: transparent;
       gap: 0.5rem;
     `,

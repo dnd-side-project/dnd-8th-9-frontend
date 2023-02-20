@@ -12,7 +12,7 @@ export const Box = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 1.6rem;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.white[100]};
 `;
 
 export const MainBox = styled(Box)`
@@ -23,7 +23,7 @@ export const MainBox = styled(Box)`
   h1 {
     font-weight: 700;
     font-size: ${({ theme }) => theme.fontSizes[18]};
-    color: ${({ theme }) => theme.colors.gray[900]};
+    color: ${({ theme }) => theme.colors.black};
   }
 
   div {
@@ -35,7 +35,7 @@ export const MainBox = styled(Box)`
   p {
     font-weight: 500;
     font-size: ${({ theme }) => theme.fontSizes[14]};
-    color: ${({ theme }) => theme.colors.dark[500]};
+    color: ${({ theme }) => theme.colors.navy[400]};
 
     strong {
       font-weight: 600;
@@ -45,8 +45,8 @@ export const MainBox = styled(Box)`
 `;
 
 export const tagStyle = ({ colors, fontSizes }: Theme) => css`
-  background-color: ${colors.gray[95]};
-  color: ${colors.gray[700]};
+  background-color: ${colors.white[500]};
+  color: ${colors.gray[400]};
   font-size: ${fontSizes[12]};
 `;
 
@@ -54,8 +54,8 @@ export const InfoBox = styled(Box)`
   row-gap: 1.6rem;
   padding-top: 2.4rem;
   padding-bottom: 2.4rem;
-  border-top: 1px solid ${({ theme }) => theme.colors.gray[90]};
-  border-bottom: 0.7rem solid ${({ theme }) => theme.colors.gray[70]};
+  border-top: 1px solid ${({ theme }) => theme.colors.white[500]};
+  border-bottom: 0.7rem solid ${({ theme }) => theme.colors.white[200]};
 
   small {
     font-size: ${({ theme }) => theme.fontSizes[12]};
@@ -72,11 +72,11 @@ export const InfoContent = styled.div`
 
 export const Name = styled.span`
   font-size: ${({ theme }) => theme.fontSizes[14]};
-  color: ${({ theme }) => theme.colors.dark[500]};
+  color: ${({ theme }) => theme.colors.navy[400]};
   font-weight: 600;
 `;
 
 export const Desc = styled.span`
   font-size: ${({ theme }) => theme.fontSizes[13]};
-  color: ${({ theme }) => theme.colors.gray[700]};
+  color: ${({ theme }) => theme.colors.gray[400]};
 `;

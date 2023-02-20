@@ -25,7 +25,7 @@ function Card({ menu }: IProp) {
         <img src={menu.menuImage} alt="menu" />
       </S.ImageWrap>
       <S.IconWrap>
-        <Icon name="saveBookmark" size="m" color={colors.gray[900]} />
+        <Icon name="saveBookmark" size="m" color={colors.black} />
       </S.IconWrap>
       <S.InfoWrap>
         <h3>{menu.name}</h3>

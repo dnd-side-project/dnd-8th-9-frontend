@@ -8,7 +8,7 @@ export const Container = styled.div`
   gap: 5.4rem;
   margin: auto;
   height: 7.4rem;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.white[100]};
   box-shadow: 0px -4px 12px rgba(80, 83, 105, 0.08);
 
   position: fixed;

@@ -28,7 +28,7 @@ export const Cell = styled.div<ICellProps>`
           line-height: 4.1rem;
           :first-child {
             padding-left: 1.9rem;
-            background-color: ${theme.colors.background};
+            background-color: ${theme.colors.navy[100]};
           }
           :last-child {
             text-align: center;
@@ -41,7 +41,7 @@ export const Cell = styled.div<ICellProps>`
             font-weight: 500;
             width: 40%;
             padding: 1.4rem 1.6rem;
-            background-color: ${theme.colors.background};
+            background-color: ${theme.colors.navy[100]};
           }
           :last-child {
             font-size: ${theme.fontSizes[12]};

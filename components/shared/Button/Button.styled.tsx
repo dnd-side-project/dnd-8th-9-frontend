@@ -18,7 +18,7 @@ export const button = ({ colors }: Theme) => css`
   align-items: center;
   justify-content: center;
   font-weight: 500;
-  background-color: ${colors.white};
+  background-color: ${colors.white[100]};
 
   > * {
     font-size: inherit;

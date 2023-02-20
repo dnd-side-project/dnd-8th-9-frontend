@@ -13,7 +13,7 @@ export const CarouselWrap = styled.div`
 
 export const Section = styled.section`
   background-color: ${({ theme }) => theme.colors.white};
-  border-bottom: 7px solid ${({ theme }) => theme.colors.gray[70]};
+  border-bottom: 7px solid ${({ theme }) => theme.colors.white[200]};
   padding: 0 1.6rem;
 `;
 
@@ -53,7 +53,7 @@ export const Header = styled.div`
   h1 {
     font-weight: 700;
     font-size: ${({ theme }) => theme.fontSizes[18]};
-    color: ${({ theme }) => theme.colors.gray[900]};
+    color: ${({ theme }) => theme.colors.black};
   }
 
   p {
@@ -64,8 +64,8 @@ export const Header = styled.div`
 `;
 
 export const tagStyle = ({ colors, fontSizes }: Theme) => css`
-  background-color: ${colors.gray[90]};
-  color: ${colors.gray[900]};
+  background-color: ${colors.white[500]};
+  color: ${colors.black};
   font-size: ${fontSizes[12]};
 `;
 
@@ -81,7 +81,7 @@ export const Price = styled.p`
   margin: 1.6rem 0;
   font-size: ${({ theme }) => theme.fontSizes[12]};
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.dark[500]};
+  color: ${({ theme }) => theme.colors.navy[400]};
 
   strong {
     font-size: ${({ theme }) => theme.fontSizes[16]};
@@ -90,7 +90,7 @@ export const Price = styled.p`
 `;
 
 export const ReviewBox = styled(Box)`
-  border: 1px solid ${({ theme }) => theme.colors.gray[80]};
+  border: 1px solid ${({ theme }) => theme.colors.white[600]};
   border-radius: 1.2rem;
   width: 100%;
   padding: 1.6rem;
@@ -98,7 +98,7 @@ export const ReviewBox = styled(Box)`
   h3 {
     font-size: ${({ theme }) => theme.fontSizes[15]};
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.dark[500]};
+    color: ${({ theme }) => theme.colors.navy[400]};
     margin-bottom: 1.2rem;
   }
 
@@ -114,7 +114,7 @@ export const ReviewStats = styled.div`
   span {
     font-size: ${({ theme }) => theme.fontSizes[14]};
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.gray[900]};
+    color: ${({ theme }) => theme.colors.black};
     padding-left: 0.2rem;
     padding-right: 0.4rem;
   }

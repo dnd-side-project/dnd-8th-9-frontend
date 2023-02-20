@@ -6,7 +6,7 @@ export const Container = styled.div`
   column-gap: 1.2rem;
   margin-bottom: 0.8rem;
   position: relative;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray[90]};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white[500]};
 `;
 
 export const ImageWrap = styled.div`
@@ -25,7 +25,7 @@ export const IconWrap = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 0.8rem;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.white[100]};
   position: absolute;
   bottom: 13px;
   left: 45px;
@@ -42,7 +42,7 @@ export const InfoWrap = styled.div`
   span {
     font-weight: 600;
     font-size: ${({ theme }) => theme.fontSizes[15]};
-    color: ${({ theme }) => theme.colors.gray[900]};
+    color: ${({ theme }) => theme.colors.black};
   }
 
   p {
@@ -52,6 +52,6 @@ export const InfoWrap = styled.div`
   }
 
   span {
-    color: ${({ theme }) => theme.colors.dark[500]};
+    color: ${({ theme }) => theme.colors.navy[400]};
   }
 `;

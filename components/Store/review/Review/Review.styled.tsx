@@ -9,7 +9,7 @@ export const Container = styled.div`
   margin: 0 auto;
   overflow: auto;
   padding: 2.4rem 0;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray[90]};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white[500]};
 `;
 
 export const Header = styled.div`

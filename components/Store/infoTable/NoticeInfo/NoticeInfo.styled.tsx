@@ -5,7 +5,7 @@ export const Container = styled.div`
   margin: auto;
   width: 100%;
   padding: 2.4rem 1.6rem 3.2rem;
-  border-bottom: 0.7rem solid ${({ theme }) => theme.colors.gray[70]};
+  border-bottom: 0.7rem solid ${({ theme }) => theme.colors.white[200]};
 `;
 
 export const Title = styled.div`
