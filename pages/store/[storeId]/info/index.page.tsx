@@ -1,7 +1,7 @@
 import { store } from "@/mocks/mockData/store";
-import TableBox from "@/components/TableBox/TableBox";
-import StoreHero from "@/components/Store/StoreHero/StoreHero";
+import StoreHero from "@/components/store/StoreHero/StoreHero";
 import Tab from "@/components/shared/Tab/Tab";
+import TableBox from "@/components/store/infoTable/TableBox/TableBox";
 import { storeTab } from "@/constants/navigations";
 import * as S from "./info.styled";
 

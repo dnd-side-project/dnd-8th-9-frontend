@@ -8,7 +8,7 @@ import ArrowDown from "assets/icons/arrow-down.svg";
 import ArrowUp from "assets/icons/arrow-up.svg";
 import { getOverallComment } from "@/utils/util";
 import ProgressBar from "../ProgressBar/ProgressBar";
-import Button from "../shared/Button/Button";
+import Button from "../../../shared/Button/Button";
 import * as S from "./OverallStats.styled";
 
 export interface IOverallStats {

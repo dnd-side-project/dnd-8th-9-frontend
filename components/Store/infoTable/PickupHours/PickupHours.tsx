@@ -1,4 +1,4 @@
-import TableBox from "@/components/TableBox/TableBox";
+import TableBox from "../TableBox/TableBox";
 
 interface IPickupHours {
   option: string;

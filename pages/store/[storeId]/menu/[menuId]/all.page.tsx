@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { reviews } from "@/mocks/mockData/review";
 import { menuList } from "@/mocks/mockData/menuList";
-import Review from "@/components/Review/Review";
+import Review from "@/components/store/review/Review/Review";
 import * as S from "./menuItem.styled";
 
 function MenuReviewsPage() {

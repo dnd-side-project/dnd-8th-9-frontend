@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import GlobalStyle from "@/styles/Global";
 import theme from "@/styles/theme";
-import Layout from "@/components/Layout/Layout";
+import Layout from "@/components/shared/Layout/Layout";
 import GNB from "@/components/shared/GNB/GNB";
 
 const queryClient = new QueryClient();

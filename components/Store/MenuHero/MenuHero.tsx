@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Carousel from "@/components/Carousel/Carousel";
+import Carousel from "@/components/shared/Carousel/Carousel";
 import Tag from "@/components/shared/Tag/Tag";
 import { IMenu } from "@/api/types/menu";
 import * as S from "./MenuHero.styled";

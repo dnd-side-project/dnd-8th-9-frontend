@@ -5,10 +5,10 @@ import { menu } from "@/mocks/mockData/menu";
 import { reviews } from "@/mocks/mockData/review";
 import { menuList } from "@/mocks/mockData/menuList";
 
-import MenuHero from "@/components/Store/MenuHero/MenuHero";
+import MenuHero from "@/components/store/MenuHero/MenuHero";
 import Tab from "@/components/shared/Tab/Tab";
 import Button from "@/components/shared/Button/Button";
-import Review from "@/components/Review/Review";
+import Review from "@/components/store/review/Review/Review";
 import Icon from "@/components/shared/Icon/Icon";
 import { storeMenuTab } from "@/constants/navigations";
 

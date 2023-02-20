@@ -4,9 +4,9 @@ import Link from "next/link";
 
 import { reviews } from "@/mocks/mockData/review"; // TODO: msw에서 받아와야 함
 import { storeTab } from "@/constants/navigations";
-import Review from "@/components/Review/Review";
-import OverallStats from "@/components/OverallStats/OverallStats";
-import StoreHero from "@/components/Store/StoreHero/StoreHero";
+import Review from "@/components/store/review/Review/Review";
+import OverallStats from "@/components/store/review/OverallStats/OverallStats";
+import StoreHero from "@/components/store/StoreHero/StoreHero";
 import Tab from "@/components/shared/Tab/Tab";
 import Button from "@/components/shared/Button/Button";
 import Icon from "@/components/shared/Icon/Icon";

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Theme, css } from "@emotion/react";
-import Carousel from "@/components/Carousel/Carousel";
+import Carousel from "@/components/shared/Carousel/Carousel";
 import Like from "assets/icons/like.svg";
 import Heart from "assets/icons/heart.svg";
 import ArrowDown from "assets/icons/arrow-down.svg";
 import ArrowUp from "assets/icons/arrow-up.svg";
 import * as S from "./Review.styled";
-import Tag from "../shared/Tag/Tag";
+import Tag from "../../../shared/Tag/Tag";
 
 export interface IReview {
   review: {
