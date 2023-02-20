@@ -2,9 +2,9 @@
 import { reviews } from "@/mocks/mockData/review";
 import OverallStats from "@/components/OverallStats/OverallStats";
 import Review from "@/components/Review/Review";
-import * as S from "@/ui/store/[storeId]/review/review.styled";
+import * as S from "@/ui/store/[storeId]/menu/[menuId]/menuItem.styled";
 
-function all() {
+function ReviewsPage() {
   const { rating, totalReviews, stats } = reviews.overallStats;
 
   return (
@@ -19,4 +19,4 @@ function all() {
   );
 }
 
-export default all;
+export default ReviewsPage;
