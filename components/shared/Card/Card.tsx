@@ -4,7 +4,7 @@ import React from "react";
 import Icon from "../Icon/Icon";
 // import Image from "next/image";
 // import { IMenuItem } from "@/api/types/menuList";
-import * as S from "./card.style";
+import * as S from "./Card.styled";
 
 export interface IProp {
   menu: {

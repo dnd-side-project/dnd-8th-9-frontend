@@ -1,5 +1,5 @@
 import { SerializedStyles, Theme } from "@emotion/react";
-import { button, buttonShape } from "./button.styled";
+import { button, buttonShape } from "./Button.styled";
 
 export interface IProp {
   type: "button" | "reset" | "submit";

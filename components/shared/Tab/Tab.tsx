@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { SerializedStyles, Theme } from "@emotion/react";
-import { tab, tabType } from "./tab.styled";
+import { tab, tabType } from "./Tab.styled";
 
 export interface ITabItem {
   label: string;

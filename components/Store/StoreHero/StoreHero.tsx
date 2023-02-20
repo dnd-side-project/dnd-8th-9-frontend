@@ -8,7 +8,7 @@ import Button from "@/components/shared/Button/Button";
 import Icon from "@/components/shared/Icon/Icon";
 import { getOverallComment } from "@/utils/util";
 import { Map } from "@/assets/icons";
-import * as S from "./storeHero.styled";
+import * as S from "./StoreHero.styled";
 
 function StoreHero() {
   const { name, category, location, priceRange } = store;
