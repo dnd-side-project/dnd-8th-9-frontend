@@ -2,7 +2,7 @@ import { css, Theme } from "@emotion/react";
 
 export const tagStyle = {
   square: ({ colors, fontSizes }: Theme) => css`
-    background-color: ${colors.dark[500]};
+    background-color: ${colors.navy[400]};
     color: ${colors.white};
     padding: 0.2rem 0.4rem;
     font-size: ${fontSizes[10]};
@@ -10,8 +10,8 @@ export const tagStyle = {
     min-width: 2.6rem;
   `,
   icon: ({ colors, fontSizes }: Theme) => css`
-    background-color: ${colors.dark[500]};
-    color: ${colors.white};
+    background-color: ${colors.navy[400]};
+    color: ${colors.white[100]};
     width: 5.7rem;
     height: 2.4rem;
     font-size: ${fontSizes[12]};
@@ -29,7 +29,7 @@ export const tagStyle = {
   `,
   double: ({ colors, fontSizes }: Theme) => css`
     background-color: ${colors.primary};
-    color: ${colors.white};
+    color: ${colors.white[100]};
     padding: 0 1.2rem;
     height: 3rem;
     font-size: ${fontSizes[14]};
@@ -42,7 +42,7 @@ export const tagStyle = {
       align-items: center;
       justify-content: center;
       border-radius: 1.6rem;
-      background-color: ${colors.white};
+      background-color: ${colors.white[100]};
       color: ${colors.primary};
       font-size: 1.1rem;
       font-weight: 600;

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.dark[300]};
+  background-color: ${({ theme }) => theme.colors.navy[300]};
   padding: 1rem;
 `;
 

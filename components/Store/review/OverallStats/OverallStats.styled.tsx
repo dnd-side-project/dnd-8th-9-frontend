@@ -5,7 +5,7 @@ export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 3.2em 1.6rem 2.2rem;
-  border-bottom: 7px solid ${({ theme }) => theme.colors.gray[70]};
+  border-bottom: 7px solid ${({ theme }) => theme.colors.white[200]};
 `;
 
 export const Review = styled.div`
@@ -18,7 +18,7 @@ export const Review = styled.div`
 
 export const ProgressBox = styled.div`
   width: 100%;
-  border: 1.2px solid ${({ theme }) => theme.colors.gray[50]};
+  border: 1.2px solid ${({ theme }) => theme.colors.white[300]};
   border-radius: 8px;
   margin-bottom: 1.2rem;
 `;

@@ -24,13 +24,13 @@ export const OptionName = styled.div`
 
 export const Background = styled.div`
   width: 55%;
-  background-color: #eee;
+  background-color: ${({ theme }) => theme.colors.white[500]};
   height: 0.6rem;
   border-radius: 8px;
 `;
 
 export const Progress = styled.div<IProgress>`
-  background-color: ${({ theme }) => theme.colors.dark[500]};
+  background-color: ${({ theme }) => theme.colors.navy[400]};
   width: ${({ count }) => `${count}%`};
   height: 100%;
   border-radius: 8px;
