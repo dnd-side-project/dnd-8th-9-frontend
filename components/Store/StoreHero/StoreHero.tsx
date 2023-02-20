@@ -2,13 +2,13 @@ import React from "react";
 import { useTheme } from "@emotion/react";
 import { store } from "@/mocks/mockData/store";
 import { reviews } from "@/mocks/mockData/review";
-import Carousel from "@/components/Carousel/Carousel";
+import Carousel from "@/components/shared/Carousel/Carousel";
 import Tag from "@/components/shared/Tag/Tag";
 import Button from "@/components/shared/Button/Button";
 import Icon from "@/components/shared/Icon/Icon";
 import { getOverallComment } from "@/utils/util";
 import { Map } from "@/assets/icons";
-import * as S from "./storeHero.styled";
+import * as S from "./StoreHero.styled";
 
 function StoreHero() {
   const { name, category, location, priceRange } = store;

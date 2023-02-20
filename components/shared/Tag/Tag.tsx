@@ -1,5 +1,5 @@
 import { SerializedStyles, Theme } from "@emotion/react";
-import { tag, tagStyle } from "./tag.styled";
+import { tag, tagStyle } from "./Tag.styled";
 
 export interface IProp {
   type: "square" | "icon" | "single" | "double";
