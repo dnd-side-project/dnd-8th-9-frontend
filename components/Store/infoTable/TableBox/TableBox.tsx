@@ -1,4 +1,4 @@
-import Table from "@/components/store/infoTable/Table/Table";
+import Table from "../Table/Table";
 import * as S from "./TableBox.styled";
 
 interface IInfo {
