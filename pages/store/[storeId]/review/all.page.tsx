@@ -2,7 +2,7 @@
 import { reviews } from "@/mocks/mockData/review";
 import OverallStats from "@/components/OverallStats/OverallStats";
 import Review from "@/components/Review/Review";
-import * as S from "@/ui/store/[storeId]/menu/[menuId]/menuItem.styled";
+import * as S from "./review.styled";
 
 function ReviewsPage() {
   const { rating, totalReviews, stats } = reviews.overallStats;

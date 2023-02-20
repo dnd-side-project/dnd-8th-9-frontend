@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useRouter } from "next/router";
 import { reviews } from "@/mocks/mockData/review";
 import { menuList } from "@/mocks/mockData/menuList";
 import Review from "@/components/Review/Review";
-import * as S from "@/ui/store/[storeId]/menu/[menuId]/menuItem.styled";
+import * as S from "./menuItem.styled";
 
 function MenuReviewsPage() {
   const {

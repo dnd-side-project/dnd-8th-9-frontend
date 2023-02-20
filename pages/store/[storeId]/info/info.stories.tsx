@@ -1,5 +1,5 @@
-import InfoPage from "@/pages/store/[storeId]/info/index.page";
 import { Meta, Story } from "@storybook/react";
+import InfoPage from "./index.page";
 
 export default {
   title: "store/info",

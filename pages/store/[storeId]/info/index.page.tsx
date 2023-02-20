@@ -1,10 +1,9 @@
-import React from "react";
-import TableBox from "@/components/TableBox/TableBox";
 import { store } from "@/mocks/mockData/store";
+import TableBox from "@/components/TableBox/TableBox";
 import StoreHero from "@/components/Store/StoreHero/StoreHero";
 import Tab from "@/components/shared/Tab/Tab";
 import { storeTab } from "@/constants/navigations";
-import * as S from "@/ui/store/[storeId]/info/info.styled";
+import * as S from "./info.styled";
 
 const SELLER_INFO = "판매자 정보";
 const FOOD_INFO = "식품 정보";

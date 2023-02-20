@@ -6,7 +6,7 @@ import Tab from "@/components/shared/Tab/Tab";
 import StoreHero from "@/components/Store/StoreHero/StoreHero";
 import { storeTab } from "@/constants/navigations";
 import { menuList } from "@/mocks/mockData/menuList";
-import * as S from "@/ui/store/[storeId]/menu/menu.styled";
+import * as S from "./menu.styled";
 
 function MenuPage() {
   const { data, isLoading, isError } = useGetStore({ storeId: 1 });

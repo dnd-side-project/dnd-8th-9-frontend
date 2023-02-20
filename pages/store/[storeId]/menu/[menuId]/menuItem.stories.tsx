@@ -1,5 +1,5 @@
-import MenuDetailsPage from "@/pages/store/[storeId]/menu/[menuId]/index.page";
 import { Meta, Story } from "@storybook/react";
+import MenuDetailsPage from "./index.page";
 
 export default {
   title: "store/menu detail",

@@ -1,5 +1,5 @@
-import ReviewPage from "@/pages/store/[storeId]/review/index.page";
 import { Meta, Story } from "@storybook/react";
+import ReviewPage from "./index.page";
 
 export default {
   title: "store/review",

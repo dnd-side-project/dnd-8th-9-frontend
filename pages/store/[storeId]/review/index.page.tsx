@@ -10,7 +10,7 @@ import StoreHero from "@/components/Store/StoreHero/StoreHero";
 import Tab from "@/components/shared/Tab/Tab";
 import Button from "@/components/shared/Button/Button";
 import Icon from "@/components/shared/Icon/Icon";
-import * as S from "@/ui/store/[storeId]/review/review.styled";
+import * as S from "./review.styled";
 
 function ReviewPage() {
   const { rating, totalReviews, stats } = reviews.overallStats;

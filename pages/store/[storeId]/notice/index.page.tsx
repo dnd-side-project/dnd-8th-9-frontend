@@ -6,7 +6,7 @@ import { store } from "@/mocks/mockData/store";
 import StoreHero from "@/components/Store/StoreHero/StoreHero";
 import { storeTab } from "@/constants/navigations";
 import Tab from "@/components/shared/Tab/Tab";
-import * as S from "@/ui/store/[storeId]/notice/notice.styled";
+import * as S from "./notice.styled";
 
 const NOTICE_INFO = "업체 공지";
 const PICKUP_TIME = "픽업 가능 시간";

@@ -13,7 +13,7 @@ import Icon from "@/components/shared/Icon/Icon";
 import { storeMenuTab } from "@/constants/navigations";
 
 import { Caution, Size, Option, Flavor } from "@/assets/images/index";
-import * as S from "@/ui/store/[storeId]/menu/[menuId]/menuItem.styled";
+import * as S from "./menuItem.styled";
 
 function MenuDetailsPage() {
   const {
