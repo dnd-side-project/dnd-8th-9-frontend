@@ -26,7 +26,7 @@ export const Cell = styled.div<ICellProps>`
           width: 50%;
           height: 4.1rem;
           line-height: 4.1rem;
-          :first-child {
+          :first-of-child {
             padding-left: 1.9rem;
             background-color: ${theme.colors.navy[100]};
           }
@@ -36,7 +36,7 @@ export const Cell = styled.div<ICellProps>`
         `
       : css`
           border-right: 1px solid ${theme.colors.gray[100]};
-          :first-child {
+          :first-of-child {
             font-size: ${theme.fontSizes[14]};
             font-weight: 500;
             width: 40%;

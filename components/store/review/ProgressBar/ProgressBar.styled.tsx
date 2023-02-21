@@ -9,7 +9,7 @@ export const Container = styled.div`
   align-items: center;
   margin: 0.6rem 1.3rem;
   height: 1.7rem;
-  :first-child {
+  :first-of-child {
     margin-top: 2rem;
   }
 `;
