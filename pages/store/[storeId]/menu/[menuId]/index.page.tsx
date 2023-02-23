@@ -44,7 +44,7 @@ function MenuDetailsPage() {
       <MenuTaste taste={detailInfo.taste} />
       <MenuDesign design={detailInfo.design} />
       <MenuCaution caution={detailInfo.caution} />
-      <S.ReviewListWrap>
+      <S.ReviewListWrap id="review">
         <h2>
           이 메뉴의 리뷰<strong>{menuReviews.length}</strong>
         </h2>
