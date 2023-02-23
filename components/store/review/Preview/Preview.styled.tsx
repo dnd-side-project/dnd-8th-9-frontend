@@ -11,27 +11,6 @@ export const PreviewImages = styled.div`
   gap: 0.4rem;
 `;
 
-export const ImageWrap = styled.div`
-  position: relative;
-  width: 25%;
-
-  ::after {
-    display: block;
-    content: "";
-    padding-bottom: 100%;
-  }
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-`;
-
 export const ShowMore = styled.div`
   display: flex;
   align-items: center;

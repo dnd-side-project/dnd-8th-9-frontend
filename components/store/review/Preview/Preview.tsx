@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import Icon from "@/components/shared/Icon/Icon";
+import ImageWrap from "@/components/shared/ImageWrap/ImageWrap";
 import CountTitle from "@/components/store/review/CountTitle/CountTitle";
 import * as S from "./Preview.styled";
 
@@ -26,16 +27,18 @@ export default function Preview({ reviewImages }: IReviewImages) {
       <CountTitle tag={REVIEW} count={reviewImages.length} />
       <S.PreviewImages>
         {previewImages.map((image, idx) => (
-          <S.ImageWrap key={image.url}>
+          <ImageWrap key={image.url} percent={25}>
             <Image src={image.url} width={79} height={79} alt={IMAGE} />
-            {idx === previewImages.length - 1 && (
+            {idx === previewImages.length - 1 ? (
               <Link href={`${asPath}/images`}>
                 <S.ShowMore>
                   {SHOWMORE} <Icon name="arrowRight" size="xs" color="#fff" />
                 </S.ShowMore>
               </Link>
+            ) : (
+              <></>
             )}
-          </S.ImageWrap>
+          </ImageWrap>
         ))}
       </S.PreviewImages>
     </S.Container>
