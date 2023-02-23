@@ -26,7 +26,7 @@ function StoreHero() {
         <S.InfoBox>
           <S.Header>
             <h1>{name}</h1>
-            <p>
+            <div>
               {category.map(categoryItem => (
                 <Tag
                   type="square"
@@ -37,7 +37,7 @@ function StoreHero() {
                   {categoryItem}
                 </Tag>
               ))}
-            </p>
+            </div>
           </S.Header>
           <S.Location>
             <Map width="12" height="12" fill={colors.primary} />
