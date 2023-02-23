@@ -10,7 +10,7 @@ import ArrowUp from "assets/icons/arrow-up.svg";
 import * as S from "./Review.styled";
 import Tag from "../../../shared/Tag/Tag";
 
-interface IProp {
+export interface IProp {
   review: IReviewItem;
 }
 
