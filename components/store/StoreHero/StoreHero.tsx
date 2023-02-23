@@ -1,13 +1,17 @@
 import React from "react";
 import { useTheme } from "@emotion/react";
+
 import { store } from "@/mocks/mockData/store";
 import { reviews } from "@/mocks/mockData/review";
+import { getOverallComment } from "@/utils/util";
+import { Map } from "@/assets/icons";
+
 import Carousel from "@/components/shared/Carousel/Carousel";
 import Tag from "@/components/shared/Tag/Tag";
 import Button from "@/components/shared/Button/Button";
 import Icon from "@/components/shared/Icon/Icon";
-import { getOverallComment } from "@/utils/util";
-import { Map } from "@/assets/icons";
+
+import ContentBox from "../ContentBox/ContentBox";
 import * as S from "./StoreHero.styled";
 
 function StoreHero() {
@@ -77,6 +81,22 @@ function StoreHero() {
           </Button>
         </S.ReviewBox>
       </S.MainInfoSection>
+      <ContentBox title="수령방식" cssProp={S.contentBoxCss}>
+        {store.canDelivery && (
+          <S.Content>
+            <Icon name="delivery" color={colors.gray[200]} size="m" />
+            <span>택배가능</span>
+            <small>국내배송, 결제 4 - 5일 내 배송</small>
+          </S.Content>
+        )}
+        {store.canPickup && (
+          <S.Content>
+            <Icon name="store" color={colors.gray[200]} size="m" />
+            <span>픽업가능</span>
+            <small>영업일 기준, 공휴일 불가</small>
+          </S.Content>
+        )}
+      </ContentBox>
     </S.Container>
   );
 }
