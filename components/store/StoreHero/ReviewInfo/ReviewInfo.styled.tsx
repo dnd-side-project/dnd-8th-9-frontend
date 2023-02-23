@@ -1,6 +1,6 @@
 import { css, Theme } from "@emotion/react";
 import styled from "@emotion/styled";
-import { Box } from "../StoreHero.styled";
+import { Box } from "../MainInfo/MainInfo.styled";
 
 export const ReviewBox = styled(Box)`
   border: 1px solid ${({ theme }) => theme.colors.white[600]};
