@@ -41,20 +41,17 @@ export const menu: IMenu = {
       desc: "크림치즈(변경불가)",
     },
   ],
-  detailInfo: [
-    {
-      id: 1,
-      type: "size",
+  detailInfo: {
+    size: {
       value: [
         { name: "미니", desc: "12cm" },
         { name: "1호", desc: "15cm" },
         { name: "2호", desc: "18cm" },
+        { name: "3호", desc: "21cm" },
       ],
       note: null,
     },
-    {
-      id: 2,
-      type: "taste",
+    taste: {
       value: [
         {
           name: "바닐라시트 / 순우유생크림",
@@ -65,11 +62,9 @@ export const menu: IMenu = {
           desc: "맛설명 1줄 맛설명 1줄 맛설명 1줄 맛설명 1줄 맛설명 1줄",
         },
       ],
-      note: null,
+      note: "선택지 이외의 맛 변경은 불가능해요 :)",
     },
-    {
-      id: 3,
-      type: "design",
+    design: {
       value: [
         {
           name: "하트모양 변경(+1000원)",
@@ -82,9 +77,7 @@ export const menu: IMenu = {
       ],
       note: null,
     },
-    {
-      id: 4,
-      type: "caution",
+    caution: {
       value: [
         "조화는 수급에 따라 비슷한 조화로 대체될수 있습니다.",
         "사용되는 꼿은 식용꽃으로 랜덤으로 사용됩니다. 꽃잎 컬러 및 모양은 지정 불가합니다.",
@@ -96,5 +89,5 @@ export const menu: IMenu = {
       ],
       note: null,
     },
-  ],
+  },
 };
