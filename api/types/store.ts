@@ -1,4 +1,4 @@
-import { IImage, TCategory, TTable } from "./shared";
+import { IImage, TCategory, TKeyValue } from "./shared";
 
 export interface IStore {
   id: number;
@@ -22,12 +22,12 @@ export interface IStore {
     pickupHours: { day: string; hour: string }[];
     noticeInfo: {
       profileImage: string;
-      date: number;
+      date: string;
       content: string;
     };
-    info: {
-      sellerInfo: TTable[];
-      foodInfo: TTable[];
-    };
+  };
+  info: {
+    sellerInfo: TKeyValue[];
+    foodInfo: TKeyValue[];
   };
 }
