@@ -14,6 +14,7 @@ import Review from "@/components/store/review/Review/Review";
 import MenuSize from "@/components/store/menu/MenuSize/MenuSize";
 import MenuTaste from "@/components/store/menu/MenuTaste/MenuTaste";
 import MenuDesign from "@/components/store/menu/MenuDesign/MenuDesign";
+import MenuCaution from "@/components/store/menu/MenuCaution/MenuCaution";
 
 import * as S from "./menuItem.styled";
 
@@ -42,6 +43,7 @@ function MenuDetailsPage() {
       <MenuSize size={detailInfo.size} />
       <MenuTaste taste={detailInfo.taste} />
       <MenuDesign design={detailInfo.design} />
+      <MenuCaution caution={detailInfo.caution} />
       <S.ReviewListWrap>
         <h2>
           이 메뉴의 리뷰<strong>{menuReviews.length}</strong>
