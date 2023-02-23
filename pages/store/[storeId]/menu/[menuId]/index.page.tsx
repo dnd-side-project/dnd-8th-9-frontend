@@ -8,11 +8,10 @@ import { menuList } from "@/mocks/mockData/menuList";
 import Tab from "@/components/shared/Tab/Tab";
 import Button from "@/components/shared/Button/Button";
 import Icon from "@/components/shared/Icon/Icon";
-import MenuHero from "@/components/store/MenuHero/MenuHero";
+import MenuHero from "@/components/store/menu/MenuHero/MenuHero";
 import Review from "@/components/store/review/Review/Review";
 import { storeMenuTab } from "@/constants/navigations";
 
-import { Caution, Size, Option, Flavor } from "@/assets/images/index";
 import * as S from "./menuItem.styled";
 
 function MenuDetailsPage() {
@@ -21,7 +20,7 @@ function MenuDetailsPage() {
     asPath,
   } = useRouter();
 
-  const { name, category, basePrice, menuImage, basicInfo } = menu;
+  const { name, category, basePrice, menuImage, basicInfo, detailInfo } = menu;
   const { reviewList } = reviews;
   const targetMenu = menuList.menus.filter(menuItem => menuItem.id === Number(menuId));
   const menuName = targetMenu.length && targetMenu[0].name;
@@ -37,10 +36,6 @@ function MenuDetailsPage() {
         category={category}
       />
       <Tab menuList={storeMenuTab} type="swipeable" target="storeMenuTab" />
-      <Size />
-      <Flavor />
-      <Option />
-      <Caution />
       <S.ReviewListWrap>
         <h2>
           이 메뉴의 리뷰<strong>{menuReviews.length}</strong>
