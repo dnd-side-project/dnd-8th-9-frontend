@@ -13,9 +13,10 @@ import Icon from "@/components/shared/Icon/Icon";
 
 import ContentBox from "../ContentBox/ContentBox";
 import * as S from "./StoreHero.styled";
+import RecieveMethod from "./RecieveMethod/RecieveMethod";
 
 function StoreHero() {
-  const { name, category, location, priceRange } = store;
+  const { name, category, location, priceRange, canDelivery, canPickup } = store;
   const {
     overallStats: { stats, rating, totalReviews },
     reviewList,
@@ -81,22 +82,7 @@ function StoreHero() {
           </Button>
         </S.ReviewBox>
       </S.MainInfoSection>
-      <ContentBox title="수령방식" cssProp={S.contentBoxCss}>
-        {store.canDelivery && (
-          <S.Content>
-            <Icon name="delivery" color={colors.gray[200]} size="m" />
-            <span>택배가능</span>
-            <small>국내배송, 결제 4 - 5일 내 배송</small>
-          </S.Content>
-        )}
-        {store.canPickup && (
-          <S.Content>
-            <Icon name="store" color={colors.gray[200]} size="m" />
-            <span>픽업가능</span>
-            <small>영업일 기준, 공휴일 불가</small>
-          </S.Content>
-        )}
-      </ContentBox>
+      <RecieveMethod canDelivery={canDelivery} canPickup={canPickup} />
       <ContentBox title="주문하러 가기" cssProp={S.contentOrderBoxCss}>
         <p>
           평균 <strong>00일 전까지 예약</strong>이 가능한 업체입니다.
