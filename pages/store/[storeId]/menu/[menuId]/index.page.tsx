@@ -4,14 +4,15 @@ import { useRouter } from "next/router";
 import { menu } from "@/mocks/mockData/menu";
 import { reviews } from "@/mocks/mockData/review";
 import { menuList } from "@/mocks/mockData/menuList";
+import { storeMenuTab } from "@/constants/navigations";
 
 import Tab from "@/components/shared/Tab/Tab";
 import Button from "@/components/shared/Button/Button";
 import Icon from "@/components/shared/Icon/Icon";
 import MenuHero from "@/components/store/menu/MenuHero/MenuHero";
 import Review from "@/components/store/review/Review/Review";
-import { storeMenuTab } from "@/constants/navigations";
 import MenuSize from "@/components/store/menu/MenuSize/MenuSize";
+import MenuTaste from "@/components/store/menu/MenuTaste/MenuTaste";
 
 import * as S from "./menuItem.styled";
 
@@ -38,6 +39,7 @@ function MenuDetailsPage() {
       />
       <Tab menuList={storeMenuTab} type="swipeable" target="storeMenuTab" />
       <MenuSize size={detailInfo.size} />
+      <MenuTaste taste={detailInfo.taste} />
       <S.ReviewListWrap>
         <h2>
           이 메뉴의 리뷰<strong>{menuReviews.length}</strong>
