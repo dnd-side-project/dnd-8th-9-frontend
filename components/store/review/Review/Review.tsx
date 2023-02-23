@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Theme, css } from "@emotion/react";
 import Carousel from "@/components/shared/Carousel/Carousel";

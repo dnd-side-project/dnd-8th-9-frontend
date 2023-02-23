@@ -53,10 +53,8 @@ function MenuDetailsPage() {
         ))}
         <Link href={`${asPath}/all`}>
           <Button type="button" label="more reviews" shape="square" cssProp={S.buttonCss}>
-            <>
-              리뷰 전체보기
-              <Icon name="arrowRight" size="m" />
-            </>
+            <p>리뷰 전체보기</p>
+            <Icon name="arrowRight" size="m" />
           </Button>
         </Link>
       </S.ReviewListWrap>
