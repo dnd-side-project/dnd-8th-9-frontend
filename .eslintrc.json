@@ -50,7 +50,8 @@
     "@typescript-eslint/no-floating-promises": 0,
     "react/require-default-props": 0,
     "react/button-has-type": 0,
-    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+    "react/jsx-no-useless-fragment": 0
   },
   "settings": {
     "import/resolver": {
