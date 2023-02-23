@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Theme, css } from "@emotion/react";
 import Carousel from "@/components/shared/Carousel/Carousel";
+import { IReviewItem } from "@/api/types/review";
 import Like from "assets/icons/like.svg";
 import Heart from "assets/icons/heart.svg";
 import ArrowDown from "assets/icons/arrow-down.svg";
@@ -9,27 +10,13 @@ import ArrowUp from "assets/icons/arrow-up.svg";
 import * as S from "./Review.styled";
 import Tag from "../../../shared/Tag/Tag";
 
-export interface IReview {
-  review: {
-    nickname: string;
-    profileImage: string;
-    source: string;
-    rating: string;
-    menuOption: string;
-    reviewOption: string;
-    text: string;
-    date: string;
-    reviewImages: {
-      id: number;
-      url: string;
-    }[];
-    likes: number;
-  };
+interface IProp {
+  review: IReviewItem;
 }
 
 const VIP = "단골";
 
-export default function Review({ review }: IReview) {
+export default function Review({ review }: IProp) {
   const [isOpened, setIsOpened] = useState(false);
 
   const handleIsOpened = () => {
