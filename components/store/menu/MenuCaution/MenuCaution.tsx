@@ -10,8 +10,8 @@ function MenuCaution({ caution }: IProp) {
   return (
     <ContentBox title="메뉴에 대한 주의사항" cssProp={S.contentCautionBoxCss} name="caution">
       <S.CautionContent>
-        {caution.value.map(cautionValue => (
-          <li key={cautionValue as string}>{cautionValue as string}</li>
+        {caution.value.map((cautionValue, idx) => (
+          <li key={(cautionValue as string) + String(idx)}>{cautionValue as string}</li>
         ))}
       </S.CautionContent>
     </ContentBox>
