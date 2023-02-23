@@ -25,4 +25,5 @@ export const ICONS: IIcon = {
   tasty: <i.Tasty />,
   saveBookmark: <i.SaveBookmark />,
   arrowRight: <i.ArrowRight />,
+  kakao: <i.Kakao />,
 };
