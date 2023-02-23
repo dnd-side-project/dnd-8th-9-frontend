@@ -1,4 +1,4 @@
-import { IImage, TCategory, TReviewOption, TSource } from "./shared";
+import { IImage, TReviewOption, TSource } from "./shared";
 
 export interface IReviewItem {
   id: number;
@@ -11,10 +11,11 @@ export interface IReviewItem {
   text: string;
   date: string;
   reviewImages: IImage[];
+  likes: number;
 }
 
 export interface IReviewStatItem {
-  optionName: TCategory;
+  optionName: TReviewOption;
   count: number;
 }
 
