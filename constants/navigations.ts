@@ -70,7 +70,7 @@ export const NAVIGATION_HEADER: INavigationHeader = {
   },
 };
 
-export const GNB = {
+export const GNB_VISIBILITY = {
   [ROUTES.STORE_MENU_LIST_PAGE]: true,
   [ROUTES.STORE_MENU_ITEM_PAGE]: true,
   [ROUTES.STORE_MENU_ITEM_REVIEWS_PAGE]: true,
