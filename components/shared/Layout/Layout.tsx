@@ -1,3 +1,5 @@
+import GNB from "../GNB/GNB";
+import Navbar from "../Navbar/Navbar";
 import { Centering, FixedWidth } from "./Layout.styled";
 
 interface IChildren {
@@ -7,7 +9,11 @@ interface IChildren {
 const AppLayout = ({ children }: IChildren) => {
   return (
     <Centering>
-      <FixedWidth>{children}</FixedWidth>
+      <FixedWidth>
+        <Navbar />
+        {children}
+        <GNB />
+      </FixedWidth>
     </Centering>
   );
 };
