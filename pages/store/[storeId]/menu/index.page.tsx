@@ -17,7 +17,7 @@ function MenuPage() {
   if (isError) return <div>Error...</div>;
 
   return (
-    <S.Container>
+    <div>
       <StoreHero />
       <Tab type="swipeable" menuList={storeTab} target="storeTab" />
       <S.ListWrap>
@@ -27,7 +27,7 @@ function MenuPage() {
           </Link>
         ))}
       </S.ListWrap>
-    </S.Container>
+    </div>
   );
 }
 

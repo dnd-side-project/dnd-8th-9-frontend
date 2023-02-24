@@ -28,7 +28,7 @@ function MenuDetailsPage() {
   const menuReviews = reviewList.filter(review => review.menuOption === menuName);
 
   return (
-    <S.Container>
+    <div>
       <MenuHero
         menuImage={menuImage}
         name={name}
@@ -57,7 +57,7 @@ function MenuDetailsPage() {
           </Button>
         </Link>
       </S.ReviewListWrap>
-    </S.Container>
+    </div>
   );
 }
 

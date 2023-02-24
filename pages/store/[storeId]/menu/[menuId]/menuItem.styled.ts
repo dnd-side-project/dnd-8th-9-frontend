@@ -1,10 +1,6 @@
 import { css, Theme } from "@emotion/react";
 import styled from "@emotion/styled";
 
-export const Container = styled.div`
-  padding-bottom: 4.5rem;
-`;
-
 export const ReviewListWrap = styled.div`
   border-top: 0.7rem solid ${({ theme }) => theme.colors.white[600]};
   width: 100%;

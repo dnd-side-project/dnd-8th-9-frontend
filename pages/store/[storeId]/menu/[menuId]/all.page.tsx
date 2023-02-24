@@ -16,7 +16,7 @@ function MenuReviewsPage() {
   const menuReviews = reviewList.filter(review => review.menuOption === menuName);
 
   return (
-    <S.Container>
+    <div>
       <S.ReviewListWrap>
         <h2>
           이 메뉴의 리뷰 <strong>{menuReviews.length}</strong>
@@ -25,7 +25,7 @@ function MenuReviewsPage() {
           <Review key={review.id} review={review} />
         ))}
       </S.ReviewListWrap>
-    </S.Container>
+    </div>
   );
 }
 
