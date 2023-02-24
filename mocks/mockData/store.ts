@@ -1,9 +1,11 @@
-export const store = {
+import { IStore } from "@/api/types/store";
+
+export const store: IStore = {
   id: 1,
   name: "케이크예스",
   location: "서울 마포구 모로2길 350",
-  geoLocation: { latitude: "-33.8655112697085", longtitude: "151.1971156302915" },
-  category: ["레터링", "캐릭터"],
+  geoLocation: { latitude: -33.8655112697085, longtitude: 151.1971156302915 },
+  category: ["레터링", "캐릭터/입체"],
   rating: 80,
   canPickup: true,
   canDelivery: true,
