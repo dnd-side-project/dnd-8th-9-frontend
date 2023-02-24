@@ -12,7 +12,7 @@ export const ICONS: IIcon = {
   ellipsis: <i.Ellipsis />,
   info: <i.Info />,
   instagram: <i.Instagram />,
-  leftArrow: <i.LeftArrow />,
+  arrowLeft: <i.ArrowLeft />,
   like: <i.Like />,
   map: <i.Map />,
   clap: <i.Clap />,

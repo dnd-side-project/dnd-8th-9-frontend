@@ -7,7 +7,7 @@ export { default as Ellipsis } from "./ellipsis.svg";
 export { default as Heart } from "./heart.svg";
 export { default as Info } from "./info.svg";
 export { default as Instagram } from "./instagram.svg";
-export { default as LeftArrow } from "./left-arrow.svg";
+export { default as ArrowLeft } from "./arrow-left.svg";
 export { default as Like } from "./like.svg";
 export { default as Map } from "./map.svg";
 export { default as Clap } from "./ms_clap.svg";
