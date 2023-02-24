@@ -4,7 +4,8 @@ import { useGetStore } from "@/api/queries/store";
 import Card from "@/components/shared/Card/Card";
 import Tab from "@/components/shared/Tab/Tab";
 import StoreHero from "@/components/store/StoreHero/StoreHero";
-import { storeTab } from "@/constants/navigations";
+import { storeTab } from "@/constants/tabs";
+
 import { menuList } from "@/mocks/mockData/menuList";
 import * as S from "./menu.styled";
 

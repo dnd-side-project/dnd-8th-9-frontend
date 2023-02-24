@@ -2,7 +2,7 @@ import { store } from "@/mocks/mockData/store";
 import StoreHero from "@/components/store/StoreHero/StoreHero";
 import Tab from "@/components/shared/Tab/Tab";
 import TableBox from "@/components/store/infoTable/TableBox/TableBox";
-import { storeTab } from "@/constants/navigations";
+import { storeTab } from "@/constants/tabs";
 import * as S from "./info.styled";
 
 const SELLER_INFO = "판매자 정보";

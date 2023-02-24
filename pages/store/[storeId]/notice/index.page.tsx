@@ -1,6 +1,6 @@
 import React from "react";
 import { store } from "@/mocks/mockData/store";
-import { storeTab } from "@/constants/navigations";
+import { storeTab } from "@/constants/tabs";
 import NoticeInfo from "@/components/store/infoTable/NoticeInfo/NoticeInfo";
 import Tab from "@/components/shared/Tab/Tab";
 import PickupHours from "@/components/store/infoTable/PickupHours/PickupHours";

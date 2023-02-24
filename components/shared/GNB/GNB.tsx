@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { navTab } from "@/constants/navigations";
+import { navTab } from "@/constants/tabs";
 import Home from "../../../assets/icons/home.svg";
 import Search from "../../../assets/icons/search.svg";
 import Bookmark from "../../../assets/icons/bookmark.svg";

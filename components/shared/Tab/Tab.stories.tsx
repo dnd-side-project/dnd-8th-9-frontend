@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { Meta, Story } from "@storybook/react";
-import { homeTab, storeTab } from "@/constants/navigations";
+import { homeTab, storeTab } from "@/constants/tabs";
 import Tab, { IProp } from "./Tab";
 
 export default {

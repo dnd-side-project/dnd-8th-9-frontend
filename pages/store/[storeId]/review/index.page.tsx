@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 import { reviews } from "@/mocks/mockData/review"; // TODO: msw에서 받아와야 함
-import { storeTab } from "@/constants/navigations";
+import { storeTab } from "@/constants/tabs";
 import Tab from "@/components/shared/Tab/Tab";
 import Button from "@/components/shared/Button/Button";
 import Icon from "@/components/shared/Icon/Icon";

@@ -10,7 +10,7 @@ import Button from "@/components/shared/Button/Button";
 import Icon from "@/components/shared/Icon/Icon";
 import MenuHero from "@/components/store/MenuHero/MenuHero";
 import Review from "@/components/store/review/Review/Review";
-import { storeMenuTab } from "@/constants/navigations";
+import { storeMenuTab } from "@/constants/tabs";
 
 import { Caution, Size, Option, Flavor } from "@/assets/images/index";
 import * as S from "./menuItem.styled";
