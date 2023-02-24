@@ -2,22 +2,22 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
 import { NAVIGATION_HEADER } from "@/constants/navigations";
+import { useScrollPosition } from "@/hooks/useScrollPosition";
 import Icon from "../Icon/Icon";
 import * as S from "./Navbar.styled";
 
+const SCROLL_POSITION = 200;
+
 function Navbar() {
-  // NOTE: iconColor, Title, backIcon, moreIcon
-
-  // TODO: 스크롤 이벤트 추가 (텍스트 없이 아이콘 투명 -> 하얀색 배경 + 텍스트 & 아이콘)
-
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const scrollPosition = useScrollPosition();
 
+  const { colors } = useTheme();
   const {
     back: previous,
     pathname,
     query: { storeId },
   } = useRouter();
-  const { colors } = useTheme();
 
   const {
     title,
@@ -42,7 +42,11 @@ function Navbar() {
   };
 
   return (
-    <S.NavbarWrap bgColor={bgColor}>
+    <S.NavbarWrap
+      bgColor={bgColor}
+      isScrolled={scrollPosition > SCROLL_POSITION}
+      scrollBgColor={scrollBgColor}
+    >
       <button
         aria-label="previous page"
         type="button"
