@@ -22,7 +22,9 @@ export const decorators = [
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
-        <Story />
+        <div style={{ maxWidth: "480px" }}>
+          <Story />
+        </div>
       </QueryClientProvider>
     </ThemeProvider>
   ),

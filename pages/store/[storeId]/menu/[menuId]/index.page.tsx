@@ -4,15 +4,18 @@ import { useRouter } from "next/router";
 import { menu } from "@/mocks/mockData/menu";
 import { reviews } from "@/mocks/mockData/review";
 import { menuList } from "@/mocks/mockData/menuList";
+import { storeMenuTab } from "@/constants/navigations";
 
 import Tab from "@/components/shared/Tab/Tab";
 import Button from "@/components/shared/Button/Button";
 import Icon from "@/components/shared/Icon/Icon";
-import MenuHero from "@/components/store/MenuHero/MenuHero";
+import MenuHero from "@/components/store/menu/MenuHero/MenuHero";
 import Review from "@/components/store/review/Review/Review";
-import { storeMenuTab } from "@/constants/navigations";
+import MenuSize from "@/components/store/menu/MenuSize/MenuSize";
+import MenuTaste from "@/components/store/menu/MenuTaste/MenuTaste";
+import MenuDesign from "@/components/store/menu/MenuDesign/MenuDesign";
+import MenuCaution from "@/components/store/menu/MenuCaution/MenuCaution";
 
-import { Caution, Size, Option, Flavor } from "@/assets/images/index";
 import * as S from "./menuItem.styled";
 
 function MenuDetailsPage() {
@@ -21,7 +24,7 @@ function MenuDetailsPage() {
     asPath,
   } = useRouter();
 
-  const { name, category, basePrice, menuImage, basicInfo } = menu;
+  const { name, category, basePrice, menuImage, basicInfo, detailInfo } = menu;
   const { reviewList } = reviews;
   const targetMenu = menuList.menus.filter(menuItem => menuItem.id === Number(menuId));
   const menuName = targetMenu.length && targetMenu[0].name;
@@ -37,11 +40,11 @@ function MenuDetailsPage() {
         category={category}
       />
       <Tab menuList={storeMenuTab} type="swipeable" target="storeMenuTab" />
-      <Size />
-      <Flavor />
-      <Option />
-      <Caution />
-      <S.ReviewListWrap>
+      <MenuSize size={detailInfo.size} />
+      <MenuTaste taste={detailInfo.taste} />
+      <MenuDesign design={detailInfo.design} />
+      <MenuCaution caution={detailInfo.caution} />
+      <S.ReviewListWrap id="review">
         <h2>
           이 메뉴의 리뷰<strong>{menuReviews.length}</strong>
         </h2>
@@ -50,10 +53,8 @@ function MenuDetailsPage() {
         ))}
         <Link href={`${asPath}/all`}>
           <Button type="button" label="more reviews" shape="square" cssProp={S.buttonCss}>
-            <>
-              리뷰 전체보기
-              <Icon name="arrowRight" size="m" />
-            </>
+            <p>리뷰 전체보기</p>
+            <Icon name="arrowRight" size="m" />
           </Button>
         </Link>
       </S.ReviewListWrap>

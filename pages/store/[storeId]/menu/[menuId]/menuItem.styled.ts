@@ -6,7 +6,6 @@ export const Container = styled.div`
 `;
 
 export const ReviewListWrap = styled.div`
-  border-top: 0.7rem solid ${({ theme }) => theme.colors.white[600]};
   width: 100%;
   padding: 3.2rem 1.6rem 2rem;
 

@@ -29,7 +29,7 @@ const generatePath = (type: TTarget, asPath: string): string => {
       if (asPath.indexOf("#") !== -1) {
         path = asPath.split("#");
       }
-      return path ? path[0] : "/";
+      return path ? path[0] : asPath;
       break;
     default:
       return "/";
