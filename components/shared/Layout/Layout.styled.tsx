@@ -12,3 +12,8 @@ export const FixedWidth = styled.div`
     width: 100%;
   }
 `;
+
+export const Main = styled.main<{ noPaddingTop: boolean }>`
+  padding-bottom: 4.5rem;
+  padding-top: ${({ noPaddingTop }) => (noPaddingTop ? 0 : "4.5rem")};
+`;
