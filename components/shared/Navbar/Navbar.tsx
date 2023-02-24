@@ -14,6 +14,7 @@ function Navbar() {
   // TODO: 스크롤 이벤트 추가 (텍스트 없이 아이콘 투명 -> 하얀색 배경 + 텍스트 & 아이콘)
 
   const {
+    back: previous,
     pathname,
     query: { storeId },
   } = useRouter();
@@ -28,9 +29,18 @@ function Navbar() {
     iconColor = colors.gray[300],
   } = NAVIGATION_HEADER[pathname];
 
+  const previousPage = () => {
+    previous();
+  };
+
   return (
     <S.NavbarWrap bgColor={bgColor}>
-      <button aria-label="previous page" type="button" className="previousButton">
+      <button
+        aria-label="previous page"
+        type="button"
+        className="previousButton"
+        onClick={previousPage}
+      >
         {back && <Icon name="arrowLeft" size="l" color={iconColor} />}
       </button>
       <h1>{title === "업체명" && storeId ? storeId : title}</h1>
