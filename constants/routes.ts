@@ -24,8 +24,8 @@ export const ROUTES = {
   ONBOARDING_CATEGORY_PAGE: "/onboard/category",
 
   SEARCH_PAGE: "/search",
-  SEARCH_RESULT_MENU_PAGE: "/searchResult/menu",
-  SEARCH_RESULT_STORE_PAGE: "/searchResult/store",
+  SEARCH_RESULT_MENU_PAGE: "/search/result/menu",
+  SEARCH_RESULT_STORE_PAGE: "/search/result/store",
 
   MY_BOOKMARK_DESIGN_PAGE: "/bookmark/design",
   MY_BOOKMARK_STORE_PAGE: "/bookmark/store",
@@ -38,4 +38,6 @@ export const ROUTES = {
   PROFILE_REVIEW_PAGE: "/profile/review",
   PROFILE_SETTINGS_PAGE: "/profile/settings",
   PROFILE_NOTICE_PAGE: "/profile/notice",
+
+  REVIEW_WRITE_PAGE: "/review",
 };
