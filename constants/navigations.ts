@@ -15,6 +15,7 @@ interface INavigationHeader {
 }
 
 export const NAVIGATION_HEADER: INavigationHeader = {
+  // NOTE: 업체 상세 페이지
   [ROUTES.STORE_MENU_LIST_PAGE]: {
     title: "업체명",
     bgColor: "transparent",
@@ -68,6 +69,32 @@ export const NAVIGATION_HEADER: INavigationHeader = {
     bgColor: "transparent",
     scrollBgColor: "white",
   },
+
+  // NOTE: 홈페이지
+  [ROUTES.HOME_RECOMMENDATION_PAGE]: {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
+  },
+
+  // NOTE: 온보딩 페이지
+
+  // NOTE: 프로필 페이지
+  [ROUTES.PROFILE_PAGE]: {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
+  },
+
+  // NOTE: 북마크 페이지
+  [ROUTES.MY_BOOKMARK_DESIGN_PAGE]: {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
+  },
 };
 
 export const GNB_VISIBILITY = {
@@ -82,4 +109,7 @@ export const GNB_VISIBILITY = {
   [ROUTES.STORE_ORDER_FORM_PAGE]: true,
   [ROUTES.STORE_NOTICES_PAGE]: true,
   [ROUTES.STORE_INFO_PAGE]: true,
+  [ROUTES.HOME_RECOMMENDATION_PAGE]: true,
+  [ROUTES.PROFILE_PAGE]: true,
+  [ROUTES.MY_BOOKMARK_DESIGN_PAGE]: true,
 };
