@@ -1,9 +1,14 @@
+import { useState } from "react";
 import Link from "next/link";
-import { navTab } from "@/constants/tabs";
-import Home from "../../../assets/icons/home.svg";
-import Search from "../../../assets/icons/search.svg";
-import Bookmark from "../../../assets/icons/bookmark.svg";
-import Mypage from "../../../assets/icons/mypage.svg";
+import { gnbTab } from "@/constants/tabs";
+import {
+  BookmarkSelected,
+  HomeSelected,
+  Profile,
+  ProfileSelected,
+  Bookmark,
+  Home,
+} from "@/assets/icons";
 import * as S from "./GNB.styled";
 
 interface INavIcons {
@@ -11,20 +16,30 @@ interface INavIcons {
 }
 
 const navIcons: INavIcons = {
-  홈: <Home fill="#D7D7D7" />,
-  검색: <Search fill="#D7D7D7" />,
-  북마크: <Bookmark fill="#D7D7D7" />,
-  마이페이지: <Mypage fill="#D7D7D7" />,
+  home: <Home />,
+  bookmark: <Bookmark />,
+  profile: <Profile />,
+};
+
+const selectedNavIcons: INavIcons = {
+  home: <HomeSelected />,
+  bookmark: <BookmarkSelected />,
+  profile: <ProfileSelected />,
 };
 
 export default function GNB() {
+  const [selectedGNB, setSelectedGNB] = useState("");
+
+  const handleClick = (label: string) => {
+    setSelectedGNB(label);
+  };
+
   return (
     <S.Container>
-      {navTab.map(nav => {
-        const { label, link } = nav;
+      {gnbTab.map(({ label, link }) => {
         return (
-          <Link key={label} href={link}>
-            {navIcons[label]}
+          <Link key={label} href={link} onClick={() => handleClick(label)}>
+            {selectedGNB === label ? selectedNavIcons[label] : navIcons[label]}
           </Link>
         );
       })}
