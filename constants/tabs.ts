@@ -93,7 +93,7 @@ export const categoryTab = [
 export const gnbTab = [
   {
     label: "home",
-    link: "/home",
+    link: "/home/recommendation",
   },
   {
     label: "bookmark",
