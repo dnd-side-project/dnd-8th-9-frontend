@@ -27,3 +27,4 @@ export { default as SaveBookmark } from "./save_bookmark.svg";
 export { default as Search } from "./search.svg";
 export { default as Share } from "./share.svg";
 export { default as Store } from "./store.svg";
+export { default as Kakao } from "./kakao.svg";

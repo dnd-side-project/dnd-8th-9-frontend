@@ -1,8 +1,6 @@
 import { IImage, TCategory, TTable } from "./shared";
 
 export interface IMenuOption {
-  id: number;
-  type: string;
   value: string[] | TTable[];
   note: null | string;
 }
@@ -14,5 +12,7 @@ export interface IMenu {
   basePrice: number;
   menuImage: IImage[];
   basicInfo: TTable[];
-  detailInfo: IMenuOption[];
+  detailInfo: {
+    [key: string]: IMenuOption;
+  };
 }

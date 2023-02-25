@@ -22,7 +22,9 @@ export const decorators = [
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
-        <Story />
+        <div style={{ maxWidth: "480px" }}>
+          <Story />
+        </div>
       </QueryClientProvider>
     </ThemeProvider>
   ),
@@ -30,6 +32,7 @@ export const decorators = [
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
+  layout: "fullscreen",
   nextRouter: {
     Provider: RouterContext.Provider,
   },

@@ -9,3 +9,14 @@ export default {
 const Template: Story = args => <MenuDetailsPage {...args} />;
 
 export const Default = Template.bind({});
+
+Default.parameters = {
+  nextRouter: {
+    pathname: "/store/[storeId]/menu/[menuId]",
+    asPath: "/store/1/menu/2",
+    query: {
+      storeId: "1",
+      menuId: "2",
+    },
+  },
+};

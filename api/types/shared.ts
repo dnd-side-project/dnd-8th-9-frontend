@@ -3,15 +3,21 @@ export interface IImage {
   url: string;
 }
 
-export type TTable = {
-  [key: string]: string;
+export interface TTable {
   name: string;
   desc: string;
-};
+  [key: string]: string;
+}
+
+export interface TKeyValue {
+  key: string;
+  value: string;
+  [key: string]: string;
+}
 
 export type TCategory = "꽃" | "캐릭터/입체" | "기타" | "포토" | "레터링";
 
-export type TSource = "외부사이트" | "당도";
+export type TSource = "외부사이트" | "당도" | "단골";
 
 export type TReviewOption =
   | "맛있어요"
