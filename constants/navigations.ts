@@ -101,6 +101,12 @@ export const NAVIGATION_HEADER: INavigationHeader = {
     icon: false,
     bgColor: "transparent",
   },
+  "/store/[storeId]": {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
+  },
 };
 
 export const GNB_VISIBILITY = {
