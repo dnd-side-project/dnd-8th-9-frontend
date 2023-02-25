@@ -90,21 +90,17 @@ export const categoryTab = [
   },
 ];
 
-export const navTab = [
+export const gnbTab = [
   {
-    label: "홈",
-    link: "/",
+    label: "home",
+    link: "/home",
   },
   {
-    label: "검색",
-    link: "/search",
-  },
-  {
-    label: "북마크",
+    label: "bookmark",
     link: "/bookmark",
   },
   {
-    label: "마이페이지",
-    link: "/mypage",
+    label: "profile",
+    link: "/profile",
   },
 ];
