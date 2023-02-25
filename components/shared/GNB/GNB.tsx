@@ -35,7 +35,7 @@ export default function GNB() {
   };
 
   return (
-    <S.Container>
+    <S.Container length={gnbTab.length}>
       {gnbTab.map(({ label, link }) => {
         return (
           <Link key={label} href={link} onClick={() => handleClick(label)}>
