@@ -79,6 +79,12 @@ export const NAVIGATION_HEADER: INavigationHeader = {
   },
 
   // NOTE: 온보딩 페이지
+  [ROUTES.ONBOARDING_LOCATION_PAGE]: {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
+  },
 
   // NOTE: 프로필 페이지
   [ROUTES.PROFILE_PAGE]: {
@@ -112,4 +118,5 @@ export const GNB_VISIBILITY = {
   [ROUTES.HOME_RECOMMENDATION_PAGE]: true,
   [ROUTES.PROFILE_PAGE]: true,
   [ROUTES.MY_BOOKMARK_DESIGN_PAGE]: true,
+  [ROUTES.ONBOARDING_LOCATION_PAGE]: false,
 };
