@@ -7,13 +7,8 @@ export const Container = styled.div`
   margin-bottom: 0.8rem;
   position: relative;
   border-bottom: 1px solid ${({ theme }) => theme.colors.white[500]};
-`;
 
-export const ImageWrap = styled.div`
-  border-radius: 0.8rem;
-  overflow: hidden;
-  width: 11rem;
-  height: auto;
+  border: 1px solid red;
 `;
 
 export const IconWrap = styled.div`

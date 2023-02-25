@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { useTheme } from "@emotion/react";
 import React from "react";
+import ImageWrap from "../ImageWrap/ImageWrap";
 import Icon from "../Icon/Icon";
-import * as S from "./Card.styled";
+import * as S from "./MenuCard.styled";
 
 export interface IProp {
   menu: {
@@ -13,16 +14,17 @@ export interface IProp {
     price: number;
   };
   option?: string;
+  onClick?: (e?: React.FormEvent) => void;
 }
 
-function Card({ menu, option }: IProp) {
+function MenuCard({ menu, option, onClick }: IProp) {
   const { colors } = useTheme();
 
   return (
-    <S.Container>
-      <S.ImageWrap>
+    <S.Container onClick={onClick}>
+      <ImageWrap percent={25} borderRadius={8}>
         <img src={menu.menuImage} alt="menu" />
-      </S.ImageWrap>
+      </ImageWrap>
       {option === "menuPage" && (
         <S.IconWrap>
           <Icon name="saveBookmark" size="m" color={colors.black} />
@@ -37,4 +39,4 @@ function Card({ menu, option }: IProp) {
   );
 }
 
-export default Card;
+export default MenuCard;

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useGetStore } from "@/api/queries/store";
-import Card from "@/components/shared/Card/Card";
+import MenuCard from "@/components/shared/MenuCard/MenuCard";
 import Tab from "@/components/shared/Tab/Tab";
 import StoreHero from "@/components/store/StoreHero/StoreHero";
 import { storeTab } from "@/constants/navigations";
@@ -24,7 +24,7 @@ function MenuPage() {
       <S.ListWrap>
         {menuList.menus.map(menu => (
           <Link key={menu.id} href={`${asPath}/${menu.id}`}>
-            <Card menu={menu} option={MENU_PAGE} />
+            <MenuCard menu={menu} option={MENU_PAGE} />
           </Link>
         ))}
       </S.ListWrap>
