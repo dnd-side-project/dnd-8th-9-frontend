@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import React, { FormEvent } from "react";
 import { useTheme } from "@emotion/react";
-import React from "react";
 import ImageWrap from "../ImageWrap/ImageWrap";
 import Icon from "../Icon/Icon";
 import * as S from "./MenuCard.styled";
@@ -14,16 +14,15 @@ export interface IProp {
     price: number;
   };
   option?: string;
-  onClick?: (e?: React.FormEvent) => void;
 }
 
-function MenuCard({ menu, option, onClick }: IProp) {
+function MenuCard({ menu, option }: IProp) {
   const { colors } = useTheme();
 
   return (
-    <S.Container onClick={onClick}>
+    <S.Container isMenuPage={option === "option"}>
       <ImageWrap percent={25} borderRadius={8}>
-        <img src={menu.menuImage} alt="menu" />
+        <img src={menu.menuImage} alt="menu" className="menu" />
       </ImageWrap>
       {option === "menuPage" && (
         <S.IconWrap>
