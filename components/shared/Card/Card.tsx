@@ -2,8 +2,6 @@
 import { useTheme } from "@emotion/react";
 import React from "react";
 import Icon from "../Icon/Icon";
-// import Image from "next/image";
-// import { IMenuItem } from "@/api/types/menuList";
 import * as S from "./Card.styled";
 
 export interface IProp {
@@ -14,9 +12,10 @@ export interface IProp {
     summary: string;
     price: number;
   };
+  option?: string;
 }
 
-function Card({ menu }: IProp) {
+function Card({ menu, option }: IProp) {
   const { colors } = useTheme();
 
   return (
@@ -24,13 +23,15 @@ function Card({ menu }: IProp) {
       <S.ImageWrap>
         <img src={menu.menuImage} alt="menu" />
       </S.ImageWrap>
-      <S.IconWrap>
-        <Icon name="saveBookmark" size="m" color={colors.black} />
-      </S.IconWrap>
+      {option === "menuPage" && (
+        <S.IconWrap>
+          <Icon name="saveBookmark" size="m" color={colors.black} />
+        </S.IconWrap>
+      )}
       <S.InfoWrap>
         <h3>{menu.name}</h3>
         <p>{menu.summary}</p>
-        <span>{menu.price.toLocaleString()}원</span>
+        {option === "menuPage" && <span>{menu.price.toLocaleString()}원</span>}
       </S.InfoWrap>
     </S.Container>
   );

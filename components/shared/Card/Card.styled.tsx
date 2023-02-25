@@ -29,14 +29,13 @@ export const IconWrap = styled.div`
   position: absolute;
   bottom: 13px;
   left: 45px;
-  /* bottom: clamp(13px, 14px, 15px);
-  left: clamp(31px, 60px, 70px); */
 `;
 
 export const InfoWrap = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
+  justify-content: space-around;
 
   h3,
   span {

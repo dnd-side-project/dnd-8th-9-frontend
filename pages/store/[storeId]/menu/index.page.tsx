@@ -8,6 +8,8 @@ import { storeTab } from "@/constants/navigations";
 import { menuList } from "@/mocks/mockData/menuList";
 import * as S from "./menu.styled";
 
+const MENU_PAGE = "menuPage";
+
 function MenuPage() {
   const { data, isLoading, isError } = useGetStore({ storeId: 1 });
   const { asPath } = useRouter();
@@ -22,7 +24,7 @@ function MenuPage() {
       <S.ListWrap>
         {menuList.menus.map(menu => (
           <Link key={menu.id} href={`${asPath}/${menu.id}`}>
-            <Card menu={menu} />
+            <Card menu={menu} option={MENU_PAGE} />
           </Link>
         ))}
       </S.ListWrap>
