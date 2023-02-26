@@ -38,7 +38,7 @@ export default function OverallStats({ rating, totalReviews, stats }: IOverallSt
   return (
     <S.Container>
       <S.Review>
-        <Heart height={19} width={19} viewBox="0 0 17 17" fill="red" />
+        <Heart fill="red" />
         <S.Rating>당도 {rating}%</S.Rating>
         <S.TotalReviews>({totalReviews}명 참여)</S.TotalReviews>
       </S.Review>

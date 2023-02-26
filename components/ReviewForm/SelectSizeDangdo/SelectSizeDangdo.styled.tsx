@@ -24,7 +24,6 @@ export const Explanation = styled.div`
 `;
 
 export const Size = styled.div`
-  border: 1px solid red;
   padding: 0 4rem;
   display: flex;
   flex-direction: column;
@@ -49,13 +48,12 @@ export const SizeButton = css`
 `;
 
 export const ClickedSizeButton = ({ colors }: Theme) => css`
-  background-color: ${colors.black};
+  background-color: ${colors.navy[400]};
   color: ${colors.white[100]};
 `;
 
 export const DangdoBox = styled.div`
   margin-top: 4rem;
-  border: 1px solid blue;
 `;
 
 export const DangdoComment = styled.div`
@@ -69,6 +67,8 @@ export const DangdoComment = styled.div`
 
 export const Dangdo = styled.div`
   color: ${({ theme }) => theme.colors.black};
+  display: flex;
+  gap: 0.3rem;
 `;
 
 export const Comment = styled.div`

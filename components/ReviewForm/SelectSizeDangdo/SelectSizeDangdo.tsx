@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Button from "@/components/shared/Button/Button";
 import ImageWrap from "@/components/shared/ImageWrap/ImageWrap";
+import Heart from "assets/icons/heart.svg";
 import * as S from "./SelectSizeDangdo.styled";
 
 interface ISelectMenu {
@@ -66,7 +67,11 @@ export default function SelectSizeDangdo({ formData, setFormData }: ISelectMenu)
         </S.SizeList>
         <S.DangdoBox>
           <S.DangdoComment>
-            <S.Dangdo>당도 {dangdo}%</S.Dangdo>
+            {/** TODO: Dangdo 컴포넌트로 변경 */}
+            <S.Dangdo>
+              <Heart height={16} width={16} viewBox="0 0 19 19" />
+              당도 {dangdo}%
+            </S.Dangdo>
             <S.Comment>훌륭해요!</S.Comment>
           </S.DangdoComment>
           <S.InputWrap>
