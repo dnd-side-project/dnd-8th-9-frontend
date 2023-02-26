@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "@/components/shared/Button/Button";
 import ImageWrap from "@/components/shared/ImageWrap/ImageWrap";
-import { css } from "@emotion/react";
 import * as S from "./SelectSizeDangdo.styled";
 
 interface ISelectMenu {
@@ -37,9 +36,10 @@ export default function SelectSizeDangdo({ formData, setFormData }: ISelectMenu)
   const [size, setSize] = useState("미니");
   const [dangdo, setDangdo] = useState(100);
 
-  useEffect(() => {
-    setFormData({ ...formData, size, dangdo });
-  }, [dangdo, size, formData, setFormData]);
+  const handleSizeDangdo = (value: number) => {
+    setDangdo(value);
+    setFormData({ ...formData, size, dangdo: value });
+  };
 
   return (
     <S.Container>
@@ -75,7 +75,7 @@ export default function SelectSizeDangdo({ formData, setFormData }: ISelectMenu)
               type="range"
               value={dangdo}
               step="20"
-              onChange={e => setDangdo(+e.target.value)}
+              onChange={e => handleSizeDangdo(+e.target.value)}
             />
           </S.InputWrap>
         </S.DangdoBox>
