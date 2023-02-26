@@ -1,12 +1,8 @@
 import styled from "@emotion/styled";
 
-export const Container = styled.div`
+export const Container = styled.div<{ length: number }>`
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5.4rem;
-  margin: auto;
   height: 7.4rem;
   background-color: ${({ theme }) => theme.colors.white[100]};
   box-shadow: 0px -4px 12px rgba(80, 83, 105, 0.08);
@@ -17,4 +13,11 @@ export const Container = styled.div`
   bottom: 0;
 
   z-index: 5;
+
+  > * {
+    width: calc(100% / ${({ length }) => length});
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;

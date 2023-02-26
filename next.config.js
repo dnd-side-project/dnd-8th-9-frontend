@@ -13,6 +13,35 @@ const nextConfig = {
     });
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/home/recommendation",
+        permanent: true,
+      },
+      {
+        source: "/store",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/home",
+        destination: "/home/recommendation",
+        permanent: true,
+      },
+      {
+        source: "/onboard",
+        destination: "/onboard/location",
+        permanent: true,
+      },
+      {
+        source: "/bookmark",
+        destination: "/bookmark/design",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

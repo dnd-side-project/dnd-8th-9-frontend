@@ -1,110 +1,128 @@
-export const storeTab = [
-  {
-    label: "메뉴",
-    link: "/menu",
-  },
-  {
-    label: "주문양식",
-    link: "/order",
-  },
-  {
-    label: "리뷰",
-    link: "/review",
-  },
-  {
-    label: "공지사항",
-    link: "/notice",
-  },
-  {
-    label: "정보",
-    link: "/info",
-  },
-];
+import theme from "@/styles/theme";
+import { ROUTES } from "./routes";
 
-export const storeMenuTab = [
-  {
-    label: "사이즈",
-    name: "size",
-    link: "#size",
-  },
-  {
-    label: "맛",
-    link: "#flavor",
-  },
-  {
-    label: "모양 변경",
-    link: "#variation",
-  },
-  {
-    label: "주의사항",
-    link: "#caution",
-  },
-  {
-    label: "리뷰",
-    link: "#review",
-  },
-];
+interface INavigationItem {
+  title: string;
+  back?: boolean;
+  icon?: boolean;
+  bgColor?: string;
+  scrollBgColor?: string;
+  iconColor?: string;
+}
 
-export const resultTab = [
-  {
-    label: "메뉴",
-    link: "/menu",
-  },
-  {
-    label: "스토어",
-    link: "/store",
-  },
-];
+interface INavigationHeader {
+  [key: string]: INavigationItem;
+}
 
-export const homeTab = [
-  {
-    label: "당도추천",
-    link: "/dango",
+export const NAVIGATION_HEADER: INavigationHeader = {
+  // NOTE: 업체 상세 페이지
+  [ROUTES.STORE_MENU_LIST_PAGE]: {
+    title: "업체명",
+    bgColor: "transparent",
+    scrollBgColor: theme.colors.white[100],
   },
-  {
-    label: "스토어",
-    link: "/store",
+  [ROUTES.STORE_MENU_ITEM_PAGE]: {
+    title: "업체명",
+    icon: false,
   },
-  {
-    label: "리얼리뷰",
-    link: "/review",
+  [ROUTES.STORE_MENU_ITEM_REVIEWS_PAGE]: {
+    title: "리뷰",
+    icon: false,
   },
-];
+  [ROUTES.STORE_REVIEW_PAGE]: {
+    title: "업체명",
+    bgColor: "transparent",
+    scrollBgColor: "white",
+  },
+  [ROUTES.STORE_REVIEW_IMAGE_PAGE]: {
+    title: "",
+    icon: false,
+    bgColor: "black",
+    iconColor: "white",
+  },
+  [ROUTES.STORE_REVIEWS_PAGE]: {
+    title: "리뷰",
+    icon: false,
+  },
+  [ROUTES.STORE_IMAGE_REVIEWS_PAGE]: {
+    title: "리뷰",
+    icon: false,
+  },
+  [ROUTES.STORE_IMAGE_REVIEW_ITEM_PAGE]: {
+    title: "",
+    icon: false,
+    bgColor: "black",
+    iconColor: "white",
+  },
+  [ROUTES.STORE_ORDER_FORM_PAGE]: {
+    title: "업체명",
+    bgColor: "transparent",
+    scrollBgColor: "white",
+  },
+  [ROUTES.STORE_NOTICES_PAGE]: {
+    title: "업체명",
+    bgColor: "transparent",
+    scrollBgColor: "white",
+  },
+  [ROUTES.STORE_INFO_PAGE]: {
+    title: "업체명",
+    bgColor: "transparent",
+    scrollBgColor: "white",
+  },
 
-export const categoryTab = [
-  {
-    label: "레터링",
-    link: "#",
+  // NOTE: 홈페이지
+  [ROUTES.HOME_RECOMMENDATION_PAGE]: {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
   },
-  {
-    label: "캐릭터/입체",
-    link: "#",
-  },
-  {
-    label: "포토",
-    link: "#",
-  },
-  {
-    label: "꽃",
-    link: "#",
-  },
-];
 
-export const navTab = [
-  {
-    label: "홈",
-    link: "/",
+  // NOTE: 온보딩 페이지
+  [ROUTES.ONBOARDING_LOCATION_PAGE]: {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
   },
-  {
-    label: "검색",
-    link: "/search",
+
+  // NOTE: 프로필 페이지
+  [ROUTES.PROFILE_PAGE]: {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
   },
-  {
-    label: "북마크",
-    link: "/bookmark",
+
+  // NOTE: 북마크 페이지
+  [ROUTES.MY_BOOKMARK_DESIGN_PAGE]: {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
   },
-  {
-    label: "마이페이지",
-    link: "/mypage",
+  "/store/[storeId]": {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
   },
-];
+};
+
+export const GNB_VISIBILITY = {
+  [ROUTES.STORE_MENU_LIST_PAGE]: true,
+  [ROUTES.STORE_MENU_ITEM_PAGE]: true,
+  [ROUTES.STORE_MENU_ITEM_REVIEWS_PAGE]: true,
+  [ROUTES.STORE_REVIEW_PAGE]: true,
+  [ROUTES.STORE_REVIEW_IMAGE_PAGE]: false,
+  [ROUTES.STORE_REVIEWS_PAGE]: true,
+  [ROUTES.STORE_IMAGE_REVIEWS_PAGE]: false,
+  [ROUTES.STORE_IMAGE_REVIEW_ITEM_PAGE]: false,
+  [ROUTES.STORE_ORDER_FORM_PAGE]: true,
+  [ROUTES.STORE_NOTICES_PAGE]: true,
+  [ROUTES.STORE_INFO_PAGE]: true,
+  [ROUTES.HOME_RECOMMENDATION_PAGE]: true,
+  [ROUTES.PROFILE_PAGE]: true,
+  [ROUTES.MY_BOOKMARK_DESIGN_PAGE]: true,
+  [ROUTES.ONBOARDING_LOCATION_PAGE]: false,
+};

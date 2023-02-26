@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { menu } from "@/mocks/mockData/menu";
 import { reviews } from "@/mocks/mockData/review";
 import { menuList } from "@/mocks/mockData/menuList";
-import { storeMenuTab } from "@/constants/navigations";
+import { storeMenuTab } from "@/constants/tabs";
 
 import Tab from "@/components/shared/Tab/Tab";
 import Button from "@/components/shared/Button/Button";
@@ -31,7 +31,7 @@ function MenuDetailsPage() {
   const menuReviews = reviewList.filter(review => review.menuOption === menuName);
 
   return (
-    <S.Container>
+    <div>
       <MenuHero
         menuImage={menuImage}
         name={name}
@@ -58,7 +58,7 @@ function MenuDetailsPage() {
           </Button>
         </Link>
       </S.ReviewListWrap>
-    </S.Container>
+    </div>
   );
 }
 
