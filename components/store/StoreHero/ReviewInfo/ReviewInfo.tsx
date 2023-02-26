@@ -1,3 +1,5 @@
+import { useRouter } from "next/router";
+import Link from "next/link";
 import { useTheme } from "@emotion/react";
 import { getOverallComment } from "@/utils/util";
 import { IStoreReview } from "@/api/types/review";
@@ -10,6 +12,7 @@ interface IProp {
   overallStats: IStoreReview["overallStats"];
 }
 function ReviewInfo({ overallStats }: IProp) {
+  const { asPath } = useRouter();
   const { colors } = useTheme();
   const { rating, totalReviews, stats } = overallStats;
 
@@ -33,10 +36,12 @@ function ReviewInfo({ overallStats }: IProp) {
           <Icon name="ellipsis" />
         </div>
       </S.ReviewTags>
-      <Button type="button" label="write a review" shape="square" cssProp={S.reviewButton}>
-        <Icon size="s" name="pencil" color={colors.primary} />
-        <p>리뷰쓰기</p>
-      </Button>
+      <Link href={`${asPath}/form`}>
+        <Button type="button" label="write a review" shape="square" cssProp={S.reviewButton}>
+          <Icon size="s" name="pencil" color={colors.primary} />
+          <p>리뷰쓰기</p>
+        </Button>
+      </Link>
     </S.ReviewBox>
   );
 }
