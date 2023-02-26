@@ -9,7 +9,7 @@ interface ISelectMenu {
     name: string;
     menuImage: string;
     size: string;
-    dando: number;
+    dangdo: number;
     like: string;
     text: string;
   };
@@ -19,7 +19,7 @@ interface ISelectMenu {
       name: string;
       menuImage: string;
       size: string;
-      dando: number;
+      dangdo: number;
       like: string;
       text: string;
     }>
