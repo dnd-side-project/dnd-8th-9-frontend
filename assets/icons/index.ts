@@ -20,3 +20,4 @@ export { default as Store } from "./store.svg";
 export { default as SaveBookmark } from "./save_bookmark.svg";
 export { default as ArrowRight } from "./arrow-right.svg";
 export { default as Kakao } from "./kakao.svg";
+export { default as Delete } from "./delete.svg";
