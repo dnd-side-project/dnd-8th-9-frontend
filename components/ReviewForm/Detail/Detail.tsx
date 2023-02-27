@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useRef, useMemo, useCallback } from "react";
 import ImageWrap from "@/components/shared/ImageWrap/ImageWrap";
@@ -39,8 +40,7 @@ const likeList = ["맛있어요", "가성비가 좋아요", "친절해요", "선
 export default function Detail({ formData, setFormData }: ISelectMenu) {
   const [best, setBest] = useState("");
   const [comment, setComment] = useState("");
-  const [imgFile, setImgFile] = useState<string | null>(null);
-  const [imgFiles, setImgFiles] = useState<string[]>([]);
+  const [imgFiles, setImgFiles] = useState<(string | ArrayBuffer | null)[]>([]);
   const selectFile = useRef<HTMLInputElement>(null);
 
   const handleFileUpload = () => {
@@ -51,10 +51,12 @@ export default function Detail({ formData, setFormData }: ISelectMenu) {
     const fileList = e.target.files;
 
     if (fileList && fileList[0]) {
-      const url = URL.createObjectURL(fileList[0]);
-      setImgFile(url);
-      if (imgFiles.length >= 3) return;
-      setImgFiles([...imgFiles, url]);
+      const reader = new FileReader();
+      reader.readAsDataURL(fileList[0]);
+      reader.onloadend = () => {
+        if (imgFiles.length >= 3) return;
+        setImgFiles([...imgFiles, reader.result]);
+      };
     }
   };
 
@@ -69,12 +71,16 @@ export default function Detail({ formData, setFormData }: ISelectMenu) {
     if (imgFiles !== null)
       return (
         <>
-          {imgFiles.map(clickedImg => (
-            <S.ImageWrap key={clickedImg}>
-              <img src={clickedImg} alt="업로드" width="70px" height="70px" />
-              <S.ImageBackground>
-                <Delete onClick={() => deleteImage(clickedImg)} />
-              </S.ImageBackground>
+          {imgFiles.map((clickedImg, idx) => (
+            <S.ImageWrap key={idx}>
+              {clickedImg && (
+                <>
+                  <img src={clickedImg.toString()} alt="업로드" width="70px" height="70px" />
+                  <S.ImageBackground>
+                    <Delete onClick={() => deleteImage(clickedImg.toString())} />
+                  </S.ImageBackground>
+                </>
+              )}
             </S.ImageWrap>
           ))}
         </>
