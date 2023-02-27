@@ -147,6 +147,12 @@ export default function Detail({ formData, setFormData }: ISelectMenu) {
             )}
           </>
         </S.UploadImage>
+        <S.Textarea>
+          <textarea
+            placeholder="주문한 메뉴, 업체에 대한 후기를 20자 이상 남겨주시면 다른 구매자들에게도 도움이 됩니다."
+            onChange={e => setComment(e.target.value)}
+          />
+        </S.Textarea>
       </S.Detail>
     </S.Container>
   );
