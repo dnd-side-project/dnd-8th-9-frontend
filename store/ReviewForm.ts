@@ -40,6 +40,13 @@ interface IDetail {
   imgFiles: (string | ArrayBuffer | null)[];
 }
 
+interface ButtonDisabledStore {
+  isDisabled: boolean;
+
+  setButtonDisabled: () => void;
+  setButtonAbled: () => void;
+}
+
 export const useFormMenuStore = create<FormMenuStore>()(set => ({
   id: 0,
   name: "",
@@ -49,8 +56,8 @@ export const useFormMenuStore = create<FormMenuStore>()(set => ({
 }));
 
 export const useFormSizeDangdoStore = create<FormSizeDangdoStore>()(set => ({
-  size: "미니",
-  dangdo: 100,
+  size: "",
+  dangdo: 0,
 
   setSizeDangdo: ({ size, dangdo }: ISizeDangdo) => set({ size, dangdo }),
 }));
@@ -61,4 +68,11 @@ export const useFormDetailStore = create<FormDetailStore>()(set => ({
   imgFiles: [],
 
   setDetail: ({ best, comment, imgFiles }: IDetail) => set({ best, comment, imgFiles }),
+}));
+
+export const useButtonDisabledStore = create<ButtonDisabledStore>()(set => ({
+  isDisabled: true,
+
+  setButtonDisabled: () => set({ isDisabled: true }),
+  setButtonAbled: () => set({ isDisabled: false }),
 }));

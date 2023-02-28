@@ -1,5 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import { useFormMenuStore, useFormSizeDangdoStore } from "@/store/ReviewForm";
+import { useEffect } from "react";
+import {
+  useFormMenuStore,
+  useFormSizeDangdoStore,
+  useButtonDisabledStore,
+} from "@/store/ReviewForm";
 import Button from "@/components/shared/Button/Button";
 import ImageWrap from "@/components/shared/ImageWrap/ImageWrap";
 import Heart from "assets/icons/heart.svg";
@@ -13,6 +18,15 @@ const sizeList = ["미니", "1호", "2호", "3호"];
 export default function SelectSizeDangdo() {
   const { name, menuImage } = useFormMenuStore(state => state);
   const { size, dangdo, setSizeDangdo } = useFormSizeDangdoStore(state => state);
+  const { setButtonDisabled, setButtonAbled } = useButtonDisabledStore(state => state);
+
+  useEffect(() => {
+    setButtonDisabled();
+  }, [setButtonAbled, setButtonDisabled]);
+
+  useEffect(() => {
+    if (size !== "" && dangdo) setButtonAbled();
+  }, [size, dangdo, setButtonAbled]);
 
   return (
     <S.Container>

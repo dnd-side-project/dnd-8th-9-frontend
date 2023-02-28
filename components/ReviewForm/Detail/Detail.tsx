@@ -1,7 +1,12 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @next/next/no-img-element */
-import React, { useRef, useMemo, useCallback } from "react";
-import { useFormMenuStore, useFormSizeDangdoStore, useFormDetailStore } from "@/store/ReviewForm";
+import React, { useEffect, useRef, useMemo, useCallback } from "react";
+import {
+  useFormMenuStore,
+  useFormSizeDangdoStore,
+  useFormDetailStore,
+  useButtonDisabledStore,
+} from "@/store/ReviewForm";
 import ImageWrap from "@/components/shared/ImageWrap/ImageWrap";
 import { Heart, Delete } from "@/assets/icons";
 import Button from "@/components/shared/Button/Button";
@@ -14,6 +19,15 @@ export default function Detail() {
   const { name, menuImage } = useFormMenuStore(state => state);
   const { size, dangdo } = useFormSizeDangdoStore(state => state);
   const { best, comment, imgFiles, setDetail } = useFormDetailStore(state => state);
+  const { setButtonDisabled, setButtonAbled } = useButtonDisabledStore(state => state);
+
+  useEffect(() => {
+    setButtonDisabled();
+  }, [setButtonAbled, setButtonDisabled]);
+
+  useEffect(() => {
+    if (best !== "" && comment !== "" && imgFiles.length) setButtonAbled();
+  }, [best, comment, imgFiles, setButtonAbled]);
 
   const selectFile = useRef<HTMLInputElement>(null);
 
