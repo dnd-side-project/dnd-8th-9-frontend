@@ -1,46 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
+import { useFormMenuStore, useFormSizeDangdoStore } from "@/store/ReviewForm";
 import Button from "@/components/shared/Button/Button";
 import ImageWrap from "@/components/shared/ImageWrap/ImageWrap";
 import Heart from "assets/icons/heart.svg";
 import * as S from "./SelectSizeDangdo.styled";
-
-interface ISelectMenu {
-  formData: {
-    id: number;
-    name: string;
-    menuImage: string;
-    size: string;
-    dangdo: number;
-    like: string;
-    text: string;
-  };
-  setFormData: React.Dispatch<
-    React.SetStateAction<{
-      id: number;
-      name: string;
-      menuImage: string;
-      size: string;
-      dangdo: number;
-      like: string;
-      text: string;
-    }>
-  >;
-}
 
 const FORM_TITLE = "케이크는 어땠나요?";
 const EXPLANATION = "실제 상품을 받고 나서 느낀 감상을\n솔직하게 작성해주세요";
 
 const sizeList = ["미니", "1호", "2호", "3호"];
 
-export default function SelectSizeDangdo({ formData, setFormData }: ISelectMenu) {
-  const [size, setSize] = useState("미니");
-  const [dangdo, setDangdo] = useState(100);
-
-  const handleSizeDangdo = (value: number) => {
-    setDangdo(value);
-    setFormData({ ...formData, size, dangdo: value });
-  };
+export default function SelectSizeDangdo() {
+  const { name, menuImage } = useFormMenuStore(state => state);
+  const { size, dangdo, setSizeDangdo } = useFormSizeDangdoStore(state => state);
 
   return (
     <S.Container>
@@ -48,9 +20,9 @@ export default function SelectSizeDangdo({ formData, setFormData }: ISelectMenu)
       <S.Explanation>{EXPLANATION}</S.Explanation>
       <S.Size>
         <ImageWrap percent={50} borderRadius={8}>
-          <img src={formData.menuImage} alt="menu" className="menu" />
+          <img src={menuImage} alt="menu" className="menu" />
         </ImageWrap>
-        <S.Name>{formData.name}</S.Name>
+        <S.Name>{name}</S.Name>
         <S.SizeList>
           {sizeList.map(cakeSize => (
             <Button
@@ -59,7 +31,7 @@ export default function SelectSizeDangdo({ formData, setFormData }: ISelectMenu)
               label="size"
               shape="round"
               cssProp={cakeSize === size ? S.ClickedSizeButton : S.SizeButton}
-              onClick={() => setSize(cakeSize)}
+              onClick={() => setSizeDangdo({ size: cakeSize, dangdo })}
             >
               {cakeSize}
             </Button>
@@ -67,7 +39,6 @@ export default function SelectSizeDangdo({ formData, setFormData }: ISelectMenu)
         </S.SizeList>
         <S.DangdoBox>
           <S.DangdoComment>
-            {/** TODO: Dangdo 컴포넌트로 변경 */}
             <S.Dangdo>
               <Heart height={16} width={16} viewBox="0 0 19 19" />
               당도 {dangdo}%
@@ -80,7 +51,7 @@ export default function SelectSizeDangdo({ formData, setFormData }: ISelectMenu)
               type="range"
               value={dangdo}
               step="20"
-              onChange={e => handleSizeDangdo(+e.target.value)}
+              onChange={e => setSizeDangdo({ size, dangdo: +e.target.value })}
             />
           </S.InputWrap>
         </S.DangdoBox>

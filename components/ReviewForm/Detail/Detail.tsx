@@ -1,46 +1,20 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useRef, useMemo, useCallback } from "react";
+import React, { useRef, useMemo, useCallback } from "react";
+import { useFormMenuStore, useFormSizeDangdoStore, useFormDetailStore } from "@/store/ReviewForm";
 import ImageWrap from "@/components/shared/ImageWrap/ImageWrap";
 import { Heart, Delete } from "@/assets/icons";
 import Button from "@/components/shared/Button/Button";
 import { UploadImage } from "@/assets/images";
 import * as S from "./Detail.styled";
 
-interface ISelectMenu {
-  formData: {
-    id: number;
-    name: string;
-    menuImage: string;
-    size: string;
-    dangdo: number;
-    like: string;
-    text: string;
-  };
-  setFormData: React.Dispatch<
-    React.SetStateAction<{
-      id: number;
-      name: string;
-      menuImage: string;
-      size: string;
-      dangdo: number;
-      like: string;
-      text: string;
-    }>
-  >;
-}
-
-interface IImgFile {
-  file: File;
-  thumbnail: string;
-}
-
 const likeList = ["맛있어요", "가성비가 좋아요", "친절해요", "선물하기 좋아요", "응답이 빨라요"];
 
-export default function Detail({ formData, setFormData }: ISelectMenu) {
-  const [best, setBest] = useState("");
-  const [comment, setComment] = useState("");
-  const [imgFiles, setImgFiles] = useState<(string | ArrayBuffer | null)[]>([]);
+export default function Detail() {
+  const { name, menuImage } = useFormMenuStore(state => state);
+  const { size, dangdo } = useFormSizeDangdoStore(state => state);
+  const { best, comment, imgFiles, setDetail } = useFormDetailStore(state => state);
+
   const selectFile = useRef<HTMLInputElement>(null);
 
   const handleFileUpload = () => {
@@ -55,16 +29,16 @@ export default function Detail({ formData, setFormData }: ISelectMenu) {
       reader.readAsDataURL(fileList[0]);
       reader.onloadend = () => {
         if (imgFiles.length >= 3) return;
-        setImgFiles([...imgFiles, reader.result]);
+        setDetail({ best, comment, imgFiles: [...imgFiles, reader.result] });
       };
     }
   };
 
   const deleteImage = useCallback(
     (clickedImg: string) => {
-      setImgFiles(imgFiles.filter(img => img !== clickedImg));
+      setDetail({ best, comment, imgFiles: imgFiles.filter(img => img !== clickedImg) });
     },
-    [imgFiles],
+    [best, comment, imgFiles, setDetail],
   );
 
   const showImage = useMemo(() => {
@@ -92,15 +66,15 @@ export default function Detail({ formData, setFormData }: ISelectMenu) {
     <S.Container>
       <S.Menu>
         <ImageWrap percent={30} borderRadius={8}>
-          <img src={formData.menuImage} alt="menu" className="menu" />
+          <img src={menuImage} alt="menu" className="menu" />
         </ImageWrap>
         <S.InfoWrap>
-          <S.Name>{formData.name}</S.Name>
-          <S.Size>사이즈: {formData.size} </S.Size>
+          <S.Name>{name}</S.Name>
+          <S.Size>사이즈: {size} </S.Size>
           <S.DangdoComment>
             <S.Dangdo>
               <Heart height={16} width={16} viewBox="0 0 19 19" />
-              {formData.dangdo}%
+              {dangdo}%
             </S.Dangdo>
             <S.Comment>당도가 훌륭해요!</S.Comment>
           </S.DangdoComment>
@@ -116,7 +90,7 @@ export default function Detail({ formData, setFormData }: ISelectMenu) {
               type="button"
               shape="round"
               cssProp={like === best ? S.ClickedButton : S.Button}
-              onClick={() => setBest(like)}
+              onClick={() => setDetail({ best: like, comment, imgFiles })}
             >
               {like}
             </Button>
@@ -156,7 +130,7 @@ export default function Detail({ formData, setFormData }: ISelectMenu) {
         <S.Textarea>
           <textarea
             placeholder="주문한 메뉴, 업체에 대한 후기를 20자 이상 남겨주시면 다른 구매자들에게도 도움이 됩니다."
-            onChange={e => setComment(e.target.value)}
+            onChange={e => setDetail({ best, comment: e.target.value, imgFiles })}
           />
         </S.Textarea>
       </S.Detail>
