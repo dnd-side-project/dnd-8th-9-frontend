@@ -1,4 +1,5 @@
 import React, { SetStateAction, useState } from "react";
+import Link from "next/link";
 import { useButtonDisabledStore } from "@/store/ReviewForm";
 import SelectMenu from "@/components/ReviewForm/SelectMenu/SelectMenu";
 import SelectSizeDangdo from "@/components/ReviewForm/SelectSizeDangdo/SelectSizeDangdo";
@@ -37,7 +38,6 @@ const handleSubmit = ({ isDisabled, currentPage, setCurrentPage }: IHandleSubmit
 
 export default function FormPage() {
   const { isDisabled } = useButtonDisabledStore(state => state);
-
   const [currentPage, setCurrentPage] = useState(1);
 
   return (
@@ -66,19 +66,21 @@ export default function FormPage() {
           {currentPage === 4 ? "작성한 리뷰 보러가기" : "다음"}
         </Button>
         {currentPage === 4 && (
-          <Button
-            type="submit"
-            label="form"
-            shape="square"
-            cssProp={css`
-              background-color: #fff;
-              color: #636363;
-              width: 100%;
-            `}
-            onClick={() => handleSubmit({ isDisabled, currentPage, setCurrentPage })}
-          >
-            홈으로 가기
-          </Button>
+          <Link href="/">
+            <Button
+              type="submit"
+              label="form"
+              shape="square"
+              cssProp={css`
+                background-color: #fff;
+                color: #636363;
+                width: 100%;
+              `}
+              onClick={() => handleSubmit({ isDisabled, currentPage, setCurrentPage })}
+            >
+              홈으로 가기
+            </Button>
+          </Link>
         )}
       </S.ButtonWrap>
     </S.Container>
