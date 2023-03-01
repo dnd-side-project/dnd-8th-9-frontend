@@ -29,5 +29,5 @@ export const ICONS: IIcon = {
   saveBookmark: <I.SaveBookmark />,
   share: <I.Share />,
   store: <I.Store />,
-  kakao: <i.Kakao />,
+  kakao: <I.Kakao />,
 };

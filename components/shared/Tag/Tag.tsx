@@ -6,11 +6,12 @@ export interface IProp {
   children: string | JSX.Element | JSX.Element[];
   label: string;
   cssProp?: SerializedStyles | (({ colors }: Theme) => SerializedStyles);
+  className?: string;
 }
 
-function Tag({ type, children, label, cssProp }: IProp) {
+function Tag({ type, children, label, cssProp, className }: IProp) {
   return (
-    <div aria-label={label} css={[tag, tagStyle[type], cssProp]}>
+    <div aria-label={label} css={[tag, tagStyle[type], cssProp]} className={className}>
       {children}
     </div>
   );
