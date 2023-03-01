@@ -64,7 +64,7 @@ export default function SelectSizeDangdo() {
               className="slider"
               type="range"
               value={dangdo}
-              step="20"
+              step="1"
               onChange={e => setSizeDangdo({ size, dangdo: +e.target.value })}
             />
           </S.InputWrap>
