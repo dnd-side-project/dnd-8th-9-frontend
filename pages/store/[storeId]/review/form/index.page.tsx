@@ -1,4 +1,5 @@
 import React, { SetStateAction, useState } from "react";
+import { useButtonDisabledStore } from "@/store/ReviewForm";
 import SelectMenu from "@/components/ReviewForm/SelectMenu/SelectMenu";
 import SelectSizeDangdo from "@/components/ReviewForm/SelectSizeDangdo/SelectSizeDangdo";
 import Detail from "@/components/ReviewForm/Detail/Detail";
@@ -7,7 +8,8 @@ import Button from "@/components/shared/Button/Button";
 import { css } from "@emotion/react";
 import * as S from "./form.styled";
 
-interface IHandleFormButton {
+interface IHandleSubmit {
+  isDisabled: boolean;
   currentPage: number;
   setCurrentPage: React.Dispatch<SetStateAction<number>>;
 }
@@ -20,19 +22,23 @@ const multiStepForm = (currentPage: number) => {
       return <SelectSizeDangdo />;
     case 3:
       return <Detail />;
-    // case 4:
-    //   return <Sumbitted formData={formData} setFormData={setFormData} />;
+    case 4:
+      return <Sumbitted />;
     default:
       return <></>;
   }
 };
 
-const handleFormButton = ({ currentPage, setCurrentPage }: IHandleFormButton) => {
-  setCurrentPage(currentPage + 1);
+const handleSubmit = ({ isDisabled, currentPage, setCurrentPage }: IHandleSubmit) => {
+  if (!isDisabled) {
+    setCurrentPage(currentPage + 1);
+  }
 };
 
 export default function FormPage() {
-  const [currentPage, setCurrentPage] = useState(1); // TODO: 새로고침해도 남아있게 변경
+  const { isDisabled } = useButtonDisabledStore(state => state);
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   return (
     <S.Container>
@@ -41,20 +47,23 @@ export default function FormPage() {
         type="submit"
         label="form"
         shape="square"
-        cssProp={css`
-          background-color: #c7c7c7;
-          width: 100%;
-        `}
-        onClick={() => setCurrentPage(currentPage + 1)}
+        disabled={isDisabled}
+        cssProp={
+          isDisabled
+            ? css`
+                background-color: #c7c7c7;
+                width: 100%;
+              `
+            : css`
+                background-color: #f45c65;
+                color: #fff;
+                width: 100%;
+              `
+        }
+        onClick={() => handleSubmit({ isDisabled, currentPage, setCurrentPage })}
       >
         다음
       </Button>
     </S.Container>
   );
 }
-
-/** 현재 페이지 상태로 -> 컴포넌트 바꿔끼기 : Done
- * 버튼 누르면 -> 현재 페이지 상태 변경, 리뷰 데이터 변경
- * 버튼 활성화 / 비활성화 -> 리뷰 데이터 변경 있으면?
- * 버튼 css props -> 조건으로 넣어야 함
- */
