@@ -29,8 +29,11 @@ const sizeCss = ({ size }: IProp) => css`
 `;
 
 const lineCss = ({ color }: IProp) => css`
-  svg path {
-    stroke: ${color};
+  svg {
+    circle,
+    path {
+      stroke: ${color};
+    }
   }
 `;
 
