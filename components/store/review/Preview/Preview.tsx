@@ -27,7 +27,7 @@ export default function Preview({ reviewImages }: IReviewImages) {
       <CountTitle tag={REVIEW} count={reviewImages.length} />
       <S.PreviewImages>
         {previewImages.map((image, idx) => (
-          <ImageWrap key={image.url} percent={25}>
+          <ImageWrap key={image.url} percent={25} borderRadius={4}>
             <Image src={image.url} width={79} height={79} alt={IMAGE} />
             {idx === previewImages.length - 1 ? (
               <Link href={`${asPath}/images`}>

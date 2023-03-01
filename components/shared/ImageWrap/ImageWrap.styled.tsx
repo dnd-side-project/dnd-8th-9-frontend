@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Container = styled.div<{ percent: number }>`
+export const Container = styled.div<{ percent: number; borderRadius: number }>`
   position: relative;
   width: ${props => `${props.percent}%`};
 
@@ -17,6 +17,6 @@ export const Container = styled.div<{ percent: number }>`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: ${props => `${props.borderRadius}px`};
   }
 `;
