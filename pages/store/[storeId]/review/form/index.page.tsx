@@ -43,27 +43,44 @@ export default function FormPage() {
   return (
     <S.Container>
       {multiStepForm(currentPage)}
-      <Button
-        type="submit"
-        label="form"
-        shape="square"
-        disabled={isDisabled}
-        cssProp={
-          isDisabled
-            ? css`
-                background-color: #c7c7c7;
-                width: 100%;
-              `
-            : css`
-                background-color: #f45c65;
-                color: #fff;
-                width: 100%;
-              `
-        }
-        onClick={() => handleSubmit({ isDisabled, currentPage, setCurrentPage })}
-      >
-        다음
-      </Button>
+      <S.ButtonWrap>
+        <Button
+          type="submit"
+          label="form"
+          shape="square"
+          disabled={isDisabled}
+          cssProp={
+            isDisabled
+              ? css`
+                  background-color: #c7c7c7;
+                  width: 100%;
+                `
+              : css`
+                  background-color: #f45c65;
+                  color: #fff;
+                  width: 100%;
+                `
+          }
+          onClick={() => handleSubmit({ isDisabled, currentPage, setCurrentPage })}
+        >
+          {currentPage === 4 ? "작성한 리뷰 보러가기" : "다음"}
+        </Button>
+        {currentPage === 4 && (
+          <Button
+            type="submit"
+            label="form"
+            shape="square"
+            cssProp={css`
+              background-color: #fff;
+              color: #636363;
+              width: 100%;
+            `}
+            onClick={() => handleSubmit({ isDisabled, currentPage, setCurrentPage })}
+          >
+            홈으로 가기
+          </Button>
+        )}
+      </S.ButtonWrap>
     </S.Container>
   );
 }
