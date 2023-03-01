@@ -14,4 +14,11 @@ export const FormTitle = styled.div`
   margin-bottom: 3.2rem;
 `;
 
-export const MenuCardClick = styled.div``;
+export const MenuCardClick = styled.div`
+  border-radius: 8px;
+
+  &.isActive {
+    background: #f6f7fc;
+    border: 1.6px solid #95a5e0;
+  }
+`;
