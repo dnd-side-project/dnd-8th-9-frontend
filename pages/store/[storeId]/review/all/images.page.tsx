@@ -16,7 +16,7 @@ export default function ImagesPage() {
       <S.Images>
         {reviewImages.map((image, idx) => (
           // eslint-disable-next-line react/jsx-key
-          <ImageWrap key={idx} percent={32}>
+          <ImageWrap key={idx} percent={32} borderRadius={4}>
             <Image src={image.url} width={108} height={106} alt={IMAGES} />
           </ImageWrap>
         ))}
