@@ -6,3 +6,11 @@ export const getOverallComment = (rating: number) => {
   if (rating >= 0) return "별로예요";
   return "";
 };
+
+export const generatePriceString = (price: number) => {
+  return `${price.toLocaleString()}원`;
+};
+
+export const generateRangePriceString = (minPrice: number, maxPrice: number) => {
+  return `기본 ${generatePriceString(minPrice)} ~ ${generatePriceString(maxPrice)}`;
+};
