@@ -8,7 +8,7 @@ interface IProp {
   fill?: string;
 }
 
-function Icon({ size = "s", name, color = "black", fill = "none" }: IProp) {
+function Icon({ size = "s", name, color = "none", fill = "none" }: IProp) {
   return (
     <S.IconWrap size={size} color={color} fill={fill}>
       {ICONS[name]}

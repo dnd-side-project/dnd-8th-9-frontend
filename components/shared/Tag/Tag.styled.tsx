@@ -4,9 +4,8 @@ export const tagStyle = {
   square: ({ colors, fontSizes }: Theme) => css`
     background-color: ${colors.navy[400]};
     color: ${colors.white};
-    padding: 0.2rem 0.4rem;
-    font-size: ${fontSizes[10]};
-    line-height: ${fontSizes[12]};
+    padding: 0.4rem 0.6rem;
+    font-size: ${fontSizes[12]};
     min-width: 2.6rem;
   `,
   icon: ({ colors, fontSizes }: Theme) => css`
