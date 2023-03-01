@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { css, Theme } from "@emotion/react";
 
 export const Container = styled.div`
-  padding: 0 1.4rem;
+  padding: 2rem 1.4rem 0 2rem;
 `;
 
 export const InfoWrap = styled.div`
