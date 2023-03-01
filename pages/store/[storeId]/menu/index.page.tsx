@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useGetStore } from "@/api/queries/store";
-import Card from "@/components/shared/Card/Card";
+import MenuCard from "@/components/shared/MenuCard/MenuCard";
 import Tab from "@/components/shared/Tab/Tab";
 import StoreHero from "@/components/store/StoreHero/StoreHero";
 import { storeTab } from "@/constants/tabs";
 
 import { menuList } from "@/mocks/mockData/menuList";
 import * as S from "./menu.styled";
+
+const MENU_PAGE = "menuPage";
 
 function MenuPage() {
   const { data, isLoading, isError } = useGetStore({ storeId: 1 });
@@ -23,7 +25,7 @@ function MenuPage() {
       <S.ListWrap>
         {menuList.menus.map(menu => (
           <Link key={menu.id} href={`${asPath}/${menu.id}`}>
-            <Card menu={menu} />
+            <MenuCard menu={menu} option={MENU_PAGE} />
           </Link>
         ))}
       </S.ListWrap>

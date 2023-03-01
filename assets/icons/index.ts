@@ -29,3 +29,4 @@ export { default as Search } from "./search.svg";
 export { default as Share } from "./share.svg";
 export { default as Store } from "./store.svg";
 export { default as User } from "./user.svg";
+export { default as Delete } from "./delete.svg";
