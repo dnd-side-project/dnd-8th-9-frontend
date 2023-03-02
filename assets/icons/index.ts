@@ -6,6 +6,7 @@ export { default as ArrowRight } from "./arrow-right.svg";
 export { default as ArrowUp } from "./arrow-up.svg";
 export { default as BookmarkSelected } from "./bookmark-selected.svg";
 export { default as Bookmark } from "./bookmark.svg";
+export { default as Check } from "./check.svg";
 export { default as Delivery } from "./delivery.svg";
 export { default as Ellipsis } from "./ellipsis.svg";
 export { default as Heart } from "./heart.svg";
