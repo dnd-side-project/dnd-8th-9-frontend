@@ -124,6 +124,13 @@ export const NAVIGATION_HEADER: INavigationHeader = {
     icon: false,
     bgColor: "transparent",
   },
+
+  [ROUTES.LOGIN_PAGE]: {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
+  },
   "/store/[storeId]": {
     title: "",
     back: false,
