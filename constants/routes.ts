@@ -40,4 +40,6 @@ export const ROUTES = {
   PROFILE_NOTICE_PAGE: "/profile/notice",
 
   REVIEW_WRITE_PAGE: "/review",
+
+  LOGIN_PAGE: "/login",
 };
