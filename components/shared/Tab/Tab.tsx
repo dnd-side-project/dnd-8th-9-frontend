@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { SerializedStyles, Theme } from "@emotion/react";
+import useFilterStore from "@/store/filter";
 import { tab, tabType } from "./Tab.styled";
 
+type TFilterTab = "카테고리" | "가격" | "주문플랫폼" | "수령방법";
 export interface ITabItem {
-  label: string;
+  label: TFilterTab | string;
   link: string;
 }
 
@@ -49,11 +51,17 @@ const generatePath = (type: TTarget, asPath: string): string => {
 
 function Tab({ menuList, type, cssProp, target, className }: IProp) {
   const [currentMenu, setCurrentMenu] = useState(menuList[0].label);
+  const { changeCurrentFilterTab } = useFilterStore();
   const { asPath } = useRouter();
 
   const path = generatePath(target, asPath);
 
   const handleClick = (menu: string) => {
+    setCurrentMenu(menu);
+  };
+
+  const handleFilterTab = (menu: TFilterTab) => {
+    changeCurrentFilterTab(menu);
     setCurrentMenu(menu);
   };
 
@@ -65,15 +73,19 @@ function Tab({ menuList, type, cssProp, target, className }: IProp) {
           role="presentation"
           className={menu.label === currentMenu ? "isSelected" : ""}
         >
-          <Link
-            role="tab"
-            tabIndex={0}
-            aria-selected={currentMenu === menu.label}
-            href={`${path}${menu.link}`}
-            onClick={() => handleClick(menu.label)}
-          >
-            {menu.label}
-          </Link>
+          {target === "filterTab" ? (
+            <button onClick={() => handleFilterTab(menu.label as TFilterTab)}>{menu.label}</button>
+          ) : (
+            <Link
+              role="tab"
+              tabIndex={0}
+              aria-selected={currentMenu === menu.label}
+              href={`${path}${menu.link}`}
+              onClick={() => handleClick(menu.label)}
+            >
+              {menu.label}
+            </Link>
+          )}
         </li>
       ))}
     </ul>

@@ -50,6 +50,17 @@ export const tab = ({ colors, fontSizes }: Theme) => css`
       font-weight: 700;
       color: var(--selected-color);
       transition: all 0.2s ease-in-out;
+
+      button {
+        color: ${colors.grey[900]};
+        font-weight: 600;
+      }
     }
+  }
+
+  button {
+    font-size: ${fontSizes[14]};
+    font-weight: 500;
+    color: ${colors.grey[700]};
   }
 `;
