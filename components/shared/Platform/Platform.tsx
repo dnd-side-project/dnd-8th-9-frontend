@@ -26,7 +26,7 @@ function Platform({ links }: IProp) {
 
   return (
     <S.PlatformWrap>
-      <Text weight={400} size={13} color={colors.grey[700]}>
+      <Text weight={500} size={13} color={colors.grey[700]}>
         주문방식
       </Text>
       {Object.keys(links).map(link => LINK_ICON[link])}
