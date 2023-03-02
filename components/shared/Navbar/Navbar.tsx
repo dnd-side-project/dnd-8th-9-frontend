@@ -1,32 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
-import { NAVIGATION_HEADER } from "@/constants/navigations";
-import { useScrollPosition } from "@/hooks/useScrollPosition";
+import { INav } from "@/constants/navigation";
 import Icon from "../Icon/Icon";
+import Text from "../Text/Text";
 import * as S from "./Navbar.styled";
 
-const SCROLL_POSITION = 200;
-
-function Navbar() {
+function Navbar(props?: INav) {
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const scrollPosition = useScrollPosition();
-
   const { colors } = useTheme();
   const {
     back: previous,
-    pathname,
     query: { storeId },
+    push,
   } = useRouter();
-
-  const {
-    title,
-    back = true,
-    icon = true,
-    bgColor = colors.white[100],
-    scrollBgColor = "",
-    iconColor = colors.gray[300],
-  } = NAVIGATION_HEADER[pathname];
 
   const previousPage = () => {
     previous();
@@ -41,39 +28,61 @@ function Navbar() {
     console.log("share");
   };
 
+  const search = () => {
+    push("/search");
+  };
+
+  const home = () => {
+    push("/home");
+  };
+
   return (
-    <S.NavbarWrap
-      bgColor={bgColor}
-      isScrolled={scrollPosition > SCROLL_POSITION}
-      scrollBgColor={scrollBgColor}
-    >
-      <button
-        aria-label="previous page"
-        type="button"
-        className="previousButton"
-        onClick={previousPage}
-      >
-        {back && <Icon name="arrowLeft" size="l" color={iconColor} />}
-      </button>
-      <h1>{title === "업체명" && storeId ? storeId : title}</h1>
-      <div className="etcButtons">
-        {icon && (
-          <>
-            <button aria-label="bookmark" type="button" onClick={bookmark}>
-              <Icon
-                name="saveBookmark"
-                size="l"
-                color={isBookmarked ? colors.primary : iconColor}
-                fill={isBookmarked ? colors.primary : "transparent"}
-              />
-            </button>
-            <button aria-label="share" type="button" onClick={share}>
-              <Icon name="share" size="l" color={iconColor} fill={iconColor} />
-            </button>
-          </>
+    <S.NavWrap>
+      <S.NavLeft>
+        {props?.previous && (
+          <button
+            aria-label="previous page"
+            type="button"
+            className="previousButton"
+            onClick={previousPage}
+          >
+            <Icon name="arrowLeft" size="l" color={colors.grey[700]} />
+          </button>
         )}
-      </div>
-    </S.NavbarWrap>
+        {props?.home && (
+          <button aria-label="home" type="button" onClick={home}>
+            <Icon name="homeNav" size="l" color={colors.grey[700]} />
+          </button>
+        )}
+      </S.NavLeft>
+      <S.NavTitle>
+        <Text weight={600} size={16} color={colors.grey[900]}>
+          {props?.text === "업체이름" && storeId ? storeId : props?.text}
+        </Text>
+      </S.NavTitle>
+      <S.NavRight>
+        {props?.bookmark && (
+          <button aria-label="bookmark" type="button" onClick={bookmark}>
+            <Icon
+              name="saveBookmark"
+              size="l"
+              color={isBookmarked ? colors.pink[700] : colors.grey[700]}
+              fill={isBookmarked ? colors.pink[700] : "transparent"}
+            />
+          </button>
+        )}
+        {props?.share && (
+          <button aria-label="share" type="button" onClick={share}>
+            <Icon name="share" size="l" color={colors.grey[700]} />
+          </button>
+        )}
+        {props?.search && (
+          <button aria-label="search" type="button" onClick={search}>
+            <Icon name="search" size="l" color={colors.grey[700]} />
+          </button>
+        )}
+      </S.NavRight>
+    </S.NavWrap>
   );
 }
 

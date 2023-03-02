@@ -1,45 +1,36 @@
 import styled from "@emotion/styled";
 
-export const NavbarWrap = styled.div<{
-  bgColor: string;
-  scrollBgColor: string;
-  isScrolled: boolean;
-}>`
+export const NavWrap = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100%;
   height: 5.6rem;
-  width: inherit;
   padding: 1.6rem;
-  background-color: ${({ bgColor, isScrolled, scrollBgColor }) =>
-    isScrolled && !!scrollBgColor ? scrollBgColor : bgColor};
   position: fixed;
   z-index: 999;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  background-color: ${({ theme }) => theme.colors.grey[100]};
 
   > * {
     display: flex;
     align-items: center;
     width: 33.3%;
   }
+`;
 
-  .previousButton {
-    justify-content: flex-start;
-  }
+export const NavLeft = styled.div`
+  justify-content: flex-start;
+  column-gap: 2.4rem;
+`;
 
-  h1 {
-    justify-content: center;
-    font-weight: 500;
-    font-size: ${({ theme }) => theme.fontSizes[16]};
-    color: ${({ theme }) => theme.colors.black};
-    visibility: ${({ isScrolled, scrollBgColor }) =>
-      isScrolled || !scrollBgColor ? "visible" : "hidden"};
-  }
+export const NavTitle = styled.div`
+  justify-content: center;
+`;
 
-  .etcButtons {
-    justify-content: flex-end;
-    column-gap: 2rem;
-  }
+export const NavRight = styled.div`
+  justify-content: flex-end;
+  column-gap: 2.4rem;
 `;
