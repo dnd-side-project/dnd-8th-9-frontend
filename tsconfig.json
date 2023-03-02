@@ -18,7 +18,8 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "types": ["@emotion/react/types/css-prop"]
+    "types": ["@emotion/react/types/css-prop"],
+    "suppressImplicitAnyIndexErrors": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "mockServiceWorker.js"]
