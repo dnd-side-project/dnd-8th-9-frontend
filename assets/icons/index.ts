@@ -11,6 +11,7 @@ export { default as Close } from "./close.svg";
 export { default as Delivery } from "./delivery.svg";
 export { default as Ellipsis } from "./ellipsis.svg";
 export { default as Heart } from "./heart.svg";
+export { default as HomeNav } from "./home_nav.svg";
 export { default as HomeSelected } from "./home-selected.svg";
 export { default as Home } from "./home.svg";
 export { default as Info } from "./info.svg";

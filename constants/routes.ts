@@ -2,25 +2,19 @@ export const ROUTES = {
   STORE_MENU_LIST_PAGE: "/store/[storeId]/menu",
   STORE_MENU_ITEM_PAGE: "/store/[storeId]/menu/[menuId]",
 
-  // NOTE: all 생각해보자
-  STORE_MENU_ITEM_REVIEWS_PAGE: "/store/[storeId]/menu/[menuId]/all",
-  STORE_REVIEW_PAGE: "/store/[storeId]/review",
+  STORE_REVIEWS_PAGE: "/store/[storeId]/review",
+  STORE_IMAGE_REVIEWS_PAGE: "/store/[storeId]/review/image",
+  STORE_IMAGE_REVIEW_ITEM_PAGE: "/store/[storeId]/review/image/[imageId]",
   STORE_REVIEW_IMAGE_PAGE: "/store/[storeId]/review/[reviewId]/image",
-
-  // NOTE: all 생각해보자
-  STORE_REVIEWS_PAGE: "/store/[storeId]/review/all",
-  STORE_IMAGE_REVIEWS_PAGE: "/store/[storeId]/reviews/images",
-  STORE_IMAGE_REVIEW_ITEM_PAGE: "/store/[storeId]/reviews/images/[imageId]",
-
-  STORE_REVIEWS_FORM: "/store/[storeId]/review/form",
 
   STORE_ORDER_FORM_PAGE: "/store/[storeId]/order",
   STORE_NOTICES_PAGE: "/store/[storeId]/notice",
-  STORE_INFO_PAGE: "/store/[storeId]/info",
 
   HOME_RECOMMENDATION_PAGE: "/home/recommendation",
-  HOME_STORE_PAGE: "/home/stores",
-  HOME_REVIEW_PAGE: "/home/reviews",
+  HOME_STORE_PAGE: "/home/store",
+
+  LOGIN_PAGE: "/login",
+  LOGIN_REDIRECT_PAGE: "/login/redirect",
 
   ONBOARDING_LOCATION_PAGE: "/onboard/location",
   ONBOARDING_CATEGORY_PAGE: "/onboard/category",
@@ -32,16 +26,15 @@ export const ROUTES = {
   MY_BOOKMARK_DESIGN_PAGE: "/bookmark/design",
   MY_BOOKMARK_STORE_PAGE: "/bookmark/store",
 
-  PROFILE_PAGE: "/profile",
-  PROFILE_EDIT_NICKNAME_PAGE: "/profile/edit/nickname",
-  PROFILE_EDIT_ONBOARD_PAGE: "/profile/edit/onboard",
-  PROFILE_EDIT_ONBOARD_LOCATION_PAGE: "/profile/edit/onboard/location",
-  PROFILE_EDIT_ONBOARD_CATEGORY_PAGE: "/profile/edit/onboard/category",
-  PROFILE_REVIEW_PAGE: "/profile/review",
-  PROFILE_SETTINGS_PAGE: "/profile/settings",
-  PROFILE_NOTICE_PAGE: "/profile/notice",
+  MYPAGE: "/mypage",
+  MYPAGE_PROFILE: "/mypage/profile",
+  MYPAGE_ONBOARD: "/mypage/onboard",
+  MYPAGE_ONBOARD_LOCATION: "/mypage/onboard/location",
+  MYPAGE_ONBOARD_CATEGORY: "/mypage/onboard/category",
+  MYPAGE_REVIEW: "/mypage/review",
+  MYPAGE_SETTINGS: "/mypage/settings",
+  MYPAGE_NOTICE: "/mypage/notice",
 
   REVIEW_WRITE_PAGE: "/review",
-
-  LOGIN_PAGE: "/login",
+  STORE_REVIEWS_FORM: "/store/[storeId]/review/form",
 };
