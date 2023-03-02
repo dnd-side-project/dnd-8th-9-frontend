@@ -24,6 +24,7 @@ export const Header = styled.div`
 export const FilterTab = styled(Tab)`
   --selected-color: ${({ theme }) => theme.colors.grey[900]};
   border-bottom: none;
+  height: 4rem;
 
   li.isSelected a {
     color: ${({ theme }) => theme.colors.grey[900]};
