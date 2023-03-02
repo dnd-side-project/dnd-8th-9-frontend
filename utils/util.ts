@@ -14,3 +14,7 @@ export const generatePriceString = (price: number) => {
 export const generateRangePriceString = (minPrice: number, maxPrice: number) => {
   return `기본 ${generatePriceString(minPrice)} ~ ${generatePriceString(maxPrice)}`;
 };
+
+export const numberToRem = (num: number) => {
+  return `${num / 10}rem`;
+};
