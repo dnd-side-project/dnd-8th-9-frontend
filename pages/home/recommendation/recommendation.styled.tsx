@@ -10,7 +10,7 @@ export const StoreWrap = styled.div`
   column-gap: 1.4rem;
   width: 100%;
   overflow-x: scroll;
-  margin-top: 2.4rem;
+  margin: 2.4rem 0 4.8rem;
 
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -20,7 +20,7 @@ export const StoreWrap = styled.div`
 `;
 
 export const ReviewWrap = styled(StoreWrap)`
-  margin-top: 1.6rem;
+  margin: 1.6rem 0 3.2rem;
 `;
 
 export const NoteWrap = styled.div`
@@ -28,7 +28,7 @@ export const NoteWrap = styled.div`
   flex-direction: column;
   text-align: center;
   padding: 1.8rem 0;
-  margin: 3.2rem 0 2.4rem;
+  margin-bottom: 2.4rem;
 
   span {
     line-height: 150%;

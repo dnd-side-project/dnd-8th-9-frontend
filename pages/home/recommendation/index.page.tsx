@@ -28,14 +28,7 @@ function HomeRecommendationPage() {
       />
       <S.ContentWrap>
         <StoreRank />
-        <Text
-          weight={600}
-          size={18}
-          css={css`
-            margin-top: 3.2rem;
-            display: block;
-          `}
-        >
+        <Text weight={600} size={18} as="h2">
           발렌타인데이에 이런 디자인 어때요?
         </Text>
         <S.StoreWrap>
@@ -43,14 +36,7 @@ function HomeRecommendationPage() {
             <MenuDoubleCard key={menu.id} data={menu} size="s" />
           ))}
         </S.StoreWrap>
-        <Text
-          weight={600}
-          size={18}
-          css={css`
-            margin-top: 4.8rem;
-            display: block;
-          `}
-        >
+        <Text weight={600} size={18} as="h2">
           마포구 스토어의 리얼리뷰 확인하기
         </Text>
         <S.ReviewWrap>

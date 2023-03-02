@@ -24,7 +24,7 @@ function StoreRank() {
 
   return (
     <S.Container>
-      <Text size={18} weight={600} color={colors.grey[900]}>
+      <Text size={18} weight={600} color={colors.grey[900]} as="h2">
         마포구 스타일별 BEST 스토어
       </Text>
       <S.ButtonList>
