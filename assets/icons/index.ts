@@ -15,6 +15,7 @@ export { default as Info } from "./info.svg";
 export { default as Instagram } from "./instagram.svg";
 export { default as Kakao } from "./kakao.svg";
 export { default as Like } from "./like.svg";
+export { default as Logo } from "./logo.svg";
 export { default as Map } from "./map.svg";
 export { default as Clap } from "./ms_clap.svg";
 export { default as Speaker } from "./ms_speaker.svg";

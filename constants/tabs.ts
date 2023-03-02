@@ -58,16 +58,12 @@ export const resultTab = [
 
 export const homeTab = [
   {
-    label: "당도추천",
-    link: "/dango",
+    label: "추천",
+    link: "home/recommendation",
   },
   {
-    label: "스토어",
-    link: "/store",
-  },
-  {
-    label: "리얼리뷰",
-    link: "/review",
+    label: "스토어 탐색",
+    link: "home/stores",
   },
 ];
 
@@ -102,5 +98,24 @@ export const gnbTab = [
   {
     label: "profile",
     link: "/profile",
+  },
+];
+
+export const filterTab = [
+  {
+    label: "카테고리",
+    link: "",
+  },
+  {
+    label: "가격",
+    link: "",
+  },
+  {
+    label: "주문플랫폼",
+    link: "",
+  },
+  {
+    label: "수령방법",
+    link: "",
   },
 ];
