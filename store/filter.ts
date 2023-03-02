@@ -21,6 +21,7 @@ interface FilterState {
   selectedFilterOptions: ISelectedOptions;
   appliedFilterOptions: ISelectedOptions;
 
+  applySelectedFilterOptions: () => void;
   toggleFilterModalOpen: () => void;
   changeCurrentFilterTab: (newFilterTab: TFilterTab) => void;
   updateSelectedFilterOptions: (target: TFilterTab, newOption: string) => void;
@@ -44,6 +45,10 @@ const useFilterStore = create(
         수령방법: [],
       },
 
+      applySelectedFilterOptions: () =>
+        set(state => {
+          state.appliedFilterOptions = state.selectedFilterOptions;
+        }),
       updateSelectedFilterOptions: (target: TFilterTab, newOption: string) =>
         set(state => {
           if (target === "가격") {
