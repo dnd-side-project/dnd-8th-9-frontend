@@ -9,6 +9,7 @@ import Tab from "@/components/shared/Tab/Tab";
 import Sort from "@/components/shared/Sort/Sort";
 import FilterModal from "@/components/shared/FilterModal/FilterModal";
 import StoreDoubleCard from "@/components/shared/Card/StoreDoubleCard";
+import FilterBar from "@/components/shared/FilterBar/FilterBar";
 import * as S from "./recommendation/recommendation.styled";
 
 function HomeStoresPage() {
@@ -33,7 +34,7 @@ function HomeStoresPage() {
         `}
       />
       <S.ContentWrap>
-        <button onClick={toggleModal}>필터링</button>
+        <FilterBar />
         <Sort />
         {storeList.map(store => (
           <StoreDoubleCard key={store.id} data={store} />
