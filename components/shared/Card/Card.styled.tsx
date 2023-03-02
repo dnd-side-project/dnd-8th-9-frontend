@@ -1,4 +1,4 @@
-import { css, SerializedStyles } from "@emotion/react";
+import { css, SerializedStyles, Theme } from "@emotion/react";
 import styled from "@emotion/styled";
 import { numberToRem } from "@/utils/util";
 import Text from "../Text/Text";
@@ -181,4 +181,14 @@ export const ContentWrap = styled.div<{ type: IContentType }>`
   display: flex;
   flex-direction: column;
   ${({ type }) => variantCSS[type]};
+`;
+
+export const storeDoubleCss = ({ colors }: Theme) => css`
+  border: 1px solid ${colors.grey[300]};
+  border-radius: 0.8rem;
+  margin-bottom: 1.6rem;
+
+  ${ContentWrap} {
+    padding: 0 1.6rem 1.6rem;
+  }
 `;
