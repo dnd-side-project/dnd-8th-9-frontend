@@ -9,11 +9,22 @@ export interface IProp {
   children: string | JSX.Element | JSX.Element[];
   shape: "round" | "square";
   cssProp?: SerializedStyles | (({ colors }: Theme) => SerializedStyles);
+  className?: string;
 }
 
-function Button({ type, label, disabled = false, onClick, children, shape, cssProp }: IProp) {
+function Button({
+  type,
+  label,
+  disabled = false,
+  onClick,
+  children,
+  shape,
+  cssProp,
+  className,
+}: IProp) {
   return (
     <button
+      className={className}
       type={type}
       css={[button, buttonShape[shape], cssProp]}
       aria-label={label}
