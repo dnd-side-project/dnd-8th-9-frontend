@@ -15,6 +15,7 @@ export const ICONS: IIcon = {
   delivery: <I.Delivery />,
   ellipsis: <I.Ellipsis />,
   heart: <I.Heart />,
+  homeNav: <I.HomeNav />,
   home: <I.Home />,
   info: <I.Info />,
   kakao: <I.Kakao />,
