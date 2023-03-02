@@ -1,6 +1,9 @@
 import Button from "@/components/shared/Button/Button";
-import { css, Theme } from "@emotion/react";
 import styled from "@emotion/styled";
+
+export const Container = styled.div`
+  margin-bottom: 3.2rem;
+`;
 
 export const ButtonList = styled.div`
   display: flex;

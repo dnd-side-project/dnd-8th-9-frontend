@@ -23,7 +23,7 @@ function StoreRank() {
   };
 
   return (
-    <div>
+    <S.Container>
       <Text size={18} weight={600} color={colors.grey[900]}>
         마포구 스타일별 BEST 스토어
       </Text>
@@ -56,7 +56,7 @@ function StoreRank() {
           ))}
         </Swiper>
       </S.SwiperWrap>
-    </div>
+    </S.Container>
   );
 }
 
