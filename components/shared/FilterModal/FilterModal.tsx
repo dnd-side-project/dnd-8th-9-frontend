@@ -32,7 +32,13 @@ const FILTER_TAB_MENU: IFilterTabMenu = {
 
 function FilterModal() {
   const { colors } = useTheme();
-  const { filterModalOpen, toggleFilterModalOpen, currentFilterTab } = useFilterStore();
+  const { filterModalOpen, toggleFilterModalOpen, currentFilterTab, applySelectedFilterOptions } =
+    useFilterStore();
+
+  const handleSubmit = () => {
+    applySelectedFilterOptions();
+    toggleFilterModalOpen();
+  };
 
   return (
     <S.CustomSheet isOpen={filterModalOpen} onClose={toggleFilterModalOpen}>
@@ -66,7 +72,12 @@ function FilterModal() {
             <S.ClearButton type="reset" label="reset filter" shape="square">
               초기화
             </S.ClearButton>
-            <S.FilterButton type="submit" label="apply filter" shape="square">
+            <S.FilterButton
+              type="submit"
+              label="apply filter"
+              shape="square"
+              onClick={handleSubmit}
+            >
               필터 적용
             </S.FilterButton>
           </S.ButtonWrap>
