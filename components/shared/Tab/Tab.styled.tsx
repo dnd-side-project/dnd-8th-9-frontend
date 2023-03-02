@@ -4,6 +4,7 @@ export const tabType = {
   swipeable: css`
     width: 100%;
     overflow-x: scroll;
+
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     &::-webkit-scrollbar {
@@ -30,7 +31,7 @@ export const tab = ({ colors, fontSizes }: Theme) => css`
   height: 4.8rem;
   display: flex;
   align-items: center;
-  color: ${colors.gray[200]};
+  color: var(--color);
   font-size: ${fontSizes[16]};
   font-weight: 500;
 
@@ -45,9 +46,9 @@ export const tab = ({ colors, fontSizes }: Theme) => css`
   li {
     border-bottom: 2px solid transparent;
     &.isSelected {
-      border-bottom: 2px solid ${colors.primary};
+      border-bottom: 2px solid var(--selected-color);
       font-weight: 700;
-      color: ${colors.primary};
+      color: var(--selected-color);
       transition: all 0.2s ease-in-out;
     }
   }
