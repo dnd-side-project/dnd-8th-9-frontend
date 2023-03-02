@@ -11,6 +11,7 @@ export const ICONS: IIcon = {
   arrowUp: <I.ArrowUp />,
   bookmark: <I.Bookmark />,
   check: <I.Check />,
+  close: <I.Close />,
   delivery: <I.Delivery />,
   ellipsis: <I.Ellipsis />,
   heart: <I.Heart />,
