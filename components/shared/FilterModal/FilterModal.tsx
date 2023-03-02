@@ -30,11 +30,9 @@ const FILTER_TAB_MENU: IFilterTabMenu = {
   수령방법: { type: "radio", options: ["메장에서 픽업", "택배로 배송"] },
 };
 
-const currentTab = "가격";
-
 function FilterModal() {
   const { colors } = useTheme();
-  const { filterModalOpen, toggleFilterModalOpen } = useFilterStore();
+  const { filterModalOpen, toggleFilterModalOpen, currentFilterTab } = useFilterStore();
 
   return (
     <S.CustomSheet isOpen={filterModalOpen} onClose={toggleFilterModalOpen}>
@@ -53,10 +51,10 @@ function FilterModal() {
               --size: ${filterTab.length};
             `}
           />
-          {FILTER_TAB_MENU[currentTab].type === "checkbox" ? (
-            <CheckboxGroup options={FILTER_TAB_MENU[currentTab].options} />
+          {FILTER_TAB_MENU[currentFilterTab].type === "checkbox" ? (
+            <CheckboxGroup options={FILTER_TAB_MENU[currentFilterTab].options} />
           ) : (
-            <RadioGroup options={FILTER_TAB_MENU[currentTab].options} />
+            <RadioGroup options={FILTER_TAB_MENU[currentFilterTab].options} />
           )}
           <S.ButtonWrap>
             <S.ClearButton type="reset" label="reset filter" shape="square">
