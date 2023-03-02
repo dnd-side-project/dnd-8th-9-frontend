@@ -22,6 +22,7 @@ interface FilterState {
   selectedFilterOptions: ISelectedOptions;
   appliedFilterOptions: ISelectedOptions;
 
+  clearSelectedFilterSection: (target: TFilterTab) => void;
   resetSelectedFilterOptions: () => void;
   applySelectedFilterOptions: () => void;
   toggleFilterModalOpen: () => void;
@@ -47,6 +48,16 @@ const useFilterStore = create(
         수령방법: [],
       },
 
+      clearSelectedFilterSection: (target: TFilterTab) =>
+        set(state => {
+          if (target === "가격") {
+            state.appliedFilterOptions[target] = "";
+            state.selectedFilterOptions[target] = "";
+          } else {
+            state.appliedFilterOptions[target] = [];
+            state.selectedFilterOptions[target] = [];
+          }
+        }),
       resetSelectedFilterOptions: () =>
         set(state => {
           const initial = { 카테고리: [], 가격: "", 주문플랫폼: [], 수령방법: [] };

@@ -4,28 +4,31 @@ import Icon from "../Icon/Icon";
 import Text from "../Text/Text";
 import * as S from "./FilterBar.styled";
 
-const FILTER_TAB_MENU = ["카테고리", "가격", "주문플랫폼", "수령방법"];
+type TFilterTab = "카테고리" | "가격" | "주문플랫폼" | "수령방법";
+
+const FILTER_TAB_MENU: TFilterTab[] = ["카테고리", "가격", "주문플랫폼", "수령방법"];
 
 function FilterBar() {
   const { colors } = useTheme();
-  const { toggleFilterModalOpen, appliedFilterOptions } = useFilterStore();
+  const { toggleFilterModalOpen, appliedFilterOptions, clearSelectedFilterSection } =
+    useFilterStore();
+
+  console.log("filter bar render");
 
   return (
     <S.Wrap>
       {FILTER_TAB_MENU.map(menu =>
         appliedFilterOptions[menu].length > 0 ? (
-          <S.SelectedFilterButton
-            key={menu}
-            type="button"
-            label={menu}
-            shape="round"
-            onClick={toggleFilterModalOpen}
-          >
-            <Text size={14} weight={500} color={colors.blue[700]}>
-              {`${menu} `}
-              {menu === "가격" ? appliedFilterOptions[menu] : appliedFilterOptions[menu].length}
-            </Text>
-            <Icon name="close" color={colors.grey[800]} size="xs" />
+          <S.SelectedFilterButton key={menu} type="button" label={menu} shape="round">
+            <button onClick={toggleFilterModalOpen}>
+              <Text size={14} weight={500} color={colors.blue[700]}>
+                {`${menu} `}
+                {menu === "가격" ? appliedFilterOptions[menu] : appliedFilterOptions[menu].length}
+              </Text>
+            </button>
+            <button onClick={() => clearSelectedFilterSection(menu)}>
+              <Icon name="close" color={colors.grey[800]} size="xs" />
+            </button>
           </S.SelectedFilterButton>
         ) : (
           <S.FilterButton
