@@ -1,5 +1,6 @@
 import Sheet from "react-modal-sheet";
 import styled from "@emotion/styled";
+import Button from "../Button/Button";
 import Tab from "../Tab/Tab";
 
 export const CustomSheet = styled(Sheet)`
@@ -32,4 +33,25 @@ export const FilterTab = styled(Tab)`
     font-size: ${({ theme }) => theme.fontSizes[14]};
     color: ${({ theme }) => theme.colors.grey[700]};
   }
+`;
+
+export const ButtonWrap = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 0.6rem;
+  height: 4.8rem;
+  padding: 0 0.3rem;
+`;
+
+export const ClearButton = styled(Button)`
+  color: ${({ theme }) => theme.colors.grey[700]};
+  width: 20%;
+  padding: 1.45rem 1rem;
+`;
+
+export const FilterButton = styled(Button)`
+  background-color: ${({ theme }) => theme.colors.pink[700]};
+  color: ${({ theme }) => theme.colors.grey[100]};
+  width: 90%;
+  border-radius: 0.8rem;
 `;

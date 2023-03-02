@@ -61,6 +61,14 @@ function FilterModal({ isOpen, toggleModal }: IProp) {
           ) : (
             <RadioGroup options={FILTER_TAB_MENU[currentTab].options} />
           )}
+          <S.ButtonWrap>
+            <S.ClearButton type="reset" label="reset filter" shape="square">
+              초기화
+            </S.ClearButton>
+            <S.FilterButton type="submit" label="apply filter" shape="square">
+              필터 적용
+            </S.FilterButton>
+          </S.ButtonWrap>
         </Sheet.Content>
       </Sheet.Container>
       <Sheet.Backdrop />
