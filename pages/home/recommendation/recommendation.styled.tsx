@@ -11,11 +11,14 @@ export const StoreWrap = styled.div`
   width: 100%;
   overflow-x: scroll;
   margin-top: 2.4rem;
-  margin-bottom: 1.5rem;
 
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }
+`;
+
+export const ReviewWrap = styled(StoreWrap)`
+  margin-top: 1.6rem;
 `;

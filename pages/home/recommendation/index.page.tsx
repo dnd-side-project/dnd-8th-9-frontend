@@ -1,11 +1,13 @@
 import { css, useTheme } from "@emotion/react";
 import { homeTab } from "@/constants/tabs";
 import { randomMenus } from "@/mocks/mockData/randomMenuList";
+import { randomReviews } from "@/mocks/mockData/randomReviewList";
 import HomeHero from "@/components/home/HomeHero/HomeHero";
 import Tab from "@/components/shared/Tab/Tab";
 import StoreRank from "@/components/home/StoreRank/StoreRank";
 import Text from "@/components/shared/Text/Text";
 import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
+import ReviewDoubleCard from "@/components/shared/Card/ReviewDoubleCard";
 import * as S from "./recommendation.styled";
 
 function HomeRecommendationPage() {
@@ -41,6 +43,21 @@ function HomeRecommendationPage() {
             <MenuDoubleCard key={menu.id} data={menu} size="s" />
           ))}
         </S.StoreWrap>
+        <Text
+          weight={600}
+          size={18}
+          css={css`
+            margin-top: 4.8rem;
+            display: block;
+          `}
+        >
+          마포구 스토어의 리얼리뷰 확인하기
+        </Text>
+        <S.ReviewWrap>
+          {randomReviews.map(review => (
+            <ReviewDoubleCard key={review.id} data={review} />
+          ))}
+        </S.ReviewWrap>
       </S.ContentWrap>
     </>
   );
