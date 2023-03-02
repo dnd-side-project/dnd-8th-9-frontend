@@ -7,6 +7,7 @@ export const SortContainer = styled.div`
   height: 2.8rem;
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 1.6rem;
 `;
 
 export const SortButton = styled(Button)`
