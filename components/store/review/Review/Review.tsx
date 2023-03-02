@@ -21,13 +21,25 @@ const VIP = "단골";
 export default function Review({ review }: IProp) {
   const [isOpened, setIsOpened] = useState(false);
   const { asPath } = useRouter();
+  const isAllPage = asPath.split("/").slice(-1)[0] === "all";
+  const currentPath = isAllPage
+    ? asPath
+        .split("/")
+        .slice(0, asPath.split("/").length - 1)
+        .join("/")
+    : asPath;
 
   const handleIsOpened = () => {
     setIsOpened(() => !isOpened);
   };
 
   return (
-    <Link href={`${asPath}/${review.id}/image`}>
+    <Link
+      href={{
+        pathname: `${currentPath}/${review.id}/image`,
+        query: { images: JSON.stringify(review.reviewImages) },
+      }}
+    >
       <S.Container>
         <S.Header>
           <S.HeaderLeft>

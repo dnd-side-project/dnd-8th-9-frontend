@@ -36,8 +36,9 @@ export const NAVIGATION_HEADER: INavigationHeader = {
   },
   [ROUTES.STORE_REVIEW_IMAGE_PAGE]: {
     title: "",
-    back: false,
-    icon: false,
+    back: true,
+    icon: true,
+    bgColor: "black",
     scrollBgColor: "",
   },
   [ROUTES.STORE_REVIEWS_PAGE]: {
