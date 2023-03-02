@@ -24,6 +24,10 @@ const style = css`
     padding: 0;
   }
 
+  strong {
+    font-weight: inherit;
+  }
+
   * {
     margin: 0;
     padding: 0;
