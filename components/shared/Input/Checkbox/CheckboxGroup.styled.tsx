@@ -17,6 +17,7 @@ export const Wrap = styled.div`
 
   label {
     font-weight: 500;
+    font-size: ${({ theme }) => theme.fontSizes[14]};
     color: ${({ theme }) => theme.colors.grey[900]};
   }
 `;
