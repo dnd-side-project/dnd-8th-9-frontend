@@ -78,6 +78,21 @@ export const NAVIGATION_HEADER: INavigationHeader = {
     bgColor: "transparent",
   },
 
+  [ROUTES.HOME_STORE_PAGE]: {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
+  },
+
+  [ROUTES.HOME_REVIEW_PAGE]: {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
+    scrollBgColor: "",
+  },
+
   // NOTE: 온보딩 페이지
   [ROUTES.ONBOARDING_LOCATION_PAGE]: {
     title: "",
