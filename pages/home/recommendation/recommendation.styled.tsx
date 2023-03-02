@@ -22,3 +22,15 @@ export const StoreWrap = styled.div`
 export const ReviewWrap = styled(StoreWrap)`
   margin-top: 1.6rem;
 `;
+
+export const NoteWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 1.8rem 0;
+  margin: 3.2rem 0 2.4rem;
+
+  span {
+    line-height: 150%;
+  }
+`;

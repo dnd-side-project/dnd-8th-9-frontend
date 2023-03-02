@@ -58,6 +58,14 @@ function HomeRecommendationPage() {
             <ReviewDoubleCard key={review.id} data={review} />
           ))}
         </S.ReviewWrap>
+        <S.NoteWrap>
+          <Text size={12} color={colors.grey[600]}>
+            원하는 케이크를 찾지 못하셨나요?
+          </Text>
+          <Text size={12} color={colors.grey[600]}>
+            스토어 탭에서 필터링을 통해 찾아보세요!
+          </Text>
+        </S.NoteWrap>
       </S.ContentWrap>
     </>
   );
