@@ -96,8 +96,8 @@ export const gnbTab = [
     link: "/bookmark",
   },
   {
-    label: "profile",
-    link: "/profile",
+    label: "mypage",
+    link: "/mypage",
   },
 ];
 
