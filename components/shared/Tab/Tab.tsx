@@ -9,13 +9,20 @@ export interface ITabItem {
   link: string;
 }
 
-export type TTarget = "homeTab" | "resultTab" | "categoryTab" | "storeMenuTab" | "storeTab";
+export type TTarget =
+  | "homeTab"
+  | "resultTab"
+  | "categoryTab"
+  | "storeMenuTab"
+  | "storeTab"
+  | "filterTab";
 
 export interface IProp {
   menuList: ITabItem[];
   type: "swipeable" | "fixed";
   target: TTarget;
   cssProp?: SerializedStyles | (({ colors, fontSizes }: Theme) => SerializedStyles);
+  className?: string;
 }
 
 const generatePath = (type: TTarget, asPath: string): string => {
@@ -31,13 +38,16 @@ const generatePath = (type: TTarget, asPath: string): string => {
       }
       return path ? path[0] : asPath;
       break;
+    case "filterTab":
+      return asPath;
+      break;
     default:
       return "/";
       break;
   }
 };
 
-function Tab({ menuList, type, cssProp, target }: IProp) {
+function Tab({ menuList, type, cssProp, target, className }: IProp) {
   const [currentMenu, setCurrentMenu] = useState(menuList[0].label);
   const { asPath } = useRouter();
 
@@ -48,7 +58,7 @@ function Tab({ menuList, type, cssProp, target }: IProp) {
   };
 
   return (
-    <ul role="tablist" css={[tab, tabType[type], cssProp]}>
+    <ul role="tablist" css={[tab, tabType[type], cssProp]} className={className}>
       {menuList.map(menu => (
         <li
           key={menu.label}
