@@ -24,3 +24,8 @@ export const FilterButton = styled(Button)`
   column-gap: 0.4rem;
   flex-shrink: 0;
 `;
+
+export const SelectedFilterButton = styled(FilterButton)`
+  border: 1px solid ${({ theme }) => theme.colors.blue[700]};
+  background-color: ${({ theme }) => theme.colors.blue[100]};
+`;
