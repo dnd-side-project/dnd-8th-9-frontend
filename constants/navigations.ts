@@ -54,6 +54,13 @@ export const NAVIGATION_HEADER: INavigationHeader = {
     bgColor: "black",
     iconColor: "white",
   },
+  [ROUTES.STORE_REVIEWS_FORM]: {
+    title: "",
+    back: false,
+    icon: false,
+    bgColor: "transparent",
+    scrollBgColor: "",
+  },
   [ROUTES.STORE_ORDER_FORM_PAGE]: {
     title: "업체명",
     bgColor: "transparent",

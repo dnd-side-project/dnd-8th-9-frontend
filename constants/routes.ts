@@ -12,6 +12,8 @@ export const ROUTES = {
   STORE_IMAGE_REVIEWS_PAGE: "/store/[storeId]/reviews/images",
   STORE_IMAGE_REVIEW_ITEM_PAGE: "/store/[storeId]/reviews/images/[imageId]",
 
+  STORE_REVIEWS_FORM: "/store/[storeId]/review/form",
+
   STORE_ORDER_FORM_PAGE: "/store/[storeId]/order",
   STORE_NOTICES_PAGE: "/store/[storeId]/notice",
   STORE_INFO_PAGE: "/store/[storeId]/info",
