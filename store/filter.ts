@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable no-param-reassign */
@@ -21,6 +22,7 @@ interface FilterState {
   selectedFilterOptions: ISelectedOptions;
   appliedFilterOptions: ISelectedOptions;
 
+  resetSelectedFilterOptions: () => void;
   applySelectedFilterOptions: () => void;
   toggleFilterModalOpen: () => void;
   changeCurrentFilterTab: (newFilterTab: TFilterTab) => void;
@@ -45,6 +47,11 @@ const useFilterStore = create(
         수령방법: [],
       },
 
+      resetSelectedFilterOptions: () =>
+        set(state => {
+          const initial = { 카테고리: [], 가격: "", 주문플랫폼: [], 수령방법: [] };
+          state.selectedFilterOptions = initial;
+        }),
       applySelectedFilterOptions: () =>
         set(state => {
           state.appliedFilterOptions = state.selectedFilterOptions;

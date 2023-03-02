@@ -32,8 +32,13 @@ const FILTER_TAB_MENU: IFilterTabMenu = {
 
 function FilterModal() {
   const { colors } = useTheme();
-  const { filterModalOpen, toggleFilterModalOpen, currentFilterTab, applySelectedFilterOptions } =
-    useFilterStore();
+  const {
+    filterModalOpen,
+    toggleFilterModalOpen,
+    currentFilterTab,
+    applySelectedFilterOptions,
+    resetSelectedFilterOptions,
+  } = useFilterStore();
 
   const handleSubmit = () => {
     applySelectedFilterOptions();
@@ -69,7 +74,12 @@ function FilterModal() {
             />
           )}
           <S.ButtonWrap>
-            <S.ClearButton type="reset" label="reset filter" shape="square">
+            <S.ClearButton
+              type="reset"
+              label="reset filter"
+              shape="square"
+              onClick={resetSelectedFilterOptions}
+            >
               초기화
             </S.ClearButton>
             <S.FilterButton
