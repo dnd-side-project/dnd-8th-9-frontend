@@ -77,10 +77,11 @@ export const Review = styled.div`
 `;
 
 export const ReviewImageWrap = styled(ImageWrap)`
-  width: 100%;
-  height: 23.2rem;
+  width: 20rem;
+  height: 14.8rem;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  aspect-ratio: auto;
 `;
 
 export const ReviewContent = styled.div`
