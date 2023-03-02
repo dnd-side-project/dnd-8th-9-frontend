@@ -5,7 +5,7 @@ export const ROUTES = {
   // NOTE: all 생각해보자
   STORE_MENU_ITEM_REVIEWS_PAGE: "/store/[storeId]/menu/[menuId]/all",
   STORE_REVIEW_PAGE: "/store/[storeId]/review",
-  STORE_REVIEW_IMAGE_PAGE: "/store/[storeId]/reviews/[reviewId]/image",
+  STORE_REVIEW_IMAGE_PAGE: "/store/[storeId]/review/[reviewId]/image",
 
   // NOTE: all 생각해보자
   STORE_REVIEWS_PAGE: "/store/[storeId]/review/all",
