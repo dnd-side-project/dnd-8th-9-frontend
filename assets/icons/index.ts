@@ -24,6 +24,7 @@ export { default as Warning } from "./ms_warning.svg";
 export { default as Pencil } from "./pencil.svg";
 export { default as ProfileSelected } from "./profile-selected.svg";
 export { default as Profile } from "./profile.svg";
+export { default as Quote } from "./quote.svg";
 export { default as SaveBookmark } from "./save_bookmark.svg";
 export { default as Search } from "./search.svg";
 export { default as Share } from "./share.svg";
