@@ -5,12 +5,14 @@ export const ROUTES = {
   // NOTE: all 생각해보자
   STORE_MENU_ITEM_REVIEWS_PAGE: "/store/[storeId]/menu/[menuId]/all",
   STORE_REVIEW_PAGE: "/store/[storeId]/review",
-  STORE_REVIEW_IMAGE_PAGE: "/store/[storeId]/reviews/[reviewId]/image",
+  STORE_REVIEW_IMAGE_PAGE: "/store/[storeId]/review/[reviewId]/image",
 
   // NOTE: all 생각해보자
   STORE_REVIEWS_PAGE: "/store/[storeId]/review/all",
   STORE_IMAGE_REVIEWS_PAGE: "/store/[storeId]/reviews/images",
   STORE_IMAGE_REVIEW_ITEM_PAGE: "/store/[storeId]/reviews/images/[imageId]",
+
+  STORE_REVIEWS_FORM: "/store/[storeId]/review/form",
 
   STORE_ORDER_FORM_PAGE: "/store/[storeId]/order",
   STORE_NOTICES_PAGE: "/store/[storeId]/notice",
