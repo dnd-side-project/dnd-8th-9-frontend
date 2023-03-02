@@ -27,7 +27,7 @@ function HomeHero() {
         </S.HeroTitle>
         <S.StoreWrap>
           {randomMenus.menus.map(menu => (
-            <MenuDoubleCard key={menu.id} data={menu} />
+            <MenuDoubleCard size="s" key={menu.id} data={menu} />
           ))}
         </S.StoreWrap>
       </S.HeroContainer>

@@ -1,3 +1,5 @@
+import { IStoreItem } from "@/api/types/storeList";
+
 export const getOverallComment = (rating: number) => {
   if (rating >= 80) return "매우 높아요!";
   if (rating >= 60) return "훌륭해요!";
@@ -17,4 +19,14 @@ export const generateRangePriceString = (minPrice: number, maxPrice: number) => 
 
 export const numberToRem = (num: number) => {
   return `${num / 10}rem`;
+};
+
+export const chunkArray = (data: IStoreItem[], size = 3) => {
+  const arr = [];
+
+  for (let i = 0; i < data.length; i += size) {
+    arr.push(data.slice(i, i + size));
+  }
+
+  return arr;
 };
