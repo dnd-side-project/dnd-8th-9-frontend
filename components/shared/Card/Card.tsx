@@ -16,7 +16,7 @@ interface IProp {
   canPickup?: boolean;
 }
 
-function DangdoCard({
+function Card({
   image,
   dir,
   gap,
@@ -51,4 +51,4 @@ function DangdoCard({
   );
 }
 
-export default DangdoCard;
+export default Card;
