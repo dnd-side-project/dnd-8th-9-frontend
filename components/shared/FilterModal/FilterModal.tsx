@@ -1,15 +1,11 @@
 import Sheet from "react-modal-sheet";
 import { css, useTheme } from "@emotion/react";
 import { filterTab } from "@/constants/tabs";
+import useFilterStore from "@/store/filter";
 import CheckboxGroup from "../Input/Checkbox/CheckboxGroup";
 import RadioGroup from "../Input/Radio/RadioGroup";
 import Text from "../Text/Text";
 import * as S from "./FilterModal.styled";
-
-interface IProp {
-  isOpen: boolean;
-  toggleModal: () => void;
-}
 
 interface IFilterTabMenu {
   [key: string]: {
@@ -36,11 +32,12 @@ const FILTER_TAB_MENU: IFilterTabMenu = {
 
 const currentTab = "가격";
 
-function FilterModal({ isOpen, toggleModal }: IProp) {
+function FilterModal() {
   const { colors } = useTheme();
+  const { filterModalOpen, toggleFilterModalOpen } = useFilterStore();
 
   return (
-    <S.CustomSheet isOpen={isOpen} onClose={toggleModal}>
+    <S.CustomSheet isOpen={filterModalOpen} onClose={toggleFilterModalOpen}>
       <Sheet.Container>
         <Sheet.Content>
           <S.Header>

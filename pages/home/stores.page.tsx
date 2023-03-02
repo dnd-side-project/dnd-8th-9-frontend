@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import { css, useTheme } from "@emotion/react";
-
 import { storeList } from "@/mocks/mockData/storeList";
 import { homeTab } from "@/constants/tabs";
 
@@ -14,11 +12,6 @@ import * as S from "./recommendation/recommendation.styled";
 
 function HomeStoresPage() {
   const { colors } = useTheme();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleModal = () => {
-    setIsOpen(prev => !prev);
-  };
 
   return (
     <div>
@@ -40,7 +33,7 @@ function HomeStoresPage() {
           <StoreDoubleCard key={store.id} data={store} />
         ))}
       </S.ContentWrap>
-      <FilterModal isOpen={isOpen} toggleModal={toggleModal} />
+      <FilterModal />
     </div>
   );
 }

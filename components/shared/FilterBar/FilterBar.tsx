@@ -1,3 +1,4 @@
+import useFilterStore from "@/store/filter";
 import { useTheme } from "@emotion/react";
 import Icon from "../Icon/Icon";
 import Text from "../Text/Text";
@@ -7,11 +8,18 @@ const FILTER_TAB_MENU = ["카테고리", "가격", "주문플랫폼", "수령방
 
 function FilterBar() {
   const { colors } = useTheme();
+  const { toggleFilterModalOpen } = useFilterStore();
 
   return (
     <S.Wrap>
       {FILTER_TAB_MENU.map(menu => (
-        <S.FilterButton key={menu} type="button" label={menu} shape="round">
+        <S.FilterButton
+          key={menu}
+          type="button"
+          label={menu}
+          shape="round"
+          onClick={toggleFilterModalOpen}
+        >
           <Text size={14} weight={500} color={colors.grey[800]}>
             {menu}
           </Text>
