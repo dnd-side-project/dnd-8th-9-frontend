@@ -10,17 +10,29 @@ const FILTER_TAB_MENU: TFilterTab[] = ["카테고리", "가격", "주문플랫�
 
 function FilterBar() {
   const { colors } = useTheme();
-  const { toggleFilterModalOpen, appliedFilterOptions, clearSelectedFilterSection } =
-    useFilterStore();
+  const {
+    toggleFilterModalOpen,
+    appliedFilterOptions,
+    clearSelectedFilterSection,
+    changeCurrentFilterTab,
+  } = useFilterStore();
 
-  console.log("filter bar render");
+  const handleSelectedButtonClick = (menu: TFilterTab) => {
+    toggleFilterModalOpen();
+    changeCurrentFilterTab(menu);
+  };
+
+  const handleButtonClick = (menu: TFilterTab) => {
+    changeCurrentFilterTab(menu);
+    toggleFilterModalOpen();
+  };
 
   return (
     <S.Wrap>
       {FILTER_TAB_MENU.map(menu =>
         appliedFilterOptions[menu].length > 0 ? (
           <S.SelectedFilterButton key={menu} type="button" label={menu} shape="round">
-            <button onClick={toggleFilterModalOpen}>
+            <button onClick={() => handleSelectedButtonClick(menu)}>
               <Text size={14} weight={500} color={colors.blue[700]}>
                 {`${menu} `}
                 {menu === "가격" ? appliedFilterOptions[menu] : appliedFilterOptions[menu].length}
@@ -36,7 +48,7 @@ function FilterBar() {
             type="button"
             label={menu}
             shape="round"
-            onClick={toggleFilterModalOpen}
+            onClick={() => handleButtonClick(menu)}
           >
             <Text size={14} weight={500} color={colors.grey[800]}>
               {menu}

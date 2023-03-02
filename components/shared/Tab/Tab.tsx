@@ -51,7 +51,7 @@ const generatePath = (type: TTarget, asPath: string): string => {
 
 function Tab({ menuList, type, cssProp, target, className }: IProp) {
   const [currentMenu, setCurrentMenu] = useState(menuList[0].label);
-  const { changeCurrentFilterTab } = useFilterStore();
+  const { changeCurrentFilterTab, currentFilterTab } = useFilterStore();
   const { asPath } = useRouter();
 
   const path = generatePath(target, asPath);
@@ -67,15 +67,21 @@ function Tab({ menuList, type, cssProp, target, className }: IProp) {
 
   return (
     <ul role="tablist" css={[tab, tabType[type], cssProp]} className={className}>
-      {menuList.map(menu => (
-        <li
-          key={menu.label}
-          role="presentation"
-          className={menu.label === currentMenu ? "isSelected" : ""}
-        >
-          {target === "filterTab" ? (
+      {menuList.map(menu =>
+        target === "filterTab" ? (
+          <li
+            key={menu.label}
+            role="presentation"
+            className={menu.label === currentFilterTab ? "isSelected" : ""}
+          >
             <button onClick={() => handleFilterTab(menu.label as TFilterTab)}>{menu.label}</button>
-          ) : (
+          </li>
+        ) : (
+          <li
+            key={menu.label}
+            role="presentation"
+            className={menu.label === currentMenu ? "isSelected" : ""}
+          >
             <Link
               role="tab"
               tabIndex={0}
@@ -85,9 +91,9 @@ function Tab({ menuList, type, cssProp, target, className }: IProp) {
             >
               {menu.label}
             </Link>
-          )}
-        </li>
-      ))}
+          </li>
+        ),
+      )}
     </ul>
   );
 }
