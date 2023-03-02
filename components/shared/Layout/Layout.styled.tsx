@@ -13,7 +13,7 @@ export const FixedWidth = styled.div`
   }
 `;
 
-export const Main = styled.main<{ noPaddingTop: boolean }>`
-  padding-bottom: 4.5rem;
-  padding-top: ${({ noPaddingTop }) => (noPaddingTop ? 0 : "4.5rem")};
+export const Main = styled.main<{ hasNav: boolean; hasGnb: boolean }>`
+  padding-bottom: ${({ hasGnb }) => (hasGnb ? "7rem" : 0)};
+  padding-top: ${({ hasNav }) => (hasNav ? "4.5rem" : 0)};
 `;

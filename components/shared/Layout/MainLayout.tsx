@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { ROUTES_NAV } from "@/constants/nav";
+import { ROUTES_NAV } from "@/constants/navigation";
 import { ROUTES } from "@/constants/routes";
 import * as S from "./Layout.styled";
 
