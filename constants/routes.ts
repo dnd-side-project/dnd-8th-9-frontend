@@ -2,10 +2,12 @@ export const ROUTES = {
   STORE_MENU_LIST_PAGE: "/store/[storeId]/menu",
   STORE_MENU_ITEM_PAGE: "/store/[storeId]/menu/[menuId]",
 
-  STORE_REVIEWS_PAGE: "/store/[storeId]/review",
-  STORE_IMAGE_REVIEWS_PAGE: "/store/[storeId]/review/image",
-  STORE_IMAGE_REVIEW_ITEM_PAGE: "/store/[storeId]/review/image/[imageId]",
-  STORE_REVIEW_IMAGE_PAGE: "/store/[storeId]/review/[reviewId]/image",
+  // NOTE: all 생각해보자
+  STORE_REVIEWS_PAGE: "/store/[storeId]/review/all",
+  STORE_IMAGE_REVIEWS_PAGE: "/store/[storeId]/review/all/images",
+  STORE_IMAGE_REVIEW_ITEM_PAGE: "/store/[storeId]/review/all/images/[imageId]",
+
+  STORE_REVIEWS_FORM: "/store/[storeId]/review/form",
 
   STORE_ORDER_FORM_PAGE: "/store/[storeId]/order",
   STORE_NOTICES_PAGE: "/store/[storeId]/notice",
@@ -36,5 +38,4 @@ export const ROUTES = {
   MYPAGE_NOTICE: "/mypage/notice",
 
   REVIEW_WRITE_PAGE: "/review",
-  STORE_REVIEWS_FORM: "/store/[storeId]/review/form",
 };
