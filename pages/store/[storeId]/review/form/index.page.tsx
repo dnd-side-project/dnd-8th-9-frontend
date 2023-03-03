@@ -1,7 +1,14 @@
-import React, { SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useButtonDisabledStore } from "@/store/ReviewForm";
+import useReviewStore from "@/store/review";
+import {
+  useFormMenuStore,
+  useFormSizeDangdoStore,
+  useFormDetailStore,
+  useButtonDisabledStore,
+} from "@/store/ReviewForm";
+import { TReviewOption } from "@/api/types/shared";
 import SelectMenu from "@/components/ReviewForm/SelectMenu/SelectMenu";
 import SelectSizeDangdo from "@/components/ReviewForm/SelectSizeDangdo/SelectSizeDangdo";
 import Detail from "@/components/ReviewForm/Detail/Detail";
@@ -9,12 +16,6 @@ import Sumbitted from "@/components/ReviewForm/Submitted/Submitted";
 import Button from "@/components/shared/Button/Button";
 import { css } from "@emotion/react";
 import * as S from "./form.styled";
-
-interface IHandleSubmit {
-  isDisabled: boolean;
-  currentPage: number;
-  setCurrentPage: React.Dispatch<SetStateAction<number>>;
-}
 
 const multiStepForm = (currentPage: number) => {
   switch (currentPage) {
@@ -31,13 +32,12 @@ const multiStepForm = (currentPage: number) => {
   }
 };
 
-const handleSubmit = ({ isDisabled, currentPage, setCurrentPage }: IHandleSubmit) => {
-  if (!isDisabled) {
-    setCurrentPage(currentPage + 1);
-  }
-};
-
 export default function FormPage() {
+  const { id, name } = useFormMenuStore();
+  const { dangdo } = useFormSizeDangdoStore();
+  const { best, comment, imgFiles } = useFormDetailStore();
+  const { updateReviews } = useReviewStore();
+
   const { asPath } = useRouter();
   const backToReview = asPath
     .split("/")
@@ -45,6 +45,27 @@ export default function FormPage() {
     .join("/");
   const { isDisabled } = useButtonDisabledStore(state => state);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const handleSubmit = () => {
+    if (!isDisabled) {
+      setCurrentPage(currentPage + 1);
+    }
+    if (!isDisabled && currentPage === 4) {
+      updateReviews({
+        id,
+        nickname: "random",
+        profileImage: "",
+        source: "단골",
+        rating: dangdo,
+        menuOption: name,
+        reviewOption: best as TReviewOption,
+        text: comment,
+        date: "2023-02-13 14:43:50",
+        reviewImages: imgFiles,
+        likes: 0,
+      });
+    }
+  };
 
   return (
     <S.Container>
@@ -67,10 +88,11 @@ export default function FormPage() {
                   width: 100%;
                 `
           }
-          onClick={() => handleSubmit({ isDisabled, currentPage, setCurrentPage })}
+          onClick={() => handleSubmit()}
         >
           {currentPage === 4 ? "작성한 리뷰 보러가기" : "다음"}
         </Button>
+
         {currentPage === 4 && (
           <Link href={backToReview}>
             <Button
@@ -82,7 +104,7 @@ export default function FormPage() {
                 color: #636363;
                 width: 100%;
               `}
-              onClick={() => handleSubmit({ isDisabled, currentPage, setCurrentPage })}
+              onClick={() => handleSubmit()}
             >
               작성 전 화면으로 돌아가기
             </Button>

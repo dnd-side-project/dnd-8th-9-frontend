@@ -1,4 +1,5 @@
-import { reviews } from "@/mocks/mockData/review";
+import { reviews as MockReviews } from "@/mocks/mockData/review";
+import useReviewStore from "@/store/review";
 import { storeTab } from "@/constants/tabs";
 import Tab from "@/components/shared/Tab/Tab";
 import Preview from "@/components/store/review/Preview/Preview";
@@ -8,8 +9,9 @@ import Review from "@/components/store/review/Review/Review";
 import * as S from "./review.styled";
 
 function ReviewPage() {
-  const { rating, totalReviews, stats } = reviews.overallStats;
-  const reviewImages = reviews.reviewList.map(review => review.reviewImages).flat();
+  const { rating, totalReviews, stats } = MockReviews.overallStats;
+  const reviewImages = MockReviews.reviewList.map(review => review.reviewImages).flat();
+  const { reviews } = useReviewStore();
 
   return (
     <S.Container>
@@ -20,7 +22,10 @@ function ReviewPage() {
         <Preview reviewImages={reviewImages} />
       </S.PreviewWrap>
       <S.ReviewListWrap>
-        {reviews.reviewList.map(review => (
+        {/* {MockReviews.reviewList.map(review => (
+          <Review key={review.id} review={review} />
+        ))} */}
+        {reviews.map(review => (
           <Review key={review.id} review={review} />
         ))}
       </S.ReviewListWrap>
