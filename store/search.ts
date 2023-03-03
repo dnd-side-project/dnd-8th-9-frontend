@@ -4,6 +4,7 @@ import { immer } from "zustand/middleware/immer";
 
 interface SearchState {
   currentSearch: string;
+  currentSearchType: "menu" | "store";
   searchHistory: string[];
 
   addSearchHistory: (newSearchKeyword: string) => void;
@@ -14,6 +15,7 @@ interface SearchState {
 const useSearchStore = create<SearchState>()(
   devtools(
     immer(set => ({
+      currentSearchType: "menu",
       currentSearch: "",
       searchHistory: ["케릭터", "스누피", "어버이날", "레터링", "도시락", "2단", "고양이", "돈"],
 
