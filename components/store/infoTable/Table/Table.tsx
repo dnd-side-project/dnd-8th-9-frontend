@@ -25,6 +25,7 @@ const optionList: IOptions = {
   },
 };
 
+// TODO: props에서 option 제거
 export default function Table({ option, data }: IContents) {
   const { key, value } = optionList[option];
 
@@ -32,8 +33,8 @@ export default function Table({ option, data }: IContents) {
     <>
       {data.map((el: IEl) => (
         <S.Container key={el[key]}>
-          <S.Cell option={option}>{el[key]}</S.Cell>
-          <S.Cell option={option}>{el[value]}</S.Cell>
+          <S.Cell option="left">{el[key]}</S.Cell>
+          <S.Cell option="right">{el[value]}</S.Cell>
         </S.Container>
       ))}
     </>
