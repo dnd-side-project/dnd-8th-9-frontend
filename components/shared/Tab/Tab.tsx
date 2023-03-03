@@ -43,6 +43,10 @@ const generatePath = (type: TTarget, asPath: string): string => {
     case "filterTab":
       return asPath;
       break;
+    case "resultTab":
+      path = asPath.split("/").slice(0, -1).join("/");
+      return path;
+      break;
     default:
       return "/";
       break;
