@@ -35,8 +35,6 @@ function MenuSingleCard({ data, isEditMode = false, size = "m" }: IProps) {
       image={menuImage}
       gap={16}
       isEditMode={isEditMode}
-      data={data}
-      type="menu"
     >
       <S.ContentWrap type="menuSingle">
         <S.Menu weight={700} size={16} color={colors.grey[900]}>

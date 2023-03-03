@@ -28,16 +28,7 @@ function StoreSingleCard({ data, rank }: IProps) {
   } = data;
 
   return (
-    <Card
-      data={data}
-      type="store"
-      imgWidth={126}
-      imgHeight={126}
-      dir="row"
-      image={storeImages[0].url}
-      gap={20}
-      rank={rank}
-    >
+    <Card imgWidth={126} imgHeight={126} dir="row" image={storeImages[0].url} gap={20} rank={rank}>
       <S.ContentWrap type="storeSingle">
         <S.Store weight={600} size={15} color={colors.grey[900]}>
           {name}

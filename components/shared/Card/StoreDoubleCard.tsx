@@ -35,8 +35,6 @@ function StoreDoubleCard({ data, isEditMode }: IProps) {
       canDelivery={canDelivery}
       canPickup={canPickup}
       css={S.storeDoubleCss}
-      data={data}
-      type="store"
     >
       <S.ContentWrap type="storeDouble">
         <S.Store weight={600} size={16} color={colors.grey[900]}>

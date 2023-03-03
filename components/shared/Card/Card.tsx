@@ -1,6 +1,4 @@
 import { IImage } from "@/api/types/shared";
-import { IStoreItem } from "@/api/types/storeList";
-import { IRandomMenuItem } from "@/api/types/randomMenuList";
 import CardImage from "./CardImage";
 import * as S from "./Card.styled";
 
@@ -16,8 +14,6 @@ interface IProp {
   children: React.ReactNode;
   canDelivery?: boolean;
   canPickup?: boolean;
-  data: IStoreItem | IRandomMenuItem;
-  type: "menu" | "store";
 }
 
 function Card({
@@ -32,8 +28,6 @@ function Card({
   children,
   canDelivery = false,
   canPickup = false,
-  data,
-  type,
 }: IProp) {
   return (
     <S.Container
@@ -45,8 +39,6 @@ function Card({
     >
       <S.ImageWrap>
         <CardImage
-          type={type}
-          bookmarkData={data}
           data={image}
           rank={rank}
           canDelivery={canDelivery}

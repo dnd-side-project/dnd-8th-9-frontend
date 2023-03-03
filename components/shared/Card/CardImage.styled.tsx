@@ -64,7 +64,6 @@ export const BookmarkIconWrap = styled.div`
   right: 0.6rem;
   bottom: 0.6rem;
   z-index: 99;
-  cursor: pointer;
 `;
 
 export const CheckIconWrap = styled.div`
@@ -81,5 +80,4 @@ export const CheckIconWrap = styled.div`
   right: 0.6rem;
   top: 0.6rem;
   z-index: 99;
-  cursor: pointer;
 `;

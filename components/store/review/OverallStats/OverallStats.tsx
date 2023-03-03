@@ -61,7 +61,7 @@ export default function OverallStats({ rating, totalReviews, stats }: IOverallSt
           )}
         </S.Arrow>
       </S.ProgressBox>
-      <Link href={`${asPath}/form`}>
+      <Link href={`${asPath}/review`}>
         <Button
           type="button"
           label="write a review"

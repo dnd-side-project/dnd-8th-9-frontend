@@ -61,7 +61,7 @@ export const InfoWrap = styled.div`
   display: flex;
   align-items: center;
 
-  :first-of-type::after {
+  :first-child::after {
     content: "";
     display: inline-block;
     height: 0.8rem;
