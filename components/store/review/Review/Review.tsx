@@ -78,7 +78,7 @@ export default function Review({ review }: IProp) {
           <Carousel images={review.reviewImages} />
         </S.CarouselWrapper>
         <S.Taste>
-          <Heart height={10} width={10} viewBox="0 0 15 15" fill="red" />
+          <Heart height={13} width={13} viewBox="0 0 22 22" fill="red" />
           당도 {review.rating}%
           <span>
             <Tag type="single" label="delicious">
