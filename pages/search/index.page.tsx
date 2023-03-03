@@ -6,7 +6,7 @@ import * as S from "./search.styled";
 function SearchPage() {
   return (
     <S.Layout>
-      <SearchNav />
+      <SearchNav mode="search" />
       <SearchHistory />
       <Trending />
     </S.Layout>
