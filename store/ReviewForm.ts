@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { IImage } from "@/api/types/shared";
 
 interface FormMenuStore {
   id: number;
@@ -29,7 +30,8 @@ interface ISizeDangdo {
 interface FormDetailStore {
   best: string;
   comment: string;
-  imgFiles: (string | ArrayBuffer | null)[];
+  // imgFiles: (string | ArrayBuffer | null)[];
+  imgFiles: IImage[];
 
   setDetail: ({ best, comment, imgFiles }: IDetail) => void;
 }
@@ -37,7 +39,8 @@ interface FormDetailStore {
 interface IDetail {
   best: string;
   comment: string;
-  imgFiles: (string | ArrayBuffer | null)[];
+  // imgFiles: (string | ArrayBuffer | null)[];
+  imgFiles: IImage[];
 }
 
 interface ButtonDisabledStore {

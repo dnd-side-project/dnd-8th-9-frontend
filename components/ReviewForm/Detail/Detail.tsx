@@ -21,6 +21,8 @@ export default function Detail() {
   const { best, comment, imgFiles, setDetail } = useFormDetailStore(state => state);
   const { setButtonDisabled, setButtonAbled } = useButtonDisabledStore(state => state);
 
+  let imgIdx = 1;
+
   useEffect(() => {
     setButtonDisabled();
   }, [setButtonAbled, setButtonDisabled]);
@@ -39,18 +41,25 @@ export default function Detail() {
     const fileList = e.target.files;
 
     if (fileList && fileList[0]) {
+      imgIdx += 1;
       const reader = new FileReader();
       reader.readAsDataURL(fileList[0]);
       reader.onloadend = () => {
         if (imgFiles.length >= 3) return;
-        setDetail({ best, comment, imgFiles: [...imgFiles, reader.result] });
+        // setDetail({ best, comment, imgFiles: [...imgFiles, reader.result] });
+
+        setDetail({
+          best,
+          comment,
+          imgFiles: [...imgFiles, { id: imgIdx, url: reader.result as string }],
+        });
       };
     }
   };
 
   const deleteImage = useCallback(
     (clickedImg: string) => {
-      setDetail({ best, comment, imgFiles: imgFiles.filter(img => img !== clickedImg) });
+      setDetail({ best, comment, imgFiles: imgFiles.filter(img => img.url !== clickedImg) });
     },
     [best, comment, imgFiles, setDetail],
   );
@@ -63,7 +72,7 @@ export default function Detail() {
             <S.ImageWrap key={idx}>
               {clickedImg && (
                 <>
-                  <img src={clickedImg.toString()} alt="업로드" width="70px" height="70px" />
+                  <img src={clickedImg.url.toString()} alt="업로드" width="70px" height="70px" />
                   <S.ImageBackground>
                     <Delete onClick={() => deleteImage(clickedImg.toString())} />
                   </S.ImageBackground>
