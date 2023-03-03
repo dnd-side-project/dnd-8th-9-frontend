@@ -21,6 +21,7 @@ export const ICONS: IIcon = {
   kakao: <I.Kakao />,
   instagram: <I.Instagram />,
   logo: <I.Logo />,
+  logout: <I.Logout />,
   like: <I.Like />,
   map: <I.Map />,
   clap: <I.Clap />,
