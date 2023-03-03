@@ -13,7 +13,7 @@ function Nickname({ name, dangol, color }: IProp) {
   const { colors } = useTheme();
   return (
     <S.Wrap>
-      <User className="icon" />
+      <User className="icon" width="26" height="26" />
       {dangol && (
         <S.DangolTag type="square" label="단골">
           단골

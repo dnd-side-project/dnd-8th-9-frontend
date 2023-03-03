@@ -18,13 +18,13 @@ interface INavIcons {
 const navIcons: INavIcons = {
   home: <Home />,
   bookmark: <Bookmark />,
-  profile: <Profile />,
+  mypage: <Profile />,
 };
 
 const selectedNavIcons: INavIcons = {
   home: <HomeSelected />,
   bookmark: <BookmarkSelected />,
-  profile: <ProfileSelected />,
+  mypage: <ProfileSelected />,
 };
 
 export default function GNB() {

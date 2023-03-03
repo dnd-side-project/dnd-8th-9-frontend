@@ -1,5 +1,7 @@
+import { useRouter } from "next/router";
 import Image from "next/image";
 import { useTheme } from "@emotion/react";
+import { ROUTES } from "@/constants/routes";
 import { DangdoLogo } from "@/assets/images";
 import KakaoLogin from "@/components/login/KakaoLogin";
 import Text from "@/components/shared/Text/Text";
@@ -7,6 +9,11 @@ import * as S from "./login.styled";
 
 function LoginPage() {
   const { colors } = useTheme();
+  const { push } = useRouter();
+
+  const loginLater = () => {
+    push(ROUTES.HOME_RECOMMENDATION_PAGE);
+  };
 
   return (
     <S.LoginWrap>
@@ -21,7 +28,7 @@ function LoginPage() {
       </S.ImageWrap>
       <S.ButtonWrap>
         <KakaoLogin />
-        <S.LaterButton label="login later" type="button" shape="square">
+        <S.LaterButton label="login later" type="button" shape="square" onClick={loginLater}>
           로그인 없이 둘러보기
         </S.LaterButton>
       </S.ButtonWrap>
