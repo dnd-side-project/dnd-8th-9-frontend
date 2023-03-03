@@ -36,6 +36,8 @@ function MenuDoubleCard({ data, isEditMode = false, size = "m" }: IProps) {
       image={menuImage}
       gap={SIZE_STYLE[size].gap}
       isEditMode={isEditMode}
+      data={data}
+      type="menu"
     >
       <S.ContentWrap type="menuDouble">
         <S.Store weight={500} size={12} color={colors.grey[600]}>

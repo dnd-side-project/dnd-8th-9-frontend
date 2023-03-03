@@ -8,12 +8,14 @@ interface IImage {
 
 interface ImageState {
   currentImageSource: IImage[];
+  currentImage: string;
   setImage: (reviewImages: IImage[]) => void;
 }
 
 const useImageStore = create<ImageState>()(
   devtools(set => ({
     currentImageSource: [],
+    currentImage: "",
     setImage: (reviewImages: IImage[]) => set({ currentImageSource: reviewImages }),
   })),
 );
