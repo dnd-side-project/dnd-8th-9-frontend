@@ -38,5 +38,4 @@ export const ROUTES = {
   MYPAGE_NOTICE: "/mypage/notice",
 
   REVIEW_WRITE_PAGE: "/review",
-  STORE_REVIEWS_FORM: "/store/[storeId]/review/form",
 };
