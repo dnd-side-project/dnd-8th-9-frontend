@@ -5,9 +5,13 @@ export const Wrap = styled.div`
   display: flex;
   align-items: center;
   column-gap: 1.2rem;
+
+  button {
+    padding: 0;
+  }
 `;
 
-export const InputWrap = styled.div`
+export const InputForm = styled.form`
   background-color: ${({ theme }) => theme.colors.blue[100]};
   border-radius: 0.8rem;
   padding: 0 1.2rem;
@@ -25,5 +29,9 @@ export const InputWrap = styled.div`
     color: ${({ theme }) => theme.colors.grey[900]};
     font-size: ${({ theme }) => theme.fontSizes[14]};
     font-weight: 500;
+  }
+
+  input::placeholder {
+    color: ${({ theme }) => theme.colors.grey[600]};
   }
 `;
