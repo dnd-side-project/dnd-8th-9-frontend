@@ -2,8 +2,10 @@ import Link from "next/link";
 import { useTheme } from "@emotion/react";
 import { User } from "@/assets/icons";
 import { ROUTES } from "@/constants/routes";
+import useModalStore from "@/store/modal";
 import Icon from "@/components/shared/Icon/Icon";
 import Text from "@/components/shared/Text/Text";
+import LogoutModal from "@/components/mypage/LogoutModal/LogoutModal";
 import * as S from "./mypage.styled";
 
 const PROFILE_MENU = [
@@ -22,8 +24,10 @@ const PROFILE_MENU = [
 ];
 
 function ProfilePage() {
+  const { toggleLogoutModal } = useModalStore();
+
   const handleLogout = () => {
-    // 로그아웃 모달창
+    toggleLogoutModal();
   };
   const { colors } = useTheme();
 
@@ -74,6 +78,7 @@ function ProfilePage() {
           로그아웃
         </Text>
       </S.LogoutButton>
+      <LogoutModal />
     </div>
   );
 }
