@@ -1,5 +1,6 @@
 import React, { SetStateAction, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useButtonDisabledStore } from "@/store/ReviewForm";
 import SelectMenu from "@/components/ReviewForm/SelectMenu/SelectMenu";
 import SelectSizeDangdo from "@/components/ReviewForm/SelectSizeDangdo/SelectSizeDangdo";
@@ -37,6 +38,11 @@ const handleSubmit = ({ isDisabled, currentPage, setCurrentPage }: IHandleSubmit
 };
 
 export default function FormPage() {
+  const { asPath } = useRouter();
+  const backToReview = asPath
+    .split("/")
+    .slice(0, asPath.split("/").length - 1)
+    .join("/");
   const { isDisabled } = useButtonDisabledStore(state => state);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -66,7 +72,7 @@ export default function FormPage() {
           {currentPage === 4 ? "작성한 리뷰 보러가기" : "다음"}
         </Button>
         {currentPage === 4 && (
-          <Link href="/">
+          <Link href={backToReview}>
             <Button
               type="submit"
               label="form"
@@ -78,7 +84,7 @@ export default function FormPage() {
               `}
               onClick={() => handleSubmit({ isDisabled, currentPage, setCurrentPage })}
             >
-              홈으로 가기
+              작성 전 화면으로 돌아가기
             </Button>
           </Link>
         )}
