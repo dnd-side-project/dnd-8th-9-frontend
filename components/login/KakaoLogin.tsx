@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/naming-convention */
+import { ROUTES } from "@/constants/routes";
 import useUserStore from "@/store/user";
+import { useRouter } from "next/router";
 import KakaoLoginButton from "react-kakao-login";
 import Icon from "../shared/Icon/Icon";
 import Text from "../shared/Text/Text";
 
 function KakaoLogin() {
+  const { push } = useRouter();
   const { loginUser, logoutUser } = useUserStore();
 
   const loginSuccessHandler = (res: any) => {
@@ -20,6 +23,7 @@ function KakaoLogin() {
 
     localStorage.setItem("access_token", access_token as string);
     loginUser(nickname, profile_image, email);
+    push(ROUTES.HOME_RECOMMENDATION_PAGE);
   };
 
   const logoutHandler = () => {
