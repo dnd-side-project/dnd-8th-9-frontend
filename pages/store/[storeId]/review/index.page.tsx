@@ -25,9 +25,12 @@ function ReviewPage() {
         {/* {MockReviews.reviewList.map(review => (
           <Review key={review.id} review={review} />
         ))} */}
-        {reviews.map(review => (
-          <Review key={review.id} review={review} />
-        ))}
+        {reviews
+          .slice(0)
+          .reverse()
+          .map(review => (
+            <Review key={review.id} review={review} />
+          ))}
       </S.ReviewListWrap>
     </S.Container>
   );
