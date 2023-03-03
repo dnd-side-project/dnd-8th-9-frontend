@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import useImageStore from "@/store/image";
 import { useRouter } from "next/router";
 import { Theme, css } from "@emotion/react";
 import Carousel from "@/components/shared/Carousel/Carousel";
@@ -21,6 +22,7 @@ const VIP = "단골";
 export default function Review({ review }: IProp) {
   const [isOpened, setIsOpened] = useState(false);
   const { asPath } = useRouter();
+  const { setImage } = useImageStore();
   const isAllPage = asPath.split("/").slice(-1)[0] === "all";
   const currentPath = isAllPage
     ? asPath
@@ -33,12 +35,17 @@ export default function Review({ review }: IProp) {
     setIsOpened(() => !isOpened);
   };
 
+  const handleClick = () => {
+    setImage(review.reviewImages);
+  };
+
   return (
     <Link
       href={{
         pathname: `${currentPath}/${review.id}/image`,
-        query: { images: JSON.stringify(review.reviewImages) },
+        // query: { images: JSON.stringify(review.reviewImages) },
       }}
+      onClick={handleClick}
     >
       <S.Container>
         <S.Header>
