@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { IImage } from "@/api/types/shared";
 import { IStoreItem } from "@/api/types/storeList";
 import { IRandomMenuItem } from "@/api/types/randomMenuList";
@@ -36,26 +37,28 @@ function Card({
   type,
 }: IProp) {
   return (
-    <S.Container
-      dir={dir}
-      gap={gap}
-      imgWidth={imgWidth}
-      imgHeight={imgHeight}
-      className={className}
-    >
-      <S.ImageWrap>
-        <CardImage
-          type={type}
-          bookmarkData={data}
-          data={image}
-          rank={rank}
-          canDelivery={canDelivery}
-          canPickup={canPickup}
-          isEditMode={isEditMode}
-        />
-      </S.ImageWrap>
-      {children}
-    </S.Container>
+    <Link href={`/store/${data.id}`}>
+      <S.Container
+        dir={dir}
+        gap={gap}
+        imgWidth={imgWidth}
+        imgHeight={imgHeight}
+        className={className}
+      >
+        <S.ImageWrap>
+          <CardImage
+            type={type}
+            bookmarkData={data}
+            data={image}
+            rank={rank}
+            canDelivery={canDelivery}
+            canPickup={canPickup}
+            isEditMode={isEditMode}
+          />
+        </S.ImageWrap>
+        {children}
+      </S.Container>
+    </Link>
   );
 }
 
