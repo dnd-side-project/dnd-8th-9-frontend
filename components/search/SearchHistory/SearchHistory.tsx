@@ -1,14 +1,18 @@
 import { useTheme } from "@emotion/react";
+import useSearchStore from "@/store/search";
 import Button from "@/components/shared/Button/Button";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./SearchHistory.styled";
 
-const HISTORY_DATA = ["케릭터", "스누피", "어버이날", "레터링", "도시락", "2단", "고양이", "돈"];
-
 function SearchHistory() {
   const { colors } = useTheme();
-  const deleteAll = () => {};
-  const handleHistory = () => {};
+  const { searchHistory, clearSearchHistory, updateCurrentSearch } = useSearchStore();
+  const deleteAll = () => {
+    clearSearchHistory();
+  };
+  const handleHistoryClick = (history: string) => {
+    updateCurrentSearch(history);
+  };
 
   return (
     <div>
@@ -23,13 +27,13 @@ function SearchHistory() {
         </Button>
       </S.Header>
       <S.HistoryList>
-        {HISTORY_DATA.map(history => (
+        {searchHistory.map(history => (
           <Button
             key={history}
             type="button"
             label={history}
             shape="square"
-            onClick={handleHistory}
+            onClick={() => handleHistoryClick(history)}
           >
             <Text size={15} weight={500} color={colors.grey[800]}>
               {history}
