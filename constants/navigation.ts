@@ -41,6 +41,14 @@ export const ROUTES_NAV: IRouteNav = {
       search: true,
     },
   },
+  [ROUTES.STORE_REVIEWS_ENHANCED_PAGE]: {
+    nav: {
+      previous: true,
+      home: true,
+      bookmark: true,
+      share: true,
+    },
+  },
   [ROUTES.STORE_IMAGE_REVIEWS_PAGE]: {
     nav: {
       previous: true,
@@ -54,14 +62,11 @@ export const ROUTES_NAV: IRouteNav = {
     nav: {
       previous: true,
       home: true,
+      bookmark: true,
+      share: true,
     },
   },
-  [ROUTES.STORE_REVIEW_IMAGE_PAGE]: {
-    nav: {
-      previous: true,
-      home: true,
-    },
-  },
+
   [ROUTES.STORE_ORDER_FORM_PAGE]: {
     nav: {
       previous: true,

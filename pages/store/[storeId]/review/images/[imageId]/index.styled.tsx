@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   background-color: black;
   display: flex;
   align-items: center;
