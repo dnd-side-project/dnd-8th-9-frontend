@@ -18,6 +18,7 @@ export const ROUTES = {
   LOGIN_PAGE: "/login",
   LOGIN_REDIRECT_PAGE: "/login/redirect",
 
+  ONBOARD_WELCOME: "/onboard/welcome",
   ONBOARDING_LOCATION_PAGE: "/onboard/location",
   ONBOARDING_CATEGORY_PAGE: "/onboard/category",
 
