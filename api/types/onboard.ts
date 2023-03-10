@@ -4,3 +4,9 @@ export interface ILocation {
   storeCounts: number;
   label?: "BEST" | "HOT";
 }
+
+export interface ICakeStyle {
+  id: number;
+  name: string;
+  imageUrl: string;
+}
