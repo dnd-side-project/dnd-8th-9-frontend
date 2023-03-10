@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@emotion/react";
+import useOnboardStore from "@/store/onboard";
 import { cakeStyles } from "@/mocks/mockData/category";
 import { ROUTES } from "@/constants/routes";
 import Text from "@/components/shared/Text/Text";
@@ -9,6 +10,11 @@ import * as S from "./category.styled";
 
 function OnboardCategoryPage() {
   const { colors } = useTheme();
+  const { cakeStyle, setCakeStyle } = useOnboardStore();
+
+  const handleClick = (cakeStyleItem: string) => {
+    setCakeStyle(cakeStyleItem);
+  };
 
   return (
     <S.Wrap>
@@ -30,11 +36,19 @@ function OnboardCategoryPage() {
       </S.TextContainer>
       <S.StyleContainer>
         {cakeStyles.map(style => (
-          <S.StyleItem key={style.id}>
+          <S.StyleItem
+            key={style.id}
+            className={cakeStyle.includes(style.name) ? "isSelected" : ""}
+            onClick={() => handleClick(style.name)}
+          >
             <S.ImageWrap>
               <Image src={style.imageUrl} alt={style.name} fill />
               <div className="checkbox">
-                <Icon name="check" size="m" color={colors.grey[500]} />
+                <Icon
+                  name="check"
+                  size="m"
+                  color={cakeStyle.includes(style.name) ? colors.grey[100] : colors.grey[500]}
+                />
               </div>
             </S.ImageWrap>
             <Text size={14} weight={500}>
