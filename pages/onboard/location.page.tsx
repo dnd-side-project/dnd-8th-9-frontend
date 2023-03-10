@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import Link from "next/link";
 import { useTheme } from "@emotion/react";
+import useOnboardStore from "@/store/onboard";
 import { ROUTES } from "@/constants/routes";
 import { locations } from "@/mocks/mockData/location";
 import Button from "@/components/shared/Button/Button";
@@ -9,6 +10,11 @@ import * as S from "./location.styled";
 
 function OnboardLocationPage() {
   const { colors } = useTheme();
+  const { location, setLocation } = useOnboardStore();
+
+  const handleClick = (newLocation: string) => {
+    setLocation(newLocation);
+  };
 
   return (
     <S.Wrap>
@@ -32,18 +38,22 @@ function OnboardLocationPage() {
         </Text>
       </S.TextContainer>
       <S.LocationContainer>
-        {locations.map(location => (
-          <li key={location.id}>
+        {locations.map(locationItem => (
+          <button
+            key={locationItem.id}
+            className={location.includes(locationItem.name) ? "isSelected" : ""}
+            onClick={() => handleClick(locationItem.name)}
+          >
             <Text weight={500} size={15}>
-              {location.name}
+              {locationItem.name}
             </Text>
-            <Text weight={500} size={12}>{`(${location.storeCounts}개)`}</Text>
-            {location.label && (
-              <S.LabelTag type="single" label={location.label}>
-                {location.label}
+            <Text weight={500} size={12}>{`(${locationItem.storeCounts}개)`}</Text>
+            {locationItem.label && (
+              <S.LabelTag type="single" label={locationItem.label}>
+                {locationItem.label}
               </S.LabelTag>
             )}
-          </li>
+          </button>
         ))}
       </S.LocationContainer>
       <S.Footer>

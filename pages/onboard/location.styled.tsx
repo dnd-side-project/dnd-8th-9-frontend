@@ -31,7 +31,7 @@ export const TextContainer = styled.div`
   }
 `;
 
-export const LocationContainer = styled.ul`
+export const LocationContainer = styled.div`
   padding: 1.5rem 0;
   width: 100%;
   height: 48rem;
@@ -41,7 +41,7 @@ export const LocationContainer = styled.ul`
   grid-row-gap: 1.4rem;
   grid-column-gap: 1.3rem;
 
-  li {
+  button {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,6 +55,15 @@ export const LocationContainer = styled.ul`
 
     > span {
       color: ${({ theme }) => theme.colors.grey[700]};
+    }
+
+    &.isSelected {
+      background-color: ${({ theme }) => theme.colors.blue[200]};
+      border: 2px solid ${({ theme }) => theme.colors.blue[600]};
+
+      > span {
+        color: ${({ theme }) => theme.colors.blue[700]};
+      }
     }
   }
 `;
