@@ -97,4 +97,10 @@ export const SaveButton = styled(Button)`
   width: 100%;
   background-color: ${({ theme }) => theme.colors.pink[700]};
   color: ${({ theme }) => theme.colors.grey[100]};
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors.grey[400]};
+    color: ${({ theme }) => theme.colors.grey[800]};
+    transition: all 0.2s ease-in-out;
+  }
 `;

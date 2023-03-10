@@ -64,7 +64,7 @@ function OnboardCategoryPage() {
           </S.PrevButton>
         </Link>
         <Link href={ROUTES.HOME_RECOMMENDATION_PAGE}>
-          <S.SaveButton disabled type="button" label="next" shape="square">
+          <S.SaveButton disabled={!cakeStyle.length} type="button" label="next" shape="square">
             저장
           </S.SaveButton>
         </Link>
