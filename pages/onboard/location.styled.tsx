@@ -102,9 +102,14 @@ export const Footer = styled.footer`
 
   button {
     width: 100%;
-    background-color: ${({ theme }) => theme.colors.grey[400]};
+    background-color: ${({ theme }) => theme.colors.pink[700]};
     font-weight: 500;
     font-size: ${({ theme }) => theme.fontSizes[16]};
-    color: ${({ theme }) => theme.colors.grey[600]};
+    color: ${({ theme }) => theme.colors.grey[100]};
+
+    &[disabled] {
+      background-color: ${({ theme }) => theme.colors.grey[400]};
+      color: ${({ theme }) => theme.colors.grey[600]};
+    }
   }
 `;

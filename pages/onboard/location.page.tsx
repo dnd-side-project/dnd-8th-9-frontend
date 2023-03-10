@@ -58,7 +58,7 @@ function OnboardLocationPage() {
       </S.LocationContainer>
       <S.Footer>
         <Link href={ROUTES.ONBOARDING_CATEGORY_PAGE}>
-          <Button type="button" label="next" shape="square">
+          <Button disabled={!location.length} type="button" label="next" shape="square">
             다음
           </Button>
         </Link>
