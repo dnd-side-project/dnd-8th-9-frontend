@@ -129,7 +129,7 @@ export const ROUTES_NAV: IRouteNav = {
   },
   [ROUTES.MYPAGE_ONBOARD]: {
     gnb: true,
-    nav: { previous: true, home: true, text: "맞춤정보수정" },
+    nav: { previous: true, home: true, text: "맞춤정보 수정" },
     auth: true,
   },
   [ROUTES.MYPAGE_ONBOARD_LOCATION]: {
