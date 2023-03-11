@@ -11,7 +11,7 @@ interface ModalState {
 const useModalStore = create<ModalState>()(
   devtools(set => ({
     logoutModalOpen: false,
-    welcomeModalOpen: true,
+    welcomeModalOpen: false,
     toggleLogoutModal: () => set(state => ({ logoutModalOpen: !state.logoutModalOpen })),
     toggleWelcomeModal: () => set(state => ({ welcomeModalOpen: !state.welcomeModalOpen })),
   })),
