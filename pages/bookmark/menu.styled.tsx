@@ -86,3 +86,19 @@ export const MenuWrap = styled.div`
     display: none; /* Chrome, Safari, Opera*/
   }
 `;
+
+export const StoreWrap = styled.div`
+  padding: 0 1.6rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.6rem;
+  width: 100%;
+  overflow-y: scroll;
+  margin: 0.8rem 0 4.8rem;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+`;
