@@ -8,6 +8,8 @@ import StoreRank from "@/components/home/StoreRank/StoreRank";
 import Text from "@/components/shared/Text/Text";
 import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
 import ReviewDoubleCard from "@/components/shared/Card/ReviewDoubleCard";
+import Modal from "@/components/shared/Modal/Modal";
+import WelcomeCard from "@/components/onboard/WelcomeCard/WelcomeCard";
 import * as S from "./recommendation.styled";
 
 function HomeRecommendationPage() {
@@ -15,6 +17,9 @@ function HomeRecommendationPage() {
 
   return (
     <>
+      <Modal>
+        <WelcomeCard />
+      </Modal>
       <HomeHero />
       <Tab
         menuList={homeTab}
