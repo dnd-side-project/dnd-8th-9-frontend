@@ -16,7 +16,7 @@ interface IProp {
   rank?: number;
   canDelivery?: boolean;
   canPickup?: boolean;
-  isEditMode?: boolean;
+  mode?: "edit" | "none" | "bookmark";
   bookmarkData: IStoreItem | IRandomMenuItem;
   type: "store" | "menu";
 }
@@ -26,7 +26,7 @@ function CardImage({
   canDelivery,
   canPickup,
   rank = 0,
-  isEditMode = false,
+  mode = "bookmark",
   bookmarkData,
   type,
 }: IProp) {
@@ -65,11 +65,12 @@ function CardImage({
   return (
     <>
       {isCarousel ? <Carousel images={data} /> : <Image src={data} alt="menu" fill />}
-      {isEditMode ? (
+      {mode === "edit" && (
         <S.CheckIconWrap>
           <Icon name="check" size="m" color={colors.grey[400]} />
         </S.CheckIconWrap>
-      ) : (
+      )}
+      {mode === "bookmark" && (
         <S.BookmarkIconWrap onClick={() => handleBookmark(bookmarkData)}>
           <Icon
             name="saveBookmark"

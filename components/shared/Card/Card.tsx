@@ -6,7 +6,7 @@ import CardImage from "./CardImage";
 import * as S from "./Card.styled";
 
 interface IProp {
-  isEditMode?: boolean;
+  mode?: "edit" | "bookmark" | "none";
   imgWidth: number;
   imgHeight: number;
   gap: number;
@@ -27,7 +27,7 @@ function Card({
   gap,
   imgWidth,
   imgHeight,
-  isEditMode = false,
+  mode,
   rank = 0,
   className,
   children,
@@ -53,7 +53,7 @@ function Card({
             rank={rank}
             canDelivery={canDelivery}
             canPickup={canPickup}
-            isEditMode={isEditMode}
+            mode={mode}
           />
         </S.ImageWrap>
         {children}
