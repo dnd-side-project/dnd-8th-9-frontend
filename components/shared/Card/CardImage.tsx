@@ -32,8 +32,14 @@ function CardImage({
 }: IProp) {
   const { colors } = useTheme();
   const isCarousel = Array.isArray(data);
-  const { updateBookmarkStoreList, updateBookmarkMenuList, bookmarkMenuList, bookmarkStoreList } =
-    useBookmarkStore();
+  const {
+    updateBookmarkStoreList,
+    updateBookmarkMenuList,
+    updateEditBookmarkList,
+    bookmarkMenuList,
+    bookmarkStoreList,
+    editBookmarkList,
+  } = useBookmarkStore();
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
@@ -62,12 +68,25 @@ function CardImage({
     }
   };
 
+  const handleCheck = (name: string) => {
+    updateEditBookmarkList(name);
+  };
+
   return (
     <>
       {isCarousel ? <Carousel images={data} /> : <Image src={data} alt="menu" fill />}
       {mode === "edit" && (
-        <S.CheckIconWrap>
-          <Icon name="check" size="m" color={colors.grey[400]} />
+        <S.CheckIconWrap
+          onClick={() => handleCheck(bookmarkData.name)}
+          className={editBookmarkList.includes(bookmarkData.name) ? "isSelected" : ""}
+        >
+          <Icon
+            name="check"
+            size="m"
+            color={
+              editBookmarkList.includes(bookmarkData.name) ? colors.grey[100] : colors.grey[400]
+            }
+          />
         </S.CheckIconWrap>
       )}
       {mode === "bookmark" && (
