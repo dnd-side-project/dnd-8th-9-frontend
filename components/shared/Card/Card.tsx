@@ -37,28 +37,26 @@ function Card({
   type,
 }: IProp) {
   return (
-    <Link href={`/store/${data.id}`}>
-      <S.Container
-        dir={dir}
-        gap={gap}
-        imgWidth={imgWidth}
-        imgHeight={imgHeight}
-        className={className}
-      >
-        <S.ImageWrap>
-          <CardImage
-            type={type}
-            bookmarkData={data}
-            data={image}
-            rank={rank}
-            canDelivery={canDelivery}
-            canPickup={canPickup}
-            mode={mode}
-          />
-        </S.ImageWrap>
-        {children}
-      </S.Container>
-    </Link>
+    <S.Container
+      dir={dir}
+      gap={gap}
+      imgWidth={imgWidth}
+      imgHeight={imgHeight}
+      className={className}
+    >
+      <S.ImageWrap>
+        <CardImage
+          type={type}
+          bookmarkData={data}
+          data={image}
+          rank={rank}
+          canDelivery={canDelivery}
+          canPickup={canPickup}
+          mode={mode}
+        />
+      </S.ImageWrap>
+      <Link href={`/store/${data.id}`}>{children}</Link>
+    </S.Container>
   );
 }
 
