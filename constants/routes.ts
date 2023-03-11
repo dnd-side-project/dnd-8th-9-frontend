@@ -20,6 +20,7 @@ export const ROUTES = {
 
   ONBOARDING_LOCATION_PAGE: "/onboard/location",
   ONBOARDING_CATEGORY_PAGE: "/onboard/category",
+  ONBOARDING_GUIDE_PAGE: "/onboard/guide",
 
   SEARCH_PAGE: "/search",
   SEARCH_RESULT_MENU_PAGE: "/search/result/menu",
