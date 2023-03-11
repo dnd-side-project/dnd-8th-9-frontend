@@ -93,7 +93,7 @@ export const gnbTab = [
   },
   {
     label: "bookmark",
-    link: "/bookmark",
+    link: "/bookmark/menu",
   },
   {
     label: "mypage",
