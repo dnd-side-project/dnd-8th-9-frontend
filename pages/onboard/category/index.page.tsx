@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@emotion/react";
+import useModalStore from "@/store/modal";
 import useOnboardStore from "@/store/onboard";
 import { cakeStyles } from "@/mocks/mockData/category";
 import { ROUTES } from "@/constants/routes";
@@ -11,9 +12,14 @@ import * as S from "./category.styled";
 function OnboardCategoryPage() {
   const { colors } = useTheme();
   const { cakeStyle, setCakeStyle } = useOnboardStore();
+  const { toggleWelcomeModal } = useModalStore();
 
   const handleClick = (cakeStyleItem: string) => {
     setCakeStyle(cakeStyleItem);
+  };
+
+  const openWelcomeModal = () => {
+    toggleWelcomeModal();
   };
 
   return (
@@ -64,7 +70,13 @@ function OnboardCategoryPage() {
           </S.PrevButton>
         </Link>
         <Link href={ROUTES.HOME_RECOMMENDATION_PAGE}>
-          <S.SaveButton disabled={!cakeStyle.length} type="button" label="next" shape="square">
+          <S.SaveButton
+            disabled={!cakeStyle.length}
+            onClick={openWelcomeModal}
+            type="button"
+            label="next"
+            shape="square"
+          >
             저장
           </S.SaveButton>
         </Link>
