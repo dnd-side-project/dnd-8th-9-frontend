@@ -155,4 +155,13 @@ export const ROUTES_NAV: IRouteNav = {
     nav: { previous: true, text: "공지사항" },
     auth: true,
   },
+  [ROUTES.ONBOARD_WELCOME]: {
+    auth: true,
+  },
+  [ROUTES.ONBOARDING_LOCATION_PAGE]: {
+    auth: true,
+  },
+  [ROUTES.ONBOARDING_CATEGORY_PAGE]: {
+    auth: true,
+  },
 };

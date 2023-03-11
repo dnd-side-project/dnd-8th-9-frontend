@@ -10,6 +10,7 @@ interface UserState {
   email?: string | null;
   profileImage: string | null;
   phoneNumber?: string | null;
+  doneOnboard: boolean;
 }
 
 interface UserActionState {
@@ -22,6 +23,7 @@ const initialState: UserState = {
   email: null,
   profileImage: null,
   phoneNumber: "01027392833",
+  doneOnboard: false,
 };
 
 const useUserStore = create<UserState & UserActionState>()(

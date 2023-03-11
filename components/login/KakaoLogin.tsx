@@ -10,7 +10,7 @@ import Text from "../shared/Text/Text";
 
 function KakaoLogin() {
   const { push } = useRouter();
-  const { loginUser, logoutUser } = useUserStore();
+  const { loginUser, logoutUser, doneOnboard } = useUserStore();
 
   const loginSuccessHandler = (res: any) => {
     const {
@@ -23,7 +23,12 @@ function KakaoLogin() {
 
     localStorage.setItem("access_token", access_token as string);
     loginUser(nickname, profile_image, email);
-    push(ROUTES.HOME_RECOMMENDATION_PAGE);
+
+    if (doneOnboard) {
+      push(ROUTES.HOME_RECOMMENDATION_PAGE, undefined, { shallow: true });
+    } else {
+      push(ROUTES.ONBOARD_WELCOME);
+    }
   };
 
   const logoutHandler = () => {
