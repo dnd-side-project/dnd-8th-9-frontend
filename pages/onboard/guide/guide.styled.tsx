@@ -8,10 +8,10 @@ export const CarouselWrap = styled.div`
   }
 
   .swiper-pagination-bullet {
-    background-color: ${({ theme }) => theme.colors.grey[700]};
+    background-color: ${({ theme }) => theme.colors.grey[700]} !important;
   }
   .swiper-pagination-bullet-active {
-    background-color: ${({ theme }) => theme.colors.grey[100]};
+    background-color: ${({ theme }) => theme.colors.grey[100]} !important;
   }
 `;
 
