@@ -11,7 +11,7 @@ import * as S from "./menu.styled";
 function BookmarkDesignPage() {
   const { colors } = useTheme();
   const [isEditMode, setIsEditMode] = useState(false);
-  const { editBookmarkList, bookmarkMenuList } = useBookmarkStore();
+  const { editBookmarkList, bookmarkMenuList, deleteAllMenuBookmarkList } = useBookmarkStore();
 
   const startEditMode = () => {
     setIsEditMode(true);
@@ -19,6 +19,10 @@ function BookmarkDesignPage() {
 
   const endEditMode = () => {
     setIsEditMode(false);
+  };
+
+  const deleteAll = () => {
+    deleteAllMenuBookmarkList();
   };
 
   return (
@@ -42,7 +46,7 @@ function BookmarkDesignPage() {
                 완료
               </Text>
             </Button>
-            <Button type="button" label="edit" shape="square">
+            <Button type="button" label="edit" shape="square" onClick={deleteAll}>
               <Text weight={500} color={colors.grey[800]}>
                 선택삭제
               </Text>

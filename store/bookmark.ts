@@ -17,6 +17,7 @@ interface BookmarkState {
   updateBookmarkStoreList: (store: IStoreItem) => void;
   updateBookmarkMenuList: (menu: IRandomMenuItem) => void;
   updateEditBookmarkList: (name: string) => void;
+  deleteAllMenuBookmarkList: () => void;
 }
 
 const useBookmarkStore = create<BookmarkState>()(
@@ -54,6 +55,14 @@ const useBookmarkStore = create<BookmarkState>()(
           } else {
             state.editBookmarkList.push(name);
           }
+        });
+      },
+      deleteAllMenuBookmarkList: () => {
+        set(state => {
+          const newBookmarkMenuList = state.bookmarkMenuList.filter(
+            item => !state.editBookmarkList.includes(item.name),
+          );
+          state.bookmarkMenuList = newBookmarkMenuList;
         });
       },
     })),
