@@ -11,7 +11,8 @@ import * as S from "./menu.styled";
 function BookmarkDesignPage() {
   const { colors } = useTheme();
   const [isEditMode, setIsEditMode] = useState(false);
-  const { editBookmarkList, bookmarkMenuList, deleteAllMenuBookmarkList } = useBookmarkStore();
+  const { editBookmarkList, bookmarkMenuList, deleteAllMenuBookmarkList, clearEditBookmarkList } =
+    useBookmarkStore();
 
   const startEditMode = () => {
     setIsEditMode(true);
@@ -19,10 +20,12 @@ function BookmarkDesignPage() {
 
   const endEditMode = () => {
     setIsEditMode(false);
+    clearEditBookmarkList();
   };
 
   const deleteAll = () => {
     deleteAllMenuBookmarkList();
+    clearEditBookmarkList();
   };
 
   return (
