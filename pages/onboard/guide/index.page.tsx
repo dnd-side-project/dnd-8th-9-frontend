@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ROUTES } from "@/constants/routes";
 import { useTheme } from "@emotion/react";
+import useModalStore from "@/store/modal";
 import Carousel from "@/components/shared/Carousel/Carousel";
 import * as S from "./guide.styled";
 
@@ -17,12 +18,17 @@ const GUIDE_IMAGES = [
 
 function GuidePage() {
   const { colors } = useTheme();
+  const { toggleWelcomeModal } = useModalStore();
+
+  const closeWelcomeModal = () => {
+    toggleWelcomeModal();
+  };
 
   return (
     <S.CarouselWrap>
       <Carousel images={GUIDE_IMAGES} />
       <Link href={ROUTES.HOME_RECOMMENDATION_PAGE}>
-        <S.CloseButton label="close" type="button" shape="round">
+        <S.CloseButton label="close" type="button" shape="round" onClick={closeWelcomeModal}>
           <S.CloseIcon name="close" size="l" color={colors.grey[600]} />
         </S.CloseButton>
       </Link>
