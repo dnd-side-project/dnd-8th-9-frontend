@@ -46,7 +46,13 @@ function BookmarkDesignPage() {
                 완료
               </Text>
             </Button>
-            <Button type="button" label="edit" shape="square" onClick={deleteAll}>
+            <Button
+              type="button"
+              label="edit"
+              shape="square"
+              onClick={deleteAll}
+              disabled={!editBookmarkList.length}
+            >
               <Text weight={500} color={colors.grey[800]}>
                 선택삭제
               </Text>
