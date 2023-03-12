@@ -24,3 +24,9 @@ export const Container = styled.div<{ bulletMargin: string }>`
     background-color: ${({ theme }) => theme.colors.black};
   }
 `;
+
+export const ImageWrap = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;

@@ -17,7 +17,9 @@ export default function Carousel({ images, bulletMargin = "1.2rem" }: IProp) {
       <Swiper modules={[Pagination]} pagination={{ clickable: true }} slidesPerView={1}>
         {images.map(image => (
           <SwiperSlide key={image.id} style={{ textAlign: "center" }}>
-            <Image alt={image.url} src={image.url} width={100} height={50} />
+            <S.ImageWrap>
+              <Image alt={image.url} src={image.url} fill />
+            </S.ImageWrap>
           </SwiperSlide>
         ))}
       </Swiper>
