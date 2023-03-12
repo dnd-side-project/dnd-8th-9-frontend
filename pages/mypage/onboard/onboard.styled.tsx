@@ -59,3 +59,56 @@ export const TagItem = styled(Tag)`
   padding: 0.9rem 1.4rem;
   height: 3.6rem;
 `;
+
+// edit page
+
+export const InfoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.6rem 0 3.2rem;
+  height: 3.6rem;
+
+  > span {
+    min-width: 5rem;
+  }
+`;
+
+export const EditTagContainer = styled(TagContainer)`
+  margin-bottom: 0;
+  flex-wrap: nowrap;
+`;
+
+export const EditTagItem = styled(Button)`
+  height: 100%;
+  padding: 0.9rem 1.4rem;
+  border-radius: 2.4rem;
+  background-color: ${({ theme }) => theme.colors.grey[200]};
+  column-gap: 0.4rem;
+  flex-shrink: 0;
+`;
+
+export const OptionWrap = styled.div`
+  > div {
+    height: 55rem;
+  }
+`;
+
+export const Footer = styled.footer`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 2.2rem 1.6rem;
+  width: 100%;
+`;
+
+export const SaveButton = styled(Button)`
+  width: 100%;
+  color: ${({ theme }) => theme.colors.grey[100]};
+  background-color: ${({ theme }) => theme.colors.pink[700]};
+
+  &:disabled {
+    color: ${({ theme }) => theme.colors.grey[600]};
+    background-color: ${({ theme }) => theme.colors.grey[400]};
+  }
+`;
