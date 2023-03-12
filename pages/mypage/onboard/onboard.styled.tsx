@@ -112,3 +112,11 @@ export const SaveButton = styled(Button)`
     background-color: ${({ theme }) => theme.colors.grey[400]};
   }
 `;
+
+// category edit
+export const InfoCategoryContainer = styled.div`
+  display: flex;
+  overflow-x: scroll;
+  height: 3.6rem;
+  margin: 1.6rem 0 3.2rem;
+`;
