@@ -30,6 +30,7 @@ export { default as Pencil } from "./pencil.svg";
 export { default as ProfileSelected } from "./profile-selected.svg";
 export { default as Profile } from "./profile.svg";
 export { default as Quote } from "./quote.svg";
+export { default as SaveBookmarkWide } from "./save_bookmark_wide.svg";
 export { default as SaveBookmark } from "./save_bookmark.svg";
 export { default as SearchClose } from "./search_close.svg";
 export { default as Search } from "./search.svg";
