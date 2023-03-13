@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
@@ -12,8 +13,13 @@ interface IImage {
 interface BookmarkState {
   bookmarkStoreList: IStoreItem[];
   bookmarkMenuList: IRandomMenuItem[];
+  editBookmarkList: string[];
   updateBookmarkStoreList: (store: IStoreItem) => void;
   updateBookmarkMenuList: (menu: IRandomMenuItem) => void;
+  updateEditBookmarkList: (name: string) => void;
+  deleteAllMenuBookmarkList: () => void;
+  deleteAllStoreBookmarkList: () => void;
+  clearEditBookmarkList: () => void;
 }
 
 const useBookmarkStore = create<BookmarkState>()(
@@ -21,6 +27,7 @@ const useBookmarkStore = create<BookmarkState>()(
     immer(set => ({
       bookmarkStoreList: [],
       bookmarkMenuList: [],
+      editBookmarkList: [],
       updateBookmarkStoreList: (newStore: IStoreItem) =>
         set(state => {
           const isNewStore =
@@ -42,6 +49,37 @@ const useBookmarkStore = create<BookmarkState>()(
             state.bookmarkMenuList.splice(index, 1);
           }
         }),
+      updateEditBookmarkList: (name: string) => {
+        set(state => {
+          if (state.editBookmarkList.includes(name)) {
+            const index = state.editBookmarkList.indexOf(name);
+            state.editBookmarkList.splice(index, 1);
+          } else {
+            state.editBookmarkList.push(name);
+          }
+        });
+      },
+      deleteAllMenuBookmarkList: () => {
+        set(state => {
+          const newBookmarkMenuList = state.bookmarkMenuList.filter(
+            item => !state.editBookmarkList.includes(item.name),
+          );
+          state.bookmarkMenuList = newBookmarkMenuList;
+        });
+      },
+      deleteAllStoreBookmarkList: () => {
+        set(state => {
+          const newBookmarkStoreList = state.bookmarkStoreList.filter(
+            item => !state.editBookmarkList.includes(item.name),
+          );
+          state.bookmarkStoreList = newBookmarkStoreList;
+        });
+      },
+      clearEditBookmarkList: () => {
+        set(state => {
+          state.editBookmarkList = [];
+        });
+      },
     })),
   ),
 );

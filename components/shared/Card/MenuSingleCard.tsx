@@ -6,7 +6,7 @@ import * as S from "./Card.styled";
 
 interface IProps {
   data: IRandomMenuItem;
-  isEditMode?: boolean;
+  mode?: "edit" | "bookmark" | "none";
   size?: "s" | "m";
 }
 
@@ -23,7 +23,7 @@ const SIZE_STYLE = {
   },
 };
 
-function MenuSingleCard({ data, isEditMode = false, size = "m" }: IProps) {
+function MenuSingleCard({ data, mode, size = "m" }: IProps) {
   const { colors } = useTheme();
   const { price, name, menuImage, summary } = data;
 
@@ -34,7 +34,7 @@ function MenuSingleCard({ data, isEditMode = false, size = "m" }: IProps) {
       dir="row"
       image={menuImage}
       gap={16}
-      isEditMode={isEditMode}
+      mode={mode}
       data={data}
       type="menu"
     >

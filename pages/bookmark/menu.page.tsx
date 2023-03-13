@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { css, useTheme } from "@emotion/react";
-import useBookmarkStore from "@/store/bookmark";
 import { resultTab } from "@/constants/tabs";
-import Text from "@/components/shared/Text/Text";
-import Button from "@/components/shared/Button/Button";
-import StoreDoubleCard from "@/components/shared/Card/StoreDoubleCard";
+import useBookmarkStore from "@/store/bookmark";
 import FilterBar from "@/components/shared/FilterBar/FilterBar";
+import Button from "@/components/shared/Button/Button";
+import Text from "@/components/shared/Text/Text";
+import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
 import * as S from "./menu.styled";
 
-function BookmarkStorePage() {
+function BookmarkDesignPage() {
   const { colors } = useTheme();
   const [isEditMode, setIsEditMode] = useState(false);
-  const { editBookmarkList, bookmarkStoreList, deleteAllStoreBookmarkList, clearEditBookmarkList } =
+  const { editBookmarkList, bookmarkMenuList, deleteAllMenuBookmarkList, clearEditBookmarkList } =
     useBookmarkStore();
 
   const startEditMode = () => {
@@ -24,7 +24,7 @@ function BookmarkStorePage() {
   };
 
   const deleteAll = () => {
-    deleteAllStoreBookmarkList();
+    deleteAllMenuBookmarkList();
     clearEditBookmarkList();
   };
 
@@ -72,13 +72,13 @@ function BookmarkStorePage() {
           </Button>
         </S.ControlBoxWrap>
       )}
-      <S.StoreWrap>
-        {bookmarkStoreList.map(store => (
-          <StoreDoubleCard key={store.id} data={store} mode={isEditMode ? "edit" : "none"} />
+      <S.MenuWrap>
+        {bookmarkMenuList.map(menu => (
+          <MenuDoubleCard key={menu.id} data={menu} size="m" mode={isEditMode ? "edit" : "none"} />
         ))}
-      </S.StoreWrap>
+      </S.MenuWrap>
     </div>
   );
 }
 
-export default BookmarkStorePage;
+export default BookmarkDesignPage;

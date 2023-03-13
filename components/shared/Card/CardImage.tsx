@@ -16,7 +16,7 @@ interface IProp {
   rank?: number;
   canDelivery?: boolean;
   canPickup?: boolean;
-  isEditMode?: boolean;
+  mode?: "edit" | "none" | "bookmark";
   bookmarkData: IStoreItem | IRandomMenuItem;
   type: "store" | "menu";
 }
@@ -26,14 +26,20 @@ function CardImage({
   canDelivery,
   canPickup,
   rank = 0,
-  isEditMode = false,
+  mode = "bookmark",
   bookmarkData,
   type,
 }: IProp) {
   const { colors } = useTheme();
   const isCarousel = Array.isArray(data);
-  const { updateBookmarkStoreList, updateBookmarkMenuList, bookmarkMenuList, bookmarkStoreList } =
-    useBookmarkStore();
+  const {
+    updateBookmarkStoreList,
+    updateBookmarkMenuList,
+    updateEditBookmarkList,
+    bookmarkMenuList,
+    bookmarkStoreList,
+    editBookmarkList,
+  } = useBookmarkStore();
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
@@ -62,14 +68,28 @@ function CardImage({
     }
   };
 
+  const handleCheck = (name: string) => {
+    updateEditBookmarkList(name);
+  };
+
   return (
     <>
       {isCarousel ? <Carousel images={data} /> : <Image src={data} alt="menu" fill />}
-      {isEditMode ? (
-        <S.CheckIconWrap>
-          <Icon name="check" size="m" color={colors.grey[400]} />
+      {mode === "edit" && (
+        <S.CheckIconWrap
+          onClick={() => handleCheck(bookmarkData.name)}
+          className={editBookmarkList.includes(bookmarkData.name) ? "isSelected" : ""}
+        >
+          <Icon
+            name="check"
+            size="m"
+            color={
+              editBookmarkList.includes(bookmarkData.name) ? colors.grey[100] : colors.grey[400]
+            }
+          />
         </S.CheckIconWrap>
-      ) : (
+      )}
+      {mode === "bookmark" && (
         <S.BookmarkIconWrap onClick={() => handleBookmark(bookmarkData)}>
           <Icon
             name="saveBookmark"
