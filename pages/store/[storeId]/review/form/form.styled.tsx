@@ -8,10 +8,10 @@ export const Container = styled.div`
 `;
 
 export const ButtonWrap = styled.div`
+  padding: 2rem 1.6rem 2.4rem;
+  background-color: ${({ theme }) => theme.colors.grey[100]};
   width: 100%;
-  position: absolute;
+  position: fixed;
   left: 0;
-  bottom: 2.4rem;
-  padding: 0 1.6rem;
-  z-index: 20;
+  bottom: 0;
 `;
