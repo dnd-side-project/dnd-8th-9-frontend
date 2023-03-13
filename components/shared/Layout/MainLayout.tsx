@@ -20,7 +20,7 @@ function MainLayout({ children }: IChildren) {
     const user = localStorage.getItem("access_token");
 
     if (isProtectedRoute(pathname) && !user) {
-      router.push(ROUTES.LOGIN_PAGE);
+      router.push(ROUTES.LOGIN_REDIRECT_PAGE);
     }
   }, [router]);
 
