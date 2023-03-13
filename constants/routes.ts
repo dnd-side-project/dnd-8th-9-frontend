@@ -21,12 +21,13 @@ export const ROUTES = {
   ONBOARD_WELCOME: "/onboard/welcome",
   ONBOARDING_LOCATION_PAGE: "/onboard/location",
   ONBOARDING_CATEGORY_PAGE: "/onboard/category",
+  ONBOARDING_GUIDE_PAGE: "/onboard/guide",
 
   SEARCH_PAGE: "/search",
   SEARCH_RESULT_MENU_PAGE: "/search/result/menu",
   SEARCH_RESULT_STORE_PAGE: "/search/result/store",
 
-  MY_BOOKMARK_DESIGN_PAGE: "/bookmark/design",
+  MY_BOOKMARK_DESIGN_PAGE: "/bookmark/menu",
   MY_BOOKMARK_STORE_PAGE: "/bookmark/store",
 
   MYPAGE: "/mypage",

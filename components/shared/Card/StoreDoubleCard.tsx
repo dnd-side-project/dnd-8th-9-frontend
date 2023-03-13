@@ -8,10 +8,10 @@ import * as S from "./Card.styled";
 
 interface IProps {
   data: IStoreItem;
-  isEditMode?: boolean;
+  mode?: "edit" | "bookmark" | "none";
 }
 
-function StoreDoubleCard({ data, isEditMode }: IProps) {
+function StoreDoubleCard({ data, mode }: IProps) {
   const { colors } = useTheme();
   const {
     name,
@@ -31,7 +31,7 @@ function StoreDoubleCard({ data, isEditMode }: IProps) {
       dir="col"
       image={storeImages}
       gap={16}
-      isEditMode={isEditMode}
+      mode={mode}
       canDelivery={canDelivery}
       canPickup={canPickup}
       css={S.storeDoubleCss}
