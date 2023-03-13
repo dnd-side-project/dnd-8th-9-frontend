@@ -1,5 +1,11 @@
 import { Theme } from "@emotion/react";
 
+const Z_INDEX = {
+  BELOW: 100,
+  BASE: 0,
+  ABOVE: 100,
+};
+
 const theme: Theme = {
   fontSizes: {
     10: "10px",
@@ -74,6 +80,13 @@ const theme: Theme = {
       800: "#414141",
       900: "#202020",
     },
+  },
+  "z-index": {
+    gnb: Z_INDEX.BASE + Z_INDEX.ABOVE * 5,
+    navbar: Z_INDEX.BASE + Z_INDEX.ABOVE * 5,
+    sortModal: Z_INDEX.BASE + Z_INDEX.ABOVE * 4,
+    imageIcon: Z_INDEX.BASE + Z_INDEX.ABOVE * 3,
+    storeContent: Z_INDEX.BASE + Z_INDEX.ABOVE * 2,
   },
 };
 
