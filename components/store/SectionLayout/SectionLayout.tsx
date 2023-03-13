@@ -11,7 +11,7 @@ interface IProps {
 }
 
 function SectionLayout({ children }: IProps) {
-  const { canDelivery, canPickup } = store;
+  const { canDelivery, canPickup, links } = store;
   const { overallStats } = reviews;
 
   return (
@@ -23,7 +23,7 @@ function SectionLayout({ children }: IProps) {
         <MainInfo data={store} />
         <ReviewInfo overallStats={overallStats} />
         <RecieveMethod canDelivery={canDelivery} canPickup={canPickup} />
-        <OrderLink />
+        <OrderLink links={links} />
         <Tab type="swipeable" menuList={storeTab} target="storeTab" />
         {children}
       </S.Main>
