@@ -29,7 +29,7 @@ function OnboardLocationPage() {
         <S.TextTag type="single" label="서울지역 한정">
           서울지역 한정
         </S.TextTag>
-        <Text as="h1" size={20} weight={700} color={colors.grey[900]}>
+        <Text as="h1" size={20} weight={700}>
           케이크 주문 시 <br />
           선호하는 지역을 선택해주세요!
         </Text>

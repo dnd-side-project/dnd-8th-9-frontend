@@ -39,7 +39,7 @@ function StoreDoubleCard({ data, isEditMode }: IProps) {
       type="store"
     >
       <S.ContentWrap type="storeDouble">
-        <S.Store weight={600} size={16} color={colors.grey[900]}>
+        <S.Store weight={600} size={16}>
           {name}
         </S.Store>
         <S.Location weight={500} size={12} color={colors.grey[600]}>

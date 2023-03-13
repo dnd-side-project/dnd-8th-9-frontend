@@ -10,10 +10,9 @@ interface IProp {
 }
 
 function ContentBox({ children, title, className, hasInfoIcon = false }: IProp) {
-  const { colors } = useTheme();
   return (
     <S.Box className={className}>
-      <S.Title as="h2" size={16} weight={600} color={colors.grey[900]}>
+      <S.Title as="h2" size={16} weight={600}>
         {title}
         {hasInfoIcon && <Info />}
       </S.Title>

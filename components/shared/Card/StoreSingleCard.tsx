@@ -39,7 +39,7 @@ function StoreSingleCard({ data, rank }: IProps) {
       rank={rank}
     >
       <S.ContentWrap type="storeSingle">
-        <S.Store weight={600} size={15} color={colors.grey[900]}>
+        <S.Store weight={600} size={15}>
           {name}
         </S.Store>
         <S.Review>

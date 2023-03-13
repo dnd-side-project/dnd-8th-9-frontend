@@ -19,7 +19,7 @@ function MainInfo({ data }: IProp) {
     <S.InfoBox>
       <S.Header>
         <div>
-          <Text as="h1" weight={700} size={20} color={colors.grey[900]}>
+          <Text as="h1" weight={700} size={20}>
             {name}
           </Text>
           <Icon name="saveBookmarkWide" size="m" color={colors.grey[400]} fill={colors.grey[400]} />

@@ -27,7 +27,7 @@ function OrderLink({ links, time }: IProps) {
                 fill={link.platform === "kakao" ? colors.grey[700] : "none"}
               />
             </S.IconWrap>
-            <Text weight={600} size={15} color={colors.grey[900]}>
+            <Text weight={600} size={15}>
               {link.role}
             </Text>
           </div>

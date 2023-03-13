@@ -1,3 +1,4 @@
+import theme from "@/styles/theme";
 import * as S from "./Text.styled";
 
 interface IProp {
@@ -9,7 +10,14 @@ interface IProp {
   as?: React.ElementType;
 }
 
-function Text({ children, size = 14, weight = 400, color = "black", className, as }: IProp) {
+function Text({
+  children,
+  size = 14,
+  weight = 400,
+  color = theme.colors.grey[900],
+  className,
+  as,
+}: IProp) {
   return (
     <S.Text as={as} className={className} size={size} weight={weight} color={color}>
       {children}
