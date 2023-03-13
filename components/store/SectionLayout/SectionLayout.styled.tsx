@@ -17,16 +17,3 @@ export const Main = styled.div`
   z-index: ${({ theme }) => theme["z-index"].storeContent};
   margin-top: 47rem;
 `;
-
-export const Section = styled.section`
-  background-color: ${({ theme }) => theme.colors.white};
-  border-bottom: 7px solid ${({ theme }) => theme.colors.white[200]};
-  padding: 0 1.6rem;
-`;
-
-export const MainInfoSection = styled(Section)`
-  padding: 3rem 1.6rem 1.4rem;
-  background-color: ${({ theme }) => theme.colors.white[100]};
-  border-top-left-radius: 1.6rem;
-  border-top-right-radius: 1.6rem;
-`;

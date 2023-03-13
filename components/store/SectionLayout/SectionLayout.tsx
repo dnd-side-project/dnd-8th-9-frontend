@@ -11,7 +11,7 @@ interface IProps {
 }
 
 function SectionLayout({ children }: IProps) {
-  const { name, category, location, priceRange, canDelivery, canPickup } = store;
+  const { canDelivery, canPickup } = store;
   const { overallStats } = reviews;
 
   return (
@@ -20,10 +20,8 @@ function SectionLayout({ children }: IProps) {
         <Carousel images={store.storeImages} bulletMargin="3.2rem" />
       </S.CarouselWrap>
       <S.Main>
-        <S.MainInfoSection>
-          <MainInfo data={{ name, category, location, priceRange }} />
-          <ReviewInfo overallStats={overallStats} />
-        </S.MainInfoSection>
+        <MainInfo data={store} />
+        <ReviewInfo overallStats={overallStats} />
         <RecieveMethod canDelivery={canDelivery} canPickup={canPickup} />
         <OrderLink />
         <Tab type="swipeable" menuList={storeTab} target="storeTab" />
