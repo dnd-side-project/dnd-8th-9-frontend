@@ -4,16 +4,17 @@ import Text from "@/components/shared/Text/Text";
 import * as S from "./OrderLink.styled";
 
 interface IProps {
+  time: number;
   links: ILink[];
 }
 
-function OrderLink({ links }: IProps) {
+function OrderLink({ links, time }: IProps) {
   const { colors } = useTheme();
 
   return (
     <S.OrderContentBox title="주문하러 가기" hasInfoIcon>
       <S.Desc as="p" weight={500} color={colors.grey[800]}>
-        평균 <strong>00일 전까지 예약</strong>이 필요한 업체입니다.
+        평균 <strong>{time}일 전까지 예약</strong>이 필요한 업체입니다.
       </S.Desc>
       {links.map(link => (
         <S.LinkItem key={link.id}>
