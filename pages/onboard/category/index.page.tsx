@@ -1,13 +1,12 @@
 import Link from "next/link";
-import Image from "next/image";
 import { useTheme } from "@emotion/react";
 import useModalStore from "@/store/modal";
 import useOnboardStore from "@/store/onboard";
 import useUserStore from "@/store/user";
 import { cakeStyles } from "@/mocks/mockData/category";
 import { ROUTES } from "@/constants/routes";
+import Category from "@/components/onboard/Category/Category";
 import Text from "@/components/shared/Text/Text";
-import Icon from "@/components/shared/Icon/Icon";
 import * as S from "./category.styled";
 
 function OnboardCategoryPage() {
@@ -43,29 +42,7 @@ function OnboardCategoryPage() {
           복수선택이 가능해요.
         </Text>
       </S.TextContainer>
-      <S.StyleContainer>
-        {cakeStyles.map(style => (
-          <S.StyleItem
-            key={style.id}
-            className={cakeStyle.includes(style.name) ? "isSelected" : ""}
-            onClick={() => handleClick(style.name)}
-          >
-            <S.ImageWrap>
-              <Image src={style.imageUrl} alt={style.name} fill />
-              <div className="checkbox">
-                <Icon
-                  name="check"
-                  size="m"
-                  color={cakeStyle.includes(style.name) ? colors.grey[100] : colors.grey[500]}
-                />
-              </div>
-            </S.ImageWrap>
-            <Text size={14} weight={500}>
-              {style.name}
-            </Text>
-          </S.StyleItem>
-        ))}
-      </S.StyleContainer>
+      <Category />
       <S.Footer>
         <Link href={ROUTES.ONBOARDING_LOCATION_PAGE}>
           <S.PrevButton type="button" label="next" shape="square">
