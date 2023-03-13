@@ -23,7 +23,7 @@ export const SortModal = styled.div<{ isOpen: boolean }>`
   display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
   flex-direction: column;
   position: absolute;
-  z-index: 200;
+  z-index: ${({ theme }) => theme["z-index"].sortModal};
   top: 4rem;
   right: auto;
   width: 18rem;

@@ -28,11 +28,11 @@ export const TagsWrap = styled.div`
   position: absolute;
   left: 0.6rem;
   top: 0.6rem;
-  z-index: 99;
+  z-index: ${({ theme }) => theme["z-index"].navbar};
 `;
 
 export const RankBadge = styled.div`
-  z-index: 99;
+  z-index: ${({ theme }) => theme["z-index"].navbar};
   width: 0;
   height: 0;
   border-bottom: 4rem solid transparent;
@@ -47,7 +47,7 @@ export const RankNumber = styled(Text)`
   position: absolute;
   left: -3rem;
   top: 0.5rem;
-  z-index: 99;
+  z-index: ${({ theme }) => theme["z-index"].imageIcon};
 `;
 
 export const BookmarkIconWrap = styled.div`
@@ -63,7 +63,7 @@ export const BookmarkIconWrap = styled.div`
   position: absolute;
   right: 0.6rem;
   bottom: 0.6rem;
-  z-index: 99;
+  z-index: ${({ theme }) => theme["z-index"].navbar};
   cursor: pointer;
 `;
 
@@ -80,6 +80,6 @@ export const CheckIconWrap = styled.div`
   position: absolute;
   right: 0.6rem;
   top: 0.6rem;
-  z-index: 99;
+  z-index: ${({ theme }) => theme["z-index"].navbar};
   cursor: pointer;
 `;

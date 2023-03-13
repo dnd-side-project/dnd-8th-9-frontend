@@ -14,7 +14,7 @@ export const Main = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 800;
+  z-index: ${({ theme }) => theme["z-index"].storeContent};
   margin-top: 47rem;
 `;
 

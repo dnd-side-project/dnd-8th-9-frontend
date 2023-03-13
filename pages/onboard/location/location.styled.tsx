@@ -76,7 +76,7 @@ export const LabelTag = styled(Tag)`
   position: absolute;
   top: -12px;
   right: -11px;
-  z-index: 20;
+  z-index: ${({ theme }) => theme["z-index"].imageIcon};
 
   > * {
     color: ${({ theme }) => theme.colors.pink[700]};

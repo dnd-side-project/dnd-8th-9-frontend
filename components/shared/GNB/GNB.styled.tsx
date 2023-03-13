@@ -12,7 +12,7 @@ export const Container = styled.div<{ length: number }>`
   right: 0;
   bottom: 0;
 
-  z-index: 5;
+  z-index: ${({ theme }) => theme["z-index"].gnb};
 
   > * {
     width: calc(100% / ${({ length }) => length});
