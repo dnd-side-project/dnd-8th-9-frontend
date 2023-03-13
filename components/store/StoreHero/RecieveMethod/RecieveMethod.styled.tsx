@@ -1,37 +1,30 @@
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import Text from "@/components/shared/Text/Text";
+import ContentBox from "../../ContentBox/ContentBox";
 
 export const Content = styled.div`
   display: flex;
   align-items: center;
-  font-weight: 500;
-  column-gap: 0.8rem;
-  margin-bottom: 0.4rem;
-
-  span {
-    font-size: ${({ theme }) => theme.fontSizes[14]};
-    color: ${({ theme }) => theme.colors.gray[400]};
-
-    &::after {
-      display: inline-block;
-      margin-left: 0.8rem;
-      content: "";
-      width: 0.1rem;
-      height: 0.8rem;
-      background-color: ${({ theme }) => theme.colors.gray[100]};
-    }
-  }
-
-  small {
-    font-size: ${({ theme }) => theme.fontSizes[13]};
-    color: ${({ theme }) => theme.colors.gray[200]};
-  }
+  margin-bottom: 0.8rem;
 `;
 
-export const contentBoxCss = css`
-  padding-block: 1.9rem 2.2rem;
+export const Method = styled(Text)`
+  margin-left: 0.8rem;
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.fontSizes[15]};
+  color: ${({ theme }) => theme.colors.blue[800]};
+`;
+
+export const Desc = styled(Text)`
+  margin-left: 1.2rem;
+  font-size: ${({ theme }) => theme.fontSizes[13]};
+  color: ${({ theme }) => theme.colors.grey[700]};
+`;
+
+export const RecieveMethodContentBox = styled(ContentBox)`
+  padding-block: 2.4rem 3.2rem;
 
   h2 {
-    margin-bottom: 1.2rem;
+    margin-bottom: 2rem;
   }
 `;

@@ -1,6 +1,5 @@
-import Icon from "@/components/shared/Icon/Icon";
 import { useTheme } from "@emotion/react";
-import ContentBox from "../../ContentBox/ContentBox";
+import Icon from "@/components/shared/Icon/Icon";
 import * as S from "./RecieveMethod.styled";
 
 interface IProp {
@@ -12,22 +11,22 @@ function RecieveMethod({ canDelivery, canPickup }: IProp) {
   const { colors } = useTheme();
 
   return (
-    <ContentBox title="수령방식" cssProp={S.contentBoxCss}>
+    <S.RecieveMethodContentBox title="수령방식" hasInfoIcon>
       {canDelivery && (
         <S.Content>
-          <Icon name="delivery" color={colors.gray[200]} size="m" />
-          <span>택배가능</span>
-          <small>국내배송, 결제 4 - 5일 내 배송</small>
+          <Icon name="delivery" fill={colors.blue[700]} size="l" />
+          <S.Method>택배가능</S.Method>
+          <S.Desc>퀵-셀프신청, 1 ~ 2일 수령가능</S.Desc>
         </S.Content>
       )}
       {canPickup && (
         <S.Content>
-          <Icon name="store" color={colors.gray[200]} size="m" />
-          <span>픽업가능</span>
-          <small>영업일 기준, 공휴일 불가</small>
+          <Icon name="store" fill={colors.blue[700]} size="l" />
+          <S.Method>픽업가능</S.Method>
+          <S.Desc>영업일 기준, 공휴일 불가</S.Desc>
         </S.Content>
       )}
-    </ContentBox>
+    </S.RecieveMethodContentBox>
   );
 }
 
