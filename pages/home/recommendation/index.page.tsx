@@ -2,19 +2,29 @@ import { css, useTheme } from "@emotion/react";
 import { homeTab } from "@/constants/tabs";
 import { randomMenus } from "@/mocks/mockData/randomMenuList";
 import { randomReviews } from "@/mocks/mockData/randomReviewList";
+import useModalStore from "@/store/modal";
+
 import HomeHero from "@/components/home/HomeHero/HomeHero";
 import Tab from "@/components/shared/Tab/Tab";
 import StoreRank from "@/components/home/StoreRank/StoreRank";
 import Text from "@/components/shared/Text/Text";
 import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
 import ReviewDoubleCard from "@/components/shared/Card/ReviewDoubleCard";
+import Modal from "@/components/shared/Modal/Modal";
+import WelcomeCard from "@/components/onboard/WelcomeCard/WelcomeCard";
 import * as S from "./recommendation.styled";
 
 function HomeRecommendationPage() {
   const { colors } = useTheme();
+  const { welcomeModalOpen } = useModalStore();
 
   return (
     <>
+      {welcomeModalOpen && (
+        <Modal>
+          <WelcomeCard />
+        </Modal>
+      )}
       <HomeHero />
       <Tab
         menuList={homeTab}

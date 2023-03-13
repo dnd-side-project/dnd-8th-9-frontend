@@ -16,6 +16,7 @@ interface UserState {
 interface UserActionState {
   loginUser: (userName: string, profileImage: string, email?: string, phoneNumber?: string) => void;
   logoutUser: () => void;
+  toggleDoneOnboard: () => void;
 }
 
 const initialState: UserState = {
@@ -45,6 +46,11 @@ const useUserStore = create<UserState & UserActionState>()(
       },
       logoutUser: () => {
         set(initialState);
+      },
+      toggleDoneOnboard: () => {
+        set(state => {
+          state.doneOnboard = !state.doneOnboard;
+        });
       },
     })),
   ),
