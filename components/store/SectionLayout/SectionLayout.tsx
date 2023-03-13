@@ -7,7 +7,7 @@ import { MainInfo, OrderLink, RecieveMethod, ReviewInfo } from "../StoreHero";
 import * as S from "./SectionLayout.styled";
 
 interface IProps {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 }
 
 function SectionLayout({ children }: IProps) {
