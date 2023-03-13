@@ -37,7 +37,7 @@ const nextConfig = {
       },
       {
         source: "/bookmark",
-        destination: "/bookmark/design",
+        destination: "/bookmark/menu",
         permanent: true,
       },
     ];

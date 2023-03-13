@@ -76,10 +76,14 @@ export const CheckIconWrap = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 0.4rem;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.grey[100]};
   position: absolute;
   right: 0.6rem;
   top: 0.6rem;
   z-index: ${({ theme }) => theme["z-index"].navbar};
   cursor: pointer;
+
+  &.isSelected {
+    background-color: ${({ theme }) => theme.colors.blue[800]};
+  }
 `;
