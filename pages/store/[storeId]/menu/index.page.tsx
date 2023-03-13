@@ -1,27 +1,24 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { store } from "@/mocks/mockData/store";
+import { menuList } from "@/mocks/mockData/menuList";
 import { useGetStore } from "@/api/queries/store";
 import MenuCard from "@/components/shared/MenuCard/MenuCard";
-import Tab from "@/components/shared/Tab/Tab";
-import StoreHero from "@/components/store/StoreHero/StoreHero";
-import { storeTab } from "@/constants/tabs";
-
-import { menuList } from "@/mocks/mockData/menuList";
+import SectionLayout from "@/components/store/SectionLayout/SectionLayout";
 import * as S from "./menu.styled";
 
 const MENU_PAGE = "menuPage";
 
 function MenuPage() {
-  const { data, isLoading, isError } = useGetStore({ storeId: 1 });
+  // const { data, isLoading, isError } = useGetStore({ storeId: 1 });
   const { asPath } = useRouter();
+  const { name, category, location, priceRange, canDelivery, canPickup } = store;
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error...</div>;
+  // if (isLoading) return <div>Loading...</div>;
+  // if (isError) return <div>Error...</div>;
 
   return (
-    <div>
-      <StoreHero />
-      <Tab type="swipeable" menuList={storeTab} target="storeTab" />
+    <SectionLayout>
       <S.ListWrap>
         {menuList.menus.map(menu => (
           <Link key={menu.id} href={`${asPath}/${menu.id}`}>
@@ -29,7 +26,7 @@ function MenuPage() {
           </Link>
         ))}
       </S.ListWrap>
-    </div>
+    </SectionLayout>
   );
 }
 
