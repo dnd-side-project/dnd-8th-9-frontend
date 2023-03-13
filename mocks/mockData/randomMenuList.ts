@@ -9,10 +9,22 @@ export const randomMenus: { menus: IRandomMenuItem[] } = {
       summary: "색상, 레터링, 사이즈 변경가능, 데코는 기본가에 금액추가",
       price: 40000,
       storeName: "업체명",
-      links: {
-        kakao: "https://pf.kakao.com/_jIwLK",
-        instagram: "https://www.instagram.com/cake.yesplease/",
-      },
+      links: [
+        {
+          id: 1,
+          platform: "kakao",
+          link: "https://pf.kakao.com/_jIwLK",
+          role: "주문 및 예약",
+        },
+        {
+          id: 2,
+          platform: "instagram",
+          link: "https://www.instagram.com/cake.yesplease/",
+          role: "실시간 문의",
+        },
+      ],
+      canDelivery: true,
+      canPickup: false,
     },
     {
       id: 5,
@@ -21,10 +33,22 @@ export const randomMenus: { menus: IRandomMenuItem[] } = {
       summary: "색상, 레터링, 사이즈 변경가능, 데코는 기본가에 금액추가",
       price: 50000,
       storeName: "업체명",
-      links: {
-        kakao: "https://pf.kakao.com/_jIwLK",
-        instagram: "https://www.instagram.com/cake.yesplease/",
-      },
+      links: [
+        {
+          id: 1,
+          platform: "kakao",
+          link: "https://pf.kakao.com/_jIwLK",
+          role: "주문 및 예약",
+        },
+        {
+          id: 2,
+          platform: "instagram",
+          link: "https://www.instagram.com/cake.yesplease/",
+          role: "실시간 문의",
+        },
+      ],
+      canDelivery: true,
+      canPickup: false,
     },
     {
       id: 6,
@@ -33,10 +57,22 @@ export const randomMenus: { menus: IRandomMenuItem[] } = {
       summary: "색상, 레터링, 사이즈 변경가능, 데코는 기본가에 금액추가",
       price: 60000,
       storeName: "업체명",
-      links: {
-        kakao: "https://pf.kakao.com/_jIwLK",
-        instagram: "https://www.instagram.com/cake.yesplease/",
-      },
+      links: [
+        {
+          id: 1,
+          platform: "kakao",
+          link: "https://pf.kakao.com/_jIwLK",
+          role: "주문 및 예약",
+        },
+        {
+          id: 2,
+          platform: "instagram",
+          link: "https://www.instagram.com/cake.yesplease/",
+          role: "실시간 문의",
+        },
+      ],
+      canDelivery: true,
+      canPickup: false,
     },
     {
       id: 1,
@@ -45,10 +81,22 @@ export const randomMenus: { menus: IRandomMenuItem[] } = {
       summary: "색상, 레터링, 사이즈 변경가능, 데코는 기본가에 금액추가",
       price: 13000,
       storeName: "업체명",
-      links: {
-        kakao: "https://pf.kakao.com/_jIwLK",
-        instagram: "https://www.instagram.com/cake.yesplease/",
-      },
+      links: [
+        {
+          id: 1,
+          platform: "kakao",
+          link: "https://pf.kakao.com/_jIwLK",
+          role: "주문 및 예약",
+        },
+        {
+          id: 2,
+          platform: "instagram",
+          link: "https://www.instagram.com/cake.yesplease/",
+          role: "실시간 문의",
+        },
+      ],
+      canDelivery: true,
+      canPickup: false,
     },
     {
       id: 2,
@@ -57,10 +105,22 @@ export const randomMenus: { menus: IRandomMenuItem[] } = {
       summary: "색상, 레터링, 사이즈 변경가능, 데코는 기본가에 금액추가",
       price: 20000,
       storeName: "업체명",
-      links: {
-        kakao: "https://pf.kakao.com/_jIwLK",
-        instagram: "https://www.instagram.com/cake.yesplease/",
-      },
+      links: [
+        {
+          id: 1,
+          platform: "kakao",
+          link: "https://pf.kakao.com/_jIwLK",
+          role: "주문 및 예약",
+        },
+        {
+          id: 2,
+          platform: "instagram",
+          link: "https://www.instagram.com/cake.yesplease/",
+          role: "실시간 문의",
+        },
+      ],
+      canDelivery: true,
+      canPickup: false,
     },
     {
       id: 3,
@@ -69,10 +129,22 @@ export const randomMenus: { menus: IRandomMenuItem[] } = {
       summary: "색상, 레터링, 사이즈 변경가능, 데코는 기본가에 금액추가",
       price: 30000,
       storeName: "업체명",
-      links: {
-        kakao: "https://pf.kakao.com/_jIwLK",
-        instagram: "https://www.instagram.com/cake.yesplease/",
-      },
+      links: [
+        {
+          id: 1,
+          platform: "kakao",
+          link: "https://pf.kakao.com/_jIwLK",
+          role: "주문 및 예약",
+        },
+        {
+          id: 2,
+          platform: "instagram",
+          link: "https://www.instagram.com/cake.yesplease/",
+          role: "실시간 문의",
+        },
+      ],
+      canDelivery: true,
+      canPickup: false,
     },
   ],
 };

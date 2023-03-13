@@ -1,4 +1,4 @@
-import { IImage, TCategory } from "./shared";
+import { IImage, ILink, TCategory } from "./shared";
 
 export interface IStoreItem {
   id: number;
@@ -10,8 +10,5 @@ export interface IStoreItem {
   canDelivery: boolean;
   category: TCategory[];
   storeImages: IImage[];
-  links: {
-    kakao?: string;
-    instagram?: string;
-  };
+  links: ILink[];
 }

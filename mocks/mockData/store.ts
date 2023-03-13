@@ -11,10 +11,20 @@ export const store: IStore = {
   canDelivery: true,
   priceRange: { max: 70000, min: 15000 },
   averageReservationNeededTime: 10,
-  links: {
-    kakao: "https://pf.kakao.com/_jIwLK",
-    instagram: "https://www.instagram.com/cake.yesplease/",
-  },
+  links: [
+    {
+      id: 1,
+      platform: "kakao",
+      link: "https://pf.kakao.com/_jIwLK",
+      role: "주문 및 예약",
+    },
+    {
+      id: 2,
+      platform: "instagram",
+      link: "https://www.instagram.com/cake.yesplease/",
+      role: "실시간 문의",
+    },
+  ],
   orderForm:
     "성함/연락처: \n픽업 날짜, 시간: 월 일 요일 시 분 \n크기: 호 \n맛: \n디자인: 케이크 사진을 보내주세요! \n하트 or 원형 : \n케이크위 레터링: \n케이크밑판문구: \n요청사항: \n",
   notice: {

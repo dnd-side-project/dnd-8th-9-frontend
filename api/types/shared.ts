@@ -3,6 +3,13 @@ export interface IImage {
   url: string;
 }
 
+export interface ILink {
+  id: number;
+  platform: string;
+  link: string;
+  role: string;
+}
+
 export interface TTable {
   name: string;
   desc: string;

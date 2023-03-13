@@ -1,3 +1,5 @@
+import { ILink } from "./shared";
+
 export interface IRandomMenuItem {
   id: number;
   name: string;
@@ -5,7 +7,7 @@ export interface IRandomMenuItem {
   summary: string;
   price: number;
   storeName: string;
-  links: {
-    [key: string]: string;
-  };
+  links: ILink[];
+  canDelivery: boolean;
+  canPickup: boolean;
 }

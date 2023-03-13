@@ -1,4 +1,4 @@
-import { IImage, TCategory, TKeyValue } from "./shared";
+import { IImage, ILink, TCategory, TKeyValue } from "./shared";
 
 export interface IStore {
   id: number;
@@ -11,10 +11,7 @@ export interface IStore {
   canDelivery: boolean;
   priceRange: { max: number; min: number };
   averageReservationNeededTime: number;
-  links: {
-    kakao?: string;
-    instagram?: string;
-  };
+  links: ILink[];
   orderForm: string;
   storeImages: IImage[];
   notice: {
