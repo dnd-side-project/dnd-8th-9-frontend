@@ -26,6 +26,7 @@ const style = css`
 
   strong {
     font-weight: inherit;
+    font-size: inherit;
   }
 
   * {
