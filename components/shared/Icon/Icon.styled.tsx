@@ -22,7 +22,8 @@ const sizeCss = ({ size }: IProp) => css`
     width: ${SIZE_STYLE[size].width};
     height: ${SIZE_STYLE[size].height};
 
-    path {
+    path,
+    circle {
       stroke-width: ${SIZE_STYLE[size]["stroke-width"]};
     }
   }
