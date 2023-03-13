@@ -1,32 +1,24 @@
-import { SerializedStyles, Theme } from "@emotion/react";
-import Icon from "@/components/shared/Icon/Icon";
+import { useTheme } from "@emotion/react";
+import { Info } from "@/assets/icons";
 import * as S from "./ContentBox.styled";
 
 interface IProp {
   children: React.ReactNode;
   title: string;
-  name?: string;
-  titleIconName?: string;
-  iconSize?: "xs" | "s" | "m" | "l";
-  cssProp?: SerializedStyles | (({ colors, fontSizes }: Theme) => SerializedStyles);
+  hasInfoIcon?: boolean;
+  className?: string;
 }
 
-function ContentBox({
-  children,
-  name = "",
-  title,
-  cssProp,
-  titleIconName = "",
-  iconSize = "s",
-}: IProp) {
+function ContentBox({ children, title, className, hasInfoIcon = false }: IProp) {
+  const { colors } = useTheme();
   return (
-    <div css={[S.Box, cssProp]} id={name}>
-      <h2>
+    <S.Box className={className}>
+      <S.Title as="h2" size={16} weight={600} color={colors.grey[900]}>
         {title}
-        {titleIconName !== "" ? <Icon name={titleIconName} size={iconSize} /> : ""}
-      </h2>
+        {hasInfoIcon && <Info />}
+      </S.Title>
       <div>{children}</div>
-    </div>
+    </S.Box>
   );
 }
 
