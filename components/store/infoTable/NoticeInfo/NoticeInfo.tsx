@@ -2,7 +2,6 @@ import Text from "../Text/Text";
 import * as S from "./NoticeInfo.styled";
 
 interface INoticeInfo {
-  title: string;
   data: {
     profileImage: string;
     date: string;
@@ -10,10 +9,10 @@ interface INoticeInfo {
   };
 }
 
-export default function NoticeInfo({ title, data }: INoticeInfo) {
+export default function NoticeInfo({ data }: INoticeInfo) {
   return (
     <S.Container>
-      <S.Title>{title}</S.Title> <Text data={data.content} />
+      <Text data={data.content} />
     </S.Container>
   );
 }

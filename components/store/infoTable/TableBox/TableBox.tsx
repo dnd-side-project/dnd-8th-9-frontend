@@ -5,7 +5,6 @@ import * as S from "./TableBox.styled";
 
 interface IInfo {
   option: "notice" | "info";
-  title: string;
   data: (IKeyValue | ITime)[];
 }
 
@@ -24,28 +23,25 @@ const optionList: IOptions = {
   },
 };
 
-export default function TableBox({ option, title, data }: IInfo) {
+export default function TableBox({ option, data }: IInfo) {
   const { key, value } = optionList[option];
 
   return (
-    <S.Container>
-      <S.Title>{title}</S.Title>
-      <S.Grid option={option}>
-        {data.map(tableItem => (
-          <React.Fragment key={tableItem[key]}>
-            <S.Key>
-              <Text weight={500} as="h3">
-                {tableItem[key]}
-              </Text>
-            </S.Key>
-            <S.Value>
-              <Text weight={400} as="p">
-                {tableItem[value]}
-              </Text>
-            </S.Value>
-          </React.Fragment>
-        ))}
-      </S.Grid>
-    </S.Container>
+    <S.Grid option={option}>
+      {data.map(tableItem => (
+        <React.Fragment key={tableItem[key]}>
+          <S.Key>
+            <Text weight={500} as="h3">
+              {tableItem[key]}
+            </Text>
+          </S.Key>
+          <S.Value>
+            <Text weight={400} as="p">
+              {tableItem[value]}
+            </Text>
+          </S.Value>
+        </React.Fragment>
+      ))}
+    </S.Grid>
   );
 }
