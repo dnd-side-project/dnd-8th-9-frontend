@@ -78,5 +78,12 @@ declare module "@emotion/react" {
         900: string;
       };
     };
+    "z-index": {
+      gnb: number;
+      navbar: number;
+      sortModal: number;
+      imageIcon: number;
+      storeContent: number;
+    };
   }
 }

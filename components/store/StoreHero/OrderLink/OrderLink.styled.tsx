@@ -1,47 +1,59 @@
-import { css, Theme } from "@emotion/react";
-import { contentBoxCss } from "../RecieveMethod/RecieveMethod.styled";
+import Link from "next/link";
+import styled from "@emotion/styled";
+import Icon from "@/components/shared/Icon/Icon";
+import Text from "@/components/shared/Text/Text";
+import ContentBox from "../../ContentBox/ContentBox";
 
-export const contentOrderBoxCss = ({ colors, fontSizes }: Theme) => css`
-  ${contentBoxCss};
+export const OrderContentBox = styled(ContentBox)`
+  padding-block: 2.4rem 2rem;
 
-  p {
-    font-weight: 500;
-    color: ${colors.gray[400]};
-    font-size: ${fontSizes[13]};
-
-    strong {
-      font-size: inherit;
-      font-weight: 600;
-      color: ${colors.primary};
-    }
+  h2 {
+    margin-bottom: 0.8rem;
   }
+`;
 
-  .buttons {
+export const Desc = styled(Text)`
+  margin-bottom: 2rem;
+
+  strong {
+    color: ${({ theme }) => theme.colors.pink[700]};
+  }
+`;
+
+export const LinkItem = styled.div`
+  margin-bottom: 0.4rem;
+  padding: 0.6rem 0;
+  justify-content: space-between;
+
+  &,
+  > div {
+    width: 100%;
     display: flex;
     align-items: center;
-    column-gap: 0.4rem;
-    margin-top: 1.8rem;
   }
 `;
 
-export const instaButtonCss = ({ colors, fontSizes }: Theme) => css`
-  width: 100%;
-  max-width: 48rem;
-  color: ${colors.navy[400]};
-  font-size: ${fontSizes[12]};
-  border: 1px solid ${colors.navy[400]};
-  background-color: transparent;
-  gap: 0.5rem;
+export const IconWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.colors.grey[200]};
+  margin-right: 1.2rem;
 `;
 
-export const kakaoButtonCss = ({ colors, fontSizes }: Theme) => css`
-  width: 100%;
-  max-width: 48rem;
-  font-size: ${fontSizes[12]};
-  background-color: ${colors.navy[400]};
-  gap: 0.5rem;
-
-  span {
-    color: ${colors.white[100]};
+export const PlatformIcon = styled(Icon)`
+  svg path {
+    stroke-width: 1.6;
   }
+`;
+
+export const LinkButton = styled(Link)`
+  min-width: 8.8rem;
+  height: 4rem;
+  background-color: ${({ theme }) => theme.colors.blue[700]};
+  padding: 1rem 1.6rem;
+  border-radius: 0.8rem;
 `;

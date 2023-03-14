@@ -24,7 +24,7 @@ function LogoutModal() {
       <Sheet.Container>
         <Sheet.Content>
           <S.TextContainer>
-            <Text as="h1" size={18} weight={700} color={colors.grey[900]}>
+            <Text as="h1" size={18} weight={700}>
               로그아웃 하시겠어요?
             </Text>
             <Text as="p" size={14} weight={400} color={colors.grey[800]}>

@@ -39,7 +39,7 @@ function MenuSingleCard({ data, mode, size = "m" }: IProps) {
       type="menu"
     >
       <S.ContentWrap type="menuSingle">
-        <S.Menu weight={700} size={16} color={colors.grey[900]}>
+        <S.Menu weight={700} size={16}>
           {name}
         </S.Menu>
         <S.Desc weight={400} size={13} color={colors.grey[700]}>

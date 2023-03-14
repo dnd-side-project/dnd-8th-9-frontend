@@ -17,7 +17,7 @@ function SearchHistory() {
   return (
     <div>
       <S.Header>
-        <Text as="h3" size={16} weight={600} color={colors.grey[900]}>
+        <Text as="h3" size={16} weight={600}>
           최근 검색어
         </Text>
         <Button type="button" label="delete all" shape="square" onClick={deleteAll}>

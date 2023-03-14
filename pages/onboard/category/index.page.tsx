@@ -34,7 +34,7 @@ function OnboardCategoryPage() {
         </Link>
       </S.Navbar>
       <S.TextContainer>
-        <Text as="h1" size={20} weight={700} color={colors.grey[900]}>
+        <Text as="h1" size={20} weight={700}>
           관심있는 <br />
           케이크 스타일을 선택해주세요!
         </Text>

@@ -43,7 +43,7 @@ function ReviewDoubleCard({ data }: IProps) {
       </S.ReviewImageWrap>
       <S.ReviewContent>
         <Quote className="icon" />
-        <S.ReviewText weight={400} size={13} color={colors.grey[900]}>
+        <S.ReviewText weight={400} size={13}>
           {text}
         </S.ReviewText>
       </S.ReviewContent>

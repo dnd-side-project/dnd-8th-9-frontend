@@ -56,7 +56,7 @@ function Navbar(props?: INav) {
         )}
       </S.NavLeft>
       <S.NavTitle>
-        <Text weight={600} size={16} color={colors.grey[900]}>
+        <Text weight={600} size={16}>
           {props?.text === "업체이름" && storeId ? storeId : props?.text}
         </Text>
       </S.NavTitle>

@@ -24,10 +24,20 @@ export const storeList: IStoreItem[] = [
         url: "https://i.pinimg.com/736x/64/da/e5/64dae50ccf01adc5f8f66b3397f04f55.jpg",
       },
     ],
-    links: {
-      kakao: "https://pf.kakao.com/_jIwLK",
-      instagram: "https://www.instagram.com/cake.yesplease/",
-    },
+    links: [
+      {
+        id: 1,
+        platform: "kakao",
+        link: "https://pf.kakao.com/_jIwLK",
+        role: "주문 및 예약",
+      },
+      {
+        id: 2,
+        platform: "instagram",
+        link: "https://www.instagram.com/cake.yesplease/",
+        role: "실시간 문의",
+      },
+    ],
   },
   {
     id: 2,
@@ -52,9 +62,14 @@ export const storeList: IStoreItem[] = [
         url: "https://i.pinimg.com/564x/7d/ec/e1/7dece1c61d02f74609ad37391492bab1.jpg",
       },
     ],
-    links: {
-      kakao: "https://pf.kakao.com/_jIwLK",
-    },
+    links: [
+      {
+        id: 1,
+        platform: "kakao",
+        link: "https://pf.kakao.com/_jIwLK",
+        role: "주문 및 예약",
+      },
+    ],
   },
   {
     id: 3,
@@ -79,9 +94,14 @@ export const storeList: IStoreItem[] = [
         url: "https://i.pinimg.com/564x/e9/69/b3/e969b3f2d589f8b0844a339ebf9bfd20.jpg",
       },
     ],
-    links: {
-      instagram: "https://www.instagram.com/cake.yesplease/",
-    },
+    links: [
+      {
+        id: 1,
+        platform: "instagram",
+        link: "https://www.instagram.com/cake.yesplease/",
+        role: "실시간 문의",
+      },
+    ],
   },
   {
     id: 4,
@@ -106,10 +126,20 @@ export const storeList: IStoreItem[] = [
         url: "https://i.pinimg.com/564x/f2/c5/7f/f2c57fa289368e0566e109640a0ef3ad.jpg",
       },
     ],
-    links: {
-      kakao: "https://pf.kakao.com/_jIwLK",
-      instagram: "https://www.instagram.com/cake.yesplease/",
-    },
+    links: [
+      {
+        id: 1,
+        platform: "kakao",
+        link: "https://pf.kakao.com/_jIwLK",
+        role: "주문 및 예약",
+      },
+      {
+        id: 2,
+        platform: "instagram",
+        link: "https://www.instagram.com/cake.yesplease/",
+        role: "실시간 문의",
+      },
+    ],
   },
   {
     id: 5,
@@ -134,9 +164,14 @@ export const storeList: IStoreItem[] = [
         url: "https://i.pinimg.com/564x/4a/d4/2c/4ad42c76c99d73555819df1d6ced69ba.jpg",
       },
     ],
-    links: {
-      kakao: "https://pf.kakao.com/_jIwLK",
-    },
+    links: [
+      {
+        id: 1,
+        platform: "kakao",
+        link: "https://pf.kakao.com/_jIwLK",
+        role: "주문 및 예약",
+      },
+    ],
   },
   {
     id: 6,
@@ -161,8 +196,13 @@ export const storeList: IStoreItem[] = [
         url: "https://i.pinimg.com/564x/41/d9/48/41d948aa20abb54a937a2ae56c555703.jpg",
       },
     ],
-    links: {
-      instagram: "https://www.instagram.com/cake.yesplease/",
-    },
+    links: [
+      {
+        id: 1,
+        platform: "instagram",
+        link: "https://www.instagram.com/cake.yesplease/",
+        role: "실시간 문의",
+      },
+    ],
   },
 ];

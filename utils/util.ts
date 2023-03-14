@@ -13,8 +13,10 @@ export const generatePriceString = (price: number) => {
   return `${price.toLocaleString()}원`;
 };
 
-export const generateRangePriceString = (minPrice: number, maxPrice: number) => {
-  return `기본 ${generatePriceString(minPrice)} ~ ${generatePriceString(maxPrice)}`;
+export const generateRangePriceString = (minPrice: number, maxPrice: number, showText = true) => {
+  return `${showText ? "기본" : ""} ${generatePriceString(minPrice)} ~ ${generatePriceString(
+    maxPrice,
+  )}`;
 };
 
 export const numberToRem = (num: number) => {

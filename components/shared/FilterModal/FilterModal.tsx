@@ -50,7 +50,7 @@ function FilterModal() {
       <Sheet.Container>
         <Sheet.Content>
           <S.Header>
-            <Text size={18} weight={700} color={colors.grey[900]}>
+            <Text size={18} weight={700}>
               필터링
             </Text>
           </S.Header>

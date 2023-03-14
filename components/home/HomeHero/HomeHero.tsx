@@ -14,7 +14,7 @@ function HomeHero() {
         <HomeHeader />
         <S.HeroTitle>
           <S.TextWrap>
-            <S.Title weight={700} size={22} color={colors.grey[900]}>
+            <S.Title weight={700} size={22}>
               발렌타인데이 까지 <strong>19일</strong> 남았어요!
             </S.Title>
             <S.Desc size={15} color={colors.grey[800]}>

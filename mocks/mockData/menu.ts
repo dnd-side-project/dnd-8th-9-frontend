@@ -8,11 +8,11 @@ export const menu: IMenu = {
   menuImage: [
     {
       id: 1,
-      url: "https://i.pinimg.com/564x/97/f3/07/97f307a335e4fc2bca8bf9856f6fa9fb.jpg",
+      url: "https://i.pinimg.com/564x/50/3f/77/503f772cb990ecd36543c9c6ea3e78dd.jpg",
     },
     {
       id: 2,
-      url: "https://i.pinimg.com/564x/dd/b5/3e/ddb53eb447e8f32ac5c824d6702a6294.jpg",
+      url: "https://i.pinimg.com/564x/52/b0/20/52b020392b8a8719430456547c281897.jpg",
     },
     {
       id: 3,

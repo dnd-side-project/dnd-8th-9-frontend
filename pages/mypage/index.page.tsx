@@ -40,7 +40,7 @@ function ProfilePage() {
             <Text size={18} weight={700} color={colors.grey[800]}>
               닉네임
             </Text>
-            <Text size={13} weight={500} color={colors.grey[900]}>
+            <Text size={13} weight={500}>
               @SNS 계정
             </Text>
           </div>
@@ -65,7 +65,7 @@ function ProfilePage() {
       <S.LinkWrap>
         {PROFILE_MENU.map(menu => (
           <Link href={menu.url} key={menu.name}>
-            <Text weight={500} size={16} color={colors.grey[900]}>
+            <Text weight={500} size={16}>
               {menu.name}
             </Text>
             <Icon name="arrowRight" color={colors.grey[600]} />
@@ -74,7 +74,7 @@ function ProfilePage() {
       </S.LinkWrap>
       <S.LogoutButton type="button" label="logout" shape="square" onClick={handleLogout}>
         <Icon name="logout" size="l" color={colors.blue[400]} />
-        <Text size={16} weight={500} color={colors.grey[900]}>
+        <Text size={16} weight={500}>
           로그아웃
         </Text>
       </S.LogoutButton>

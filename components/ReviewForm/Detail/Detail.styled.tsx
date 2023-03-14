@@ -191,6 +191,6 @@ export const ImageBackground = styled.div`
   padding: 6px 6px 0 0;
 
   svg {
-    z-index: 10;
+    z-index: ${({ theme }) => theme["z-index"].imageIcon};
   }
 `;

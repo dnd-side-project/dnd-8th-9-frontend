@@ -1,15 +1,13 @@
-import { css, Theme } from "@emotion/react";
+import Text from "@/components/shared/Text/Text";
+import styled from "@emotion/styled";
 
-export const Box = ({ colors, fontSizes }: Theme) => css`
+export const Box = styled.div`
   padding: 1.6rem;
-  border-bottom: 0.7rem solid ${colors.white[200]};
-  background-color: ${colors.white[100]};
+  border-bottom: 0.6rem solid ${({ theme }) => theme.colors.grey[200]};
+`;
 
-  h2 {
-    display: flex;
-    column-gap: 0.4rem;
-    font-size: ${fontSizes[16]};
-    font-weight: 600;
-    color: ${colors.black};
-  }
+export const Title = styled(Text)`
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
 `;

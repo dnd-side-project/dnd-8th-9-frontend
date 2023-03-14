@@ -32,6 +32,7 @@ export const ICONS: IIcon = {
   pencil: <I.Pencil />,
   profileSelected: <I.ProfileSelected />,
   profile: <I.Profile />,
+  saveBookmarkWide: <I.SaveBookmarkWide />,
   saveBookmark: <I.SaveBookmark />,
   search: <I.Search />,
   share: <I.Share />,

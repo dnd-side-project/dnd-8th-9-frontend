@@ -8,7 +8,7 @@ export const NavWrap = styled.div`
   height: 5.6rem;
   padding: 1.6rem;
   position: fixed;
-  z-index: 999;
+  z-index: ${({ theme }) => theme["z-index"].navbar};
   top: 0;
   left: 50%;
   transform: translateX(-50%);

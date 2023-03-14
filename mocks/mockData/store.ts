@@ -11,10 +11,20 @@ export const store: IStore = {
   canDelivery: true,
   priceRange: { max: 70000, min: 15000 },
   averageReservationNeededTime: 10,
-  links: {
-    kakao: "https://pf.kakao.com/_jIwLK",
-    instagram: "https://www.instagram.com/cake.yesplease/",
-  },
+  links: [
+    {
+      id: 1,
+      platform: "kakao",
+      link: "https://pf.kakao.com/_jIwLK",
+      role: "주문 및 예약",
+    },
+    {
+      id: 2,
+      platform: "instagram",
+      link: "https://www.instagram.com/cake.yesplease/",
+      role: "실시간 문의",
+    },
+  ],
   orderForm:
     "성함/연락처: \n픽업 날짜, 시간: 월 일 요일 시 분 \n크기: 호 \n맛: \n디자인: 케이크 사진을 보내주세요! \n하트 or 원형 : \n케이크위 레터링: \n케이크밑판문구: \n요청사항: \n",
   notice: {
@@ -61,15 +71,23 @@ export const store: IStore = {
   storeImages: [
     {
       id: 1,
-      url: "https://images.unsplash.com/photo-1535141192574-5d4897c12636?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776&q=80",
+      url: "https://i.pinimg.com/564x/4a/df/79/4adf79a54b55ff828832636d7e3b62c9.jpg",
     },
     {
       id: 2,
-      url: "https://images.unsplash.com/photo-1627308595171-d1b5d67129c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      url: "https://i.pinimg.com/564x/40/ea/14/40ea142c8d20c4b9116414cbc4cbe4fb.jpg",
     },
     {
       id: 3,
-      url: "https://images.unsplash.com/photo-1618451615316-5d492a2323a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+      url: "https://i.pinimg.com/564x/78/99/11/789911964fbd4a8ae34ed87b469cdf78.jpg",
+    },
+    {
+      id: 4,
+      url: "https://i.pinimg.com/564x/d2/ea/9c/d2ea9c83fb32c572f3a6d24a8032f8f5.jpg",
+    },
+    {
+      id: 5,
+      url: "https://i.pinimg.com/564x/e9/69/b3/e969b3f2d589f8b0844a339ebf9bfd20.jpg",
     },
   ],
 };

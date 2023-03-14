@@ -13,7 +13,7 @@ function Dangdo({ size = "s", dangdo }: IProp) {
   return (
     <S.Container size={size}>
       <Icon name="heart" size={size} />
-      <S.Percent color={colors.grey[900]}>
+      <S.Percent>
         {size === "l" ? "당도 " : ""}
         {String(dangdo)}%
       </S.Percent>
