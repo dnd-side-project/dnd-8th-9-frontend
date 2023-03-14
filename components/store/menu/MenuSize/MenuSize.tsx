@@ -29,7 +29,7 @@ interface IProp {
 
 function MenuSize({ size }: IProp) {
   return (
-    <ContentBox title="사이즈는 이렇게 있어요!" cssProp={S.contentSizeBoxCss} name="size">
+    <ContentBox title="사이즈는 이렇게 있어요!">
       <S.SizeContent>
         {size.value.map((option, idx) => (
           <div key={(option as ITable).name}>

@@ -10,7 +10,7 @@ interface IProp {
 
 function MenuTaste({ taste }: IProp) {
   return (
-    <ContentBox title="이런 맛들이 있어요!" cssProp={S.contentTasteBoxCss} name="flavor">
+    <ContentBox title="이런 맛들이 있어요!">
       <S.TasteContent>
         <span className="note">{taste.note}</span>
         <div className="tasteList">
