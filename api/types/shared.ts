@@ -3,6 +3,11 @@ export interface IImage {
   url: string;
 }
 
+export interface IOrderForm {
+  value: string;
+  placeholder: string;
+}
+
 export interface ILink {
   id: number;
   platform: string;

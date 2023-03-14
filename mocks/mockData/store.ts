@@ -25,8 +25,17 @@ export const store: IStore = {
       role: "실시간 문의",
     },
   ],
-  orderForm:
-    "성함/연락처: \n픽업 날짜, 시간: 월 일 요일 시 분 \n크기: 호 \n맛: \n디자인: 케이크 사진을 보내주세요! \n하트 or 원형 : \n케이크위 레터링: \n케이크밑판문구: \n요청사항: \n",
+  orderForm: [
+    { value: "예약자 성함", placeholder: "입금자명과 같아야 합니다" },
+    { value: "연락처", placeholder: "'-'없이 작성해주세요" },
+    { value: "예약희망 날짜", placeholder: "최소 2주 전부터 예약 가능합니다" },
+    { value: "디자인", placeholder: "메뉴를 선택해주세요" },
+    { value: "사이즈", placeholder: "예시) 미니사이즈" },
+    { value: "맛", placeholder: "예시) 1번 바닐라" },
+    { value: "레터링", placeholder: "한글 10자 이내 or 영어 15자 이내" },
+    { value: "밑판 문구", placeholder: "한글 5자 이내 or 영어 10자 이내" },
+    { value: "요청사항", placeholder: "예시) \n1. 레터링 색깔 분홍색, 보라색\n2. 초 곰돌이 모양" },
+  ],
   notice: {
     packaging: [
       {
