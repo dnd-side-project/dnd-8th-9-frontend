@@ -22,6 +22,12 @@ export interface TKeyValue {
   [key: string]: string;
 }
 
+export interface ITime {
+  day: string;
+  hour: string;
+  [key: string]: string;
+}
+
 export type TCategory = "꽃" | "캐릭터/입체" | "기타" | "포토" | "레터링";
 
 export type TSource = "외부사이트" | "당도" | "단골";
