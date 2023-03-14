@@ -1,5 +1,5 @@
 import { IMenuOption } from "@/api/types/menu";
-import { TTable } from "@/api/types/shared";
+import { ITable } from "@/api/types/shared";
 import { SizeCircle } from "@/assets/images";
 import ContentBox from "../../ContentBox/ContentBox";
 import * as S from "./MenuSize.styled";
@@ -32,13 +32,13 @@ function MenuSize({ size }: IProp) {
     <ContentBox title="사이즈는 이렇게 있어요!" cssProp={S.contentSizeBoxCss} name="size">
       <S.SizeContent>
         {size.value.map((option, idx) => (
-          <div key={(option as TTable).name}>
+          <div key={(option as ITable).name}>
             <S.Circle size={SIZE[idx].size}>
               <SizeCircle width={SIZE[idx].size} height={SIZE[idx].size} />
-              <span>{(option as TTable).desc}</span>
+              <span>{(option as ITable).desc}</span>
             </S.Circle>
             <S.SizeLabel size={SIZE[idx].size} marginTop={SIZE[idx].marginTop}>
-              <p>{(option as TTable).name}</p>
+              <p>{(option as ITable).name}</p>
             </S.SizeLabel>
           </div>
         ))}

@@ -1,4 +1,4 @@
-import { IImage, TCategory, TKeyValue, ILink, ITime } from "./shared";
+import { IImage, TCategory, IKeyValue, ILink, ITime } from "./shared";
 
 export interface IStore {
   id: number;
@@ -24,7 +24,7 @@ export interface IStore {
     };
   };
   info: {
-    sellerInfo: TKeyValue[];
-    foodInfo: TKeyValue[];
+    sellerInfo: IKeyValue[];
+    foodInfo: IKeyValue[];
   };
 }

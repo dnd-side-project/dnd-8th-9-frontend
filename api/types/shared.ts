@@ -10,13 +10,13 @@ export interface ILink {
   role: string;
 }
 
-export interface TTable {
+export interface ITable {
   name: string;
   desc: string;
   [key: string]: string;
 }
 
-export interface TKeyValue {
+export interface IKeyValue {
   key: string;
   value: string;
   [key: string]: string;
