@@ -2,7 +2,7 @@ import { store } from "@/mocks/mockData/store";
 import NoticeInfo from "@/components/store/infoTable/NoticeInfo/NoticeInfo";
 import Packaging from "@/components/store/infoTable/Packaging/Packaging";
 import SectionLayout from "@/components/store/SectionLayout/SectionLayout";
-import TableBox from "@/components/store/infoTable/TableBox/TableBox";
+import Table from "@/components/store/infoTable/Table/Table";
 import * as S from "./notice.styled";
 
 const INFO_TAB_DATA = [
@@ -12,7 +12,7 @@ const INFO_TAB_DATA = [
   },
   {
     title: "픽업 가능 시간",
-    children: <TableBox option="notice" data={store.notice.pickupHours} />,
+    children: <Table option="notice" data={store.notice.pickupHours} />,
   },
   {
     title: "포장 안내",
@@ -20,11 +20,11 @@ const INFO_TAB_DATA = [
   },
   {
     title: "판매자 정보",
-    children: <TableBox option="info" data={store.info.sellerInfo} />,
+    children: <Table option="info" data={store.info.sellerInfo} />,
   },
   {
     title: "식품 정보",
-    children: <TableBox option="info" data={store.info.foodInfo} />,
+    children: <Table option="info" data={store.info.foodInfo} />,
   },
 ];
 
