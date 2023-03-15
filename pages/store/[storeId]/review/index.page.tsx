@@ -19,15 +19,9 @@ function ReviewPage() {
         <Preview reviewImages={reviewImages} />
       </S.PreviewWrap>
       <S.ReviewListWrap>
-        {/* {MockReviews.reviewList.map(review => (
+        {reviews.map(review => (
           <Review key={review.id} review={review} />
-        ))} */}
-        {reviews
-          .slice(0)
-          .reverse()
-          .map(review => (
-            <Review key={review.id} review={review} />
-          ))}
+        ))}
       </S.ReviewListWrap>
     </SectionLayout>
   );
