@@ -9,12 +9,8 @@ import { storeMenuTab } from "@/constants/tabs";
 import Tab from "@/components/shared/Tab/Tab";
 import Button from "@/components/shared/Button/Button";
 import Icon from "@/components/shared/Icon/Icon";
-import MenuHero from "@/components/store/menu/MenuHero/MenuHero";
+import { MenuHero, MenuSize, MenuTaste, MenuDesign, MenuCaution } from "@/components/store/menu";
 import Review from "@/components/store/review/Review/Review";
-import MenuSize from "@/components/store/menu/MenuSize/MenuSize";
-import MenuTaste from "@/components/store/menu/MenuTaste/MenuTaste";
-import MenuDesign from "@/components/store/menu/MenuDesign/MenuDesign";
-import MenuCaution from "@/components/store/menu/MenuCaution/MenuCaution";
 
 import * as S from "./menuItem.styled";
 
