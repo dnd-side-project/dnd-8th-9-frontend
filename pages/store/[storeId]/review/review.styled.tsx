@@ -5,6 +5,10 @@ export const Container = styled.div`
   /* padding-bottom: 4.5rem; */
 `;
 
+export const ContentWrap = styled.div`
+  padding: 0 1.6rem;
+`;
+
 export const PreviewWrap = styled.div`
   width: 100%;
   padding: 2.4rem 1.6rem 2rem;
