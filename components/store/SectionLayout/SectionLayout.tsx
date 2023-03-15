@@ -18,6 +18,7 @@ function SectionLayout({ children }: IProps) {
   const { colors } = useTheme();
   const { canDelivery, canPickup, links, averageReservationNeededTime } = store;
   const { overallStats } = reviews;
+  const { colors } = useTheme();
 
   return (
     <S.Wrap>
@@ -29,7 +30,15 @@ function SectionLayout({ children }: IProps) {
         <ReviewInfo overallStats={overallStats} />
         <RecieveMethod canDelivery={canDelivery} canPickup={canPickup} />
         <OrderLink links={links} time={averageReservationNeededTime} />
-        <Tab type="swipeable" menuList={storeTab} target="storeTab" />
+        <Tab
+          type="fixed"
+          menuList={storeTab}
+          target="storeTab"
+          cssProp={css`
+            --size: ${storeTab.length};
+            --selected-color: ${colors.grey[900]};
+          `}
+        />
         {children}
       </S.Main>
       <S.Footer>
