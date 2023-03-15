@@ -7,7 +7,7 @@ export const MenuContentBox = styled(ContentBox)`
 
   h2 {
     padding-bottom: 1.6rem;
-    margin-bottom: 1.6rem;
+    margin-bottom: 2rem;
     border-bottom: 1px solid ${({ theme }) => theme.colors.grey[300]};
   }
 `;
