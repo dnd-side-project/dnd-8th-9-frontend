@@ -1,19 +1,12 @@
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
-export const contentSizeBoxCss = css`
-  padding-block: 2.4rem 4rem;
-
-  h2 {
-    margin-bottom: 1.6rem;
-  }
-`;
-
 export const SizeContent = styled.div`
+  width: 100%;
   position: relative;
   display: flex;
-  column-gap: 1.3rem;
+  column-gap: 1.2rem;
   align-items: flex-end;
+  justify-content: space-between;
 `;
 
 export const Circle = styled.div<{ size: number }>`
@@ -23,9 +16,6 @@ export const Circle = styled.div<{ size: number }>`
 
   span {
     position: absolute;
-    font-size: ${({ theme }) => theme.fontSizes[11]};
-    color: ${({ theme }) => theme.colors.primary};
-    font-weight: 600;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
