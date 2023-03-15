@@ -1,6 +1,6 @@
 import { useTheme } from "@emotion/react";
 import { IMenuOption } from "@/api/types/menu";
-import { TTable } from "@/api/types/shared";
+import { ITable } from "@/api/types/shared";
 import { SizeCircle } from "@/assets/images";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./MenuSize.styled";

@@ -1,4 +1,4 @@
-import { IImage, TCategory, TTable } from "./shared";
+import { IImage, TCategory, ITable } from "./shared";
 
 export interface IDesign {
   name: string;
@@ -7,7 +7,7 @@ export interface IDesign {
 }
 
 export interface IMenuOption {
-  value: string[] | TTable[] | IDesign[];
+  value: string[] | ITable[] | IDesign[];
   note: null | string;
 }
 
@@ -17,7 +17,7 @@ export interface IMenu {
   category: TCategory[];
   basePrice: number;
   menuImage: IImage[];
-  basicInfo: TTable[];
+  basicInfo: ITable[];
   detailInfo: {
     [key: string]: IMenuOption;
   };

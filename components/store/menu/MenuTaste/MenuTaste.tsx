@@ -1,8 +1,9 @@
 import React from "react";
 import { useTheme } from "@emotion/react";
 import { IMenuOption } from "@/api/types/menu";
-import { TTable } from "@/api/types/shared";
 import Text from "@/components/shared/Text/Text";
+import { ITable } from "@/api/types/shared";
+import ContentBox from "../../ContentBox/ContentBox";
 import * as S from "./MenuTaste.styled";
 
 interface IProp {
