@@ -17,6 +17,7 @@ export const InfoBox = styled(Box)`
   background-color: ${({ theme }) => theme.colors.grey[100]};
   border-top-left-radius: 1.6rem;
   border-top-right-radius: 1.6rem;
+  border-bottom: 0.6rem solid ${({ theme }) => theme.colors.grey[200]};
 
   & > * {
     column-gap: 0.8rem;

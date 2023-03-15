@@ -1,17 +1,34 @@
+import Button from "@/components/shared/Button/Button";
+import Text from "@/components/shared/Text/Text";
 import styled from "@emotion/styled";
 
-export const Container = styled.div`
-  display: block;
-  margin: auto;
-  width: 100%;
-  padding: 2.4rem 1.6rem 3.2rem;
-  border-bottom: 0.7rem solid ${({ theme }) => theme.colors.white[200]};
+export const Content = styled.div`
+  padding: 2rem 1.6rem 0.8rem;
+  background-color: ${({ theme }) => theme.colors.grey[200]};
+  border-radius: 8px;
+  position: relative;
 `;
 
-export const Title = styled.div`
-  display: block;
-  font-size: ${({ theme }) => theme.fontSizes[16]};
-  font-weight: 600;
-  line-height: 1.7rem;
-  margin-bottom: 1.6rem;
+export const Date = styled(Text)`
+  position: absolute;
+  right: 0;
+  top: -3.3rem;
+`;
+
+export const TextBox = styled(Text)<{ isPreviewMode: boolean }>`
+  line-height: 150%;
+  white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: clip;
+  -webkit-line-clamp: ${({ isPreviewMode }) => (isPreviewMode ? 4 : 100)};
+`;
+
+export const FullTextButton = styled(Button)`
+  width: 100%;
+  background-color: transparent;
+  text-align: center;
+  margin-top: 0.8rem;
+  padding: 0.4rem 1rem;
 `;

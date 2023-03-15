@@ -15,10 +15,6 @@ export const storeTab = [
     label: "공지사항",
     link: "/notice",
   },
-  {
-    label: "정보",
-    link: "/info",
-  },
 ];
 
 export const storeMenuTab = [

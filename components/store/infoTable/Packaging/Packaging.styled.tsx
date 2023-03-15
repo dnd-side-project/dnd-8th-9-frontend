@@ -1,17 +1,32 @@
+import Text from "@/components/shared/Text/Text";
 import styled from "@emotion/styled";
 
-export const Container = styled.div`
-  display: block;
-  margin: auto;
-  width: 100%;
-  padding: 2.4rem 1.6rem 3.2rem;
-  border-bottom: 0.7rem solid ${({ theme }) => theme.colors.white[200]};
+export const Content = styled.div`
+  padding: 1.6rem;
+  background-color: ${({ theme }) => theme.colors.navy[100]};
+  border-radius: 8px;
+
+  &:first-child {
+    margin-bottom: 0.8rem;
+  }
 `;
 
-export const Title = styled.div`
-  display: block;
-  font-size: ${({ theme }) => theme.fontSizes[16]};
-  font-weight: 600;
-  line-height: 1.7rem;
-  margin-bottom: 1.6rem;
+export const SubTitle = styled(Text)`
+  margin-bottom: 1.2rem;
+`;
+
+export const List = styled.ul`
+  li {
+    margin-bottom: 0.8rem;
+    list-style: inside;
+
+    &::marker {
+      color: ${({ theme }) => theme.colors.blue[800]};
+    }
+  }
+`;
+
+export const Value = styled(Text)`
+  position: relative;
+  left: -0.8rem;
 `;
