@@ -1,8 +1,12 @@
+import { useTheme } from "@emotion/react";
 import { storeTab } from "@/constants/tabs";
 import { store } from "@/mocks/mockData/store";
 import { reviews } from "@/mocks/mockData/review";
+
 import Carousel from "@/components/shared/Carousel/Carousel";
 import Tab from "@/components/shared/Tab/Tab";
+import Text from "@/components/shared/Text/Text";
+import Icon from "@/components/shared/Icon/Icon";
 import { MainInfo, OrderLink, RecieveMethod, ReviewInfo } from "../StoreHero";
 import * as S from "./SectionLayout.styled";
 
@@ -11,6 +15,7 @@ interface IProps {
 }
 
 function SectionLayout({ children }: IProps) {
+  const { colors } = useTheme();
   const { canDelivery, canPickup, links, averageReservationNeededTime } = store;
   const { overallStats } = reviews;
 
@@ -27,6 +32,14 @@ function SectionLayout({ children }: IProps) {
         <Tab type="swipeable" menuList={storeTab} target="storeTab" />
         {children}
       </S.Main>
+      <S.Footer>
+        <S.FooterButton type="button" shape="round" label="write review">
+          <Icon name="pencil" size="m" color={colors.grey[100]} />
+          <Text size={18} weight={600} color={colors.grey[100]}>
+            리뷰 작성
+          </Text>
+        </S.FooterButton>
+      </S.Footer>
     </S.Wrap>
   );
 }
