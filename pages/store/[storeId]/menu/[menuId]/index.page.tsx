@@ -64,15 +64,9 @@ function MenuDetailsPage() {
         <h2>
           이 메뉴의 리뷰<strong>{menuReviews.length}</strong>
         </h2>
-        {menuReviews?.slice(0, 2).map(review => (
+        {menuReviews?.map(review => (
           <Review key={review.id} review={review} />
         ))}
-        <Link href={`${asPath}/all`}>
-          <Button type="button" label="more reviews" shape="square" cssProp={S.buttonCss}>
-            <p>리뷰 전체보기</p>
-            <Icon name="arrowRight" size="m" />
-          </Button>
-        </Link>
       </S.ReviewListWrap>
     </div>
   );
