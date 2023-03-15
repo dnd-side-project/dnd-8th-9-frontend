@@ -10,7 +10,7 @@ interface IProp {
 
 function MenuDesign({ design }: IProp) {
   return (
-    <ContentBox title="모양변경이 가능한가요?" cssProp={S.contentDesignBoxCss} name="variation">
+    <ContentBox title="모양변경이 가능한가요?">
       {design.value.map((option, idx) => (
         <S.DesignContent key={(option as TTable).name} isLast={idx === design.value.length - 1}>
           <span>{(option as TTable).name}</span>
