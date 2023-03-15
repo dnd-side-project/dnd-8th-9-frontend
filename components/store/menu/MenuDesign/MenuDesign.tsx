@@ -1,6 +1,7 @@
-import React from "react";
-import { IMenuOption } from "@/api/types/menu";
-import { TTable } from "@/api/types/shared";
+import { useTheme } from "@emotion/react";
+import { IDesign, IMenuOption } from "@/api/types/menu";
+import { generatePriceString } from "@/utils/util";
+import Text from "@/components/shared/Text/Text";
 import * as S from "./MenuDesign.styled";
 
 interface IProp {
@@ -8,15 +9,22 @@ interface IProp {
 }
 
 function MenuDesign({ design }: IProp) {
+  const { colors } = useTheme();
+
   return (
-    <>
-      {design.value.map((option, idx) => (
-        <S.DesignContent key={(option as TTable).name} isLast={idx === design.value.length - 1}>
-          <span>{(option as TTable).name}</span>
-          <p>{(option as TTable).desc}</p>
-        </S.DesignContent>
+    <S.DesignContent>
+      {(design.value as IDesign[]).map(({ name, price, desc }) => (
+        <div key={name}>
+          <S.Name size={15} weight={600} as="p">
+            {name}
+            <strong>{` (+${generatePriceString(price)})`}</strong>
+          </S.Name>
+          <Text as="p" size={13} color={colors.grey[700]}>
+            {desc}
+          </Text>
+        </div>
       ))}
-    </>
+    </S.DesignContent>
   );
 }
 
