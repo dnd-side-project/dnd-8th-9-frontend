@@ -1,5 +1,16 @@
+import ContentBox from "@/components/store/ContentBox/ContentBox";
 import { css, Theme } from "@emotion/react";
 import styled from "@emotion/styled";
+
+export const MenuContentBox = styled(ContentBox)`
+  padding-block: 1.6rem 4rem;
+
+  h2 {
+    padding-bottom: 1.6rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.grey[300]};
+  }
+`;
 
 export const ReviewListWrap = styled.div`
   width: 100%;

@@ -1,5 +1,7 @@
 import React from "react";
+import { useTheme } from "@emotion/react";
 import { IMenuOption } from "@/api/types/menu";
+import Text from "@/components/shared/Text/Text";
 import { ITable } from "@/api/types/shared";
 import ContentBox from "../../ContentBox/ContentBox";
 import * as S from "./MenuTaste.styled";
@@ -9,25 +11,28 @@ interface IProp {
 }
 
 function MenuTaste({ taste }: IProp) {
+  const { colors } = useTheme();
+
   return (
-    <ContentBox title="이런 맛들이 있어요!">
-      <S.TasteContent>
-        <span className="note">{taste.note}</span>
-        <div className="tasteList">
-          {taste.value.map((option, idx) => (
-            <React.Fragment key={(option as ITable).name}>
-              <div className="number">
-                <span>{idx + 1}</span>
-              </div>
-              <div className="text">
-                <span>{(option as ITable).name}</span>
-                <p>{(option as ITable).desc}</p>
-              </div>
-            </React.Fragment>
-          ))}
-        </div>
-      </S.TasteContent>
-    </ContentBox>
+    <S.TasteContent>
+      {taste.value.map((option, idx) => (
+        <React.Fragment key={(option as TTable).name}>
+          <S.NumberWrap>
+            <Text weight={600} color={colors.blue[700]}>
+              {idx + 1}
+            </Text>
+          </S.NumberWrap>
+          <S.TextWrap>
+            <Text size={15} weight={600}>
+              {(option as TTable).name}
+            </Text>
+            <Text as="p" size={13} color={colors.grey[700]}>
+              {(option as TTable).desc}
+            </Text>
+          </S.TextWrap>
+        </React.Fragment>
+      ))}
+    </S.TasteContent>
   );
 }
 

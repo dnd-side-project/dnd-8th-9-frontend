@@ -1,7 +1,7 @@
-import React from "react";
-import { IMenuOption } from "@/api/types/menu";
-import { ITable } from "@/api/types/shared";
-import ContentBox from "../../ContentBox/ContentBox";
+import { useTheme } from "@emotion/react";
+import { IDesign, IMenuOption } from "@/api/types/menu";
+import { generatePriceString } from "@/utils/util";
+import Text from "@/components/shared/Text/Text";
 import * as S from "./MenuDesign.styled";
 
 interface IProp {
@@ -9,15 +9,22 @@ interface IProp {
 }
 
 function MenuDesign({ design }: IProp) {
+  const { colors } = useTheme();
+
   return (
-    <ContentBox title="모양변경이 가능한가요?">
-      {design.value.map((option, idx) => (
-        <S.DesignContent key={(option as ITable).name} isLast={idx === design.value.length - 1}>
-          <span>{(option as ITable).name}</span>
-          <p>{(option as ITable).desc}</p>
-        </S.DesignContent>
+    <S.DesignContent>
+      {(design.value as IDesign[]).map(({ name, price, desc }) => (
+        <div key={name}>
+          <S.Name size={15} weight={600} as="p">
+            {name}
+            <strong>{` (+${generatePriceString(price)})`}</strong>
+          </S.Name>
+          <Text as="p" size={13} color={colors.grey[700]}>
+            {desc}
+          </Text>
+        </div>
       ))}
-    </ContentBox>
+    </S.DesignContent>
   );
 }
 

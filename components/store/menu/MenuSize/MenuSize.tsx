@@ -1,7 +1,8 @@
+import { useTheme } from "@emotion/react";
 import { IMenuOption } from "@/api/types/menu";
 import { ITable } from "@/api/types/shared";
 import { SizeCircle } from "@/assets/images";
-import ContentBox from "../../ContentBox/ContentBox";
+import Text from "@/components/shared/Text/Text";
 import * as S from "./MenuSize.styled";
 
 const SIZE = [
@@ -28,22 +29,24 @@ interface IProp {
 }
 
 function MenuSize({ size }: IProp) {
+  const { colors } = useTheme();
+
   return (
-    <ContentBox title="사이즈는 이렇게 있어요!">
-      <S.SizeContent>
-        {size.value.map((option, idx) => (
-          <div key={(option as ITable).name}>
-            <S.Circle size={SIZE[idx].size}>
-              <SizeCircle width={SIZE[idx].size} height={SIZE[idx].size} />
-              <span>{(option as ITable).desc}</span>
-            </S.Circle>
-            <S.SizeLabel size={SIZE[idx].size} marginTop={SIZE[idx].marginTop}>
-              <p>{(option as ITable).name}</p>
-            </S.SizeLabel>
-          </div>
-        ))}
-      </S.SizeContent>
-    </ContentBox>
+    <S.SizeContent>
+      {size.value.map((option, idx) => (
+        <div key={(option as TTable).name}>
+          <S.Circle size={SIZE[idx].size}>
+            <SizeCircle width={SIZE[idx].size} height={SIZE[idx].size} />
+            <Text size={11} weight={600} color={colors.blue[700]}>
+              {(option as TTable).desc}
+            </Text>
+          </S.Circle>
+          <S.SizeLabel size={SIZE[idx].size} marginTop={SIZE[idx].marginTop}>
+            <Text weight={500}>{(option as TTable).name}</Text>
+          </S.SizeLabel>
+        </div>
+      ))}
+    </S.SizeContent>
   );
 }
 

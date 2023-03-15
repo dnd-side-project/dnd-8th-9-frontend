@@ -1,7 +1,13 @@
 import { IImage, TCategory, ITable } from "./shared";
 
+export interface IDesign {
+  name: string;
+  price: number;
+  desc: string;
+}
+
 export interface IMenuOption {
-  value: string[] | ITable[];
+  value: string[] | ITable[] | IDesign[];
   note: null | string;
 }
 
