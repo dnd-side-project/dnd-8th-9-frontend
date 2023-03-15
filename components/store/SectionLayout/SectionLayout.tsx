@@ -1,4 +1,4 @@
-import { useTheme } from "@emotion/react";
+import { useTheme, css } from "@emotion/react";
 import { storeTab } from "@/constants/tabs";
 import { store } from "@/mocks/mockData/store";
 import { reviews } from "@/mocks/mockData/review";
@@ -15,7 +15,6 @@ interface IProps {
 }
 
 function SectionLayout({ children }: IProps) {
-  const { colors } = useTheme();
   const { canDelivery, canPickup, links, averageReservationNeededTime } = store;
   const { overallStats } = reviews;
   const { colors } = useTheme();
