@@ -18,6 +18,25 @@ import MenuCaution from "@/components/store/menu/MenuCaution/MenuCaution";
 
 import * as S from "./menuItem.styled";
 
+const MENU_DATA = [
+  {
+    title: "사이즈",
+    children: <MenuSize size={menu.detailInfo.size} />,
+  },
+  {
+    title: "맛 선택",
+    children: <MenuTaste taste={menu.detailInfo.taste} />,
+  },
+  {
+    title: "모양변경",
+    children: <MenuDesign design={menu.detailInfo.design} />,
+  },
+  {
+    title: "주의사항",
+    children: <MenuCaution caution={menu.detailInfo.caution} />,
+  },
+];
+
 function MenuDetailsPage() {
   const {
     query: { menuId },
@@ -40,10 +59,11 @@ function MenuDetailsPage() {
         category={category}
       />
       <Tab menuList={storeMenuTab} type="swipeable" target="storeMenuTab" />
-      <MenuSize size={detailInfo.size} />
-      <MenuTaste taste={detailInfo.taste} />
-      <MenuDesign design={detailInfo.design} />
-      <MenuCaution caution={detailInfo.caution} />
+      {MENU_DATA.map(({ title, children }) => (
+        <S.MenuContentBox key={title} title={title}>
+          {children}
+        </S.MenuContentBox>
+      ))}
       <S.ReviewListWrap id="review">
         <h2>
           이 메뉴의 리뷰<strong>{menuReviews.length}</strong>

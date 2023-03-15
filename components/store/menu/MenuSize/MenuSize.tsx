@@ -1,7 +1,6 @@
 import { IMenuOption } from "@/api/types/menu";
 import { TTable } from "@/api/types/shared";
 import { SizeCircle } from "@/assets/images";
-import ContentBox from "../../ContentBox/ContentBox";
 import * as S from "./MenuSize.styled";
 
 const SIZE = [
@@ -29,21 +28,19 @@ interface IProp {
 
 function MenuSize({ size }: IProp) {
   return (
-    <ContentBox title="사이즈는 이렇게 있어요!">
-      <S.SizeContent>
-        {size.value.map((option, idx) => (
-          <div key={(option as TTable).name}>
-            <S.Circle size={SIZE[idx].size}>
-              <SizeCircle width={SIZE[idx].size} height={SIZE[idx].size} />
-              <span>{(option as TTable).desc}</span>
-            </S.Circle>
-            <S.SizeLabel size={SIZE[idx].size} marginTop={SIZE[idx].marginTop}>
-              <p>{(option as TTable).name}</p>
-            </S.SizeLabel>
-          </div>
-        ))}
-      </S.SizeContent>
-    </ContentBox>
+    <S.SizeContent>
+      {size.value.map((option, idx) => (
+        <div key={(option as TTable).name}>
+          <S.Circle size={SIZE[idx].size}>
+            <SizeCircle width={SIZE[idx].size} height={SIZE[idx].size} />
+            <span>{(option as TTable).desc}</span>
+          </S.Circle>
+          <S.SizeLabel size={SIZE[idx].size} marginTop={SIZE[idx].marginTop}>
+            <p>{(option as TTable).name}</p>
+          </S.SizeLabel>
+        </div>
+      ))}
+    </S.SizeContent>
   );
 }
 
