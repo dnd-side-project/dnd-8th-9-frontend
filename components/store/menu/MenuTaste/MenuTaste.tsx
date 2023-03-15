@@ -1,6 +1,8 @@
 import React from "react";
+import { useTheme } from "@emotion/react";
 import { IMenuOption } from "@/api/types/menu";
 import { TTable } from "@/api/types/shared";
+import Text from "@/components/shared/Text/Text";
 import * as S from "./MenuTaste.styled";
 
 interface IProp {
@@ -8,22 +10,27 @@ interface IProp {
 }
 
 function MenuTaste({ taste }: IProp) {
+  const { colors } = useTheme();
+
   return (
     <S.TasteContent>
-      <span className="note">{taste.note}</span>
-      <div className="tasteList">
-        {taste.value.map((option, idx) => (
-          <React.Fragment key={(option as TTable).name}>
-            <div className="number">
-              <span>{idx + 1}</span>
-            </div>
-            <div className="text">
-              <span>{(option as TTable).name}</span>
-              <p>{(option as TTable).desc}</p>
-            </div>
-          </React.Fragment>
-        ))}
-      </div>
+      {taste.value.map((option, idx) => (
+        <React.Fragment key={(option as TTable).name}>
+          <S.NumberWrap>
+            <Text weight={600} color={colors.blue[700]}>
+              {idx + 1}
+            </Text>
+          </S.NumberWrap>
+          <S.TextWrap>
+            <Text size={15} weight={600}>
+              {(option as TTable).name}
+            </Text>
+            <Text as="p" size={13} color={colors.grey[700]}>
+              {(option as TTable).desc}
+            </Text>
+          </S.TextWrap>
+        </React.Fragment>
+      ))}
     </S.TasteContent>
   );
 }
