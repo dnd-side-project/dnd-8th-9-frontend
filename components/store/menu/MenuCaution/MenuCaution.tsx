@@ -1,4 +1,5 @@
 import { IMenuOption } from "@/api/types/menu";
+import Text from "@/components/shared/Text/Text";
 import * as S from "./MenuCaution.styled";
 
 interface IProp {
@@ -9,7 +10,9 @@ function MenuCaution({ caution }: IProp) {
   return (
     <S.CautionContent>
       {caution.value.map((cautionValue, idx) => (
-        <li key={(cautionValue as string) + String(idx)}>{cautionValue as string}</li>
+        <S.CautionItem key={(cautionValue as string) + String(idx)}>
+          <Text size={13}>{cautionValue as string}</Text>
+        </S.CautionItem>
       ))}
     </S.CautionContent>
   );
