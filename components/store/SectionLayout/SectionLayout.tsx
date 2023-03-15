@@ -1,3 +1,4 @@
+import { css, useTheme } from "@emotion/react";
 import { storeTab } from "@/constants/tabs";
 import { store } from "@/mocks/mockData/store";
 import { reviews } from "@/mocks/mockData/review";
@@ -13,6 +14,7 @@ interface IProps {
 function SectionLayout({ children }: IProps) {
   const { canDelivery, canPickup, links, averageReservationNeededTime } = store;
   const { overallStats } = reviews;
+  const { colors } = useTheme();
 
   return (
     <S.Wrap>
@@ -24,7 +26,15 @@ function SectionLayout({ children }: IProps) {
         <ReviewInfo overallStats={overallStats} />
         <RecieveMethod canDelivery={canDelivery} canPickup={canPickup} />
         <OrderLink links={links} time={averageReservationNeededTime} />
-        <Tab type="swipeable" menuList={storeTab} target="storeTab" />
+        <Tab
+          type="fixed"
+          menuList={storeTab}
+          target="storeTab"
+          cssProp={css`
+            --size: ${storeTab.length};
+            --selected-color: ${colors.grey[900]};
+          `}
+        />
         {children}
       </S.Main>
     </S.Wrap>
