@@ -1,61 +1,65 @@
+import Tag from "@/components/shared/Tag/Tag";
+import Text from "@/components/shared/Text/Text";
 import styled from "@emotion/styled";
-import { css, Theme } from "@emotion/react";
-
-export const Wrap = styled.section``;
 
 export const CarouselWrap = styled.div`
   width: 100%;
   height: 36rem;
 `;
 
-export const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 0 1.6rem;
-  background-color: ${({ theme }) => theme.colors.white[100]};
+export const InfoWrap = styled.div`
+  padding: 3.2rem 1.6rem 2.4rem;
+  border-bottom: 0.7rem solid ${({ theme }) => theme.colors.white[200]};
 `;
 
-export const MainBox = styled(Box)`
-  padding-top: 3.2rem;
-  padding-bottom: 1.2rem;
-  row-gap: 1.2rem;
+export const MainInfoContainer = styled.div`
+  padding-bottom: 2rem;
+`;
 
-  h1 {
-    font-weight: 700;
-    font-size: ${({ theme }) => theme.fontSizes[18]};
-    color: ${({ theme }) => theme.colors.black};
-  }
+export const Header = styled.div`
+  width: 100%;
+  margin-bottom: 1.2rem;
+  justify-content: space-between;
 
+  &,
   div {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
   }
 
-  p {
+  div {
+    column-gap: 0.8rem;
+  }
+`;
+
+export const CategoryWrap = styled.div`
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  column-gap: 0.8rem;
+`;
+
+export const CategoryTag = styled(Tag)`
+  border-radius: 1.2rem;
+  background-color: ${({ theme }) => theme.colors.grey[200]};
+  padding: 0.6rem 0.8rem;
+`;
+
+export const Price = styled(Text)`
+  display: flex;
+  align-items: flex-end;
+
+  small {
+    margin-right: 0.8rem;
     font-weight: 500;
     font-size: ${({ theme }) => theme.fontSizes[14]};
-    color: ${({ theme }) => theme.colors.navy[400]};
-
-    strong {
-      font-weight: 600;
-      font-size: ${({ theme }) => theme.fontSizes[20]};
-    }
   }
 `;
 
-export const tagStyle = ({ colors, fontSizes }: Theme) => css`
-  background-color: ${colors.white[500]};
-  color: ${colors.gray[400]};
-  font-size: ${fontSizes[12]};
-`;
-
-export const InfoBox = styled(Box)`
+export const SubInfoContainer = styled.div`
+  padding-top: 2rem;
   row-gap: 1.6rem;
-  padding-top: 2.4rem;
-  padding-bottom: 2.4rem;
   border-top: 1px solid ${({ theme }) => theme.colors.white[500]};
-  border-bottom: 0.7rem solid ${({ theme }) => theme.colors.white[200]};
 
   small {
     font-size: ${({ theme }) => theme.fontSizes[12]};
@@ -68,15 +72,5 @@ export const InfoContent = styled.div`
   grid-template-columns: 15% 85%;
   column-gap: 1.2rem;
   row-gap: 1.6rem;
-`;
-
-export const Name = styled.span`
-  font-size: ${({ theme }) => theme.fontSizes[14]};
-  color: ${({ theme }) => theme.colors.navy[400]};
-  font-weight: 600;
-`;
-
-export const Desc = styled.span`
-  font-size: ${({ theme }) => theme.fontSizes[13]};
-  color: ${({ theme }) => theme.colors.gray[400]};
+  margin-bottom: 2.5rem;
 `;
