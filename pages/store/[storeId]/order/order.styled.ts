@@ -6,10 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
-
-  // TODO: 여기 지우기
-  margin-top: 100px;
+  margin-top: 3.2rem;
 `;
 
 export const FormBox = styled.div`
