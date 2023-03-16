@@ -12,7 +12,7 @@ function LoginRedirectPage() {
     <S.Wrap>
       <S.LogoWrap>
         <LogoIcon />
-        <DangdoLogo />
+        <DangdoLogo width={88} height="auto" />
       </S.LogoWrap>
       <S.TextWrap>
         <Text size={16} weight={600} color={colors.grey[100]}>
