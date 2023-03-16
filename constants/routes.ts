@@ -2,7 +2,7 @@ export const ROUTES = {
   STORE_MENU_LIST_PAGE: "/store/[storeId]/menu",
   STORE_MENU_ITEM_PAGE: "/store/[storeId]/menu/[menuId]",
 
-  STORE_REVIEWS_PAGE: "/store/[storeId]/review/",
+  STORE_REVIEWS_PAGE: "/store/[storeId]/review",
   STORE_REVIEWS_ENHANCED_PAGE: "/store/[storeId]/review/[reviewId]/image",
   STORE_IMAGE_REVIEWS_PAGE: "/store/[storeId]/review/images",
   STORE_IMAGE_REVIEW_ITEM_PAGE: "/store/[storeId]/review/images/[imageId]",

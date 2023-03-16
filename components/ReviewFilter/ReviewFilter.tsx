@@ -1,58 +1,37 @@
-import React, { SetStateAction } from "react";
-import Button from "../shared/Button/Button";
+import React, { useState } from "react";
+import { useTheme } from "@emotion/react";
+import Text from "../shared/Text/Text";
 import * as S from "./ReviewFilter.styled";
 
-interface IFilterClicked {
-  filterClicked: string;
-  setFilterClicked: React.Dispatch<SetStateAction<string>>;
-}
+const REVIEW_FILTER_BUTTONS = ["전체", "당도리뷰", "외부사이트리뷰"];
 
-interface IHandleFilter {
-  option: string;
-  setFilterClicked: React.Dispatch<SetStateAction<string>>;
-}
+export default function ReviewFilter() {
+  const { colors } = useTheme();
+  const [currentReviewFilter, setCurrentReviewFilter] = useState(REVIEW_FILTER_BUTTONS[0]);
 
-const handleFilter = ({ option, setFilterClicked }: IHandleFilter) => {
-  setFilterClicked(option);
-};
+  const handleFilterClick = (filterOption: string) => {
+    setCurrentReviewFilter(filterOption);
+  };
 
-const ALL_REVIEW = "전체";
-const DANGDO_REVIEW = "당도리뷰";
-const OTHERS_REVIEW = "외부사이트리뷰";
-const ALL = "all";
-const DANGDO = "당도";
-const OTHERS = "외부사이트";
-
-export default function ReviewFilter({ filterClicked, setFilterClicked }: IFilterClicked) {
   return (
     <S.Container>
-      <Button
-        type="button"
-        label="전체"
-        shape="round"
-        cssProp={filterClicked === ALL ? S.clickedButton : S.button}
-        onClick={() => handleFilter({ option: ALL, setFilterClicked })}
-      >
-        {ALL_REVIEW}
-      </Button>
-      <Button
-        type="button"
-        label="당도리뷰"
-        shape="round"
-        cssProp={filterClicked === DANGDO ? S.clickedButton : S.button}
-        onClick={() => handleFilter({ option: DANGDO, setFilterClicked })}
-      >
-        {DANGDO_REVIEW}
-      </Button>
-      <Button
-        type="button"
-        label="리뷰사이트리뷰"
-        shape="round"
-        cssProp={filterClicked === OTHERS ? S.clickedButton : S.button}
-        onClick={() => handleFilter({ option: OTHERS, setFilterClicked })}
-      >
-        {OTHERS_REVIEW}
-      </Button>
+      {REVIEW_FILTER_BUTTONS.map(filterOption => (
+        <S.FilterButton
+          key={filterOption}
+          type="button"
+          label={filterOption}
+          shape="round"
+          onClick={() => handleFilterClick(filterOption)}
+          className={filterOption === currentReviewFilter ? "isSelected" : ""}
+        >
+          <Text
+            size={15}
+            color={filterOption === currentReviewFilter ? colors.grey[100] : colors.grey[800]}
+          >
+            {filterOption}
+          </Text>
+        </S.FilterButton>
+      ))}
     </S.Container>
   );
 }
