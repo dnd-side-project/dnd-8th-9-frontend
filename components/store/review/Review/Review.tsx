@@ -1,114 +1,84 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import useImageStore from "@/store/image";
 import { useRouter } from "next/router";
-import { Theme, css } from "@emotion/react";
-import Carousel from "@/components/shared/Carousel/Carousel";
+import { useTheme } from "@emotion/react";
+import useImageStore from "@/store/image";
+import { parseDate } from "@/utils/util";
 import { IReviewItem } from "@/api/types/review";
-import Like from "assets/icons/like.svg";
-import Heart from "assets/icons/heart.svg";
-import ArrowDown from "assets/icons/arrow-down.svg";
-import ArrowUp from "assets/icons/arrow-up.svg";
+import Carousel from "@/components/shared/Carousel/Carousel";
+import Nickname from "@/components/shared/Nickname/Nickname";
+import Text from "@/components/shared/Text/Text";
+import Icon from "@/components/shared/Icon/Icon";
+import Dangdo from "@/components/shared/Dangdo/Dangdo";
 import * as S from "./Review.styled";
-import Tag from "../../../shared/Tag/Tag";
 
 export interface IProp {
   review: IReviewItem;
 }
 
-const VIP = "단골";
-
 export default function Review({ review }: IProp) {
-  const [isOpened, setIsOpened] = useState(false);
+  const { colors } = useTheme();
   const { asPath } = useRouter();
-  const { setImage } = useImageStore();
-  const isAllPage = asPath.split("/").slice(-1)[0] === "all";
-  const currentPath = isAllPage
-    ? asPath
-        .split("/")
-        .slice(0, asPath.split("/").length - 1)
-        .join("/")
-    : asPath;
+  const [isLiked, setIsLiked] = useState(false);
 
-  const handleIsOpened = () => {
-    setIsOpened(() => !isOpened);
-  };
+  const { setImage } = useImageStore();
 
   const handleClick = () => {
     setImage(review.reviewImages);
   };
 
+  const toggleLike = () => {
+    setIsLiked(prev => !prev);
+  };
+
   return (
     <Link
       href={{
-        pathname: `${currentPath}/${review.id}/image`,
+        pathname: `${asPath}/${review.id}/image`,
         // query: { images: JSON.stringify(review.reviewImages) },
       }}
       onClick={handleClick}
     >
       <S.Container>
         <S.Header>
-          <S.HeaderLeft>
-            <S.NickNameSite>
-              <Image src={review.profileImage} width={50} height={50} alt="profile" />
-              <S.NickName>{review.nickname}</S.NickName>
-              <S.Source>
-                {review.source === VIP ? (
-                  <Tag
-                    type="square"
-                    label="vip"
-                    cssProp={css`
-                      height: 1.7rem;
-                    `}
-                  >
-                    {VIP}
-                  </Tag>
-                ) : (
-                  review.source
-                )}
-              </S.Source>
-            </S.NickNameSite>
-            <S.Option>옵션: {review.menuOption}</S.Option>
-          </S.HeaderLeft>
-          {/* TODO: 시간 포맷 변경 */}
-          <S.HeaderRight>{review.date}</S.HeaderRight>
+          <Nickname name={review.nickname} dangol={review.source === "단골"} />
+          <Text size={12} color={colors.grey[700]}>
+            {parseDate(review.date)}
+          </Text>
         </S.Header>
-        <S.CarouselWrapper>
-          <Carousel images={review.reviewImages} />
-        </S.CarouselWrapper>
-        <S.Taste>
-          <Heart height={13} width={13} viewBox="0 0 22 22" fill="red" />
-          당도 {review.rating}%
-          <span>
-            <Tag type="single" label="delicious">
+        <S.MenuOption as="p" size={13} weight={500} color={colors.grey[800]}>
+          옵션: {review.menuOption}
+        </S.MenuOption>
+        {review.reviewImages.length > 0 && (
+          <S.CarouselWrapper>
+            <Carousel images={review.reviewImages} />
+          </S.CarouselWrapper>
+        )}
+        <S.Rating>
+          <Dangdo dangdo={review.rating} size="m" />
+          <S.ReviewTag type="single" label="overall review">
+            <Text size={13} weight={600} color={colors.pink[700]}>
               {review.reviewOption}
-            </Tag>
-          </span>
-        </S.Taste>
-        <S.Text isOpened={isOpened}>{review.text}</S.Text>
-        <S.Arrow>
-          {isOpened ? (
-            <ArrowUp onClick={handleIsOpened} width={18} height={18} />
-          ) : (
-            <ArrowDown onClick={handleIsOpened} width={18} height={18} />
-          )}
-        </S.Arrow>
-        <S.LikeButton>
-          <Tag
-            type="single"
-            label="delicious"
-            cssProp={({ colors }: Theme) => css`
-              color: ${colors.gray[200]};
-              border-color: ${colors.gray[100]};
-            `}
+            </Text>
+          </S.ReviewTag>
+        </S.Rating>
+        <S.ReviewText as="p" size={13} color={colors.grey[800]}>
+          {review.text}
+        </S.ReviewText>
+        <S.ButtonWrap>
+          <S.LikeButton
+            onClick={toggleLike}
+            type="button"
+            label="like"
+            shape="round"
+            isLiked={isLiked}
           >
-            <>
-              <Like fill="#d9d9d9" />
+            <Icon name="like" size="m" fill={isLiked ? colors.blue[700] : colors.grey[500]} />
+            <Text weight={600} color={isLiked ? colors.blue[700] : colors.grey[500]}>
               {review.likes}
-            </>
-          </Tag>
-        </S.LikeButton>
+            </Text>
+          </S.LikeButton>
+        </S.ButtonWrap>
       </S.Container>
     </Link>
   );
