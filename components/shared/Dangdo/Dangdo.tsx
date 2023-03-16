@@ -1,4 +1,3 @@
-import { useTheme } from "@emotion/react";
 import Icon from "../Icon/Icon";
 import * as S from "./Dangdo.styled";
 
@@ -8,8 +7,6 @@ interface IProp {
 }
 
 function Dangdo({ size = "s", dangdo }: IProp) {
-  const { colors } = useTheme();
-
   return (
     <S.Container size={size}>
       <Icon name="heart" size={size} />
