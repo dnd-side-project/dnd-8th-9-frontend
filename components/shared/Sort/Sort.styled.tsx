@@ -15,6 +15,11 @@ export const SortButton = styled(Button)`
   display: flex;
   align-items: center;
   column-gap: 0.8rem;
+  padding: 0;
+
+  span {
+    font-size: ${({ theme }) => theme.fontSizes[14]};
+  }
 `;
 
 export const SortModal = styled.div<{ isOpen: boolean }>`

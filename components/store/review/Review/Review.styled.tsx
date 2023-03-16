@@ -1,8 +1,7 @@
+import Button from "@/components/shared/Button/Button";
+import Tag from "@/components/shared/Tag/Tag";
+import Text from "@/components/shared/Text/Text";
 import styled from "@emotion/styled";
-
-interface ITextProps {
-  isOpened: boolean;
-}
 
 export const Container = styled.div`
   width: 100%;
@@ -15,110 +14,60 @@ export const Container = styled.div`
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
-`;
-
-export const HeaderLeft = styled.div`
-  img {
-    width: 2.6rem;
-    height: 2.6rem;
-    margin-right: 1rem;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-`;
-
-export const HeaderRight = styled.div`
-  color: ${({ theme }) => theme.colors.gray[200]};
-  font-weight: 400;
-  font-size: ${({ theme }) => theme.fontSizes[12]};
-  line-height: 2.6rem;
-`;
-
-export const NickNameSite = styled.div`
-  font-size: ${({ theme }) => theme.fontSizes[12]};
-  display: flex;
   align-items: center;
-  gap: 0.6rem;
-  line-height: 1.6rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 `;
 
-export const NickName = styled.p`
-  color: ${({ theme }) => theme.colors.black};
+export const MenuOption = styled(Text)`
+  margin-bottom: 1rem;
 `;
 
-export const Source = styled.div`
-  color: ${({ theme }) => theme.colors.gray[100]};
-  display: flex;
-  align-items: center;
+export const CarouselWrapper = styled.div`
+  width: 100%;
+  height: 26.8rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
 `;
 
-export const Taste = styled.div`
+export const Rating = styled.div`
   color: ${({ theme }) => theme.colors.black};
   font-size: ${({ theme }) => theme.fontSizes[12]};
   word-spacing: 0.3rem;
   line-height: 1.8rem;
   font-weight: 600;
-  margin: 1.2rem 0;
+  margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
-
-  svg {
-    margin-right: 0.5rem;
-  }
-
-  span {
-    margin-left: 1.2rem;
-  }
 `;
 
-export const Option = styled.div`
-  font-size: ${({ theme }) => theme.fontSizes[12]};
-  color: ${({ theme }) => theme.colors.gray[500]};
-  line-height: 1.8rem;
-  margin-bottom: 0.8rem;
-  font-weight: 500;
+export const ReviewTag = styled(Tag)`
+  padding: 0.5rem 1rem;
+  background-color: ${({ theme }) => theme.colors.pink[200]};
+  margin-left: 0.6rem;
+  border: none;
+  border-radius: 1.3rem;
 `;
 
-export const Text = styled.div<ITextProps>`
-  white-space: pre-wrap;
-  color: ${({ theme }) => theme.colors.gray[500]};
-  font-size: ${({ theme }) => theme.fontSizes[12]};
-  font-weight: 400;
-  line-height: 1.8rem;
-  margin-bottom: 0.4rem;
-
-  /* text overflow */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-
-  -webkit-line-clamp: ${({ isOpened }) => (isOpened ? 100 : 2)};
+export const ReviewText = styled(Text)`
+  line-height: 150%;
+  margin-bottom: 1.6rem;
 `;
 
-export const Arrow = styled.div`
-  margin-bottom: 1.2rem;
-  svg {
-    display: block;
-    margin: 0 auto;
-    stroke: ${({ theme }) => theme.colors.gray[200]};
-  }
+export const ButtonWrap = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
-export const LikeButton = styled.button`
-  display: block;
-  float: right;
-  svg {
-    margin-right: 0.6rem;
-  }
-`;
-
-export const CarouselWrapper = styled.div`
-  img {
-    width: 100%;
-    height: 26.7rem;
-    border-radius: 0.8rem;
-    object-fit: cover;
-  }
+export const LikeButton = styled(Button)<{ isLiked: boolean }>`
+  height: 3.6rem;
+  padding: 0.8rem 1.9rem;
+  border: 1px solid
+    ${({ theme, isLiked }) => (isLiked ? theme.colors.blue[700] : theme.colors.grey[500])};
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
+  border-radius: 3.3rem;
 `;

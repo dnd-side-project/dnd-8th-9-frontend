@@ -19,11 +19,13 @@ export interface IReviewStatItem {
   count: number;
 }
 
+export interface IOverallStats {
+  rating: number;
+  totalReviews: number;
+  stats: IReviewStatItem[];
+}
+
 export interface IStoreReview {
-  overallStats: {
-    rating: number;
-    totalReviews: number;
-    stats: IReviewStatItem[];
-  };
+  overallStats: IOverallStats;
   reviewList: IReviewItem[];
 }
