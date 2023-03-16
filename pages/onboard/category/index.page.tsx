@@ -3,7 +3,6 @@ import { useTheme } from "@emotion/react";
 import useModalStore from "@/store/modal";
 import useOnboardStore from "@/store/onboard";
 import useUserStore from "@/store/user";
-import { cakeStyles } from "@/mocks/mockData/category";
 import { ROUTES } from "@/constants/routes";
 import Category from "@/components/onboard/Category/Category";
 import Text from "@/components/shared/Text/Text";
@@ -11,13 +10,9 @@ import * as S from "./category.styled";
 
 function OnboardCategoryPage() {
   const { colors } = useTheme();
-  const { cakeStyle, setCakeStyle } = useOnboardStore();
+  const { cakeStyle } = useOnboardStore();
   const { toggleWelcomeModal } = useModalStore();
   const { toggleDoneOnboard } = useUserStore();
-
-  const handleClick = (cakeStyleItem: string) => {
-    setCakeStyle(cakeStyleItem);
-  };
 
   const finishOnboard = () => {
     toggleWelcomeModal();

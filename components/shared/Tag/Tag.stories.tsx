@@ -1,5 +1,4 @@
 import React from "react";
-import { css, Theme } from "@emotion/react";
 import { Meta, Story } from "@storybook/react";
 import DeliverIcon from "@/assets/icons/delivery.svg";
 import StoreIcon from "@/assets/icons/store.svg";

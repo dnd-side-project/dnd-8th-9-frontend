@@ -1,5 +1,5 @@
 import Sheet from "react-modal-sheet";
-import { css, useTheme } from "@emotion/react";
+import { css } from "@emotion/react";
 import { filterTab } from "@/constants/tabs";
 import useFilterStore from "@/store/filter";
 import CheckboxGroup from "../Input/Checkbox/CheckboxGroup";
@@ -31,7 +31,6 @@ const FILTER_TAB_MENU: IFilterTabMenu = {
 };
 
 function FilterModal() {
-  const { colors } = useTheme();
   const {
     filterModalOpen,
     toggleFilterModalOpen,

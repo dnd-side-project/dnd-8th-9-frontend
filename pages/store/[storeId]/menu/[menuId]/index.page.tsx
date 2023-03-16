@@ -36,10 +36,9 @@ const MENU_DATA = [
 function MenuDetailsPage() {
   const {
     query: { menuId },
-    asPath,
   } = useRouter();
 
-  const { name, category, basePrice, menuImage, basicInfo, detailInfo } = menu;
+  const { name, category, basePrice, menuImage, basicInfo } = menu;
   const { reviewList } = reviews;
   const targetMenu = menuList.menus.filter(menuItem => menuItem.id === Number(menuId));
   const menuName = targetMenu.length && targetMenu[0].name;

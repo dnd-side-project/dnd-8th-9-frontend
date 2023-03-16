@@ -1,4 +1,3 @@
-import { useTheme } from "@emotion/react";
 import { Info } from "@/assets/icons";
 import * as S from "./ContentBox.styled";
 
