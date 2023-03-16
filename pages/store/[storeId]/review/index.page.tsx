@@ -24,11 +24,11 @@ function ReviewPage() {
           </S.ReviewTitle>
           <ReviewFilter />
           <Sort />
-          <S.ReviewList>
+          <div>
             {MockReviews.reviewList.map(review => (
               <Review key={review.id} review={review} />
             ))}
-          </S.ReviewList>
+          </div>
         </S.ReviewContent>
       </S.ContentWrap>
     </SectionLayout>
