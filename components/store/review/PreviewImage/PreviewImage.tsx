@@ -18,10 +18,10 @@ export default function PreviewImage({ reviewImages }: IReviewImages) {
   const previewImages = reviewImages.slice(0, 4);
 
   return (
-    <>
-      <S.CountTitle as="p" size={16} weight={600}>
+    <S.Container>
+      <S.Title as="p" size={16} weight={600}>
         사진 <strong>{reviewImages.length}</strong>건
-      </S.CountTitle>
+      </S.Title>
       <S.PreviewImages>
         {previewImages.map((image, idx) => (
           <S.ImageWrap key={image.id}>
@@ -39,6 +39,6 @@ export default function PreviewImage({ reviewImages }: IReviewImages) {
           </S.ImageWrap>
         ))}
       </S.PreviewImages>
-    </>
+    </S.Container>
   );
 }

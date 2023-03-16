@@ -1,7 +1,11 @@
 import Text from "@/components/shared/Text/Text";
 import styled from "@emotion/styled";
 
-export const CountTitle = styled(Text)`
+export const Container = styled.div`
+  padding-bottom: 2.4rem;
+`;
+
+export const Title = styled(Text)`
   line-height: 1.9rem;
   margin-bottom: 1.6rem;
 
