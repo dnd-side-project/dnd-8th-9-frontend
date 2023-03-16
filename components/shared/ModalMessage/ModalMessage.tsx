@@ -1,4 +1,5 @@
 import { useTheme, css } from "@emotion/react";
+import useModalStore from "@/store/modal";
 import Button from "../Button/Button";
 import * as S from "./ModalMessage.styled";
 
@@ -9,6 +10,11 @@ interface IProp {
 
 function ModalMessage({ title, detail }: IProp) {
   const { colors, fontSizes } = useTheme();
+  const { toggleOrderFormModal } = useModalStore();
+
+  const closeModal = () => {
+    toggleOrderFormModal();
+  };
 
   return (
     <S.Wrap>
@@ -25,6 +31,7 @@ function ModalMessage({ title, detail }: IProp) {
             line-height: 1.9rem;
             font-weight: 600;
           `}
+          onClick={closeModal}
         >
           확인
         </Button>
