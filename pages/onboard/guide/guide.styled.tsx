@@ -3,6 +3,10 @@ import Icon from "@/components/shared/Icon/Icon";
 import styled from "@emotion/styled";
 
 export const CarouselWrap = styled.div`
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
   .swiper-pagination {
     bottom: calc(100% - 5rem);
   }
