@@ -1,6 +1,7 @@
 import { Meta, Story } from "@storybook/react";
 import { reviews } from "@/mocks/mockData/review";
-import OverallStats, { IOverallStats } from "./OverallStats";
+import { IOverallStats } from "@/api/types/review";
+import OverallStats from "./OverallStats";
 
 export default {
   title: "OverallStats",
