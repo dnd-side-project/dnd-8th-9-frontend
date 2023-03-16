@@ -32,3 +32,7 @@ export const chunkArray = (data: IStoreItem[], size = 3) => {
 
   return arr;
 };
+
+export const parseDate = (date: string) => {
+  return date.split(" ")[0].replaceAll("-", ".");
+};
