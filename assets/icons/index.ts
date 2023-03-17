@@ -44,3 +44,4 @@ export { default as TrendDown } from "./trend_down.svg";
 export { default as TrendNew } from "./trend_new.svg";
 export { default as TrendSame } from "./trend_same.svg";
 export { default as TrendUp } from "./trend_up.svg";
+export { default as Copy } from "./copy.svg";
