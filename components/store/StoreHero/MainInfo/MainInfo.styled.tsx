@@ -17,7 +17,7 @@ export const InfoBox = styled(Box)`
   background-color: ${({ theme }) => theme.colors.grey[100]};
   border-top-left-radius: 1.6rem;
   border-top-right-radius: 1.6rem;
-  border-bottom: 0.6rem solid ${({ theme }) => theme.colors.grey[200]};
+  border-bottom: 0.6rem solid ${({ theme }) => theme.colors.white[200]};
 
   & > * {
     column-gap: 0.8rem;
@@ -32,7 +32,7 @@ export const Header = styled.div`
   &,
   div {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
   }
 
   div {
@@ -50,11 +50,12 @@ export const Location = styled(Text)`
 
 export const ReviewWrap = styled.div`
   margin-bottom: 0.8rem;
+  align-items: center;
 `;
 
 export const Price = styled(Text)`
   display: flex;
-  align-items: flex-end;
+  align-items: center !important;
 
   small {
     font-weight: 500;

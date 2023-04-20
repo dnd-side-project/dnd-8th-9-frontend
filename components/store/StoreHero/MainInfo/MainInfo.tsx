@@ -35,7 +35,7 @@ function MainInfo({ data }: IProp) {
         {location}
       </S.Location>
       <S.ReviewWrap>
-        <Dangdo dangdo={rating} />
+        <Dangdo dangdo={rating} size="m" />
         <Text weight={600} size={15} color={colors.pink[700]}>
           {getOverallComment(rating)}
         </Text>
