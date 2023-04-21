@@ -13,7 +13,7 @@ export const ROUTES = {
   STORE_NOTICES_PAGE: "/store/[storeId]/notice",
 
   HOME_RECOMMENDATION_PAGE: "/home/recommendation",
-  HOME_STORE_PAGE: "/home/store",
+  HOME_STORE_PAGE: "/home/stores",
 
   LOGIN_PAGE: "/login",
   LOGIN_REDIRECT_PAGE: "/login/redirect",
