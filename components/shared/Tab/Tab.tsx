@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useFilterStore from "@/store/filter";
@@ -24,38 +24,46 @@ export interface IProp {
   className?: string;
 }
 
-const generatePath = (type: TTarget, asPath: string): string => {
-  let path;
+const generatePath = (type: TTarget, asPath: string): [string, string] => {
+  let rootPath;
+  let leafPath = "";
   switch (type) {
     case "storeTab":
-      path = asPath.split("/").slice(0, -1).join("/");
-      return path;
-      break;
+    case "resultTab":
+    case "homeTab": {
+      const splittedArr = asPath.split("/");
+      leafPath = splittedArr[splittedArr.length - 1];
+      rootPath = splittedArr.slice(0, -1).join("/");
+      return [rootPath, leafPath];
+    }
     case "storeMenuTab":
       if (asPath.indexOf("#") !== -1) {
-        path = asPath.split("#");
+        rootPath = asPath.split("#");
       }
-      return path ? path[0] : asPath;
-      break;
+      return [rootPath ? rootPath[0] : asPath, leafPath];
     case "filterTab":
-      return asPath;
-      break;
-    case "resultTab":
-      path = asPath.split("/").slice(0, -1).join("/");
-      return path;
-      break;
+      return [asPath, leafPath];
     default:
-      return "/";
-      break;
+      return ["/", leafPath];
   }
 };
 
 function Tab({ menuList, target, className }: IProp) {
-  const [currentMenu, setCurrentMenu] = useState(menuList[0].label);
+  const [currentMenu, setCurrentMenu] = useState("");
   const { changeCurrentFilterTab, currentFilterTab } = useFilterStore();
   const { asPath } = useRouter();
 
-  const path = generatePath(target, asPath);
+  const [rootPath, leafPath] = generatePath(target, asPath);
+
+  useEffect(() => {
+    if (target === "storeMenuTab") return;
+    const selectedMenu = menuList.find(menu => `${menu.link}` === `/${leafPath}`);
+    if (selectedMenu) {
+      setCurrentMenu(selectedMenu.label);
+    } else {
+      setCurrentMenu(menuList[0].label);
+    }
+  }, [leafPath, menuList, asPath, target]);
 
   const handleClick = (menu: string) => {
     setCurrentMenu(menu);
@@ -89,7 +97,7 @@ function Tab({ menuList, target, className }: IProp) {
               role="tab"
               tabIndex={0}
               aria-selected={currentMenu === menu.label}
-              href={`${path}${menu.link}`}
+              href={`${rootPath}${menu.link}`}
               onClick={() => handleClick(menu.label)}
             >
               {menu.label}
