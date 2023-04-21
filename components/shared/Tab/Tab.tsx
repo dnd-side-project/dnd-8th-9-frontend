@@ -65,9 +65,13 @@ function Tab({ menuList, target, className }: IProp) {
     }
   }, [leafPath, menuList, asPath, target]);
 
-  const handleClick = (menu: string) => {
-    setCurrentMenu(menu);
-  };
+  useEffect(() => {
+    const scrollPosition = localStorage.getItem("tab_scroll_position");
+    if (scrollPosition) {
+      window.scrollTo(0, Number(scrollPosition));
+      localStorage.removeItem("tab_scroll_position");
+    }
+  }, []);
 
   const handleFilterTab = (menu: TFilterTab) => {
     changeCurrentFilterTab(menu);
@@ -91,7 +95,7 @@ function Tab({ menuList, target, className }: IProp) {
               tabIndex={0}
               aria-selected={currentMenu === menu.label}
               href={`${rootPath}${menu.link}`}
-              onClick={() => handleClick(menu.label)}
+              onClick={() => localStorage.setItem("tab_scroll_position", window.scrollY.toString())}
             >
               {menu.label}
             </Link>
