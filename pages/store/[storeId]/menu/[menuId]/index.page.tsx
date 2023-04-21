@@ -18,18 +18,22 @@ import * as S from "./menuItem.styled";
 const MENU_DATA = [
   {
     title: "사이즈",
+    id: "size",
     children: <MenuSize size={menu.detailInfo.size} />,
   },
   {
     title: "맛 선택",
+    id: "flavor",
     children: <MenuTaste taste={menu.detailInfo.taste} />,
   },
   {
     title: "모양변경",
+    id: "variation",
     children: <MenuDesign design={menu.detailInfo.design} />,
   },
   {
     title: "주의사항",
+    id: "caution",
     children: <MenuCaution caution={menu.detailInfo.caution} />,
   },
 ];
@@ -56,8 +60,8 @@ function MenuDetailsPage() {
         category={category}
       />
       <Tab menuList={storeMenuTab} target="storeMenuTab" />
-      {MENU_DATA.map(({ title, children }) => (
-        <S.MenuContentBox key={title} title={title}>
+      {MENU_DATA.map(({ title, children, id }) => (
+        <S.MenuContentBox key={title} title={title} name={id}>
           {children}
         </S.MenuContentBox>
       ))}
