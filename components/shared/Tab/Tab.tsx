@@ -76,23 +76,16 @@ function Tab({ menuList, target, className }: IProp) {
 
   return (
     <S.TabBox role="tablist" className={className} size={menuList.length}>
-      {menuList.map(menu =>
-        target === "filterTab" ? (
-          <S.TabItem
-            key={menu.label}
-            role="presentation"
-            className={menu.label === currentFilterTab ? "isSelected" : ""}
-            type={target === "filterTab" ? "button" : "link"}
-          >
+      {menuList.map(menu => (
+        <S.TabItem
+          key={menu.label}
+          role="presentation"
+          className={menu.label === currentMenu ? "isSelected" : ""}
+          type={target === "filterTab" ? "button" : "link"}
+        >
+          {target === "filterTab" ? (
             <button onClick={() => handleFilterTab(menu.label as TFilterTab)}>{menu.label}</button>
-          </S.TabItem>
-        ) : (
-          <S.TabItem
-            key={menu.label}
-            role="presentation"
-            className={menu.label === currentMenu ? "isSelected" : ""}
-            type={target === "filterTab" ? "button" : "link"}
-          >
+          ) : (
             <Link
               role="tab"
               tabIndex={0}
@@ -102,9 +95,9 @@ function Tab({ menuList, target, className }: IProp) {
             >
               {menu.label}
             </Link>
-          </S.TabItem>
-        ),
-      )}
+          )}
+        </S.TabItem>
+      ))}
     </S.TabBox>
   );
 }
