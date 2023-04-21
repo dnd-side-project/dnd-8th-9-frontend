@@ -2,8 +2,6 @@ import Tab from "@/components/shared/Tab/Tab";
 import styled from "@emotion/styled";
 
 export const MenuTab = styled(Tab)`
-  --selected-color: ${({ theme }) => theme.colors.grey[900]};
-  color: ${({ theme }) => theme.colors.grey[700]};
   margin-bottom: 0.8rem;
 `;
 

@@ -1,4 +1,3 @@
-import { useTheme } from "@emotion/react";
 import { Info } from "@/assets/icons";
 import * as S from "./ContentBox.styled";
 
@@ -7,11 +6,12 @@ interface IProp {
   title: string;
   hasInfoIcon?: boolean;
   className?: string;
+  name?: string;
 }
 
-function ContentBox({ children, title, className, hasInfoIcon = false }: IProp) {
+function ContentBox({ children, title, name, className, hasInfoIcon = false }: IProp) {
   return (
-    <S.Box className={className}>
+    <S.Box className={className} id={name}>
       <S.Title as="h2" size={16} weight={600}>
         {title}
         {hasInfoIcon && <Info />}

@@ -1,4 +1,4 @@
-import { useTheme, css } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 import { storeTab } from "@/constants/tabs";
 import { store } from "@/mocks/mockData/store";
 import { reviews } from "@/mocks/mockData/review";
@@ -29,15 +29,7 @@ function SectionLayout({ children }: IProps) {
         <ReviewInfo overallStats={overallStats} />
         <RecieveMethod canDelivery={canDelivery} canPickup={canPickup} />
         <OrderLink links={links} time={averageReservationNeededTime} />
-        <Tab
-          type="fixed"
-          menuList={storeTab}
-          target="storeTab"
-          cssProp={css`
-            --size: ${storeTab.length};
-            --selected-color: ${colors.grey[900]};
-          `}
-        />
+        <Tab menuList={storeTab} target="storeTab" />
         {children}
       </S.Main>
       <S.Footer>

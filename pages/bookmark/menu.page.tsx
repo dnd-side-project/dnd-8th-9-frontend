@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { css, useTheme } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 import { resultTab } from "@/constants/tabs";
 import useBookmarkStore from "@/store/bookmark";
 import FilterBar from "@/components/shared/FilterBar/FilterBar";
@@ -30,14 +30,7 @@ function BookmarkDesignPage() {
 
   return (
     <div>
-      <S.MenuTab
-        menuList={resultTab}
-        type="fixed"
-        target="resultTab"
-        css={css`
-          --size: ${resultTab.length};
-        `}
-      />
+      <S.MenuTab menuList={resultTab} target="resultTab" />
       {isEditMode ? (
         <S.EditControlBoxWrap>
           <Text weight={500} size={13} color={colors.grey[600]}>
