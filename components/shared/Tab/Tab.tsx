@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { SerializedStyles, Theme } from "@emotion/react";
 import useFilterStore from "@/store/filter";
-import { tab, tabType } from "./Tab.styled";
+import * as S from "./Tab.styled";
 
 type TFilterTab = "카테고리" | "가격" | "주문플랫폼" | "수령방법";
 export interface ITabItem {
@@ -21,9 +20,7 @@ export type TTarget =
 
 export interface IProp {
   menuList: ITabItem[];
-  type: "swipeable" | "fixed";
   target: TTarget;
-  cssProp?: SerializedStyles | (({ colors, fontSizes }: Theme) => SerializedStyles);
   className?: string;
 }
 
@@ -53,7 +50,7 @@ const generatePath = (type: TTarget, asPath: string): string => {
   }
 };
 
-function Tab({ menuList, type, cssProp, target, className }: IProp) {
+function Tab({ menuList, target, className }: IProp) {
   const [currentMenu, setCurrentMenu] = useState(menuList[0].label);
   const { changeCurrentFilterTab, currentFilterTab } = useFilterStore();
   const { asPath } = useRouter();
@@ -70,21 +67,23 @@ function Tab({ menuList, type, cssProp, target, className }: IProp) {
   };
 
   return (
-    <ul role="tablist" css={[tab, tabType[type], cssProp]} className={className}>
+    <S.TabBox role="tablist" className={className} size={menuList.length}>
       {menuList.map(menu =>
         target === "filterTab" ? (
-          <li
+          <S.TabItem
             key={menu.label}
             role="presentation"
             className={menu.label === currentFilterTab ? "isSelected" : ""}
+            type={target === "filterTab" ? "button" : "link"}
           >
             <button onClick={() => handleFilterTab(menu.label as TFilterTab)}>{menu.label}</button>
-          </li>
+          </S.TabItem>
         ) : (
-          <li
+          <S.TabItem
             key={menu.label}
             role="presentation"
             className={menu.label === currentMenu ? "isSelected" : ""}
+            type={target === "filterTab" ? "button" : "link"}
           >
             <Link
               role="tab"
@@ -95,10 +94,10 @@ function Tab({ menuList, type, cssProp, target, className }: IProp) {
             >
               {menu.label}
             </Link>
-          </li>
+          </S.TabItem>
         ),
       )}
-    </ul>
+    </S.TabBox>
   );
 }
 

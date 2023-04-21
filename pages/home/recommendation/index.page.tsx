@@ -1,4 +1,4 @@
-import { css, useTheme } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 import { homeTab } from "@/constants/tabs";
 import { randomMenus } from "@/mocks/mockData/randomMenuList";
 import { randomReviews } from "@/mocks/mockData/randomReviewList";
@@ -26,16 +26,7 @@ function HomeRecommendationPage() {
         </Modal>
       )}
       <HomeHero />
-      <Tab
-        menuList={homeTab}
-        type="fixed"
-        target="homeTab"
-        cssProp={css`
-          --size: ${homeTab.length};
-          --selected-color: ${colors.grey[900]};
-          --color: ${colors.grey[300]};
-        `}
-      />
+      <Tab menuList={homeTab} target="homeTab" />
       <S.ContentWrap>
         <StoreRank />
         <Text weight={600} size={18} as="h2">

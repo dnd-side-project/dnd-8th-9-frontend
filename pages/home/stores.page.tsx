@@ -1,4 +1,3 @@
-import { css, useTheme } from "@emotion/react";
 import { storeList } from "@/mocks/mockData/storeList";
 import { homeTab } from "@/constants/tabs";
 
@@ -11,21 +10,10 @@ import FilterBar from "@/components/shared/FilterBar/FilterBar";
 import * as S from "./recommendation/recommendation.styled";
 
 function HomeStoresPage() {
-  const { colors } = useTheme();
-
   return (
     <div>
       <HomeHero />
-      <Tab
-        menuList={homeTab}
-        type="fixed"
-        target="homeTab"
-        cssProp={css`
-          --size: ${homeTab.length};
-          --selected-color: ${colors.grey[900]};
-          --color: ${colors.grey[300]};
-        `}
-      />
+      <Tab menuList={homeTab} target="homeTab" />
       <S.ContentWrap>
         <FilterBar />
         <Sort />

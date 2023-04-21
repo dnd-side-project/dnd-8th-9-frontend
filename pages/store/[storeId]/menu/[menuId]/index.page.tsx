@@ -38,7 +38,6 @@ function MenuDetailsPage() {
   const { colors } = useTheme();
   const {
     query: { menuId },
-    asPath,
   } = useRouter();
 
   const { name, category, basePrice, menuImage, basicInfo, detailInfo } = menu;
@@ -56,7 +55,7 @@ function MenuDetailsPage() {
         basicInfo={basicInfo}
         category={category}
       />
-      <Tab menuList={storeMenuTab} type="swipeable" target="storeMenuTab" />
+      <Tab menuList={storeMenuTab} target="storeMenuTab" />
       {MENU_DATA.map(({ title, children }) => (
         <S.MenuContentBox key={title} title={title}>
           {children}

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { css, useTheme } from "@emotion/react";
 import { resultTab } from "@/constants/tabs";
 import { IRandomMenuItem } from "@/api/types/randomMenuList";
 import { randomMenus } from "@/mocks/mockData/randomMenuList";
@@ -16,7 +15,6 @@ import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
 import * as S from "../search.styled";
 
 function SearchResultMenuPage() {
-  const { colors } = useTheme();
   const { currentSearch } = useSearchStore();
   const { selectedFilterOptions } = useFilterStore();
   const [searchResult, setSearchResult] = useState<IRandomMenuItem[]>([]);
@@ -52,17 +50,7 @@ function SearchResultMenuPage() {
         <NoResult currentSearch={currentSearch} />
       ) : (
         <>
-          <Tab
-            menuList={resultTab}
-            type="fixed"
-            target="resultTab"
-            css={css`
-              --size: ${resultTab.length};
-              --selected-color: ${colors.grey[900]};
-              --color: ${colors.grey[700]};
-              margin: 1.6rem 0;
-            `}
-          />
+          <Tab menuList={resultTab} target="resultTab" />
           <Sort />
           <FilterBar />
           <S.MenuGrid>
