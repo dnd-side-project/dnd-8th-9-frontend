@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 
 export const MenuContentBox = styled(ContentBox)`
   padding-block: 1.6rem 4rem;
+  scroll-margin-top: 60px;
 
   h2 {
     padding-bottom: 1.6rem;
@@ -16,6 +17,7 @@ export const MenuContentBox = styled(ContentBox)`
 export const ReviewListWrap = styled.div`
   width: 100%;
   padding: 0 1.6rem;
+  scroll-margin-top: 60px;
 
   h2 {
     font-size: ${({ theme }) => theme.fontSizes[16]};
