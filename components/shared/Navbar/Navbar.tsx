@@ -64,10 +64,10 @@ function Navbar(props?: INav) {
         {props?.bookmark && (
           <button aria-label="bookmark" type="button" onClick={bookmark}>
             <Icon
-              name="saveBookmark"
+              name="saveBookmarkWide"
               size="l"
-              color={isBookmarked ? colors.pink[700] : colors.grey[700]}
-              fill={isBookmarked ? colors.pink[700] : "transparent"}
+              color={isBookmarked ? colors.pink[700] : colors.grey[400]}
+              fill={isBookmarked ? colors.pink[700] : colors.grey[400]}
             />
           </button>
         )}
