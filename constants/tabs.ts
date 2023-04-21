@@ -1,3 +1,4 @@
+// NOTE: 페이지 이동
 export const storeTab = [
   {
     label: "메뉴",
@@ -17,10 +18,10 @@ export const storeTab = [
   },
 ];
 
+// NOTE: 페이지 내 이동
 export const storeMenuTab = [
   {
     label: "사이즈",
-    name: "size",
     link: "#size",
   },
   {
@@ -41,6 +42,7 @@ export const storeMenuTab = [
   },
 ];
 
+// NOTE: 페이지 이동 (OR searchParam 이용)
 export const resultTab = [
   {
     label: "메뉴",
@@ -52,17 +54,19 @@ export const resultTab = [
   },
 ];
 
+// NOTE: 페이지 이동
 export const homeTab = [
   {
     label: "추천",
-    link: "home/recommendation",
+    link: "/recommendation",
   },
   {
     label: "스토어 탐색",
-    link: "home/stores",
+    link: "/stores",
   },
 ];
 
+// NOTE: component 변경
 export const categoryTab = [
   {
     label: "레터링",
@@ -82,6 +86,7 @@ export const categoryTab = [
   },
 ];
 
+// NOTE: 페이지 이동
 export const gnbTab = [
   {
     label: "home",
@@ -97,6 +102,7 @@ export const gnbTab = [
   },
 ];
 
+// NOTE: searchParam 이용
 export const filterTab = [
   {
     label: "카테고리",
