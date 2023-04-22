@@ -104,17 +104,9 @@ export const ROUTES_NAV: IRouteNav = {
     gnb: true,
   },
   [ROUTES.MY_BOOKMARK_DESIGN_PAGE]: {
-    gnb: true,
-    nav: {
-      text: "북마크",
-    },
     auth: true,
   },
   [ROUTES.MY_BOOKMARK_STORE_PAGE]: {
-    gnb: true,
-    nav: {
-      text: "북마크",
-    },
     auth: true,
   },
   [ROUTES.MYPAGE]: {
