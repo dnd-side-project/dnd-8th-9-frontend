@@ -1,11 +1,15 @@
+import { ReactElement } from "react";
 import Link from "next/link";
 import { useTheme } from "@emotion/react";
 import { User } from "@/assets/icons";
 import { ROUTES } from "@/constants/routes";
 import useModalStore from "@/store/modal";
+
 import Icon from "@/components/shared/Icon/Icon";
 import Text from "@/components/shared/Text/Text";
 import LogoutModal from "@/components/mypage/LogoutModal/LogoutModal";
+import SingleNavbar from "@/components/shared/Navbar/SingleNavbar";
+import GNB from "@/components/shared/GNB/GNB";
 import * as S from "./mypage.styled";
 
 const PROFILE_MENU = [
@@ -84,3 +88,13 @@ function ProfilePage() {
 }
 
 export default ProfilePage;
+
+ProfilePage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <SingleNavbar text="마이페이지" />
+      {page}
+      <GNB />
+    </>
+  );
+};
