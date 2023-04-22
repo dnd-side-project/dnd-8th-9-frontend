@@ -64,6 +64,8 @@ export const ROUTES_NAV: IRouteNav = {
     nav: {
       previous: true,
       home: true,
+      bgColor: "black",
+      color: "white",
     },
   },
 
