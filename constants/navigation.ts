@@ -47,8 +47,8 @@ export const ROUTES_NAV: IRouteNav = {
     nav: {
       previous: true,
       home: true,
-      bookmark: true,
-      share: true,
+      bgColor: "black",
+      color: "white",
     },
   },
   [ROUTES.STORE_IMAGE_REVIEWS_PAGE]: {
