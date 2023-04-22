@@ -1,11 +1,14 @@
-import { useState } from "react";
-import { css, useTheme } from "@emotion/react";
+import { ReactElement, useState } from "react";
+import { useTheme } from "@emotion/react";
 import useBookmarkStore from "@/store/bookmark";
 import { resultTab } from "@/constants/tabs";
+
 import Text from "@/components/shared/Text/Text";
 import Button from "@/components/shared/Button/Button";
 import StoreDoubleCard from "@/components/shared/Card/StoreDoubleCard";
 import FilterBar from "@/components/shared/FilterBar/FilterBar";
+import SingleNavbar from "@/components/shared/Navbar/SingleNavbar";
+import GNB from "@/components/shared/GNB/GNB";
 import * as S from "./menu.styled";
 
 function BookmarkStorePage() {
@@ -30,14 +33,7 @@ function BookmarkStorePage() {
 
   return (
     <div>
-      <S.MenuTab
-        menuList={resultTab}
-        type="fixed"
-        target="resultTab"
-        css={css`
-          --size: ${resultTab.length};
-        `}
-      />
+      <S.MenuTab menuList={resultTab} target="resultTab" />
       {isEditMode ? (
         <S.EditControlBoxWrap>
           <Text weight={500} size={13} color={colors.grey[600]}>
@@ -82,3 +78,13 @@ function BookmarkStorePage() {
 }
 
 export default BookmarkStorePage;
+
+BookmarkStorePage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <SingleNavbar text="북마크" />
+      {page}
+      <GNB />
+    </>
+  );
+};

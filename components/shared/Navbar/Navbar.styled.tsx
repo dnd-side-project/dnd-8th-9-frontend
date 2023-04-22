@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const NavWrap = styled.div`
+export const NavWrap = styled.div<{ bgColor?: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +12,7 @@ export const NavWrap = styled.div`
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  background-color: ${({ theme }) => theme.colors.grey[100]};
+  background-color: ${({ theme, bgColor }) => bgColor || theme.colors.grey[100]};
 
   > * {
     display: flex;
@@ -33,4 +33,13 @@ export const NavTitle = styled.div`
 export const NavRight = styled.div`
   justify-content: flex-end;
   column-gap: 2.4rem;
+`;
+
+export const SingleNav = styled.nav`
+  width: 100%;
+  height: 5.6rem;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  text-align: left;
 `;

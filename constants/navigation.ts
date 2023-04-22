@@ -7,6 +7,8 @@ export interface INav {
   bookmark?: boolean;
   share?: boolean;
   search?: boolean;
+  bgColor?: string;
+  color?: string;
 }
 
 export interface INavigationItem {
@@ -45,8 +47,8 @@ export const ROUTES_NAV: IRouteNav = {
     nav: {
       previous: true,
       home: true,
-      bookmark: true,
-      share: true,
+      bgColor: "black",
+      color: "white",
     },
   },
   [ROUTES.STORE_IMAGE_REVIEWS_PAGE]: {
@@ -62,8 +64,8 @@ export const ROUTES_NAV: IRouteNav = {
     nav: {
       previous: true,
       home: true,
-      bookmark: true,
-      share: true,
+      bgColor: "black",
+      color: "white",
     },
   },
 
@@ -102,17 +104,9 @@ export const ROUTES_NAV: IRouteNav = {
     gnb: true,
   },
   [ROUTES.MY_BOOKMARK_DESIGN_PAGE]: {
-    gnb: true,
-    nav: {
-      text: "북마크",
-    },
     auth: true,
   },
   [ROUTES.MY_BOOKMARK_STORE_PAGE]: {
-    gnb: true,
-    nav: {
-      text: "북마크",
-    },
     auth: true,
   },
   [ROUTES.MYPAGE]: {

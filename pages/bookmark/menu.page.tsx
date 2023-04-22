@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, ReactElement } from "react";
 import { useTheme } from "@emotion/react";
 import { resultTab } from "@/constants/tabs";
 import useBookmarkStore from "@/store/bookmark";
+
 import FilterBar from "@/components/shared/FilterBar/FilterBar";
 import Button from "@/components/shared/Button/Button";
 import Text from "@/components/shared/Text/Text";
+import GNB from "@/components/shared/GNB/GNB";
 import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
+import SingleNavbar from "@/components/shared/Navbar/SingleNavbar";
 import * as S from "./menu.styled";
 
 function BookmarkDesignPage() {
@@ -75,3 +78,13 @@ function BookmarkDesignPage() {
 }
 
 export default BookmarkDesignPage;
+
+BookmarkDesignPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <SingleNavbar text="북마크" />
+      {page}
+      <GNB />
+    </>
+  );
+};

@@ -37,7 +37,7 @@ function Navbar(props?: INav) {
   };
 
   return (
-    <S.NavWrap>
+    <S.NavWrap bgColor={props?.bgColor}>
       <S.NavLeft>
         {props?.previous && (
           <button
@@ -46,12 +46,12 @@ function Navbar(props?: INav) {
             className="previousButton"
             onClick={previousPage}
           >
-            <Icon name="arrowLeft" size="l" color={colors.grey[700]} />
+            <Icon name="arrowLeft" size="l" color={props?.color || colors.grey[700]} />
           </button>
         )}
         {props?.home && (
           <button aria-label="home" type="button" onClick={home}>
-            <Icon name="homeNav" size="l" color={colors.grey[700]} />
+            <Icon name="homeNav" size="l" color={props?.color || colors.grey[700]} />
           </button>
         )}
       </S.NavLeft>
@@ -64,10 +64,10 @@ function Navbar(props?: INav) {
         {props?.bookmark && (
           <button aria-label="bookmark" type="button" onClick={bookmark}>
             <Icon
-              name="saveBookmark"
+              name="saveBookmarkWide"
               size="l"
-              color={isBookmarked ? colors.pink[700] : colors.grey[700]}
-              fill={isBookmarked ? colors.pink[700] : "transparent"}
+              color={isBookmarked ? colors.pink[700] : colors.grey[400]}
+              fill={isBookmarked ? colors.pink[700] : colors.grey[400]}
             />
           </button>
         )}
