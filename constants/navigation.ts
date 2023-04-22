@@ -7,6 +7,8 @@ export interface INav {
   bookmark?: boolean;
   share?: boolean;
   search?: boolean;
+  bgColor?: string;
+  color?: string;
 }
 
 export interface INavigationItem {
@@ -62,8 +64,6 @@ export const ROUTES_NAV: IRouteNav = {
     nav: {
       previous: true,
       home: true,
-      bookmark: true,
-      share: true,
     },
   },
 

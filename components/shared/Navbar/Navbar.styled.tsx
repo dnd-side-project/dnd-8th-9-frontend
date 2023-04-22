@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const NavWrap = styled.div`
+export const NavWrap = styled.div<{ bgColor?: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +12,7 @@ export const NavWrap = styled.div`
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  background-color: ${({ theme }) => theme.colors.grey[100]};
+  background-color: ${({ theme, bgColor }) => bgColor || theme.colors.grey[100]};
 
   > * {
     display: flex;
