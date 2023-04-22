@@ -34,3 +34,12 @@ export const NavRight = styled.div`
   justify-content: flex-end;
   column-gap: 2.4rem;
 `;
+
+export const SingleNav = styled.nav`
+  width: 100%;
+  height: 5.6rem;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  text-align: left;
+`;
