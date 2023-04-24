@@ -15,7 +15,11 @@ function ReviewInfo({ overallStats }: IProp) {
   return (
     <S.ReviewContentBox title="이 스토어의 매력">
       <Text size={13} weight={500} color={colors.grey[700]}>
-        전체 리뷰 {totalReviews}건
+        전체 리뷰{" "}
+        <Text size={13} color={colors.pink[700]}>
+          {totalReviews}
+        </Text>
+        건
       </Text>
       <ProgressBar stats={stats} isPreview />
     </S.ReviewContentBox>

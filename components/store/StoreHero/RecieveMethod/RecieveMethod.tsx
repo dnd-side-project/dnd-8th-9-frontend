@@ -16,7 +16,8 @@ function RecieveMethod({ canDelivery, canPickup }: IProp) {
         <S.Content>
           <Icon name="delivery" fill={colors.blue[700]} size="l" />
           <S.Method>택배가능</S.Method>
-          <S.Desc>퀵-셀프신청, 1 ~ 2일 수령가능</S.Desc>
+
+          <S.Desc>퀵-셀프신청, 1 ~ 일 수령가능</S.Desc>
         </S.Content>
       )}
       {canPickup && (

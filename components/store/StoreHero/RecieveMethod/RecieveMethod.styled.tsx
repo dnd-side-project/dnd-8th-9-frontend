@@ -4,19 +4,26 @@ import ContentBox from "../../ContentBox/ContentBox";
 
 export const Content = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 0.8rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 export const Method = styled(Text)`
   margin-left: 0.8rem;
+  min-width: 5.2rem;
   font-weight: 500;
   font-size: ${({ theme }) => theme.fontSizes[15]};
   color: ${({ theme }) => theme.colors.blue[800]};
+  line-height: 2.4rem;
 `;
 
 export const Desc = styled(Text)`
   margin-left: 1.2rem;
+  padding-top: 0.4rem;
   font-size: ${({ theme }) => theme.fontSizes[13]};
   color: ${({ theme }) => theme.colors.grey[700]};
 `;
