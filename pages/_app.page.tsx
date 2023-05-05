@@ -18,9 +18,9 @@ type AppPropsWithLayout = AppProps<{ dehydratedState: DehydratedState }> & {
   Component: NextPageWithLayout<{ dehydratedState: DehydratedState }>;
 };
 
-if (process.env.NODE_ENV === "development") {
-  import("@/mocks");
-}
+// if (process.env.NODE_ENV === "development") {
+//   import("@/mocks");
+// }
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const [queryClient] = useState(() => new QueryClient());
