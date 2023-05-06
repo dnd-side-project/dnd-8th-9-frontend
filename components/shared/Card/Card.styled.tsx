@@ -15,6 +15,10 @@ export const ImageWrap = styled.div`
   aspect-ratio: 1/1;
   border-radius: 0.8rem;
   overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
 `;
 
 export const Container = styled.div<{
