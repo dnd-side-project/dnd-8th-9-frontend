@@ -1,22 +1,29 @@
+import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { useTheme } from "@emotion/react";
-import { homeTab } from "@/constants/tabs";
-import { randomMenus } from "@/mocks/mockData/randomMenuList";
-import { randomReviews } from "@/mocks/mockData/randomReviewList";
+
 import useModalStore from "@/store/modal";
+import { randomReviews } from "@/mocks/mockData/randomReviewList";
+import { useGetMenuList } from "@/hooks/queries/menu";
+import { menuQueryKey } from "@/constants/queryKey";
+import { homeTab } from "@/constants/tabs";
+import menuApi from "@/api/domains/menu";
 
 import HomeHero from "@/components/home/HomeHero/HomeHero";
-import Tab from "@/components/shared/Tab/Tab";
 import StoreRank from "@/components/home/StoreRank/StoreRank";
+import Tab from "@/components/shared/Tab/Tab";
 import Text from "@/components/shared/Text/Text";
 import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
 import ReviewDoubleCard from "@/components/shared/Card/ReviewDoubleCard";
 import Modal from "@/components/shared/Modal/Modal";
 import WelcomeCard from "@/components/onboard/WelcomeCard/WelcomeCard";
+
 import * as S from "./recommendation.styled";
 
 function HomeRecommendationPage() {
   const { colors } = useTheme();
   const { welcomeModalOpen } = useModalStore();
+
+  const { data: menuListData } = useGetMenuList();
 
   return (
     <>
@@ -33,7 +40,7 @@ function HomeRecommendationPage() {
           발렌타인데이에 이런 디자인 어때요?
         </Text>
         <S.StoreWrap>
-          {randomMenus.menus.map(menu => (
+          {menuListData?.data.map(menu => (
             <MenuDoubleCard key={menu.id} data={menu} size="s" />
           ))}
         </S.StoreWrap>
@@ -59,3 +66,14 @@ function HomeRecommendationPage() {
 }
 
 export default HomeRecommendationPage;
+
+export async function getServerSideProps() {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery(menuQueryKey.list, () => menuApi.getMenuList());
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}

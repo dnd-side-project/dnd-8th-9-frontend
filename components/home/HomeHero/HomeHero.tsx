@@ -1,12 +1,13 @@
 import { useTheme } from "@emotion/react";
 import { Cake } from "@/assets/images";
-import { randomMenus } from "@/mocks/mockData/randomMenuList";
+import { useGetMenuList } from "@/hooks/queries/menu";
 import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
 import HomeHeader from "../HomeHeader/HomeHeader";
 import * as S from "./HomeHero.styled";
 
 function HomeHero() {
   const { colors } = useTheme();
+  const { data: menuListData } = useGetMenuList();
 
   return (
     <S.HeroWrap>
@@ -26,7 +27,7 @@ function HomeHero() {
           </S.ImageWrap>
         </S.HeroTitle>
         <S.StoreWrap>
-          {randomMenus.menus.map(menu => (
+          {menuListData?.data.map(menu => (
             <MenuDoubleCard size="s" key={menu.id} data={menu} />
           ))}
         </S.StoreWrap>
