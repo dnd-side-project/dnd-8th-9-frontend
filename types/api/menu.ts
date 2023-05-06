@@ -1,4 +1,19 @@
-import { IImage, TCategory } from "./shared";
+import { IImage, ITable, TCategory } from "./shared";
+
+export interface IDesign {
+  name: string;
+  price: number;
+  desc: string;
+}
+
+export interface IMenuOption {
+  value: string[] | ITable[] | IDesign[];
+  note: null | string;
+}
+
+export interface IDetailInfo {
+  [key: string]: IMenuOption;
+}
 
 export interface IMenuBasicInfo {
   맛: string;
