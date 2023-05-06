@@ -53,8 +53,7 @@ function Card({
           mode={mode}
         />
       </S.ImageWrap>
-      {/* {children} */}
-      <Link href={`/store/${data.id}`}>{children}</Link>
+      {children}
     </S.Container>
   );
 }

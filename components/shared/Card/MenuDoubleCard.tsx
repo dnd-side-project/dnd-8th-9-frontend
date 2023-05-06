@@ -1,6 +1,7 @@
 import { useTheme } from "@emotion/react";
 import { generatePriceString } from "@/utils/util";
 import { IMenuListItem } from "@/types/api";
+import Link from "next/link";
 import Card from "./Card";
 import * as S from "./Card.styled";
 
@@ -29,29 +30,31 @@ function MenuDoubleCard({ data, mode, size = "m" }: IProps) {
   const { storeName, price, name, menuImages } = data;
 
   return (
-    <Card
-      imgWidth={SIZE_STYLE[size].imgWidth}
-      imgHeight={SIZE_STYLE[size].imgHeight}
-      dir="col"
-      image={!menuImages?.length ? "https://via.placeholder.com/640x480" : menuImages[0].url}
-      gap={SIZE_STYLE[size].gap}
-      mode={mode}
-      data={data}
-      type="menu"
-    >
-      <S.ContentWrap type="menuDouble">
-        <S.Store weight={500} size={12} color={colors.grey[600]}>
-          {storeName}
-        </S.Store>
-        <S.Menu weight={600} size={15}>
-          {name}
-        </S.Menu>
-        <S.Price weight={700} size={16} color={colors.blue[800]}>
-          {generatePriceString(price)}
-        </S.Price>
-        {/* <Platform links={links} /> */}
-      </S.ContentWrap>
-    </Card>
+    <Link href={`/store/${data.storeId}`}>
+      <Card
+        imgWidth={SIZE_STYLE[size].imgWidth}
+        imgHeight={SIZE_STYLE[size].imgHeight}
+        dir="col"
+        image={!menuImages?.length ? "https://via.placeholder.com/640x480" : menuImages[0].url}
+        gap={SIZE_STYLE[size].gap}
+        mode={mode}
+        data={data}
+        type="menu"
+      >
+        <S.ContentWrap type="menuDouble">
+          <S.Store weight={500} size={12} color={colors.grey[600]}>
+            {storeName}
+          </S.Store>
+          <S.Menu weight={600} size={15}>
+            {name}
+          </S.Menu>
+          <S.Price weight={700} size={16} color={colors.blue[800]}>
+            {generatePriceString(price)}
+          </S.Price>
+          {/* <Platform links={links} /> */}
+        </S.ContentWrap>
+      </Card>
+    </Link>
   );
 }
 
