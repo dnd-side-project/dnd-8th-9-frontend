@@ -26,3 +26,13 @@ export interface IStoreReview {
   overallStats: IOverallStats;
   reviewList: IReviewListItem[];
 }
+
+export interface IReviewPayloadBody {
+  menuId: number;
+  storeId: number;
+  content: string;
+  dangdo: number;
+  goodPoint: TReviewOption;
+  reorder: boolean;
+  files: File[];
+}

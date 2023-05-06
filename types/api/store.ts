@@ -43,3 +43,16 @@ export interface IStoreDetails extends Omit<IStoreListItem, "bookmarkCount"> {
   notice: null | INotice;
   info: null | IInfo;
 }
+
+export interface IStorePayloadBody {
+  name: string;
+  location: string;
+  links: ILink[];
+  canPickup: boolean;
+  canDelivery: boolean;
+  category: TCategory[];
+  files: IImage[];
+  orderForm: null | IOrderForm[];
+  notice: null | INotice;
+  info: null | IInfo;
+}
