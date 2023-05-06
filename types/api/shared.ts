@@ -1,6 +1,6 @@
 export interface IImage {
   id: number;
-  type: string;
+  type: "MENU_IMAGE" | "STORE_IMAGE" | "REVIEW_IMAGE";
   url: string;
   targetId: number;
 }
