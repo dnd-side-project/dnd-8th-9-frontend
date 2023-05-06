@@ -1,11 +1,11 @@
 import { useTheme } from "@emotion/react";
 import { generatePriceString } from "@/utils/util";
-import { IMenuDetails } from "@/types/api";
-import Card from "./Card";
+import { useGetMenuDetails } from "@/hooks/queries/menu";
 import * as S from "./Card.styled";
+import Card from "./Card";
 
 interface IProps {
-  data: IMenuDetails;
+  menuId: number;
   mode?: "edit" | "bookmark" | "none";
   size?: "s" | "m";
 }
@@ -23,9 +23,15 @@ const SIZE_STYLE = {
   },
 };
 
-function MenuSingleCard({ data, mode, size = "m" }: IProps) {
+function MenuSingleCard({ menuId, mode, size = "m" }: IProps) {
   const { colors } = useTheme();
-  const { basePrice, name, menuImages } = data;
+
+  const { data: menuData, isError, isLoading } = useGetMenuDetails(Number(menuId));
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error...</div>;
+
+  const { basePrice, name, menuImages } = menuData.data;
 
   // NOTE: summary 데이터에서 빠짐. 현재 hard coded.
   return (
@@ -36,7 +42,7 @@ function MenuSingleCard({ data, mode, size = "m" }: IProps) {
       image={menuImages}
       gap={16}
       mode={mode}
-      data={data}
+      data={menuData.data}
       type="menu"
     >
       <S.ContentWrap type="menuSingle">
