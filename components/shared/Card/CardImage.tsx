@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { IStoreItem } from "@/api/types/storeList";
-import { IRandomMenuItem } from "@/api/types/randomMenuList";
-import useBookmarkStore from "@/store/bookmark";
 import { useTheme } from "@emotion/react";
-import { IImage } from "@/api/types/shared";
+
+import useBookmarkStore from "@/store/bookmark";
+import { IStoreListItem, IMenuDetails, IMenuListItem, IImage } from "@/types/api";
+
 import Carousel from "../Carousel/Carousel";
 import Icon from "../Icon/Icon";
 import Tag from "../Tag/Tag";
@@ -17,7 +17,7 @@ interface IProp {
   canDelivery?: boolean;
   canPickup?: boolean;
   mode?: "edit" | "none" | "bookmark";
-  bookmarkData: IStoreItem | IRandomMenuItem;
+  bookmarkData: IStoreListItem | IMenuDetails | IMenuListItem;
   type: "store" | "menu";
 }
 
@@ -60,11 +60,12 @@ function CardImage({
     }
   }, [bookmarkStoreList, bookmarkMenuList, bookmarkData, type]);
 
-  const handleBookmark = (newBookmarkData: IStoreItem | IRandomMenuItem) => {
+  const handleBookmark = (newBookmarkData: IStoreListItem | IMenuDetails | IMenuListItem) => {
+    console.log("menu bookmark");
     if (type === "store") {
-      updateBookmarkStoreList(newBookmarkData as IStoreItem);
+      updateBookmarkStoreList(newBookmarkData as IStoreListItem);
     } else if (type === "menu") {
-      updateBookmarkMenuList(newBookmarkData as IRandomMenuItem);
+      updateBookmarkMenuList(newBookmarkData as IMenuListItem);
     }
   };
 

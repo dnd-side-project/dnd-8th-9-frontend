@@ -1,11 +1,11 @@
 import { useTheme } from "@emotion/react";
-import { IRandomMenuItem } from "@/api/types/randomMenuList";
 import { generatePriceString } from "@/utils/util";
+import { IMenuDetails } from "@/types/api";
 import Card from "./Card";
 import * as S from "./Card.styled";
 
 interface IProps {
-  data: IRandomMenuItem;
+  data: IMenuDetails;
   mode?: "edit" | "bookmark" | "none";
   size?: "s" | "m";
 }
@@ -25,14 +25,15 @@ const SIZE_STYLE = {
 
 function MenuSingleCard({ data, mode, size = "m" }: IProps) {
   const { colors } = useTheme();
-  const { price, name, menuImage, summary } = data;
+  const { basePrice, name, menuImages } = data;
 
+  // NOTE: summary 데이터에서 빠짐. 현재 hard coded.
   return (
     <Card
       imgWidth={SIZE_STYLE[size].imgWidth}
       imgHeight={SIZE_STYLE[size].imgHeight}
       dir="row"
-      image={menuImage}
+      image={menuImages}
       gap={16}
       mode={mode}
       data={data}
@@ -43,11 +44,12 @@ function MenuSingleCard({ data, mode, size = "m" }: IProps) {
           {name}
         </S.Menu>
         <S.Desc size={12} color={colors.grey[700]}>
-          {summary}
+          {/* {summary} */}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </S.Desc>
         {size === "m" && (
           <S.Price weight={600} size={18} color={colors.blue[800]}>
-            {generatePriceString(price)}
+            {generatePriceString(basePrice)}
           </S.Price>
         )}
       </S.ContentWrap>

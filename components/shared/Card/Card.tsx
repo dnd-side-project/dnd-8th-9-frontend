@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { IImage } from "@/api/types/shared";
-import { IStoreItem } from "@/api/types/storeList";
-import { IRandomMenuItem } from "@/api/types/randomMenuList";
+import { IImage, IMenuDetails, IMenuListItem, IStoreListItem } from "@/types/api";
 import CardImage from "./CardImage";
 import * as S from "./Card.styled";
 
@@ -17,7 +15,7 @@ interface IProp {
   children: React.ReactNode;
   canDelivery?: boolean;
   canPickup?: boolean;
-  data: IStoreItem | IRandomMenuItem;
+  data: IStoreListItem | IMenuDetails | IMenuListItem;
   type: "menu" | "store";
 }
 
@@ -55,6 +53,7 @@ function Card({
           mode={mode}
         />
       </S.ImageWrap>
+      {/* {children} */}
       <Link href={`/store/${data.id}`}>{children}</Link>
     </S.Container>
   );
