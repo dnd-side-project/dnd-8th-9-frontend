@@ -1,47 +1,48 @@
-import { IMenu } from "@/api/types/menu";
+import { IMenuDetails } from "@/types/api/menu";
 
-export const menu: IMenu = {
+export const menu: IMenuDetails = {
   id: 2,
   name: "레터링 케이크 1호",
   category: ["레터링", "꽃"],
   basePrice: 20000,
-  menuImage: [
+  menuImages: [
     {
-      id: 1,
+      id: 21,
+      type: "MENU_IMAGE",
+      targetId: 2,
       url: "https://i.pinimg.com/564x/50/3f/77/503f772cb990ecd36543c9c6ea3e78dd.jpg",
     },
     {
-      id: 2,
+      id: 22,
+      type: "MENU_IMAGE",
+      targetId: 2,
       url: "https://i.pinimg.com/564x/52/b0/20/52b020392b8a8719430456547c281897.jpg",
     },
     {
-      id: 3,
+      id: 23,
+      type: "MENU_IMAGE",
+      targetId: 2,
       url: "https://i.pinimg.com/564x/14/14/5f/14145f03d79929b5f65705244345aaa4.jpg",
     },
     {
-      id: 4,
+      id: 24,
+      type: "MENU_IMAGE",
+      targetId: 2,
       url: "https://i.pinimg.com/564x/61/83/34/618334f91508d1c24bdc9b22b98f6efc.jpg",
     },
     {
-      id: 5,
+      id: 25,
+      type: "MENU_IMAGE",
+      targetId: 2,
       url: "https://i.pinimg.com/564x/8d/b6/c8/8db6c82cd1504ed3c79cdab41fe806ad.jpg",
     },
   ],
-  basicInfo: [
-    {
-      name: "사이즈",
-      desc: "미니(기본) / 1호(10,000) / 2호(+15,000) / 3호(+20,000)",
-    },
-    {
-      name: "레터링",
-      desc: "한글 8자 이내, 영문 16자 이내(특수기호 포함)",
-    },
-    {
-      name: "맛",
-      desc: "크림치즈(변경불가)",
-    },
-  ],
-  detailInfo: {
+  basicInfo: {
+    사이즈: "미니(기본) / 1호(10,000) / 2호(+15,000) / 3호(+20,000)",
+    레터링: "한글 8자 이내, 영문 16자 이내(특수기호 포함)",
+    맛: "크림치즈(변경불가)",
+  },
+  detailInfo: JSON.stringify({
     size: {
       value: [
         { name: "미니", desc: "12cm" },
@@ -91,5 +92,5 @@ export const menu: IMenu = {
       ],
       note: null,
     },
-  },
+  }),
 };

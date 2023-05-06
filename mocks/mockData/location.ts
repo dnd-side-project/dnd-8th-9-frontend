@@ -1,4 +1,4 @@
-import { ILocation } from "@/api/types/onboard";
+import { ILocation } from "@/types/api/onboard";
 
 export const locations: ILocation[] = [
   { id: 1, name: "전체", storeCounts: 125 },
