@@ -5,7 +5,7 @@ export interface IErrorResponse {
   message: string;
 }
 
-export interface IBaseRepsonse<T> extends AxiosResponse<T> {
+export interface IBaseResponse<T> extends AxiosResponse<T> {
   status: number;
   data: T;
   message: string;

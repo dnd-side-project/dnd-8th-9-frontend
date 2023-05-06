@@ -1,5 +1,5 @@
 import { API_URI } from "@/constants/api";
-import { IBaseRepsonse, IMenuListItem, IStoreListItem, IUserResponse } from "@/types/api";
+import { IBaseResponse, IMenuListItem, IStoreListItem, IUserResponse } from "@/types/api";
 import dangdoApi from "../config";
 
 const userApi = {
@@ -8,13 +8,13 @@ const userApi = {
     return data;
   },
   getStoreBookmarkList: async () => {
-    const { data } = await dangdoApi.get<IBaseRepsonse<IStoreListItem[]>>(
+    const { data } = await dangdoApi.get<IBaseResponse<IStoreListItem[]>>(
       API_URI.user.get.STORE_BOOKMARKS,
     );
     return data;
   },
   getMenuBookmarkList: async () => {
-    const { data } = await dangdoApi.get<IBaseRepsonse<IMenuListItem[]>>(
+    const { data } = await dangdoApi.get<IBaseResponse<IMenuListItem[]>>(
       API_URI.user.get.MENU_BOOKMARKS,
     );
     return data;
