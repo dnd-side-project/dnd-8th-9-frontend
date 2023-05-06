@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { IImage } from "@/api/types/shared";
+import { IImage } from "@/types/api/shared";
 
 interface FormMenuStore {
   id: number;
