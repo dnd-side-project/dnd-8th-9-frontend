@@ -1,6 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { IMenuOption } from "@/api/types/menu";
-import { ITable } from "@/api/types/shared";
+import { IMenuOption, ITable } from "@/types/api";
 import { SizeCircle } from "@/assets/images";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./MenuSize.styled";
@@ -34,15 +33,15 @@ function MenuSize({ size }: IProp) {
   return (
     <S.SizeContent>
       {size.value.map((option, idx) => (
-        <div key={(option as TTable).name}>
+        <div key={(option as ITable).name}>
           <S.Circle size={SIZE[idx].size}>
             <SizeCircle width={SIZE[idx].size} height={SIZE[idx].size} />
             <Text size={11} weight={600} color={colors.blue[700]}>
-              {(option as TTable).desc}
+              {(option as ITable).desc}
             </Text>
           </S.Circle>
           <S.SizeLabel size={SIZE[idx].size} marginTop={SIZE[idx].marginTop}>
-            <Text weight={500}>{(option as TTable).name}</Text>
+            <Text weight={500}>{(option as ITable).name}</Text>
           </S.SizeLabel>
         </div>
       ))}
