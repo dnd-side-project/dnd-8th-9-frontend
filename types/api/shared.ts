@@ -1,17 +1,14 @@
 export interface IImage {
   id: number;
+  type: string;
   url: string;
-}
-
-export interface IOrderForm {
-  value: string;
-  placeholder: string;
+  targetId: number;
 }
 
 export interface ILink {
   id: number;
   platform: string;
-  link: string;
+  url: string;
   role: string;
 }
 
@@ -33,7 +30,7 @@ export interface ITime {
   [key: string]: string;
 }
 
-export type TCategory = "꽃" | "캐릭터/입체" | "기타" | "포토" | "레터링";
+export type TCategory = "꽃" | "캐릭터" | "기타" | "포토" | "레터링";
 
 export type TSource = "외부사이트" | "당도" | "단골";
 
