@@ -2,11 +2,12 @@ import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { useTheme } from "@emotion/react";
 
 import useModalStore from "@/store/modal";
-import { randomReviews } from "@/mocks/mockData/randomReviewList";
 import { useGetMenuList } from "@/hooks/queries/menu";
-import { menuQueryKey } from "@/constants/queryKey";
+import { useGetReviewList } from "@/hooks/queries/review";
+import { menuQueryKey, reviewQueryKey } from "@/constants/queryKey";
 import { homeTab } from "@/constants/tabs";
 import menuApi from "@/api/domains/menu";
+import reviewApi from "@/api/domains/review";
 
 import HomeHero from "@/components/home/HomeHero/HomeHero";
 import StoreRank from "@/components/home/StoreRank/StoreRank";
@@ -24,6 +25,7 @@ function HomeRecommendationPage() {
   const { welcomeModalOpen } = useModalStore();
 
   const { data: menuListData } = useGetMenuList();
+  const { data: reviewListData } = useGetReviewList();
 
   return (
     <>
@@ -48,7 +50,7 @@ function HomeRecommendationPage() {
           마포구 스토어의 리얼리뷰 확인하기
         </Text>
         <S.ReviewWrap>
-          {randomReviews.map(review => (
+          {reviewListData?.data.map(review => (
             <ReviewDoubleCard key={review.id} data={review} />
           ))}
         </S.ReviewWrap>
@@ -69,7 +71,10 @@ export default HomeRecommendationPage;
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(menuQueryKey.list, () => menuApi.getMenuList());
+  await Promise.all([
+    queryClient.prefetchQuery(menuQueryKey.list, () => menuApi.getMenuList()),
+    queryClient.prefetchQuery(reviewQueryKey.list, () => reviewApi.getReviewList()),
+  ]);
 
   return {
     props: {
