@@ -1,3 +1,4 @@
+import { menuHandler } from "./menu";
 import { storeHandler } from "./store";
 
-export const handlers = [...storeHandler];
+export const handlers = [...menuHandler, ...storeHandler];
