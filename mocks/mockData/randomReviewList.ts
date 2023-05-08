@@ -1,6 +1,6 @@
 import { IReviewListItem } from "@/types/api";
 
-interface IReviewListItemSpecific extends IReviewListItem {
+export interface IReviewListItemSpecific extends IReviewListItem {
   nickname: string;
   profileImage: string;
   date: string;
