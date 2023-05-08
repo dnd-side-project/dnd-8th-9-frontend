@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
-import { IStoreDetailsSpecific } from "@/mocks/mockData/store";
+import { IStoreDetailsSpecific, store } from "@/mocks/mockData/store";
 import { useGetStore, useGetStoreReviews } from "@/hooks/queries/store";
 import storeApi from "@/api/domains/store";
 import { storeQueryKey } from "@/constants/queryKey";
@@ -12,6 +12,8 @@ import Review from "@/components/store/review/Review/Review";
 import SectionLayout from "@/components/store/SectionLayout/SectionLayout";
 import Sort from "@/components/shared/Sort/Sort";
 import * as S from "./review.styled";
+
+const REVIEW_STATS_MOCK = store.overallStats;
 
 function ReviewPage() {
   const router = useRouter();
@@ -27,9 +29,9 @@ function ReviewPage() {
   return (
     <SectionLayout>
       <S.ContentWrap>
-        {(storeDetailsData.data as IStoreDetailsSpecific).overallStats && (
-          <OverallStats data={(storeDetailsData.data as IStoreDetailsSpecific).overallStats} />
-        )}
+        <OverallStats
+          data={(storeDetailsData.data as IStoreDetailsSpecific).overallStats || REVIEW_STATS_MOCK}
+        />
         <PreviewImage reviewImages={reviewImages} />
         <S.ReviewContent>
           <S.ReviewTitle as="p" size={16} weight={600}>
