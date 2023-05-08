@@ -1,6 +1,11 @@
+import { IOverallStats } from "@/types/api";
 import { IStoreDetails } from "@/types/api/store";
 
-export const store: IStoreDetails = {
+export interface IStoreDetailsSpecific extends IStoreDetails {
+  overallStats: IOverallStats;
+}
+
+export const store: IStoreDetailsSpecific = {
   id: 112,
   name: "케이크예스",
   location: "서울시 서초구 모로2길 350",
@@ -108,4 +113,15 @@ export const store: IStoreDetails = {
       url: "https://i.pinimg.com/564x/61/ae/76/61ae76e5f0c20da77d2767505fb0383b.jpg",
     },
   ],
+  overallStats: {
+    rating: 70,
+    totalReviews: 10,
+    stats: [
+      { optionName: "맛있어요", count: 5 },
+      { optionName: "선물하기 좋아요", count: 2 },
+      { optionName: "가성비가 좋아요", count: 1 },
+      { optionName: "친절해요", count: 1 },
+      { optionName: "응답이 빨라요", count: 1 },
+    ],
+  },
 };
