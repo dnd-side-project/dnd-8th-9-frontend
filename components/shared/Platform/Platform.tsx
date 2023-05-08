@@ -1,6 +1,7 @@
 import { useTheme } from "@emotion/react";
 import { ILink } from "@/types/api/shared";
 import theme from "@/styles/theme";
+import React from "react";
 import Icon from "../Icon/Icon";
 import Text from "../Text/Text";
 import * as S from "./Platform.styled";
@@ -28,7 +29,9 @@ function Platform({ links }: IProp) {
       <Text weight={500} size={13} color={colors.grey[700]}>
         주문방식
       </Text>
-      {links.map(link => LINK_ICON[link.platform])}
+      {links.map(link => (
+        <React.Fragment key={link.id}>{LINK_ICON[link.platform]}</React.Fragment>
+      ))}
     </S.PlatformWrap>
   );
 }
