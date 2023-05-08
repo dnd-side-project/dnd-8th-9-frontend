@@ -13,6 +13,7 @@ import storeApi from "@/api/domains/store";
 import { storeQueryKey } from "@/constants/queryKey";
 import { IMenuListItemSimple } from "@/mocks/mockData/menuList";
 import { IStoreDetailsSpecific } from "@/mocks/mockData/store";
+import { IReviewListItemSpecific } from "@/mocks/mockData/randomReviewList";
 
 export const useGetStoreList = () => {
   return useQuery<IBaseResponse<IStoreListItem[]>, AxiosError<IErrorResponse>>({
@@ -41,7 +42,10 @@ export const useGetStoreMenus = (storeId: number) => {
 };
 
 export const useGetStoreReviews = (storeId: number) => {
-  return useQuery<IBaseResponse<IReviewListItem[]>, AxiosError<IErrorResponse>>({
+  return useQuery<
+    IBaseResponse<IReviewListItem[] | IReviewListItemSpecific[]>,
+    AxiosError<IErrorResponse>
+  >({
     queryKey: storeQueryKey.reviews(storeId),
     queryFn: () => storeApi.getStoreReviews(storeId),
   });
