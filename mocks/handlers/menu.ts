@@ -5,7 +5,7 @@ import { IMenuDetails } from "@/types/api";
 import { menu } from "../mockData/menu";
 import { IReviewListItemSpecific, randomReviews } from "../mockData/randomReviewList";
 
-export const BASE_URL = "https://jsonplaceholder.typicode.com";
+export const BASE_URL = "http://43.201.188.200:8080";
 
 export interface IMockResponse<T> {
   data: T;
