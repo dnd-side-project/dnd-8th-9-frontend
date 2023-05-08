@@ -27,7 +27,7 @@ export default function OverallStats({ data }: IProps) {
       <Text weight={500} color={colors.pink[700]}>
         이 스토의 당도는 {OVERALL_COMMENT}
       </Text>
-      <ProgressBar stats={stats} />
+      <ProgressBar stats={stats} totals={totalReviews} />
     </S.Container>
   );
 }
