@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@emotion/react";
-import { IImage } from "@/api/types/shared";
+import { IImage } from "@/types/api/shared";
 import Icon from "@/components/shared/Icon/Icon";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./PreviewImage.styled";

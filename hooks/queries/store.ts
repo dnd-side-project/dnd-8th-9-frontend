@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
   IBaseResponse,
   IErrorResponse,
+  IMenuDetails,
   IMenuListItem,
   IReviewListItem,
   IStoreDetails,
@@ -10,6 +11,7 @@ import {
 } from "@/types/api";
 import storeApi from "@/api/domains/store";
 import { storeQueryKey } from "@/constants/queryKey";
+import { IMenuListItemSimple } from "@/mocks/mockData/menuList";
 
 export const useGetStoreList = () => {
   return useQuery<IBaseResponse<IStoreListItem[]>, AxiosError<IErrorResponse>>({
@@ -26,7 +28,10 @@ export const useGetStore = (storeId: number) => {
 };
 
 export const useGetStoreMenus = (storeId: number) => {
-  return useQuery<IBaseResponse<IMenuListItem[]>, AxiosError<IErrorResponse>>({
+  return useQuery<
+    IBaseResponse<IMenuDetails[] | IMenuListItemSimple[] | IMenuListItem[]>,
+    AxiosError<IErrorResponse>
+  >({
     queryKey: storeQueryKey.menus(storeId),
     queryFn: () => storeApi.getStoreMenus(storeId),
   });

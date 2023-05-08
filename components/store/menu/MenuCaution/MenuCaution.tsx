@@ -1,4 +1,4 @@
-import { IMenuOption } from "@/api/types/menu";
+import { IMenuOption } from "@/types/api";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./MenuCaution.styled";
 

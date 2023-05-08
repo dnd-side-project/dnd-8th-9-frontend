@@ -1,13 +1,13 @@
 import { useTheme } from "@emotion/react";
-import { IStoreItem } from "@/api/types/storeList";
 import { generateRangePriceString } from "@/utils/util";
+import { IStoreListItem } from "@/types/api";
 import Platform from "../Platform/Platform";
 import CategoryTag from "../Tag/common/CategoryTag";
 import Card from "./Card";
 import * as S from "./Card.styled";
 
 interface IProps {
-  data: IStoreItem;
+  data: IStoreListItem;
   mode?: "edit" | "bookmark" | "none";
 }
 

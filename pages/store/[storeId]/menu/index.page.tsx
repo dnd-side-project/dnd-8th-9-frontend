@@ -1,27 +1,30 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { randomMenus } from "@/mocks/mockData/randomMenuList";
-import { useGetStore } from "@/api/queries/store";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
+
+import storeApi from "@/api/domains/store";
+import { useGetStoreMenus } from "@/hooks/queries/store";
+import { storeQueryKey } from "@/constants/queryKey";
 import MenuSingleCard from "@/components/shared/Card/MenuSingleCard";
 import SectionLayout from "@/components/store/SectionLayout/SectionLayout";
 import * as S from "./menu.styled";
 
 function MenuPage() {
-  // const { data, isLoading, isError } = useGetStore({ storeId: 1 });
-  const { asPath } = useRouter();
+  const {
+    query: { storeId },
+  } = useRouter();
 
-  // if (isLoading) return <div>Loading...</div>;
-  // if (isError) return <div>Error...</div>;
+  const { data: storeMenusData, isLoading, isError } = useGetStoreMenus(Number(storeId));
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error...</div>;
 
   return (
     <SectionLayout>
       <S.ListWrap>
-        {randomMenus.menus.map(menu => (
-          <Link key={menu.id} href={`${asPath}/${menu.id}`}>
-            <S.CardWrapper>
-              <MenuSingleCard data={menu} />
-            </S.CardWrapper>
-          </Link>
+        {storeMenusData.data.map(menu => (
+          <S.CardWrapper key={menu.id}>
+            <MenuSingleCard data={menu} />
+          </S.CardWrapper>
         ))}
       </S.ListWrap>
     </SectionLayout>
@@ -29,3 +32,17 @@ function MenuPage() {
 }
 
 export default MenuPage;
+
+export async function getServerSideProps({ params: { storeId } }: { params: { storeId: string } }) {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(storeQueryKey.menus(Number(storeId)), () =>
+    storeApi.getStoreMenus(Number(storeId)),
+  );
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}

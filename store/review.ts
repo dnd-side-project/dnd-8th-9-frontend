@@ -1,20 +1,17 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-// import { immer } from "zustand/middleware/immer";
 
-import { IReviewItem } from "@/api/types/review";
-// import { IStoreItem } from "@/api/types/storeList";
-import { reviews } from "@/mocks/mockData/review";
+import { IReviewListItem } from "@/types/api";
 
 interface ReviewState {
-  reviews: IReviewItem[];
-  updateReviews: (review: IReviewItem) => void;
+  reviews: IReviewListItem[];
+  updateReviews: (review: IReviewListItem) => void;
 }
 
 const useReviewStore = create<ReviewState>()(
   devtools(set => ({
-    reviews: reviews.reviewList,
-    updateReviews: (review: IReviewItem) =>
+    reviews: [],
+    updateReviews: (review: IReviewListItem) =>
       set(state => ({
         reviews: [...state.reviews, review],
       })),

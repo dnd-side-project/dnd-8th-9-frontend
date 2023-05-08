@@ -1,5 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { IDesign, IMenuOption } from "@/api/types/menu";
+import { IDesign, IMenuOption } from "@/types/api";
 import { generatePriceString } from "@/utils/util";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./MenuDesign.styled";

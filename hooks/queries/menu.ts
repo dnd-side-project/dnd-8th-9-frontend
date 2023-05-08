@@ -9,9 +9,13 @@ import {
 } from "@/types/api";
 import menuApi from "@/api/domains/menu";
 import { menuQueryKey } from "@/constants/queryKey";
+import { IRandomMenuListItem } from "@/mocks/mockData/randomMenuList";
 
 export const useGetMenuList = () => {
-  return useQuery<IBaseResponse<IMenuListItem[]>, AxiosError<IErrorResponse>>({
+  return useQuery<
+    IBaseResponse<IMenuListItem[] | IRandomMenuListItem[]>,
+    AxiosError<IErrorResponse>
+  >({
     queryKey: menuQueryKey.list,
     queryFn: () => menuApi.getMenuList(),
   });

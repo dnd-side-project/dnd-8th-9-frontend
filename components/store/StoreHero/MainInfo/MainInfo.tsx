@@ -1,5 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { IStore } from "@/api/types/store";
+import { IStoreDetails } from "@/types/api/store";
 import { generateRangePriceString, getOverallComment } from "@/utils/util";
 import CategoryTag from "@/components/shared/Tag/common/CategoryTag";
 import Dangdo from "@/components/shared/Dangdo/Dangdo";
@@ -8,7 +8,7 @@ import Text from "@/components/shared/Text/Text";
 import * as S from "./MainInfo.styled";
 
 interface IProp {
-  data: IStore;
+  data: IStoreDetails;
 }
 
 function MainInfo({ data }: IProp) {

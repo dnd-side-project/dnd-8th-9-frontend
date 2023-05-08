@@ -1,27 +1,26 @@
-import { IStore } from "@/api/types/store";
+import { IStoreDetails } from "@/types/api/store";
 
-export const store: IStore = {
-  id: 1,
+export const store: IStoreDetails = {
+  id: 112,
   name: "케이크예스",
-  location: "서울 마포구 모로2길 350",
-  geoLocation: { latitude: -33.8655112697085, longtitude: 151.1971156302915 },
-  category: ["레터링", "캐릭터/입체"],
-  rating: 80,
+  location: "서울시 서초구 모로2길 350",
+  category: ["레터링", "캐릭터"],
+  rating: 70,
+  reviewCount: 10,
   canPickup: true,
   canDelivery: true,
-  priceRange: { max: 70000, min: 15000 },
-  averageReservationNeededTime: 10,
+  priceRange: { max: 100000, min: 30000 },
   links: [
     {
       id: 1,
       platform: "kakao",
-      link: "https://pf.kakao.com/_jIwLK",
+      url: "https://pf.kakao.com/_jIwLK",
       role: "주문 및 예약",
     },
     {
       id: 2,
       platform: "instagram",
-      link: "https://www.instagram.com/cake.yesplease/",
+      url: "https://www.instagram.com/cake.yesplease/",
       role: "실시간 문의",
     },
   ],
@@ -79,24 +78,34 @@ export const store: IStore = {
   },
   storeImages: [
     {
-      id: 1,
-      url: "https://i.pinimg.com/564x/4a/df/79/4adf79a54b55ff828832636d7e3b62c9.jpg",
+      id: 621,
+      targetId: 112,
+      type: "STORE_IMAGE",
+      url: "https://i.pinimg.com/564x/33/4e/4c/334e4c6075f8d85a84a816768a1ea561.jpg",
     },
     {
-      id: 2,
-      url: "https://i.pinimg.com/564x/40/ea/14/40ea142c8d20c4b9116414cbc4cbe4fb.jpg",
+      id: 622,
+      targetId: 112,
+      type: "STORE_IMAGE",
+      url: "https://i.pinimg.com/564x/49/98/b3/4998b3559c8fc00b0176e97cf5ea1724.jpg",
     },
     {
-      id: 3,
-      url: "https://i.pinimg.com/564x/78/99/11/789911964fbd4a8ae34ed87b469cdf78.jpg",
+      id: 623,
+      targetId: 112,
+      type: "STORE_IMAGE",
+      url: "https://i.pinimg.com/564x/f8/ca/df/f8cadf50fac061928c9ca4f7ad6dc53d.jpg",
     },
     {
-      id: 4,
-      url: "https://i.pinimg.com/564x/d2/ea/9c/d2ea9c83fb32c572f3a6d24a8032f8f5.jpg",
+      id: 624,
+      targetId: 112,
+      type: "STORE_IMAGE",
+      url: "https://i.pinimg.com/564x/a7/81/3d/a7813d6506805b8cab4cc8699d6768d9.jpg",
     },
     {
-      id: 5,
-      url: "https://i.pinimg.com/564x/e9/69/b3/e969b3f2d589f8b0844a339ebf9bfd20.jpg",
+      id: 625,
+      targetId: 112,
+      type: "STORE_IMAGE",
+      url: "https://i.pinimg.com/564x/61/ae/76/61ae76e5f0c20da77d2767505fb0383b.jpg",
     },
   ],
 };

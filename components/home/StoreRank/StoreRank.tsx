@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 
 import { storeList } from "@/mocks/mockData/storeList";
-import { TCategory } from "@/api/types/shared";
+import { TCategory } from "@/types/api/shared";
 import { chunkArray } from "@/utils/util";
 
 import Text from "@/components/shared/Text/Text";

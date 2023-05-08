@@ -1,5 +1,5 @@
 import React from "react";
-import { IKeyValue, ITime } from "@/api/types/shared";
+import { IKeyValue, ITime } from "@/types/api/shared";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./Table.styled";
 

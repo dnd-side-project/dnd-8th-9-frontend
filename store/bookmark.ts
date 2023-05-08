@@ -2,20 +2,14 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
-import { IStoreItem } from "@/api/types/storeList";
-import { IRandomMenuItem } from "@/api/types/randomMenuList";
-
-interface IImage {
-  id: number;
-  url: string;
-}
+import { IMenuListItem, IStoreListItem } from "@/types/api";
 
 interface BookmarkState {
-  bookmarkStoreList: IStoreItem[];
-  bookmarkMenuList: IRandomMenuItem[];
+  bookmarkStoreList: IStoreListItem[];
+  bookmarkMenuList: IMenuListItem[];
   editBookmarkList: string[];
-  updateBookmarkStoreList: (store: IStoreItem) => void;
-  updateBookmarkMenuList: (menu: IRandomMenuItem) => void;
+  updateBookmarkStoreList: (store: IStoreListItem) => void;
+  updateBookmarkMenuList: (menu: IMenuListItem) => void;
   updateEditBookmarkList: (name: string) => void;
   deleteAllMenuBookmarkList: () => void;
   deleteAllStoreBookmarkList: () => void;
@@ -28,7 +22,7 @@ const useBookmarkStore = create<BookmarkState>()(
       bookmarkStoreList: [],
       bookmarkMenuList: [],
       editBookmarkList: [],
-      updateBookmarkStoreList: (newStore: IStoreItem) =>
+      updateBookmarkStoreList: (newStore: IStoreListItem) =>
         set(state => {
           const isNewStore =
             state.bookmarkStoreList.findIndex(store => store.id === newStore.id) === -1;
@@ -39,7 +33,7 @@ const useBookmarkStore = create<BookmarkState>()(
             state.bookmarkStoreList.splice(index, 1);
           }
         }),
-      updateBookmarkMenuList: (newMenu: IRandomMenuItem) =>
+      updateBookmarkMenuList: (newMenu: IMenuListItem) =>
         set(state => {
           const isNewMenu = state.bookmarkMenuList.findIndex(menu => menu.id === newMenu.id) === -1;
           if (isNewMenu) {

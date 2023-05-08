@@ -1,40 +1,44 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
 
-import { menu } from "@/mocks/mockData/menu";
-import { reviews } from "@/mocks/mockData/review";
-import { menuList } from "@/mocks/mockData/menuList";
+import { menuQueryKey } from "@/constants/queryKey";
 import { storeMenuTab } from "@/constants/tabs";
+import menuApi from "@/api/domains/menu";
+import { IDetailInfo } from "@/types/api";
+import { menu as mockMenu } from "@/mocks/mockData/menu";
+import { useGetMenuDetails, useGetMenuReviews } from "@/hooks/queries/menu";
 
-import Tab from "@/components/shared/Tab/Tab";
 import { MenuHero, MenuSize, MenuTaste, MenuDesign, MenuCaution } from "@/components/store/menu";
 import Review from "@/components/store/review/Review/Review";
-import Sort from "@/components/shared/Sort/Sort";
 import ReviewFilter from "@/components/ReviewFilter/ReviewFilter";
+import Sort from "@/components/shared/Sort/Sort";
+import Tab from "@/components/shared/Tab/Tab";
 import Icon from "@/components/shared/Icon/Icon";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./menuItem.styled";
 
-const MENU_DATA = [
+const MENU_DATA = (parsedMockDetailInfo: IDetailInfo) => [
   {
     title: "사이즈",
     id: "size",
-    children: <MenuSize size={menu.detailInfo.size} />,
+    children: <MenuSize size={parsedMockDetailInfo.size} />,
   },
   {
     title: "맛 선택",
     id: "flavor",
-    children: <MenuTaste taste={menu.detailInfo.taste} />,
+    children: <MenuTaste taste={parsedMockDetailInfo.taste} />,
   },
   {
     title: "모양변경",
     id: "variation",
-    children: <MenuDesign design={menu.detailInfo.design} />,
+    children: <MenuDesign design={parsedMockDetailInfo.design} />,
   },
   {
     title: "주의사항",
     id: "caution",
-    children: <MenuCaution caution={menu.detailInfo.caution} />,
+    children: <MenuCaution caution={parsedMockDetailInfo.caution} />,
   },
 ];
 
@@ -44,23 +48,17 @@ function MenuDetailsPage() {
     query: { menuId },
   } = useRouter();
 
-  const { name, category, basePrice, menuImage, basicInfo, detailInfo } = menu;
-  const { reviewList } = reviews;
-  const targetMenu = menuList.menus.filter(menuItem => menuItem.id === Number(menuId));
-  const menuName = targetMenu.length && targetMenu[0].name;
-  const menuReviews = reviewList.filter(review => review.menuOption === menuName);
+  const { data: menuDetailsData } = useGetMenuDetails(Number(menuId));
+  const { data: menuReviewsData } = useGetMenuReviews(Number(menuId));
+  const parsedMockDetailInfo: IDetailInfo = JSON.parse(mockMenu.detailInfo);
+
+  if (menuDetailsData === undefined) return <h1>no data</h1>;
 
   return (
     <div>
-      <MenuHero
-        menuImage={menuImage}
-        name={name}
-        basePrice={basePrice}
-        basicInfo={basicInfo}
-        category={category}
-      />
+      <MenuHero data={menuDetailsData.data} />
       <Tab menuList={storeMenuTab} target="storeMenuTab" />
-      {MENU_DATA.map(({ title, children, id }) => (
+      {MENU_DATA(parsedMockDetailInfo).map(({ title, children, id }) => (
         <S.MenuContentBox key={title} title={title} name={id}>
           {children}
         </S.MenuContentBox>
@@ -68,7 +66,7 @@ function MenuDetailsPage() {
       <S.ReviewListWrap id="review">
         <S.ReviewHeader>
           <S.ReviewTitle as="p" size={16} weight={600}>
-            이 메뉴의 리뷰 <strong>{menuReviews.length}</strong>건
+            이 메뉴의 리뷰 <strong>{menuReviewsData?.data.length}</strong>건
           </S.ReviewTitle>
           <S.ReviewWriteButton type="button" label="write review" shape="square">
             <Icon name="pencil" size="s" color={colors.grey[800]} />
@@ -80,7 +78,7 @@ function MenuDetailsPage() {
         <ReviewFilter />
         <Sort />
         <div>
-          {menuReviews?.map(review => (
+          {menuReviewsData?.data.map(review => (
             <Review key={review.id} review={review} />
           ))}
         </div>
@@ -90,3 +88,22 @@ function MenuDetailsPage() {
 }
 
 export default MenuDetailsPage;
+
+export async function getServerSideProps({ params: { menuId } }: { params: { menuId: string } }) {
+  const queryClient = new QueryClient();
+
+  await Promise.all([
+    queryClient.prefetchQuery(menuQueryKey.detail(Number(menuId)), () =>
+      menuApi.getMenuDetails(Number(menuId)),
+    ),
+    queryClient.prefetchQuery(menuQueryKey.reviews(Number(menuId)), () =>
+      menuApi.getMenuReviews(Number(menuId)),
+    ),
+  ]);
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}

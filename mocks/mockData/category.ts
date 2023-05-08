@@ -1,4 +1,4 @@
-import { ICakeStyle } from "@/api/types/onboard";
+import { ICakeStyle } from "@/types/api/onboard";
 
 export const cakeStyles: ICakeStyle[] = [
   {

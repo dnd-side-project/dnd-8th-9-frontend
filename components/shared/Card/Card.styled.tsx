@@ -15,6 +15,10 @@ export const ImageWrap = styled.div`
   aspect-ratio: 1/1;
   border-radius: 0.8rem;
   overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
 `;
 
 export const Container = styled.div<{
@@ -87,6 +91,7 @@ export const ReviewImageWrap = styled(ImageWrap)`
 export const ReviewContent = styled.div`
   display: flex;
   width: inherit;
+  min-height: 8.5rem;
   column-gap: 0.4rem;
   padding: 1.5rem;
   background-color: ${({ theme }) => theme.colors.blue[100]};

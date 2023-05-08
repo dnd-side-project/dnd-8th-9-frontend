@@ -1,18 +1,23 @@
 import React, { Fragment } from "react";
 import { useTheme } from "@emotion/react";
-import { IMenu } from "@/api/types/menu";
+import { IMenuDetails } from "@/types/api";
 import { generatePriceString } from "@/utils/util";
 import Carousel from "@/components/shared/Carousel/Carousel";
 import Text from "@/components/shared/Text/Text";
 import Icon from "@/components/shared/Icon/Icon";
 import * as S from "./MenuHero.styled";
 
-function MenuHero({ menuImage, name: storeName, category, basePrice, basicInfo }: Partial<IMenu>) {
+interface IProps {
+  data: IMenuDetails;
+}
+
+function MenuHero({ data }: IProps) {
   const { colors } = useTheme();
+  const { menuImages, name: storeName, category, basePrice, basicInfo } = data;
 
   return (
     <>
-      <S.CarouselWrap>{menuImage && <Carousel images={menuImage} />}</S.CarouselWrap>
+      <S.CarouselWrap>{menuImages && <Carousel images={menuImages} />}</S.CarouselWrap>
       <S.InfoWrap>
         <S.MainInfoContainer>
           <S.Header>
@@ -44,12 +49,12 @@ function MenuHero({ menuImage, name: storeName, category, basePrice, basicInfo }
         <S.SubInfoContainer>
           <S.InfoContent>
             {basicInfo &&
-              basicInfo?.map(({ name, desc }) => (
-                <Fragment key={name}>
+              Object.keys(basicInfo).map(key => (
+                <Fragment key={key}>
                   <Text size={15} weight={600}>
-                    {name}
+                    {key}
                   </Text>
-                  <Text color={colors.grey[700]}>{desc}</Text>
+                  <Text color={colors.grey[700]}>{basicInfo[key]}</Text>
                 </Fragment>
               ))}
           </S.InfoContent>

@@ -3,7 +3,12 @@ const nextConfig = {
   pageExtensions: ["page.ts", "page.tsx"],
   reactStrictMode: true,
   images: {
-    domains: ["images.unsplash.com", "i.pinimg.com"],
+    domains: [
+      "images.unsplash.com",
+      "i.pinimg.com",
+      "dangdo.s3.ap-northeast-2.amazonaws.com",
+      "via.placeholder.com",
+    ],
   },
   webpack: config => {
     config.module.rules.push({

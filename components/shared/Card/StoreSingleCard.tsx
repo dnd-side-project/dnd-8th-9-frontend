@@ -1,6 +1,6 @@
 import { useTheme } from "@emotion/react";
-import { IStoreItem } from "@/api/types/storeList";
 import { generateRangePriceString } from "@/utils/util";
+import { IStoreListItem } from "@/types/api";
 import Platform from "../Platform/Platform";
 import CategoryTag from "../Tag/common/CategoryTag";
 import Dangdo from "../Dangdo/Dangdo";
@@ -9,12 +9,9 @@ import Card from "./Card";
 import * as S from "./Card.styled";
 
 interface IProps {
-  data: IStoreItem;
+  data: IStoreListItem;
   rank: number;
 }
-
-// NOTE: data 추가 필요
-const REVIEW_COUNT = 92;
 
 function StoreSingleCard({ data, rank }: IProps) {
   const { colors } = useTheme();
@@ -25,6 +22,7 @@ function StoreSingleCard({ data, rank }: IProps) {
     category,
     priceRange: { max, min },
     storeImages,
+    reviewCount,
   } = data;
 
   return (
@@ -45,7 +43,7 @@ function StoreSingleCard({ data, rank }: IProps) {
         <S.Review>
           <Dangdo dangdo={rating} />
           <Text size={12} weight={400} color={colors.grey[800]}>
-            {`리뷰(${REVIEW_COUNT})`}
+            {`리뷰(${reviewCount})`}
           </Text>
         </S.Review>
         <S.Price weight={600} size={13} color={colors.blue[800]}>
