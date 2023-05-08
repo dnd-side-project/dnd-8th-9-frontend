@@ -12,6 +12,7 @@ import {
 import storeApi from "@/api/domains/store";
 import { storeQueryKey } from "@/constants/queryKey";
 import { IMenuListItemSimple } from "@/mocks/mockData/menuList";
+import { IStoreDetailsSpecific } from "@/mocks/mockData/store";
 
 export const useGetStoreList = () => {
   return useQuery<IBaseResponse<IStoreListItem[]>, AxiosError<IErrorResponse>>({
@@ -21,10 +22,12 @@ export const useGetStoreList = () => {
 };
 
 export const useGetStore = (storeId: number) => {
-  return useQuery<IBaseResponse<IStoreDetails>, AxiosError<IErrorResponse>>({
-    queryKey: storeQueryKey.detail(storeId),
-    queryFn: () => storeApi.getStoreDetails(storeId),
-  });
+  return useQuery<IBaseResponse<IStoreDetails | IStoreDetailsSpecific>, AxiosError<IErrorResponse>>(
+    {
+      queryKey: storeQueryKey.detail(storeId),
+      queryFn: () => storeApi.getStoreDetails(storeId),
+    },
+  );
 };
 
 export const useGetStoreMenus = (storeId: number) => {
