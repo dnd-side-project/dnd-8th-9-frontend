@@ -1,8 +1,11 @@
 import { IOverallStats } from "@/types/api";
-import { IStoreDetails } from "@/types/api/store";
+import { IInfo, INotice, IOrderForm, IStoreDetails } from "@/types/api/store";
 
 export interface IStoreDetailsSpecific extends IStoreDetails {
   overallStats: IOverallStats;
+  orderForm: IOrderForm[];
+  notice: INotice;
+  info: IInfo;
 }
 
 export const store: IStoreDetailsSpecific = {
