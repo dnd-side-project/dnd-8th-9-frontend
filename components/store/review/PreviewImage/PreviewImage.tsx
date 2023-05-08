@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@emotion/react";
+
 import { IImage } from "@/types/api/shared";
 import Icon from "@/components/shared/Icon/Icon";
 import Text from "@/components/shared/Text/Text";
@@ -25,7 +26,9 @@ export default function PreviewImage({ reviewImages }: IReviewImages) {
       <S.PreviewImages>
         {previewImages.map((image, idx) => (
           <S.ImageWrap key={image.id}>
-            <Image src={image.url} alt="review" fill />
+            <Link href={`${asPath}/images/${image.targetId}`}>
+              <Image src={image.url} alt="review" fill />
+            </Link>
             {idx === previewImages.length - 1 && (
               <Link href={`${asPath}/images`}>
                 <S.ShowMore>
