@@ -1,7 +1,8 @@
+import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
 import { storeTab } from "@/constants/tabs";
-import { store } from "@/mocks/mockData/store";
-import { reviews } from "@/mocks/mockData/review";
+import { useGetStore } from "@/hooks/queries/store";
+import { IStoreDetailsSpecific } from "@/mocks/mockData/store";
 
 import Carousel from "@/components/shared/Carousel/Carousel";
 import Tab from "@/components/shared/Tab/Tab";
@@ -15,20 +16,31 @@ interface IProps {
 }
 
 function SectionLayout({ children }: IProps) {
-  const { canDelivery, canPickup, links, averageReservationNeededTime } = store;
-  const { overallStats } = reviews;
+  const {
+    query: { storeId },
+  } = useRouter();
   const { colors } = useTheme();
+  const { data: storeDetailsData, isLoading, isError } = useGetStore(Number(storeId));
+
+  if (isLoading) return <h1>Loading...</h1>;
+  if (isError) return <h1>Error...</h1>;
+
+  const { canDelivery, canPickup, links, storeImages } = storeDetailsData.data;
 
   return (
     <S.Wrap>
       <S.CarouselWrap>
-        <Carousel images={store.storeImages} bulletMargin="3.2rem" />
+        <Carousel images={storeImages} bulletMargin="3.2rem" />
       </S.CarouselWrap>
       <S.Main>
-        <MainInfo data={store} />
-        <ReviewInfo overallStats={overallStats} />
+        <MainInfo data={storeDetailsData.data} />
+        {(storeDetailsData.data as IStoreDetailsSpecific).overallStats && (
+          <ReviewInfo
+            overallStats={(storeDetailsData.data as IStoreDetailsSpecific).overallStats}
+          />
+        )}
         <RecieveMethod canDelivery={canDelivery} canPickup={canPickup} />
-        <OrderLink links={links} time={averageReservationNeededTime} />
+        <OrderLink links={links} time={10} />
         <Tab menuList={storeTab} target="storeTab" />
         {children}
       </S.Main>
