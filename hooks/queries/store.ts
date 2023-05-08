@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
   IBaseResponse,
   IErrorResponse,
+  IMenuDetails,
   IMenuListItem,
   IReviewListItem,
   IStoreDetails,
@@ -28,7 +29,7 @@ export const useGetStore = (storeId: number) => {
 
 export const useGetStoreMenus = (storeId: number) => {
   return useQuery<
-    IBaseResponse<IMenuListItem[] | IMenuListItemSimple[]>,
+    IBaseResponse<IMenuDetails[] | IMenuListItemSimple[] | IMenuListItem[]>,
     AxiosError<IErrorResponse>
   >({
     queryKey: storeQueryKey.menus(storeId),

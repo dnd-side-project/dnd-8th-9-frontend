@@ -2,13 +2,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
 import { generatePriceString } from "@/utils/util";
-import { IMenuListItem } from "@/types/api";
+import { IMenuDetails, IMenuListItem } from "@/types/api";
 import { IMenuListItemSimple } from "@/mocks/mockData/menuList";
 import * as S from "./Card.styled";
 import Card from "./Card";
 
 interface IProps {
-  data: IMenuListItem | IMenuListItemSimple;
+  data: IMenuListItem | IMenuListItemSimple | IMenuDetails;
   mode?: "edit" | "bookmark" | "none";
   size?: "s" | "m";
 }
@@ -30,7 +30,7 @@ function MenuSingleCard({ data, mode, size = "m" }: IProps) {
   const { colors } = useTheme();
   const { asPath } = useRouter();
 
-  const { name, menuImages, price } = data;
+  const { name, menuImages } = data;
 
   // NOTE: IMenuListItem : desc 빠짐.
   // NOTE: IMenuListItemSpecific: desc 있음.
@@ -56,7 +56,9 @@ function MenuSingleCard({ data, mode, size = "m" }: IProps) {
           </S.Desc>
           {size === "m" && (
             <S.Price weight={600} size={18} color={colors.blue[800]}>
-              {generatePriceString(price)}
+              {generatePriceString(
+                (data as IMenuDetails).basePrice || (data as IMenuListItemSimple).price,
+              )}
             </S.Price>
           )}
         </S.ContentWrap>
