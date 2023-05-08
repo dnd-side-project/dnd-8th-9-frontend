@@ -4,7 +4,9 @@ import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
 import useImageStore from "@/store/image";
 import { parseDate } from "@/utils/util";
-import { IReviewItem } from "@/api/types/review";
+import { IReviewListItem } from "@/types/api/review";
+import { IReviewListItemSpecific } from "@/mocks/mockData/randomReviewList";
+
 import Carousel from "@/components/shared/Carousel/Carousel";
 import Nickname from "@/components/shared/Nickname/Nickname";
 import Text from "@/components/shared/Text/Text";
@@ -13,13 +15,18 @@ import Dangdo from "@/components/shared/Dangdo/Dangdo";
 import * as S from "./Review.styled";
 
 export interface IProp {
-  review: IReviewItem;
+  review: IReviewListItem | IReviewListItemSpecific;
 }
+
+const NICKNAME = "쏘라리";
+const DATE = "2021-11-03 11:28:38";
 
 export default function Review({ review }: IProp) {
   const { colors } = useTheme();
   const { asPath } = useRouter();
   const [isLiked, setIsLiked] = useState(false);
+
+  const { goodPoint, menuName, reviewImages, content, reorder, dangdo } = review;
 
   const { setImage } = useImageStore();
 
@@ -31,6 +38,9 @@ export default function Review({ review }: IProp) {
     setIsLiked(prev => !prev);
   };
 
+  // NOTE: IReviewListItem :  nickname, date, likes 빠짐
+  // NOTE: IReviewListItemSpecific : nickname, date, likes 포함
+
   return (
     <Link
       href={{
@@ -41,29 +51,32 @@ export default function Review({ review }: IProp) {
     >
       <S.Container>
         <S.Header>
-          <Nickname name={review.nickname} dangol={review.source === "단골"} />
+          <Nickname
+            name={(review as IReviewListItemSpecific).nickname || NICKNAME}
+            dangol={reorder}
+          />
           <Text size={12} color={colors.grey[700]}>
-            {parseDate(review.date)}
+            {parseDate((review as IReviewListItemSpecific).date || DATE)}
           </Text>
         </S.Header>
         <S.MenuOption as="p" size={13} weight={500} color={colors.grey[800]}>
-          옵션: {review.menuOption}
+          옵션: {menuName}
         </S.MenuOption>
-        {review.reviewImages.length > 0 && (
+        {reviewImages.length > 0 && (
           <S.CarouselWrapper>
-            <Carousel images={review.reviewImages} />
+            <Carousel images={reviewImages} />
           </S.CarouselWrapper>
         )}
         <S.Rating>
-          <Dangdo dangdo={review.rating} size="m" />
+          <Dangdo dangdo={dangdo} size="m" />
           <S.ReviewTag type="single" label="overall review">
             <Text size={13} weight={600} color={colors.pink[700]}>
-              {review.reviewOption}
+              {goodPoint}
             </Text>
           </S.ReviewTag>
         </S.Rating>
         <S.ReviewText as="p" size={13} color={colors.grey[800]}>
-          {review.text}
+          {content}
         </S.ReviewText>
         <S.ButtonWrap>
           <S.LikeButton
@@ -75,7 +88,7 @@ export default function Review({ review }: IProp) {
           >
             <Icon name="like" size="m" fill={isLiked ? colors.blue[700] : colors.grey[500]} />
             <Text weight={600} color={isLiked ? colors.blue[700] : colors.grey[500]}>
-              {review.likes}
+              20
             </Text>
           </S.LikeButton>
         </S.ButtonWrap>
