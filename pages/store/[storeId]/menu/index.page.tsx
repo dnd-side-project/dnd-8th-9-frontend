@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 
@@ -10,9 +9,9 @@ import SectionLayout from "@/components/store/SectionLayout/SectionLayout";
 import * as S from "./menu.styled";
 
 function MenuPage() {
-  const router = useRouter();
-  const { storeId } = router.query;
-  const { asPath } = router;
+  const {
+    query: { storeId },
+  } = useRouter();
 
   const { data: storeMenusData, isLoading, isError } = useGetStoreMenus(Number(storeId));
 
@@ -23,11 +22,9 @@ function MenuPage() {
     <SectionLayout>
       <S.ListWrap>
         {storeMenusData.data.map(menu => (
-          <Link key={menu.id} href={`${asPath}/${menu.id}`}>
-            <S.CardWrapper>
-              <MenuSingleCard menuId={menu.id} />
-            </S.CardWrapper>
-          </Link>
+          <S.CardWrapper key={menu.id}>
+            <MenuSingleCard data={menu} />
+          </S.CardWrapper>
         ))}
       </S.ListWrap>
     </SectionLayout>
