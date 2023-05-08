@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { reviews } from "@/mocks/mockData/review"; // TODO: 나중에 바꿔야 함
+import { useGetStoreReviews } from "@/hooks/queries/store";
 import ImageWrap from "@/components/shared/ImageWrap/ImageWrap";
 import CountTitle from "@/components/store/review/CountTitle/CountTitle";
 import * as S from "./images.styled";
@@ -10,8 +10,17 @@ import * as S from "./images.styled";
 const IMAGES = "이미지";
 
 export default function ImagesPage() {
-  const { asPath } = useRouter();
-  const reviewImages = reviews.reviewList.map(review => review.reviewImages).flat();
+  const {
+    asPath,
+    query: { storeId },
+  } = useRouter();
+
+  const { data: storeReviewsData, isLoading, isError } = useGetStoreReviews(Number(storeId));
+
+  if (isLoading) return <h1>Loading...</h1>;
+  if (isError) return <h1>Error...</h1>;
+
+  const reviewImages = storeReviewsData.data.map(review => review.reviewImages).flat();
 
   return (
     <S.Container>
@@ -19,12 +28,7 @@ export default function ImagesPage() {
       <S.Images>
         {reviewImages.map((image, idx) => (
           <ImageWrap key={idx} percent={32} borderRadius={4}>
-            <Link
-              href={{
-                pathname: `${asPath}/${image.id}`,
-                query: { reviewImages: JSON.stringify(reviewImages), idx },
-              }}
-            >
+            <Link href={`${asPath}/${image.id}`}>
               <Image src={image.url} width={108} height={106} alt={IMAGES} />
             </Link>
           </ImageWrap>
