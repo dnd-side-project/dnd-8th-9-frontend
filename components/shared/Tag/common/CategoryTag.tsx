@@ -1,4 +1,4 @@
-import { TCategory } from "@/api/types/shared";
+import { TCategory } from "@/types/api/shared";
 import { css, useTheme } from "@emotion/react";
 import Text from "../../Text/Text";
 import Tag from "../Tag";

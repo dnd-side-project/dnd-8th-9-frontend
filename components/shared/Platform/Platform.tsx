@@ -1,5 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { ILink } from "@/api/types/shared";
+import { ILink } from "@/types/api/shared";
 import theme from "@/styles/theme";
 import Icon from "../Icon/Icon";
 import Text from "../Text/Text";

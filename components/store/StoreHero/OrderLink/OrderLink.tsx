@@ -1,5 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { ILink } from "@/api/types/shared";
+import { ILink } from "@/types/api/shared";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./OrderLink.styled";
 
@@ -31,7 +31,7 @@ function OrderLink({ links, time }: IProps) {
               {link.role}
             </Text>
           </div>
-          <S.LinkButton href={link.link}>
+          <S.LinkButton href={link.url}>
             <Text weight={500} size={16} color={colors.grey[100]}>
               바로가기
             </Text>

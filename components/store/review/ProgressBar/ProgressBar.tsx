@@ -1,5 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { IStoreReview } from "@/api/types/review";
+import { IStoreReview } from "@/types/api/review";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./ProgressBar.styled";
 

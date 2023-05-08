@@ -1,6 +1,6 @@
 import { useTheme } from "@emotion/react";
 import { getOverallComment } from "@/utils/util";
-import { IOverallStats } from "@/api/types/review";
+import { IOverallStats } from "@/types/api/review";
 import Text from "@/components/shared/Text/Text";
 import Dangdo from "@/components/shared/Dangdo/Dangdo";
 import ProgressBar from "../ProgressBar/ProgressBar";
