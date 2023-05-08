@@ -5,6 +5,7 @@ import { useTheme } from "@emotion/react";
 import useBookmarkStore from "@/store/bookmark";
 import { IStoreListItem, IMenuDetails, IMenuListItem, IImage } from "@/types/api";
 
+import { IMenuListItemSimple } from "@/mocks/mockData/menuList";
 import Carousel from "../Carousel/Carousel";
 import Icon from "../Icon/Icon";
 import Tag from "../Tag/Tag";
@@ -17,7 +18,7 @@ interface IProp {
   canDelivery?: boolean;
   canPickup?: boolean;
   mode?: "edit" | "none" | "bookmark";
-  bookmarkData: IStoreListItem | IMenuDetails | IMenuListItem;
+  bookmarkData: IStoreListItem | IMenuDetails | IMenuListItem | IMenuListItemSimple;
   type: "store" | "menu";
 }
 
@@ -60,7 +61,9 @@ function CardImage({
     }
   }, [bookmarkStoreList, bookmarkMenuList, bookmarkData, type]);
 
-  const handleBookmark = (newBookmarkData: IStoreListItem | IMenuDetails | IMenuListItem) => {
+  const handleBookmark = (
+    newBookmarkData: IStoreListItem | IMenuDetails | IMenuListItem | IMenuListItemSimple,
+  ) => {
     console.log("menu bookmark");
     if (type === "store") {
       updateBookmarkStoreList(newBookmarkData as IStoreListItem);

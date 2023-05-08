@@ -1,12 +1,14 @@
+import Link from "next/link";
 import { useTheme } from "@emotion/react";
 import { generatePriceString } from "@/utils/util";
 import { IMenuListItem } from "@/types/api";
-import Link from "next/link";
+import { IRandomMenuListItem } from "@/mocks/mockData/randomMenuList";
+import Platform from "../Platform/Platform";
 import Card from "./Card";
 import * as S from "./Card.styled";
 
 interface IProps {
-  data: IMenuListItem;
+  data: IMenuListItem | IRandomMenuListItem;
   mode?: "edit" | "bookmark" | "none";
   size?: "s" | "m";
 }
@@ -24,7 +26,8 @@ const SIZE_STYLE = {
   },
 };
 
-// IMenuItem2 : Links 없음
+// NOTE: IMenuListItem : Links 없음
+// NOTE: IRandomMenuListItem (mockdata) : Links 추가
 function MenuDoubleCard({ data, mode, size = "m" }: IProps) {
   const { colors } = useTheme();
   const { storeName, price, name, menuImages } = data;
@@ -51,7 +54,9 @@ function MenuDoubleCard({ data, mode, size = "m" }: IProps) {
           <S.Price weight={700} size={16} color={colors.blue[800]}>
             {generatePriceString(price)}
           </S.Price>
-          {/* <Platform links={links} /> */}
+          {(data as IRandomMenuListItem).links && (
+            <Platform links={(data as IRandomMenuListItem).links} />
+          )}
         </S.ContentWrap>
       </Card>
     </Link>

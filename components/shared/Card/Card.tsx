@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { IImage, IMenuDetails, IMenuListItem, IStoreListItem } from "@/types/api";
+import { IMenuListItemSimple } from "@/mocks/mockData/menuList";
 import CardImage from "./CardImage";
 import * as S from "./Card.styled";
 
@@ -15,7 +15,7 @@ interface IProp {
   children: React.ReactNode;
   canDelivery?: boolean;
   canPickup?: boolean;
-  data: IStoreListItem | IMenuDetails | IMenuListItem;
+  data: IStoreListItem | IMenuDetails | IMenuListItem | IMenuListItemSimple;
   type: "menu" | "store";
 }
 
