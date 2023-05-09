@@ -10,17 +10,18 @@ export const ModalWrap = styled.div`
   z-index: 8000;
 `;
 
-export const BackgroundLayer = styled.div`
+export const BackgroundLayer = styled.div<{ opacity: boolean }>`
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0);
-  opacity: 0.7;
+  background-color: #202020;
+  opacity: ${({ opacity }) => (opacity ? 0.7 : 1)};
   position: absolute;
   top: 0;
   left: 0;
 `;
 
 export const ContentWrap = styled.div`
+  width: 100%;
   position: absolute;
   z-index: 9000;
   display: flex;
