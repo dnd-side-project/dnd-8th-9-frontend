@@ -5,9 +5,11 @@ interface ModalState {
   logoutModalOpen: boolean;
   welcomeModalOpen: boolean;
   orderFormModalOpen: boolean;
+  reviewModalOpen: boolean;
   toggleLogoutModal: () => void;
   toggleWelcomeModal: () => void;
   toggleOrderFormModal: () => void;
+  toggleReviewModal: () => void;
 }
 
 const useModalStore = create<ModalState>()(
@@ -15,9 +17,11 @@ const useModalStore = create<ModalState>()(
     logoutModalOpen: false,
     welcomeModalOpen: false,
     orderFormModalOpen: false,
+    reviewModalOpen: false,
     toggleLogoutModal: () => set(state => ({ logoutModalOpen: !state.logoutModalOpen })),
     toggleWelcomeModal: () => set(state => ({ welcomeModalOpen: !state.welcomeModalOpen })),
     toggleOrderFormModal: () => set(state => ({ orderFormModalOpen: !state.orderFormModalOpen })),
+    toggleReviewModal: () => set(state => ({ reviewModalOpen: !state.reviewModalOpen })),
   })),
 );
 
