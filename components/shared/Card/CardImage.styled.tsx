@@ -50,7 +50,7 @@ export const RankNumber = styled(Text)`
   z-index: ${({ theme }) => theme["z-index"].imageIcon};
 `;
 
-export const BookmarkIconWrap = styled.div`
+export const BookmarkIconWrap = styled.button`
   max-width: 3.2rem;
   max-height: 3.2rem;
   width: 100%;
@@ -67,7 +67,7 @@ export const BookmarkIconWrap = styled.div`
   cursor: pointer;
 `;
 
-export const CheckIconWrap = styled.div`
+export const CheckIconWrap = styled.button`
   max-width: 2.4rem;
   max-height: 2.4rem;
   width: 100%;

@@ -62,9 +62,12 @@ function CardImage({
   }, [bookmarkStoreList, bookmarkMenuList, bookmarkData, type]);
 
   const handleBookmark = (
+    e: React.MouseEvent<HTMLButtonElement>,
     newBookmarkData: IStoreListItem | IMenuDetails | IMenuListItem | IMenuListItemSimple,
   ) => {
-    console.log("menu bookmark");
+    e.preventDefault();
+    e.stopPropagation();
+
     if (type === "store") {
       updateBookmarkStoreList(newBookmarkData as IStoreListItem);
     } else if (type === "menu") {
@@ -72,7 +75,9 @@ function CardImage({
     }
   };
 
-  const handleCheck = (name: string) => {
+  const handleCheck = (e: React.MouseEvent<HTMLButtonElement>, name: string) => {
+    e.preventDefault();
+    e.stopPropagation();
     updateEditBookmarkList(name);
   };
 
@@ -81,7 +86,7 @@ function CardImage({
       {isCarousel ? <Carousel images={data} /> : <Image src={data} alt="menu" fill />}
       {mode === "edit" && (
         <S.CheckIconWrap
-          onClick={() => handleCheck(bookmarkData.name)}
+          onClick={e => handleCheck(e, bookmarkData.name)}
           className={editBookmarkList.includes(bookmarkData.name) ? "isSelected" : ""}
         >
           <Icon
@@ -94,7 +99,7 @@ function CardImage({
         </S.CheckIconWrap>
       )}
       {mode === "bookmark" && (
-        <S.BookmarkIconWrap onClick={() => handleBookmark(bookmarkData)}>
+        <S.BookmarkIconWrap onClick={e => handleBookmark(e, bookmarkData)}>
           <Icon
             name="saveBookmark"
             size="m"
