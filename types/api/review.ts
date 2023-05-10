@@ -1,6 +1,6 @@
 import { IImage, TReviewOption } from "./shared";
 
-// NOTE: nickname, profileImage, date, like 필요
+// NOTE: date, like 필요
 export interface IReviewListItem {
   id: number;
   menuName: string;
@@ -9,22 +9,12 @@ export interface IReviewListItem {
   goodPoint: TReviewOption;
   reorder: boolean;
   reviewImages: IImage[];
-}
-
-export interface IReviewStatItem {
-  optionName: TReviewOption;
-  count: number;
-}
-
-export interface IOverallStats {
-  rating: number;
-  totalReviews: number;
-  stats: IReviewStatItem[];
-}
-
-export interface IStoreReview {
-  overallStats: IOverallStats;
-  reviewList: IReviewListItem[];
+  storeId: number;
+  storeName: string;
+  nickname: string;
+  profileImage: string;
+  date?: string;
+  likes?: number;
 }
 
 export interface IReviewPayloadBody {

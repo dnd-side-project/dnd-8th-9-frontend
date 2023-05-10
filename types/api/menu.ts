@@ -1,4 +1,4 @@
-import { IImage, ITable, TCategory } from "./shared";
+import { IImage, ILink, ITable, TCategory } from "./shared";
 
 export interface IDesign {
   name: string;
@@ -30,19 +30,26 @@ export interface IMenuDetails {
   menuImages: IImage[];
   basicInfo: IMenuBasicInfo;
   detailInfo: string;
+  storeId: number;
+  storeName: string;
 }
 
-// NOTE: links 필요
 export interface IMenuListItem {
   id: number;
   name: string;
-  category: TCategory[];
   price: number;
-  menuImages: IImage[];
-  reviewCount: number;
-  bookmarkCount: number;
+  menuImage: IImage[];
   storeId: number;
   storeName: string;
-  canPickup: boolean;
-  canDelivery: boolean;
+  links: ILink[];
+}
+
+export interface IStoreMenuListItem {
+  id: number;
+  storeId: number;
+  storeName: string;
+  name: string;
+  basePrice: number;
+  desc: string;
+  menuImages?: IImage[];
 }

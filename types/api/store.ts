@@ -20,13 +20,16 @@ export interface IOrderForm {
   placeholder: string;
 }
 
+export interface IReviewStats {
+  [key: string]: number;
+}
+
 export interface IStoreListItem {
   id: number;
   name: string;
   location: string;
   rating: number;
   reviewCount: number;
-  bookmarkCount: number;
   priceRange: {
     min: number;
     max: number;
@@ -38,10 +41,11 @@ export interface IStoreListItem {
   storeImages: IImage[];
 }
 
-export interface IStoreDetails extends Omit<IStoreListItem, "bookmarkCount"> {
+export interface IStoreDetails extends IStoreListItem {
   orderForm: null | IOrderForm[];
   notice: null | INotice;
   info: null | IInfo;
+  reviewStats: IReviewStats;
 }
 
 export interface IStorePayloadBody {
