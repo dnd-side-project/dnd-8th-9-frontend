@@ -174,7 +174,6 @@ export const ImageWrap = styled.div`
 
   img {
     border-radius: 4px;
-    object-fit: cover;
   }
 `;
 

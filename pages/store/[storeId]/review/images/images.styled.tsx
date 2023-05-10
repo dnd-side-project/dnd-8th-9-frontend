@@ -40,10 +40,6 @@ export const ImageWrap = styled.div`
   position: relative;
   width: 100%;
   aspect-ratio: 1/1;
-
-  img {
-    object-fit: cover;
-  }
 `;
 
 export const TextWrap = styled.div`

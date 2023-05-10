@@ -62,6 +62,7 @@ const style = css`
   img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 
   input {

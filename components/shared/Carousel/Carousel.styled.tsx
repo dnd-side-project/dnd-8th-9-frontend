@@ -9,10 +9,6 @@ export const Container = styled.div<{ bulletMargin: string }>`
     height: 100%;
   }
 
-  img {
-    object-fit: cover;
-  }
-
   .swiper-pagination-bullets {
     margin-bottom: ${({ bulletMargin }) => bulletMargin};
   }
