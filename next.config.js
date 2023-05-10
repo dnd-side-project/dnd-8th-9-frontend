@@ -8,6 +8,7 @@ const nextConfig = {
       "i.pinimg.com",
       "dangdo.s3.ap-northeast-2.amazonaws.com",
       "via.placeholder.com",
+      "cdn.pixabay.com",
     ],
   },
   webpack: config => {
