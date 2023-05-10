@@ -1,16 +1,13 @@
 import {
   IBaseResponse,
-  IMenuDetails,
   IReviewListItem,
   IStoreDetails,
   IStoreListItem,
+  IStoreMenuListItem,
   IStorePayloadBody,
 } from "@/types/api";
 import { API_URI } from "@/constants/api";
 import createMultiFormData from "@/utils/multiFormData";
-import { IRandomMenuListItem } from "@/mocks/mockData/randomMenuList";
-import { IMenuListItemSimple } from "@/mocks/mockData/menuList";
-import { IStoreDetailsSpecific } from "@/mocks/mockData/store";
 import { dangdoApi } from "../config/basic";
 
 const storeApi = {
@@ -21,15 +18,15 @@ const storeApi = {
     return data;
   },
   getStoreDetails: async (storeId: number) => {
-    const { data } = await dangdoApi.get<IBaseResponse<IStoreDetails | IStoreDetailsSpecific>>(
+    const { data } = await dangdoApi.get<IBaseResponse<IStoreDetails>>(
       API_URI.store.get.STORE_DETAIL(storeId),
     );
     return data;
   },
   getStoreMenus: async (storeId: number) => {
-    const { data } = await dangdoApi.get<
-      IBaseResponse<IMenuDetails[] | IRandomMenuListItem[] | IMenuListItemSimple[]>
-    >(API_URI.store.get.STORE_MENUS(storeId));
+    const { data } = await dangdoApi.get<IBaseResponse<IStoreMenuListItem[]>>(
+      API_URI.store.get.STORE_MENUS(storeId),
+    );
     return data;
   },
   getStoreReviews: async (storeId: number) => {
