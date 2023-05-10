@@ -5,6 +5,8 @@ export const menu: IMenuDetails = {
   name: "레터링 케이크 1호",
   category: ["레터링", "꽃"],
   basePrice: 20000,
+  storeId: 112,
+  storeName: "케이크예스",
   menuImages: [
     {
       id: 21,
