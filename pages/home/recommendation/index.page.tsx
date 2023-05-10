@@ -23,7 +23,7 @@ import * as S from "./recommendation.styled";
 
 function HomeRecommendationPage() {
   const { colors } = useTheme();
-  const { welcomeModalOpen } = useModalStore();
+  const { welcomeModalOpen, toggleWelcomeModal } = useModalStore();
 
   const { data: menuListData } = useGetMenuList();
   const { data: reviewListData } = useGetReviewList();
@@ -31,7 +31,7 @@ function HomeRecommendationPage() {
   return (
     <>
       {welcomeModalOpen && (
-        <Modal>
+        <Modal closeModal={toggleWelcomeModal}>
           <WelcomeCard />
         </Modal>
       )}

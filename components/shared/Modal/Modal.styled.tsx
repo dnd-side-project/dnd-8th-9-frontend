@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const ModalWrap = styled.div`
+  max-width: 48rem;
   width: 100%;
   height: 100vh;
   overflow: hidden;
@@ -30,4 +31,10 @@ export const ContentWrap = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+`;
+
+export const IconWrap = styled.button`
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
 `;

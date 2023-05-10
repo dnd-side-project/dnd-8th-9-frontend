@@ -32,7 +32,7 @@ function OrderTemplatePage() {
     <SectionLayout>
       <S.Container>
         {orderFormModalOpen ? (
-          <Modal>
+          <Modal closeModal={toggleOrderFormModal}>
             <ModalMessage title={TEMPLATE_TITLE} detail={TEMPLATE_DETAIL} />
           </Modal>
         ) : (

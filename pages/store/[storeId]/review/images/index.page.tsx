@@ -18,7 +18,6 @@ import CountTitle from "@/components/store/review/CountTitle/CountTitle";
 import Modal from "@/components/shared/Modal/Modal";
 import Text from "@/components/shared/Text/Text";
 import Nickname from "@/components/shared/Nickname/Nickname";
-import Icon from "@/components/shared/Icon/Icon";
 import * as S from "./images.styled";
 
 const IMAGES = "이미지";
@@ -69,55 +68,49 @@ export default function ImagesPage() {
         ))}
       </S.Images>
       {reviewModalOpen && (
-        <Modal>
-          <>
-            <S.IconWrap onClick={() => toggleReviewModal()}>
-              <Icon name="close" color={colors.grey[100]} size="s" />
-            </S.IconWrap>
-            <Swiper
-              navigation
-              modules={[Navigation]}
-              initialSlide={Number(currentImageId)}
-              className="mySwiper"
-              onActiveIndexChange={updateIndex}
-            >
-              {reviewImages.map((image: IImage, imgIdx: number) => (
-                <SwiperSlide key={imgIdx}>
-                  <S.Content>
-                    <S.NicknameWrap>
-                      <Nickname
-                        name={
-                          (reviewDetailsData?.data as IReviewListItemSpecific)?.nickname ||
-                          NICKNAME_MOCK
-                        }
-                        dangol={
-                          (reviewDetailsData?.data as IReviewListItemSpecific)?.reorder ||
-                          DANGOL_MOCK
-                        }
-                        color={colors.grey[100]}
-                      />
-                      <button>
-                        <Text color={colors.grey[400]} weight={500} size={13}>
-                          본문보기
-                        </Text>
-                      </button>
-                    </S.NicknameWrap>
-                    <S.ImageWrap>
-                      <Image src={image.url} alt="review" fill />
-                    </S.ImageWrap>
-                    <S.TextWrap>
-                      <Text color={colors.grey[400]} weight={500}>
-                        옵션: {reviewDetailsData?.data.menuName}
+        <Modal opacity={false} closeModal={toggleReviewModal}>
+          <Swiper
+            navigation
+            modules={[Navigation]}
+            initialSlide={Number(currentImageId)}
+            className="mySwiper"
+            onActiveIndexChange={updateIndex}
+          >
+            {reviewImages.map((image: IImage, imgIdx: number) => (
+              <SwiperSlide key={imgIdx}>
+                <S.Content>
+                  <S.NicknameWrap>
+                    <Nickname
+                      name={
+                        (reviewDetailsData?.data as IReviewListItemSpecific)?.nickname ||
+                        NICKNAME_MOCK
+                      }
+                      dangol={
+                        (reviewDetailsData?.data as IReviewListItemSpecific)?.reorder || DANGOL_MOCK
+                      }
+                      color={colors.grey[100]}
+                    />
+                    <button>
+                      <Text color={colors.grey[400]} weight={500} size={13}>
+                        본문보기
                       </Text>
-                      <Text as="p" color={colors.grey[100]}>
-                        {reviewDetailsData?.data.content}
-                      </Text>
-                    </S.TextWrap>
-                  </S.Content>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </>
+                    </button>
+                  </S.NicknameWrap>
+                  <S.ImageWrap>
+                    <Image src={image.url} alt="review" fill />
+                  </S.ImageWrap>
+                  <S.TextWrap>
+                    <Text color={colors.grey[400]} weight={500}>
+                      옵션: {reviewDetailsData?.data.menuName}
+                    </Text>
+                    <Text as="p" color={colors.grey[100]}>
+                      {reviewDetailsData?.data.content}
+                    </Text>
+                  </S.TextWrap>
+                </S.Content>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </Modal>
       )}
     </S.Container>
