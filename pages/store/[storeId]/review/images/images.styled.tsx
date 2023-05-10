@@ -14,10 +14,13 @@ export const Images = styled.div`
   margin-top: 2.4rem;
 `;
 
-export const IconWrap = styled.button`
-  position: fixed;
-  top: -12rem;
-  right: 1rem;
+export const ModalContentWrap = styled.div`
+  position: absolute;
+  width: 100%;
+
+  --swiper-navigation-size: 24px;
+  --swiper-navigation-top-offset: 45%;
+  --swiper-navigation-color: ${({ theme }) => theme.colors.grey[100]};
 `;
 
 export const Content = styled.div`
