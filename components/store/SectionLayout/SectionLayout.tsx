@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
 import { storeTab } from "@/constants/tabs";
 import { useGetStore } from "@/hooks/queries/store";
-import { IStoreDetailsSpecific } from "@/mocks/mockData/store";
+import { IStoreDetailsSpecific, store } from "@/mocks/mockData/store";
 
 import Carousel from "@/components/shared/Carousel/Carousel";
 import Tab from "@/components/shared/Tab/Tab";
@@ -14,6 +14,8 @@ import * as S from "./SectionLayout.styled";
 interface IProps {
   children: JSX.Element | JSX.Element[];
 }
+
+const STATS_MOCK = store.overallStats;
 
 function SectionLayout({ children }: IProps) {
   const {
@@ -36,7 +38,9 @@ function SectionLayout({ children }: IProps) {
         <MainInfo data={storeDetailsData.data} />
         {(storeDetailsData.data as IStoreDetailsSpecific).overallStats && (
           <ReviewInfo
-            overallStats={(storeDetailsData.data as IStoreDetailsSpecific).overallStats}
+            overallStats={
+              (storeDetailsData.data as IStoreDetailsSpecific).overallStats || STATS_MOCK
+            }
           />
         )}
         <RecieveMethod canDelivery={canDelivery} canPickup={canPickup} />
