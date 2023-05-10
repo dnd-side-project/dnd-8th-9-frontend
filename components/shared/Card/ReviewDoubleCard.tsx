@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useTheme } from "@emotion/react";
 import { IReviewListItem } from "@/types/api";
 import { Quote } from "@/assets/icons";
+import { IMAGE_MOCK } from "@/constants/api";
 
 import Dangdo from "../Dangdo/Dangdo";
 import Nickname from "../Nickname/Nickname";
@@ -48,11 +49,7 @@ function ReviewDoubleCard({ data }: IProps) {
         </S.InfoWrap>
       </S.ContentWrap>
       <S.ReviewImageWrap>
-        <Image
-          src={!reviewImages?.length ? "https://via.placeholder.com/640x480" : reviewImages[0].url}
-          alt="review"
-          fill
-        />
+        <Image src={!reviewImages?.length ? IMAGE_MOCK : reviewImages[0].url} alt="review" fill />
       </S.ReviewImageWrap>
       <S.ReviewContent>
         <Quote className="icon" />

@@ -66,3 +66,4 @@ export const API_URI = {
 };
 
 export const LOGIN_REDIRECT_URI = `${process.env.NEXT_PUBLIC_API_KEY}/oauth2/authorization/kakao?redirect_uri=${process.env.NEXT_PUBLIC_CLIENT_DOMAIN}/oauth/redirect`;
+export const IMAGE_MOCK = "https://via.placeholder.com/640x480";

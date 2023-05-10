@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useTheme } from "@emotion/react";
 import { generatePriceString } from "@/utils/util";
 import { IMenuListItem } from "@/types/api";
+import { IMAGE_MOCK } from "@/constants/api";
 import Platform from "../Platform/Platform";
 import Card from "./Card";
 import * as S from "./Card.styled";
@@ -36,7 +37,7 @@ function MenuDoubleCard({ data, mode, size = "m" }: IProps) {
         imgWidth={SIZE_STYLE[size].imgWidth}
         imgHeight={SIZE_STYLE[size].imgHeight}
         dir="col"
-        image={!menuImage?.length ? "https://via.placeholder.com/640x480" : menuImage[0].url}
+        image={!menuImage?.length ? IMAGE_MOCK : menuImage[0].url}
         gap={SIZE_STYLE[size].gap}
         mode={mode}
         data={data}
