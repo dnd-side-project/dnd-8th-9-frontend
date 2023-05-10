@@ -2,7 +2,7 @@ import { IBaseResponse, IReviewListItem, IReviewPayloadBody } from "@/types/api"
 import { API_URI } from "@/constants/api";
 import createMultiFormData from "@/utils/multiFormData";
 import { IReviewListItemSpecific } from "@/mocks/mockData/randomReviewList";
-import dangdoApi from "../config";
+import { dangdoApi } from "../config/basic";
 
 const reviewApi = {
   getReviewList: async () => {

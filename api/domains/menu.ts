@@ -1,6 +1,6 @@
 import { API_URI } from "@/constants/api";
 import { IBaseResponse, IMenuDetails, IMenuListItem, IReviewListItem } from "@/types/api";
-import dangdoApi from "../config";
+import { dangdoApi } from "../config/basic";
 
 const menuApi = {
   getMenuList: async () => {
