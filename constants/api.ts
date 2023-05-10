@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 export const URI_PATH = {
   STORE: "/stores",
   MENU: "/menus",
@@ -63,3 +64,5 @@ export const API_URI = {
     },
   },
 };
+
+export const LOGIN_REDIRECT_URI = `${process.env.NEXT_PUBLIC_API_KEY}/oauth2/authorization/kakao?redirect_uri=${process.env.NEXT_PUBLIC_CLIENT_DOMAIN}/oauth/redirect`;
