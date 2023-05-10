@@ -3,7 +3,7 @@ import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { useGetStore } from "@/hooks/queries/store";
 import { IInfo, INotice } from "@/types/api";
 import { storeQueryKey } from "@/constants/queryKey";
-import { IStoreDetailsSpecific, store } from "@/mocks/mockData/store";
+import { store } from "@/mocks/mockData/store";
 
 import NoticeInfo from "@/components/store/infoTable/NoticeInfo/NoticeInfo";
 import Packaging from "@/components/store/infoTable/Packaging/Packaging";
@@ -17,15 +17,15 @@ const INFO_MOCK = store.info;
 const INFO_TAB_DATA = (notice: INotice | null, info: IInfo | null) => [
   {
     title: "업체 공지",
-    children: <NoticeInfo data={(notice || NOTICE_MOCK).noticeInfo} />,
+    children: <NoticeInfo data={(notice || NOTICE_MOCK)?.noticeInfo} />,
   },
   {
     title: "픽업 가능 시간",
-    children: <Table option="notice" data={(notice || NOTICE_MOCK).pickupHours} />,
+    children: <Table option="notice" data={(notice || NOTICE_MOCK)?.pickupHours} />,
   },
   {
     title: "포장 안내",
-    children: <Packaging data={(notice || NOTICE_MOCK).packaging} />,
+    children: <Packaging data={(notice || NOTICE_MOCK)?.packaging} />,
   },
   {
     title: "판매자 정보",
@@ -46,12 +46,11 @@ function NoticePage() {
   if (isLoading) return <h1>Loading...</h1>;
   if (isError) return <h1>Error...</h1>;
 
+  const { notice, info } = storeDetailsData.data;
+
   return (
     <SectionLayout>
-      {INFO_TAB_DATA(
-        (storeDetailsData?.data as IStoreDetailsSpecific)?.notice,
-        (storeDetailsData?.data as IStoreDetailsSpecific)?.info,
-      )?.map(section => (
+      {INFO_TAB_DATA(notice, info)?.map(section => (
         <S.InfoContentBox key={section.title} title={section.title}>
           {section.children}
         </S.InfoContentBox>

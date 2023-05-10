@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
 import { storeTab } from "@/constants/tabs";
 import { useGetStore } from "@/hooks/queries/store";
-import { IStoreDetailsSpecific, store } from "@/mocks/mockData/store";
 
 import Carousel from "@/components/shared/Carousel/Carousel";
 import Tab from "@/components/shared/Tab/Tab";
@@ -15,8 +14,6 @@ interface IProps {
   children: JSX.Element | JSX.Element[];
 }
 
-const STATS_MOCK = store.overallStats;
-
 function SectionLayout({ children }: IProps) {
   const {
     query: { storeId },
@@ -27,7 +24,8 @@ function SectionLayout({ children }: IProps) {
   if (isLoading) return <h1>Loading...</h1>;
   if (isError) return <h1>Error...</h1>;
 
-  const { canDelivery, canPickup, links, storeImages } = storeDetailsData.data;
+  const { canDelivery, canPickup, links, storeImages, reviewStats, reviewCount } =
+    storeDetailsData.data;
 
   return (
     <S.Wrap>
@@ -36,13 +34,7 @@ function SectionLayout({ children }: IProps) {
       </S.CarouselWrap>
       <S.Main>
         <MainInfo data={storeDetailsData.data} />
-        {(storeDetailsData.data as IStoreDetailsSpecific).overallStats && (
-          <ReviewInfo
-            overallStats={
-              (storeDetailsData.data as IStoreDetailsSpecific).overallStats || STATS_MOCK
-            }
-          />
-        )}
+        <ReviewInfo reviewStats={reviewStats} reviewCount={reviewCount} />
         <RecieveMethod canDelivery={canDelivery} canPickup={canPickup} />
         <OrderLink links={links} time={10} />
         <Tab menuList={storeTab} target="storeTab" />

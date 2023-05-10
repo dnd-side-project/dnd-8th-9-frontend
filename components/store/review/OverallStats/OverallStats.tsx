@@ -1,18 +1,19 @@
 import { useTheme } from "@emotion/react";
 import { getOverallComment } from "@/utils/util";
-import { IOverallStats } from "@/types/api/review";
+import { IStoreDetails } from "@/types/api";
 import Text from "@/components/shared/Text/Text";
 import Dangdo from "@/components/shared/Dangdo/Dangdo";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import * as S from "./OverallStats.styled";
 
 interface IProps {
-  data: IOverallStats;
+  reviewCount: number;
+  reviewStats: IStoreDetails["reviewStats"];
+  rating: number;
 }
 
-export default function OverallStats({ data }: IProps) {
+export default function OverallStats({ reviewCount, reviewStats, rating }: IProps) {
   const { colors } = useTheme();
-  const { rating, totalReviews, stats } = data;
 
   const OVERALL_COMMENT = getOverallComment(rating);
 
@@ -21,13 +22,13 @@ export default function OverallStats({ data }: IProps) {
       <S.Review>
         <Dangdo dangdo={rating} size="l" />
         <Text weight={500} size={12} color={colors.grey[700]}>
-          ({totalReviews}명 참여)
+          ({reviewCount}명 참여)
         </Text>
       </S.Review>
       <Text weight={500} color={colors.pink[700]}>
         이 스토의 당도는 {OVERALL_COMMENT}
       </Text>
-      <ProgressBar stats={stats} totals={totalReviews} />
+      <ProgressBar stats={reviewStats} totals={reviewCount} />
     </S.Container>
   );
 }

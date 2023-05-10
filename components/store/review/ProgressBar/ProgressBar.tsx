@@ -1,10 +1,10 @@
 import { useTheme } from "@emotion/react";
-import { IStoreReview } from "@/types/api/review";
+import { IStoreDetails } from "@/types/api";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./ProgressBar.styled";
 
 interface IProp {
-  stats: IStoreReview["overallStats"]["stats"];
+  stats: IStoreDetails["reviewStats"];
   isPreview?: boolean;
   totals: number;
 }
@@ -24,20 +24,20 @@ const EMOJI: IEmoji = {
 export default function ProgressBar({ totals, stats, isPreview = false }: IProp) {
   const { colors } = useTheme();
 
-  const data = isPreview ? stats.slice(0, 3) : stats;
+  const data = isPreview ? Object.keys(stats).slice(0, 3) : Object.keys(stats);
 
   return (
     <S.StatContainer className={isPreview ? "isPreview" : ""}>
-      {data.map((stat, idx) => (
-        <S.StatItem key={stat.optionName}>
+      {data.map((statName, idx) => (
+        <S.StatItem key={statName}>
           <Text size={isPreview ? 14 : 13} weight={600} color={colors.grey[800]}>
-            {stat.optionName} {isPreview && EMOJI[stat.optionName]}
+            {statName} {isPreview && EMOJI[statName]}
           </Text>
-          <S.Bar count={stat.count} totals={totals} rank={idx}>
+          <S.Bar count={stats[statName]} totals={totals} rank={idx}>
             <div />
           </S.Bar>
           <Text size={isPreview ? 14 : 13} weight={500} color={colors.grey[800]}>
-            {stat.count}
+            {stats[statName]}
           </Text>
         </S.StatItem>
       ))}

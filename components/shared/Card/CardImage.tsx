@@ -3,9 +3,14 @@ import { useState, useEffect } from "react";
 import { useTheme } from "@emotion/react";
 
 import useBookmarkStore from "@/store/bookmark";
-import { IStoreListItem, IMenuDetails, IMenuListItem, IImage } from "@/types/api";
+import {
+  IStoreListItem,
+  IMenuDetails,
+  IMenuListItem,
+  IImage,
+  IStoreMenuListItem,
+} from "@/types/api";
 
-import { IMenuListItemSimple } from "@/mocks/mockData/menuList";
 import Carousel from "../Carousel/Carousel";
 import Icon from "../Icon/Icon";
 import Tag from "../Tag/Tag";
@@ -18,7 +23,7 @@ interface IProp {
   canDelivery?: boolean;
   canPickup?: boolean;
   mode?: "edit" | "none" | "bookmark";
-  bookmarkData: IStoreListItem | IMenuDetails | IMenuListItem | IMenuListItemSimple;
+  bookmarkData: IStoreListItem | IMenuDetails | IMenuListItem | IStoreMenuListItem;
   type: "store" | "menu";
 }
 
@@ -63,7 +68,7 @@ function CardImage({
 
   const handleBookmark = (
     e: React.MouseEvent<HTMLButtonElement>,
-    newBookmarkData: IStoreListItem | IMenuDetails | IMenuListItem | IMenuListItemSimple,
+    newBookmarkData: IStoreListItem | IMenuDetails | IMenuListItem | IStoreMenuListItem,
   ) => {
     e.preventDefault();
     e.stopPropagation();
@@ -107,6 +112,7 @@ function CardImage({
             color={isBookmarked ? colors.pink[700] : colors.grey[400]}
           />
         </S.BookmarkIconWrap>
+        // <Bookmark type={type} data={bookmarkData} />
       )}
       <S.TagsWrap>
         {canDelivery && (
