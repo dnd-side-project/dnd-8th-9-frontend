@@ -1,6 +1,12 @@
-import { IStoreDetails } from "@/types/api";
+import { IInfo, INotice, IOrderForm, IStoreDetails } from "@/types/api";
 
-export const store: IStoreDetails = {
+export interface IStoreDetailsMock extends IStoreDetails {
+  orderForm: IOrderForm[];
+  notice: INotice;
+  info: IInfo;
+}
+
+export const store: IStoreDetailsMock = {
   id: 112,
   name: "케이크예스",
   location: "서울시 서초구 모로2길 350",
