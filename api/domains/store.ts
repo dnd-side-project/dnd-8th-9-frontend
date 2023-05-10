@@ -11,7 +11,7 @@ import createMultiFormData from "@/utils/multiFormData";
 import { IRandomMenuListItem } from "@/mocks/mockData/randomMenuList";
 import { IMenuListItemSimple } from "@/mocks/mockData/menuList";
 import { IStoreDetailsSpecific } from "@/mocks/mockData/store";
-import dangdoApi from "../config";
+import { dangdoApi } from "../config/basic";
 
 const storeApi = {
   getStoreList: async () => {

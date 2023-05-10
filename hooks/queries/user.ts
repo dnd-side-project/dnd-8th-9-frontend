@@ -1,17 +1,11 @@
 import { AxiosError } from "axios";
 import { useQuery } from "@tanstack/react-query";
-import {
-  IErrorResponse,
-  IUserResponse,
-  IBaseResponse,
-  IStoreListItem,
-  IMenuListItem,
-} from "@/types/api";
+import { IErrorResponse, IBaseResponse, IStoreListItem, IMenuListItem, IUser } from "@/types/api";
 import userApi from "@/api/domains/user";
 import { userQueryKey } from "@/constants/queryKey";
 
 export const useGetUser = () => {
-  return useQuery<IUserResponse, AxiosError<IErrorResponse>>({
+  return useQuery<IBaseResponse<IUser>, AxiosError<IErrorResponse>>({
     queryKey: userQueryKey.detail,
     queryFn: () => userApi.getUser(),
   });

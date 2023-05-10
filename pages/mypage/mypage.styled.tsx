@@ -19,7 +19,7 @@ export const UserInfo = styled.div`
   justify-content: space-between;
   margin-bottom: 2.4rem;
 
-  div {
+  .textWrap {
     display: flex;
     flex-direction: column;
     row-gap: 0.4rem;
@@ -30,6 +30,15 @@ export const UserInfo = styled.div`
     text-align: right;
   }
 `;
+
+export const ImageWrap = styled.div`
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+  overflow: hidden;
+  position: relative;
+`;
+
 export const EditLink = styled(Link)`
   border-radius: 0.8rem;
   background-color: ${({ theme }) => theme.colors.blue[800]};

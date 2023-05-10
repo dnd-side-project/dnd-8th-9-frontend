@@ -1,9 +1,11 @@
 import { ReactElement } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "@emotion/react";
 import { User } from "@/assets/icons";
 import { ROUTES } from "@/constants/routes";
 import useModalStore from "@/store/modal";
+import { useGetUser } from "@/hooks/queries/user";
 
 import Icon from "@/components/shared/Icon/Icon";
 import Text from "@/components/shared/Text/Text";
@@ -29,6 +31,7 @@ const PROFILE_MENU = [
 
 function ProfilePage() {
   const { toggleLogoutModal } = useModalStore();
+  const { data: userData } = useGetUser();
 
   const handleLogout = () => {
     toggleLogoutModal();
@@ -39,13 +42,20 @@ function ProfilePage() {
     <div>
       <S.Header>
         <S.UserInfo>
-          <User className="icon" width="60" height="60" />
-          <div>
+          {userData?.data.profileImg.length ? (
+            <S.ImageWrap>
+              <Image src={userData?.data.profileImg} alt="profile" fill />
+            </S.ImageWrap>
+          ) : (
+            <User className="icon" width="60" height="60" />
+          )}
+
+          <div className="textWrap">
             <Text size={18} weight={700} color={colors.grey[800]}>
-              닉네임
+              {userData?.data.nickname}
             </Text>
             <Text size={13} weight={500}>
-              @SNS 계정
+              {userData?.data.email}
             </Text>
           </div>
           <Link href={ROUTES.MYPAGE_PROFILE}>
