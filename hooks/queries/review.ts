@@ -16,7 +16,10 @@ export const useGetReviewList = () => {
 };
 
 export const useGetReviewDetails = (reviewId: number) => {
-  return useQuery<IBaseResponse<IReviewListItem>, AxiosError<IErrorResponse>>({
+  return useQuery<
+    IBaseResponse<IReviewListItem | IReviewListItemSpecific>,
+    AxiosError<IErrorResponse>
+  >({
     queryKey: reviewQueryKey.detail(reviewId),
     queryFn: () => reviewApi.getReviewDetails(reviewId),
   });

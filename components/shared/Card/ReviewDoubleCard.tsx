@@ -23,7 +23,13 @@ function ReviewDoubleCard({ data }: IProps) {
   // NOTE: IReviewListItem: nickname, storeId, storeName 포함.
 
   return (
-    <Link href={`/store/${(data as IReviewListItemSpecific).storeId}/review`}>
+    <Link
+      href={
+        (data as IReviewListItemSpecific).storeId
+          ? `/store/${(data as IReviewListItemSpecific).storeId}/review`
+          : "/home"
+      }
+    >
       <S.ContentWrap type="reviewDouble">
         <Nickname name={(data as IReviewListItemSpecific).nickname || "drake"} dangol={reorder} />
         <S.Review>

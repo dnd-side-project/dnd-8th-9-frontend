@@ -4,9 +4,9 @@ import { useTheme } from "@emotion/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 
-import { storeList } from "@/mocks/mockData/storeList";
 import { TCategory } from "@/types/api/shared";
 import { chunkArray } from "@/utils/util";
+import { useGetStoreList } from "@/hooks/queries/store";
 
 import Text from "@/components/shared/Text/Text";
 import StoreSingleCard from "@/components/shared/Card/StoreSingleCard";
@@ -17,6 +17,10 @@ const CATEGORY_LIST = ["레터링", "캐릭터/입체", "포토", "꽃"];
 function StoreRank() {
   const { colors } = useTheme();
   const [currentCategory, setCurrentCategory] = useState<TCategory>("레터링");
+  const { data: storeListData, isLoading, isError } = useGetStoreList();
+
+  if (isLoading) return <h1>Loading...</h1>;
+  if (isError) return <h1>Error...</h1>;
 
   const changeCategory = (category: TCategory) => {
     setCurrentCategory(category);
@@ -45,7 +49,7 @@ function StoreRank() {
       </S.ButtonList>
       <S.SwiperWrap>
         <Swiper modules={[Pagination]} pagination={{ clickable: true }} slidesPerView={1}>
-          {chunkArray(storeList, 3).map((chunk, idx) => (
+          {chunkArray(storeListData.data, 3).map((chunk, idx) => (
             <SwiperSlide key={idx} style={{ textAlign: "left" }}>
               {chunk.map((store, index) => (
                 <S.CardWrap key={store.id}>

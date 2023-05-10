@@ -5,7 +5,7 @@ export const StatItem = styled.div`
   align-items: center;
 `;
 
-export const Bar = styled.div<{ count: number; rank: number }>`
+export const Bar = styled.div<{ count: number; rank: number; totals: number }>`
   background-color: ${({ theme }) => theme.colors.grey[100]};
   width: 100%;
   border-radius: 0.8rem;
@@ -13,7 +13,7 @@ export const Bar = styled.div<{ count: number; rank: number }>`
   flex-grow: 1;
 
   div {
-    width: ${({ count }) => count}%;
+    width: ${({ count, totals }) => Math.floor((count / totals) * 100)}%;
     height: 100%;
     border-radius: 0.8rem;
     background-color: ${({ theme, rank }) => {

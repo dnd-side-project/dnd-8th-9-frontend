@@ -1,4 +1,4 @@
-import { IOverallStats, IReviewListItem, IStoreReview } from "@/types/api";
+import { IReviewListItem } from "@/types/api";
 
 interface IReviewListItemSpecific extends IReviewListItem {
   nickname: string;
@@ -6,18 +6,6 @@ interface IReviewListItemSpecific extends IReviewListItem {
   date: string;
   likes: number;
 }
-
-export const stats: IOverallStats = {
-  rating: 70,
-  totalReviews: 10,
-  stats: [
-    { optionName: "맛있어요", count: 5 },
-    { optionName: "선물하기 좋아요", count: 2 },
-    { optionName: "가성비가 좋아요", count: 1 },
-    { optionName: "친절해요", count: 1 },
-    { optionName: "응답이 빨라요", count: 1 },
-  ],
-};
 
 export const reviews: IReviewListItemSpecific[] = [
   {

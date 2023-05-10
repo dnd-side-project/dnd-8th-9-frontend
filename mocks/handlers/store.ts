@@ -1,7 +1,7 @@
 import { rest } from "msw";
 import { API_URI } from "@/constants/api";
-import { IStoreDetails, IStoreListItem } from "@/types/api";
-import { store } from "../mockData/store";
+import { IStoreListItem } from "@/types/api";
+import { IStoreDetailsSpecific, store } from "../mockData/store";
 import { storeList } from "../mockData/storeList";
 import { BASE_URL, IMockResponse, generateMockResponse } from "./menu";
 import { IMenuListItemSimple, menuList } from "../mockData/menuList";
@@ -18,7 +18,7 @@ export const storeHandler = [
   ),
 
   // 스토어 상세 조회
-  rest.get<IMockResponse<IStoreDetails>>(
+  rest.get<IMockResponse<IStoreDetailsSpecific>>(
     `${BASE_URL}${API_URI.store.get.STORE_LIST}/:storeId`,
     (req, res, ctx) => {
       const { storeId } = req.params;

@@ -6,6 +6,7 @@ import * as S from "./ProgressBar.styled";
 interface IProp {
   stats: IStoreReview["overallStats"]["stats"];
   isPreview?: boolean;
+  totals: number;
 }
 
 interface IEmoji {
@@ -20,7 +21,7 @@ const EMOJI: IEmoji = {
   친절해요: "👼",
 };
 
-export default function ProgressBar({ stats, isPreview = false }: IProp) {
+export default function ProgressBar({ totals, stats, isPreview = false }: IProp) {
   const { colors } = useTheme();
 
   const data = isPreview ? stats.slice(0, 3) : stats;
@@ -32,7 +33,7 @@ export default function ProgressBar({ stats, isPreview = false }: IProp) {
           <Text size={isPreview ? 14 : 13} weight={600} color={colors.grey[800]}>
             {stat.optionName} {isPreview && EMOJI[stat.optionName]}
           </Text>
-          <S.Bar count={stat.count} rank={idx}>
+          <S.Bar count={stat.count} totals={totals} rank={idx}>
             <div />
           </S.Bar>
           <Text size={isPreview ? 14 : 13} weight={500} color={colors.grey[800]}>

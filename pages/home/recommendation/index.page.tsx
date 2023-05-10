@@ -4,7 +4,7 @@ import { useTheme } from "@emotion/react";
 import useModalStore from "@/store/modal";
 import { useGetMenuList } from "@/hooks/queries/menu";
 import { useGetReviewList } from "@/hooks/queries/review";
-import { menuQueryKey, reviewQueryKey } from "@/constants/queryKey";
+import { menuQueryKey, reviewQueryKey, storeQueryKey } from "@/constants/queryKey";
 import { homeTab } from "@/constants/tabs";
 import menuApi from "@/api/domains/menu";
 import reviewApi from "@/api/domains/review";
@@ -18,11 +18,12 @@ import ReviewDoubleCard from "@/components/shared/Card/ReviewDoubleCard";
 import Modal from "@/components/shared/Modal/Modal";
 import WelcomeCard from "@/components/onboard/WelcomeCard/WelcomeCard";
 
+import storeApi from "@/api/domains/store";
 import * as S from "./recommendation.styled";
 
 function HomeRecommendationPage() {
   const { colors } = useTheme();
-  const { welcomeModalOpen } = useModalStore();
+  const { welcomeModalOpen, toggleWelcomeModal } = useModalStore();
 
   const { data: menuListData } = useGetMenuList();
   const { data: reviewListData } = useGetReviewList();
@@ -30,7 +31,7 @@ function HomeRecommendationPage() {
   return (
     <>
       {welcomeModalOpen && (
-        <Modal>
+        <Modal closeModal={toggleWelcomeModal}>
           <WelcomeCard />
         </Modal>
       )}
@@ -74,6 +75,7 @@ export async function getServerSideProps() {
   await Promise.all([
     queryClient.prefetchQuery(menuQueryKey.list, () => menuApi.getMenuList()),
     queryClient.prefetchQuery(reviewQueryKey.list, () => reviewApi.getReviewList()),
+    queryClient.prefetchQuery(storeQueryKey.list, () => storeApi.getStoreList()),
   ]);
 
   return {

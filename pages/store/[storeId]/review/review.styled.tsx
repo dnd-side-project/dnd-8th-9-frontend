@@ -18,3 +18,9 @@ export const ReviewTitle = styled(Text)`
     color: ${({ theme }) => theme.colors.primary};
   }
 `;
+
+export const CarouselWrapper = styled.div`
+  width: 100%;
+  aspect-ratio: 1/1;
+  margin-bottom: 5rem;
+`;
