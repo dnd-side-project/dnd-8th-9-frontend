@@ -4,11 +4,11 @@ import useBookmarkStore from "@/store/bookmark";
 import { IStoreListItem, IMenuListItem, IImage, IStoreMenuListItem } from "@/types/api";
 
 import Carousel from "../Carousel/Carousel";
+import Bookmark from "../Bookmark/Bookmark";
 import Icon from "../Icon/Icon";
 import Tag from "../Tag/Tag";
 import Text from "../Text/Text";
 import * as S from "./CardImage.styled";
-import Bookmark from "../Bookmark/Bookmark";
 
 interface IProp {
   data: IImage[] | string;
@@ -56,7 +56,7 @@ function CardImage({
           />
         </S.CheckIconWrap>
       )}
-      {mode === "bookmark" && <Bookmark type={type} data={bookmarkData} />}
+      {mode === "bookmark" && <Bookmark type={type} targetId={bookmarkData.id} />}
       <S.TagsWrap>
         {canDelivery && (
           <Tag type="icon" label="택배가능">

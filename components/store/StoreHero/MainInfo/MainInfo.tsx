@@ -6,6 +6,7 @@ import CategoryTag from "@/components/shared/Tag/common/CategoryTag";
 import Dangdo from "@/components/shared/Dangdo/Dangdo";
 import Icon from "@/components/shared/Icon/Icon";
 import Text from "@/components/shared/Text/Text";
+import Bookmark from "@/components/shared/Bookmark/Bookmark";
 import * as S from "./MainInfo.styled";
 
 interface IProp {
@@ -26,7 +27,7 @@ function MainInfo({ data }: IProp) {
           <Text as="h1" weight={700} size={20}>
             {name}
           </Text>
-          <Icon name="saveBookmarkWide" size="m" color={colors.grey[400]} fill={colors.grey[400]} />
+          <Bookmark type="store" targetId={Number(storeId)} location="store" />
         </div>
         <Icon name="share" size="l" color={colors.grey[800]} />
       </S.Header>
