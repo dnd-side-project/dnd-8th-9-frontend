@@ -5,13 +5,18 @@ export const Wrap = styled.div`
   height: calc(100vh - 5.6rem);
   overflow: hidden;
   width: 100%;
-  padding: 0 1.6rem;
   background-color: ${({ theme }) => theme.colors.blue[900]};
   text-align: center;
 `;
 
+export const Content = styled.div`
+  width: 100%;
+  position: absolute;
+  bottom: -6rem;
+  left: 0;
+`;
+
 export const LogoWrap = styled.div`
-  padding: 10rem 0 5.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,6 +29,11 @@ export const LogoImageWrap = styled.div`
   height: 2.3rem;
 `;
 
+export const MiddleWrap = styled.div`
+  margin-block: clamp(2rem, 3.8rem, 5.8rem);
+  padding: 0 1.6rem;
+`;
+
 export const TextWrap = styled.div`
   margin-bottom: 2rem;
   span {
@@ -32,8 +42,7 @@ export const TextWrap = styled.div`
 `;
 
 export const ImageWrap = styled.div`
-  position: absolute;
-  margin-top: 5rem;
+  position: relative;
   left: 0;
   width: 100%;
   aspect-ratio: 1.1/1;
