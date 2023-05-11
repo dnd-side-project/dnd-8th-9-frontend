@@ -4,6 +4,7 @@ import { IMenuListItem, IStoreListItem, IStoreMenuListItem } from "@/types/api";
 import { useGetMenuBookmarkList, useGetStoreBookmarkList } from "@/hooks/queries/user";
 import { useDeleteMenuBookmark, usePostMenuBookmark } from "@/hooks/queries/menu";
 import { useDeleteStoreBookmark, usePostStoreBookmark } from "@/hooks/queries/store";
+import { checkAuth } from "@/utils/util";
 import Icon from "../Icon/Icon";
 import * as S from "./Bookmark.styled";
 
@@ -44,6 +45,8 @@ function Bookmark({ type, data }: IProps) {
   const handleBookmark = (e: React.MouseEvent<HTMLButtonElement>, targetId: number) => {
     e.preventDefault();
     e.stopPropagation();
+
+    checkAuth();
 
     if (type === "store") {
       if (isBookmarked) {
