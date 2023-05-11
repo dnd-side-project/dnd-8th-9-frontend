@@ -9,6 +9,7 @@ import {
 import { API_URI } from "@/constants/api";
 import createMultiFormData from "@/utils/multiFormData";
 import { dangdoApi } from "../config/basic";
+import { dangdoAuthApi } from "../config/auth";
 
 const storeApi = {
   getStoreList: async () => {
@@ -45,7 +46,7 @@ const storeApi = {
     return data;
   },
   postStoreBookmark: async (storeId: number) => {
-    const { data } = await dangdoApi.post<IBaseResponse<number>>(
+    const { data } = await dangdoAuthApi.post<IBaseResponse<number>>(
       API_URI.store.create.STORE_BOOKMARK(storeId),
     );
     return data;
@@ -66,7 +67,7 @@ const storeApi = {
     return data;
   },
   deleteStoreBookmark: async (storeId: number) => {
-    const { data } = await dangdoApi.delete<IBaseResponse<number>>(
+    const { data } = await dangdoAuthApi.delete<IBaseResponse<number>>(
       API_URI.store.delete.STORE_BOOKMARK(storeId),
     );
     return data;

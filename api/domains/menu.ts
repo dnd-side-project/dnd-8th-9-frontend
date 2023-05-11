@@ -1,6 +1,7 @@
 import { API_URI } from "@/constants/api";
 import { IBaseResponse, IMenuDetails, IMenuListItem, IReviewListItem } from "@/types/api";
 import { dangdoApi } from "../config/basic";
+import { dangdoAuthApi } from "../config/auth";
 
 const menuApi = {
   getMenuList: async () => {
@@ -27,7 +28,7 @@ const menuApi = {
     return data;
   },
   postMenuBookmark: async (menuId: number) => {
-    const { data } = await dangdoApi.post<IBaseResponse<number>>(
+    const { data } = await dangdoAuthApi.post<IBaseResponse<number>>(
       API_URI.menu.create.MENU_BOOKMARK(menuId),
     );
     return data;
@@ -47,7 +48,7 @@ const menuApi = {
     return data;
   },
   deleteMenuBookmark: async (menuId: number) => {
-    const { data } = await dangdoApi.delete<IBaseResponse<number>>(
+    const { data } = await dangdoAuthApi.delete<IBaseResponse<number>>(
       API_URI.menu.delete.MENU_BOOKMARK(menuId),
     );
     return data;
