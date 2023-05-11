@@ -1,5 +1,5 @@
-import { TCategory } from "@/types/api/shared";
 import { css, useTheme } from "@emotion/react";
+import { TCategory } from "@/types/api/shared";
 import Text from "../../Text/Text";
 import Tag from "../Tag";
 
@@ -17,10 +17,11 @@ function CategoryTag({ category }: IProp) {
       key={category}
       cssProp={css`
         background-color: ${colors.blue[100]};
-        padding: 0.5rem 0.8rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.4rem;
       `}
     >
-      <Text weight={500} size={12} color={colors.blue[700]}>
+      <Text weight={500} size={13} color={colors.blue[700]}>
         {category}
       </Text>
     </Tag>
