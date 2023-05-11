@@ -1,7 +1,10 @@
 import { ReactElement, useState } from "react";
 import { useTheme } from "@emotion/react";
-import useBookmarkStore from "@/store/bookmark";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { resultTab } from "@/constants/tabs";
+import { userQueryKey } from "@/constants/queryKey";
+import useBookmarkStore from "@/store/bookmark";
+import { useGetStoreBookmarkList } from "@/hooks/queries/user";
 
 import Text from "@/components/shared/Text/Text";
 import Button from "@/components/shared/Button/Button";
@@ -14,8 +17,12 @@ import * as S from "./menu.styled";
 function BookmarkStorePage() {
   const { colors } = useTheme();
   const [isEditMode, setIsEditMode] = useState(false);
-  const { editBookmarkList, bookmarkStoreList, deleteAllStoreBookmarkList, clearEditBookmarkList } =
+  const { editBookmarkList, deleteAllStoreBookmarkList, clearEditBookmarkList } =
     useBookmarkStore();
+  const { data: storeBookmarkList, isLoading, isError } = useGetStoreBookmarkList();
+
+  if (isLoading) return <h1>Loading...</h1>;
+  if (isError) return <h1>Error...</h1>;
 
   const startEditMode = () => {
     setIsEditMode(true);
@@ -69,7 +76,7 @@ function BookmarkStorePage() {
         </S.ControlBoxWrap>
       )}
       <S.StoreWrap>
-        {bookmarkStoreList.map(store => (
+        {storeBookmarkList.data.map(store => (
           <StoreDoubleCard key={store.id} data={store} mode={isEditMode ? "edit" : "none"} />
         ))}
       </S.StoreWrap>
@@ -78,6 +85,17 @@ function BookmarkStorePage() {
 }
 
 export default BookmarkStorePage;
+
+export async function getServerSideProps() {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery(userQueryKey.storeBookmarks());
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}
 
 BookmarkStorePage.getLayout = function getLayout(page: ReactElement) {
   return (
