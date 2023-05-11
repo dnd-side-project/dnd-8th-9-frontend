@@ -3,6 +3,10 @@ import styled from "@emotion/styled";
 export const StatItem = styled.div`
   display: flex;
   align-items: center;
+
+  span {
+    text-align: left;
+  }
 `;
 
 export const Bar = styled.div<{ count: number; rank: number; totals: number }>`

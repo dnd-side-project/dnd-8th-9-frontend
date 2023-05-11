@@ -25,8 +25,11 @@ export default function OverallStats({ reviewCount, reviewStats, rating }: IProp
           ({reviewCount}명 참여)
         </Text>
       </S.Review>
-      <Text weight={500} color={colors.pink[700]}>
-        이 스토의 당도는 {OVERALL_COMMENT}
+      <Text weight={500} color={colors.grey[700]}>
+        이 스토의 당도는{` `}
+        <Text weight={500} color={colors.pink[700]}>
+          {OVERALL_COMMENT}
+        </Text>
       </Text>
       <ProgressBar stats={reviewStats} totals={reviewCount} />
     </S.Container>
