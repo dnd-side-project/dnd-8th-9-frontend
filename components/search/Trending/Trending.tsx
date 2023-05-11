@@ -1,6 +1,7 @@
 import { useTheme } from "@emotion/react";
 import { TrendDown, TrendNew, TrendSame, TrendUp } from "@/assets/icons";
 import { Text } from "@/components/shared/Text/Text.styled";
+import { ReactElement } from "react";
 import * as S from "./Trending.styled";
 
 const TRENDING_KEYWORD_DATA = [
@@ -16,7 +17,11 @@ const TRENDING_KEYWORD_DATA = [
   { keyword: "캔들 래터링케이크", status: "up" },
 ];
 
-const STATUS_ICON = {
+interface IStatusIcon {
+  [key: string]: ReactElement;
+}
+
+const STATUS_ICON: IStatusIcon = {
   up: <TrendUp />,
   down: <TrendDown />,
   new: <TrendNew />,
