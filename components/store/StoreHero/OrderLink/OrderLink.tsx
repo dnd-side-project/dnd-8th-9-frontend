@@ -21,7 +21,7 @@ function OrderLink({ links, time }: IProps) {
           <div>
             <S.IconWrap>
               <S.PlatformIcon
-                name={link.platform}
+                name={link.platform.toLowerCase()}
                 size="l"
                 color={colors.grey[700]}
                 fill={link.platform === "kakao" ? colors.grey[700] : "none"}

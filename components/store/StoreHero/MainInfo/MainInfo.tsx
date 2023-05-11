@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
 import { IStoreDetails } from "@/types/api/store";
 import { generateRangePriceString, getOverallComment } from "@/utils/util";
@@ -13,6 +14,9 @@ interface IProp {
 
 function MainInfo({ data }: IProp) {
   const { colors } = useTheme();
+  const {
+    query: { storeId },
+  } = useRouter();
   const { name, category, location, priceRange, rating } = data;
 
   return (
@@ -35,7 +39,7 @@ function MainInfo({ data }: IProp) {
         {location}
       </S.Location>
       <S.ReviewWrap>
-        <Dangdo dangdo={rating} />
+        <Dangdo dangdo={rating} size="m" />
         <Text weight={600} size={15} color={colors.pink[700]}>
           {getOverallComment(rating)}
         </Text>

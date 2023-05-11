@@ -37,6 +37,7 @@ export const Header = styled.div`
 
   div {
     column-gap: 0.8rem;
+    position: relative;
   }
 `;
 
@@ -50,6 +51,7 @@ export const Location = styled(Text)`
 
 export const ReviewWrap = styled.div`
   margin-bottom: 0.8rem;
+  align-items: center;
 `;
 
 export const Price = styled(Text)`
