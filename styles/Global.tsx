@@ -43,6 +43,17 @@ const style = css`
       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   }
 
+  main::-webkit-scrollbar {
+    display: none;
+  }
+
+  main {
+    height: calc(var(--vh, 1vh) * 100);
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+  }
+
   button {
     border: none;
     background-color: transparent;
