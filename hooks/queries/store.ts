@@ -1,17 +1,15 @@
 import { AxiosError } from "axios";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   IBaseResponse,
   IErrorResponse,
-  IMenuDetails,
-  IMenuListItem,
   IReviewListItem,
   IStoreDetails,
   IStoreListItem,
   IStoreMenuListItem,
 } from "@/types/api";
 import storeApi from "@/api/domains/store";
-import { storeQueryKey } from "@/constants/queryKey";
+import { storeQueryKey, userQueryKey } from "@/constants/queryKey";
 
 export const useGetStoreList = () => {
   return useQuery<IBaseResponse<IStoreListItem[]>, AxiosError<IErrorResponse>>({
@@ -38,5 +36,27 @@ export const useGetStoreReviews = (storeId: number) => {
   return useQuery<IBaseResponse<IReviewListItem[]>, AxiosError<IErrorResponse>>({
     queryKey: storeQueryKey.reviews(storeId),
     queryFn: () => storeApi.getStoreReviews(storeId),
+  });
+};
+
+export const usePostStoreBookmark = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (menuId: number) => storeApi.postStoreBookmark(menuId),
+    onSuccess: () => {
+      queryClient.invalidateQueries(userQueryKey.storeBookmarks());
+    },
+  });
+};
+
+export const useDeleteStoreBookmark = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (menuId: number) => storeApi.deleteStoreBookmark(menuId),
+    onSuccess: () => {
+      queryClient.invalidateQueries(userQueryKey.storeBookmarks());
+    },
   });
 };
