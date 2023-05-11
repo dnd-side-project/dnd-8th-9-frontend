@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 export const LoginWrap = styled.div`
   background-color: #041449;
   width: 100%;
-  height: 80rem;
+  height: 100vh;
   position: relative;
 `;
 
@@ -27,8 +27,8 @@ export const LogoWrap = styled.div`
 export const ImageWrap = styled.div`
   position: absolute;
   width: 100%;
-  height: 50rem;
-  bottom: 2.8rem;
+  aspect-ratio: 1.1/1;
+  top: 40%;
 `;
 
 export const ButtonWrap = styled.div`

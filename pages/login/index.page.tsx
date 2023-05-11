@@ -24,7 +24,7 @@ function LoginPage() {
         </Text>
       </S.LogoWrap>
       <S.ImageWrap>
-        <Image src="/loginCake.svg" alt="3d cake" fill />
+        <Image src="/mainCake.svg" alt="3d cake" fill />
       </S.ImageWrap>
       <S.ButtonWrap>
         <KakaoLogin />
