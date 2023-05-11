@@ -22,11 +22,6 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/",
-        destination: "/home/recommendation",
-        permanent: true,
-      },
-      {
         source: "/store",
         destination: "/",
         permanent: true,
