@@ -3,7 +3,6 @@ import { useTheme } from "@emotion/react";
 import useImageStore from "@/store/image";
 import { parseDate } from "@/utils/util";
 import { IReviewListItem } from "@/types/api/review";
-import { IReviewListItemSpecific } from "@/mocks/mockData/randomReviewList";
 
 import Carousel from "@/components/shared/Carousel/Carousel";
 import Nickname from "@/components/shared/Nickname/Nickname";
@@ -14,17 +13,16 @@ import useModalStore from "@/store/modal";
 import * as S from "./Review.styled";
 
 export interface IProp {
-  review: IReviewListItem | IReviewListItemSpecific;
+  review: IReviewListItem;
 }
 
-const NICKNAME = "쏘라리";
 const DATE = "2021-11-03 11:28:38";
 
 export default function Review({ review }: IProp) {
   const { colors } = useTheme();
   const [isLiked, setIsLiked] = useState(false);
 
-  const { goodPoint, menuName, reviewImages, content, reorder, dangdo } = review;
+  const { goodPoint, menuName, reviewImages, content, reorder, dangdo, nickname, date } = review;
 
   const { setImage } = useImageStore();
   const { toggleImageModal } = useModalStore();
@@ -38,18 +36,13 @@ export default function Review({ review }: IProp) {
     setIsLiked(prev => !prev);
   };
 
-  // NOTE: IReviewListItem :  nickname, date, likes 빠짐
-  // NOTE: IReviewListItemSpecific : nickname, date, likes 포함
-
+  // NOTE: IReviewListItem : date, likes 빠짐
   return (
     <S.Container>
       <S.Header>
-        <Nickname
-          name={(review as IReviewListItemSpecific).nickname || NICKNAME}
-          dangol={reorder}
-        />
+        <Nickname name={nickname} dangol={reorder} />
         <Text size={12} color={colors.grey[700]}>
-          {parseDate((review as IReviewListItemSpecific).date || DATE)}
+          {parseDate(date || DATE)}
         </Text>
       </S.Header>
       <S.MenuOption as="p" size={13} weight={500} color={colors.grey[800]}>

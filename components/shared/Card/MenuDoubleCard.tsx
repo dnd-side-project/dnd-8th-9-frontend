@@ -2,13 +2,13 @@ import Link from "next/link";
 import { useTheme } from "@emotion/react";
 import { generatePriceString } from "@/utils/util";
 import { IMenuListItem } from "@/types/api";
-import { IRandomMenuListItem } from "@/mocks/mockData/randomMenuList";
+import { IMAGE_MOCK } from "@/constants/api";
 import Platform from "../Platform/Platform";
 import Card from "./Card";
 import * as S from "./Card.styled";
 
 interface IProps {
-  data: IMenuListItem | IRandomMenuListItem;
+  data: IMenuListItem;
   mode?: "edit" | "bookmark" | "none";
   size?: "s" | "m";
 }
@@ -26,11 +26,10 @@ const SIZE_STYLE = {
   },
 };
 
-// NOTE: IMenuListItem : Links 없음
-// NOTE: IRandomMenuListItem (mockdata) : Links 추가
+// NOTE: IMenuListItem : menuImages로 변경
 function MenuDoubleCard({ data, mode, size = "m" }: IProps) {
   const { colors } = useTheme();
-  const { storeName, price, name, menuImages } = data;
+  const { storeName, price, name, menuImage, links } = data;
 
   return (
     <Link href={`/store/${data.storeId}`}>
@@ -38,7 +37,7 @@ function MenuDoubleCard({ data, mode, size = "m" }: IProps) {
         imgWidth={SIZE_STYLE[size].imgWidth}
         imgHeight={SIZE_STYLE[size].imgHeight}
         dir="col"
-        image={!menuImages?.length ? "https://via.placeholder.com/640x480" : menuImages[0].url}
+        image={!menuImage?.length ? IMAGE_MOCK : menuImage[0].url}
         gap={SIZE_STYLE[size].gap}
         mode={mode}
         data={data}
@@ -54,9 +53,7 @@ function MenuDoubleCard({ data, mode, size = "m" }: IProps) {
           <S.Price weight={700} size={16} color={colors.blue[800]}>
             {generatePriceString(price)}
           </S.Price>
-          {(data as IRandomMenuListItem).links && (
-            <Platform links={(data as IRandomMenuListItem).links} />
-          )}
+          <Platform links={links} />
         </S.ContentWrap>
       </Card>
     </Link>

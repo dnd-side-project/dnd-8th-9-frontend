@@ -1,17 +1,15 @@
 import {
   IBaseResponse,
-  IMenuDetails,
   IReviewListItem,
   IStoreDetails,
   IStoreListItem,
+  IStoreMenuListItem,
   IStorePayloadBody,
 } from "@/types/api";
 import { API_URI } from "@/constants/api";
 import createMultiFormData from "@/utils/multiFormData";
-import { IRandomMenuListItem } from "@/mocks/mockData/randomMenuList";
-import { IMenuListItemSimple } from "@/mocks/mockData/menuList";
-import { IStoreDetailsSpecific } from "@/mocks/mockData/store";
 import { dangdoApi } from "../config/basic";
+import { dangdoAuthApi } from "../config/auth";
 
 const storeApi = {
   getStoreList: async () => {
@@ -21,15 +19,15 @@ const storeApi = {
     return data;
   },
   getStoreDetails: async (storeId: number) => {
-    const { data } = await dangdoApi.get<IBaseResponse<IStoreDetails | IStoreDetailsSpecific>>(
+    const { data } = await dangdoApi.get<IBaseResponse<IStoreDetails>>(
       API_URI.store.get.STORE_DETAIL(storeId),
     );
     return data;
   },
   getStoreMenus: async (storeId: number) => {
-    const { data } = await dangdoApi.get<
-      IBaseResponse<IMenuDetails[] | IRandomMenuListItem[] | IMenuListItemSimple[]>
-    >(API_URI.store.get.STORE_MENUS(storeId));
+    const { data } = await dangdoApi.get<IBaseResponse<IStoreMenuListItem[]>>(
+      API_URI.store.get.STORE_MENUS(storeId),
+    );
     return data;
   },
   getStoreReviews: async (storeId: number) => {
@@ -48,7 +46,7 @@ const storeApi = {
     return data;
   },
   postStoreBookmark: async (storeId: number) => {
-    const { data } = await dangdoApi.post<IBaseResponse<number>>(
+    const { data } = await dangdoAuthApi.post<IBaseResponse<number>>(
       API_URI.store.create.STORE_BOOKMARK(storeId),
     );
     return data;
@@ -69,7 +67,7 @@ const storeApi = {
     return data;
   },
   deleteStoreBookmark: async (storeId: number) => {
-    const { data } = await dangdoApi.delete<IBaseResponse<number>>(
+    const { data } = await dangdoAuthApi.delete<IBaseResponse<number>>(
       API_URI.store.delete.STORE_BOOKMARK(storeId),
     );
     return data;

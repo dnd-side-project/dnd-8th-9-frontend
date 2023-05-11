@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
-import { IStoreDetailsSpecific, store } from "@/mocks/mockData/store";
 import { useGetStore, useGetStoreReviews } from "@/hooks/queries/store";
 import storeApi from "@/api/domains/store";
 import useModalStore from "@/store/modal";
@@ -17,18 +16,27 @@ import Carousel from "@/components/shared/Carousel/Carousel";
 import useImageStore from "@/store/image";
 import * as S from "./review.styled";
 
-const REVIEW_STATS_MOCK = store.overallStats;
-
 function ReviewPage() {
   const router = useRouter();
   const { storeId } = router.query;
 
-  const { data: storeReviewsData } = useGetStoreReviews(Number(storeId));
-  const { data: storeDetailsData } = useGetStore(Number(storeId));
+  const {
+    data: storeReviewsData,
+    isLoading: reviewsDataLoading,
+    isError: reviewsDataError,
+  } = useGetStoreReviews(Number(storeId));
+  const {
+    data: storeDetailsData,
+    isLoading: detailsDataLoading,
+    isError: detailsDataError,
+  } = useGetStore(Number(storeId));
   const { toggleImageModal, imageModalOpen } = useModalStore();
   const { currentImageSource } = useImageStore();
 
-  if (!storeReviewsData || !storeDetailsData) return <h1>Loading...</h1>;
+  if (reviewsDataLoading || detailsDataLoading) return <h1>Loading...</h1>;
+  if (reviewsDataError || detailsDataError) return <h1>Error...</h1>;
+
+  const { reviewCount, reviewStats, rating } = storeDetailsData.data;
 
   const reviewImages = storeReviewsData.data.map(review => review.reviewImages).flat();
 
@@ -36,11 +44,7 @@ function ReviewPage() {
     <>
       <SectionLayout>
         <S.ContentWrap>
-          <OverallStats
-            data={
-              (storeDetailsData.data as IStoreDetailsSpecific).overallStats || REVIEW_STATS_MOCK
-            }
-          />
+          <OverallStats reviewStats={reviewStats} rating={rating} reviewCount={reviewCount} />
           <PreviewImage reviewImages={reviewImages} />
           <S.ReviewContent>
             <S.ReviewTitle as="p" size={16} weight={600}>

@@ -1,6 +1,6 @@
 import { css, useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
-import { IStoreDetailsSpecific, store } from "@/mocks/mockData/store";
+import { store } from "@/mocks/mockData/store";
 import { useGetStore } from "@/hooks/queries/store";
 import useModalStore from "@/store/modal";
 
@@ -14,6 +14,7 @@ import * as S from "./order.styled";
 const TEMPLATE_TITLE = "주문양식이 복사되었습니다!";
 const TEMPLATE_DETAIL =
   "주문 및 예약을 하러 가기 전에 공지사항과 주의사항을 꼼꼼히 읽었는지 한 번 더 확인해주세요.";
+
 const ORDER_FORM_MOCK = store.orderForm;
 
 function OrderTemplatePage() {
@@ -39,14 +40,12 @@ function OrderTemplatePage() {
           <></>
         )}
         <S.FormBox>
-          {((storeDetailsData.data as IStoreDetailsSpecific).orderForm || ORDER_FORM_MOCK)?.map(
-            el => (
-              <S.FormCell key={el.value}>
-                <S.Title>{el.value}</S.Title>
-                <input placeholder={el.placeholder} />
-              </S.FormCell>
-            ),
-          )}
+          {(storeDetailsData.data.orderForm || ORDER_FORM_MOCK)?.map(el => (
+            <S.FormCell key={el.value}>
+              <S.Title>{el.value}</S.Title>
+              <input placeholder={el.placeholder} />
+            </S.FormCell>
+          ))}
         </S.FormBox>
         <S.TextBox>
           당도는 현재 예약/결제 서비스를 운영하고 있지 않습니다. 주문 양식은 업체에서 제공해준

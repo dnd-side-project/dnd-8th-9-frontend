@@ -17,7 +17,7 @@ export default function SelectMenu() {
   return (
     <S.Container>
       <S.FormTitle>주문하신 메뉴는 무엇인가요?</S.FormTitle>
-      {menuList.menus.map(menu => (
+      {menuList.map(menu => (
         <S.MenuCardClick
           key={menu.id}
           onClick={() => {

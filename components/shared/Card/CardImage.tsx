@@ -1,16 +1,14 @@
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { useTheme } from "@emotion/react";
-
 import useBookmarkStore from "@/store/bookmark";
-import { IStoreListItem, IMenuDetails, IMenuListItem, IImage } from "@/types/api";
+import { IStoreListItem, IMenuListItem, IImage, IStoreMenuListItem } from "@/types/api";
 
-import { IMenuListItemSimple } from "@/mocks/mockData/menuList";
 import Carousel from "../Carousel/Carousel";
 import Icon from "../Icon/Icon";
 import Tag from "../Tag/Tag";
 import Text from "../Text/Text";
 import * as S from "./CardImage.styled";
+import Bookmark from "../Bookmark/Bookmark";
 
 interface IProp {
   data: IImage[] | string;
@@ -18,7 +16,7 @@ interface IProp {
   canDelivery?: boolean;
   canPickup?: boolean;
   mode?: "edit" | "none" | "bookmark";
-  bookmarkData: IStoreListItem | IMenuDetails | IMenuListItem | IMenuListItemSimple;
+  bookmarkData: IStoreListItem | IMenuListItem | IStoreMenuListItem;
   type: "store" | "menu";
 }
 
@@ -33,46 +31,11 @@ function CardImage({
 }: IProp) {
   const { colors } = useTheme();
   const isCarousel = Array.isArray(data);
-  const {
-    updateBookmarkStoreList,
-    updateBookmarkMenuList,
-    updateEditBookmarkList,
-    bookmarkMenuList,
-    bookmarkStoreList,
-    editBookmarkList,
-  } = useBookmarkStore();
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const { updateEditBookmarkList, editBookmarkList } = useBookmarkStore();
 
-  useEffect(() => {
-    if (type === "store") {
-      if (bookmarkStoreList.some(store => store.id === bookmarkData.id)) {
-        setIsBookmarked(true);
-      } else {
-        setIsBookmarked(false);
-      }
-    }
-
-    if (type === "menu") {
-      if (bookmarkMenuList.some(menu => menu.id === bookmarkData.id)) {
-        setIsBookmarked(true);
-      } else {
-        setIsBookmarked(false);
-      }
-    }
-  }, [bookmarkStoreList, bookmarkMenuList, bookmarkData, type]);
-
-  const handleBookmark = (
-    newBookmarkData: IStoreListItem | IMenuDetails | IMenuListItem | IMenuListItemSimple,
-  ) => {
-    console.log("menu bookmark");
-    if (type === "store") {
-      updateBookmarkStoreList(newBookmarkData as IStoreListItem);
-    } else if (type === "menu") {
-      updateBookmarkMenuList(newBookmarkData as IMenuListItem);
-    }
-  };
-
-  const handleCheck = (name: string) => {
+  const handleCheck = (e: React.MouseEvent<HTMLButtonElement>, name: string) => {
+    e.preventDefault();
+    e.stopPropagation();
     updateEditBookmarkList(name);
   };
 
@@ -81,7 +44,7 @@ function CardImage({
       {isCarousel ? <Carousel images={data} /> : <Image src={data} alt="menu" fill />}
       {mode === "edit" && (
         <S.CheckIconWrap
-          onClick={() => handleCheck(bookmarkData.name)}
+          onClick={e => handleCheck(e, bookmarkData.name)}
           className={editBookmarkList.includes(bookmarkData.name) ? "isSelected" : ""}
         >
           <Icon
@@ -93,16 +56,7 @@ function CardImage({
           />
         </S.CheckIconWrap>
       )}
-      {mode === "bookmark" && (
-        <S.BookmarkIconWrap onClick={() => handleBookmark(bookmarkData)}>
-          <Icon
-            name="saveBookmark"
-            size="m"
-            fill={isBookmarked ? colors.pink[700] : colors.grey[400]}
-            color={isBookmarked ? colors.pink[700] : colors.grey[400]}
-          />
-        </S.BookmarkIconWrap>
-      )}
+      {mode === "bookmark" && <Bookmark type={type} data={bookmarkData} />}
       <S.TagsWrap>
         {canDelivery && (
           <Tag type="icon" label="택배가능">

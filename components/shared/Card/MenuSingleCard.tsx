@@ -2,13 +2,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
 import { generatePriceString } from "@/utils/util";
-import { IMenuDetails, IMenuListItem } from "@/types/api";
-import { IMenuListItemSimple } from "@/mocks/mockData/menuList";
+import { IStoreMenuListItem } from "@/types/api";
+import { IMAGE_MOCK } from "@/constants/api";
 import * as S from "./Card.styled";
 import Card from "./Card";
 
 interface IProps {
-  data: IMenuListItem | IMenuListItemSimple | IMenuDetails;
+  data: IStoreMenuListItem;
   mode?: "edit" | "bookmark" | "none";
   size?: "s" | "m";
 }
@@ -30,17 +30,15 @@ function MenuSingleCard({ data, mode, size = "m" }: IProps) {
   const { colors } = useTheme();
   const { asPath } = useRouter();
 
-  const { name, menuImages } = data;
+  const { name, menuImages, desc, basePrice } = data;
 
-  // NOTE: IMenuListItem : desc 빠짐.
-  // NOTE: IMenuListItemSpecific: desc 있음.
   return (
     <Link href={`${asPath}/${data.id}`}>
       <Card
         imgWidth={SIZE_STYLE[size].imgWidth}
         imgHeight={SIZE_STYLE[size].imgHeight}
         dir="row"
-        image={menuImages}
+        image={menuImages || IMAGE_MOCK}
         gap={16}
         mode={mode}
         data={data}
@@ -51,14 +49,11 @@ function MenuSingleCard({ data, mode, size = "m" }: IProps) {
             {name}
           </S.Menu>
           <S.Desc size={12} color={colors.grey[700]}>
-            {(data as IMenuListItemSimple).desc ||
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit"}
+            {desc}
           </S.Desc>
           {size === "m" && (
             <S.Price weight={600} size={18} color={colors.blue[800]}>
-              {generatePriceString(
-                (data as IMenuDetails).basePrice || (data as IMenuListItemSimple).price,
-              )}
+              {generatePriceString(basePrice)}
             </S.Price>
           )}
         </S.ContentWrap>

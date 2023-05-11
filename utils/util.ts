@@ -1,4 +1,5 @@
-import { IStoreItem } from "@/api/types/storeList";
+import { ROUTES } from "@/constants/routes";
+import { IStoreListItem } from "@/types/api";
 
 export const getOverallComment = (rating: number) => {
   if (rating >= 80) return "매우 높아요!";
@@ -23,7 +24,7 @@ export const numberToRem = (num: number) => {
   return `${num / 10}rem`;
 };
 
-export const chunkArray = (data: IStoreItem[], size = 3) => {
+export const chunkArray = (data: IStoreListItem[], size = 3) => {
   const arr = [];
 
   for (let i = 0; i < data.length; i += size) {
@@ -35,4 +36,22 @@ export const chunkArray = (data: IStoreItem[], size = 3) => {
 
 export const parseDate = (date: string) => {
   return date.split(" ")[0].replaceAll("-", ".");
+};
+
+export const checkAuth = () => {
+  let authenticated = false;
+
+  try {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      authenticated = true;
+    } else {
+      throw new Error("Access token not found");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    window.location.href = ROUTES.LOGIN_REDIRECT_PAGE;
+  }
+
+  return authenticated;
 };

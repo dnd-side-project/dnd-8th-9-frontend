@@ -3,23 +3,16 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { IReviewListItem, IBaseResponse, IErrorResponse, IReviewPayloadBody } from "@/types/api";
 import reviewApi from "@/api/domains/review";
 import { reviewQueryKey } from "@/constants/queryKey";
-import { IReviewListItemSpecific } from "@/mocks/mockData/randomReviewList";
 
 export const useGetReviewList = () => {
-  return useQuery<
-    IBaseResponse<IReviewListItem[] | IReviewListItemSpecific[]>,
-    AxiosError<IErrorResponse>
-  >({
+  return useQuery<IBaseResponse<IReviewListItem[]>, AxiosError<IErrorResponse>>({
     queryKey: reviewQueryKey.list,
     queryFn: () => reviewApi.getReviewList(),
   });
 };
 
 export const useGetReviewDetails = (reviewId: number) => {
-  return useQuery<
-    IBaseResponse<IReviewListItem | IReviewListItemSpecific>,
-    AxiosError<IErrorResponse>
-  >({
+  return useQuery<IBaseResponse<IReviewListItem>, AxiosError<IErrorResponse>>({
     queryKey: reviewQueryKey.detail(reviewId),
     queryFn: () => reviewApi.getReviewDetails(reviewId),
   });

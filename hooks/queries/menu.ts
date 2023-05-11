@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   IBaseResponse,
   IErrorResponse,
@@ -8,14 +8,10 @@ import {
   IReviewListItem,
 } from "@/types/api";
 import menuApi from "@/api/domains/menu";
-import { menuQueryKey } from "@/constants/queryKey";
-import { IRandomMenuListItem } from "@/mocks/mockData/randomMenuList";
+import { menuQueryKey, userQueryKey } from "@/constants/queryKey";
 
 export const useGetMenuList = () => {
-  return useQuery<
-    IBaseResponse<IMenuListItem[] | IRandomMenuListItem[]>,
-    AxiosError<IErrorResponse>
-  >({
+  return useQuery<IBaseResponse<IMenuListItem[]>, AxiosError<IErrorResponse>>({
     queryKey: menuQueryKey.list,
     queryFn: () => menuApi.getMenuList(),
   });
@@ -32,5 +28,27 @@ export const useGetMenuReviews = (menuId: number) => {
   return useQuery<IBaseResponse<IReviewListItem[]>, AxiosError<IErrorResponse>>({
     queryKey: menuQueryKey.reviews(menuId),
     queryFn: () => menuApi.getMenuReviews(menuId),
+  });
+};
+
+export const usePostMenuBookmark = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (menuId: number) => menuApi.postMenuBookmark(menuId),
+    onSuccess: () => {
+      queryClient.invalidateQueries(userQueryKey.menuBookmarks());
+    },
+  });
+};
+
+export const useDeleteMenuBookmark = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (menuId: number) => menuApi.deleteMenuBookmark(menuId),
+    onSuccess: () => {
+      queryClient.invalidateQueries(userQueryKey.menuBookmarks());
+    },
   });
 };

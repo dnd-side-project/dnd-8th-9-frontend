@@ -1,15 +1,6 @@
 import { IReviewListItem } from "@/types/api";
 
-export interface IReviewListItemSpecific extends IReviewListItem {
-  nickname: string;
-  profileImage: string;
-  date: string;
-  storeId: number;
-  storeName: string;
-  likes: number;
-}
-
-export const randomReviews: IReviewListItemSpecific[] = [
+export const randomReviews: IReviewListItem[] = [
   {
     id: 331,
     nickname: "하유리",

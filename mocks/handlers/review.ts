@@ -1,11 +1,12 @@
 import { rest } from "msw";
 import { API_URI } from "@/constants/api";
+import { IReviewListItem } from "@/types/api";
 import { BASE_URL, IMockResponse, generateMockResponse } from "./menu";
-import { IReviewListItemSpecific, randomReviews } from "../mockData/randomReviewList";
+import { randomReviews } from "../mockData/randomReviewList";
 
 export const reviewHandler = [
   // 리뷰 리스트 조회
-  rest.get<IMockResponse<IReviewListItemSpecific[]>>(
+  rest.get<IMockResponse<IReviewListItem[]>>(
     `${BASE_URL}${API_URI.review.get.REVIEW_LIST}`,
     (req, res, ctx) => {
       return res(ctx.status(200), ctx.json(generateMockResponse(randomReviews)));
@@ -13,7 +14,7 @@ export const reviewHandler = [
   ),
 
   // 리뷰 상세 조회
-  rest.get<IMockResponse<IReviewListItemSpecific>>(
+  rest.get<IMockResponse<IReviewListItem>>(
     `${BASE_URL}${API_URI.review.get.REVIEW_LIST}/:reviewId`,
     (req, res, ctx) => {
       const { reviewId } = req.params;

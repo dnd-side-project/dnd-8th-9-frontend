@@ -1,9 +1,9 @@
 import { rest } from "msw";
-import { IRandomMenuListItem, randomMenus } from "@/mocks/mockData/randomMenuList";
+import { randomMenus } from "@/mocks/mockData/randomMenuList";
 import { API_URI } from "@/constants/api";
-import { IMenuDetails } from "@/types/api";
+import { IMenuDetails, IMenuListItem, IReviewListItem } from "@/types/api";
 import { menu } from "../mockData/menu";
-import { IReviewListItemSpecific, randomReviews } from "../mockData/randomReviewList";
+import { randomReviews } from "../mockData/randomReviewList";
 
 export const BASE_URL = "http://43.201.188.200:8080";
 
@@ -17,7 +17,7 @@ export function generateMockResponse<T>(data: T): IMockResponse<T> {
 
 export const menuHandler = [
   // 랜덤 메뉴 리스트 조회
-  rest.get<IMockResponse<IRandomMenuListItem[]>>(
+  rest.get<IMockResponse<IMenuListItem[]>>(
     `${BASE_URL}${API_URI.menu.get.MENU_LIST}`,
     (req, res, ctx) => {
       return res(ctx.status(200), ctx.json(generateMockResponse(randomMenus)));
@@ -36,7 +36,7 @@ export const menuHandler = [
   }),
 
   // 메뉴 리뷰 조회
-  rest.get<IReviewListItemSpecific[]>(
+  rest.get<IReviewListItem[]>(
     `${BASE_URL}${API_URI.menu.get.MENU_LIST}/:menuId/reviews`,
     (req, res, ctx) => {
       const { menuId } = req.params;

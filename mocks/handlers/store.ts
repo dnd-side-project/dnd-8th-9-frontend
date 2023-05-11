@@ -1,12 +1,11 @@
 import { rest } from "msw";
 import { API_URI } from "@/constants/api";
-import { IStoreListItem } from "@/types/api";
-import { IStoreDetailsSpecific, store } from "../mockData/store";
+import { IReviewListItem, IStoreListItem, IStoreMenuListItem } from "@/types/api";
+import { IStoreDetailsMock, store } from "../mockData/store";
 import { storeList } from "../mockData/storeList";
 import { BASE_URL, IMockResponse, generateMockResponse } from "./menu";
-import { IMenuListItemSimple, menuList } from "../mockData/menuList";
+import { menuList } from "../mockData/menuList";
 import { reviews } from "../mockData/review";
-import { IReviewListItemSpecific } from "../mockData/randomReviewList";
 
 export const storeHandler = [
   // 스토어 리스트 조회
@@ -18,7 +17,7 @@ export const storeHandler = [
   ),
 
   // 스토어 상세 조회
-  rest.get<IMockResponse<IStoreDetailsSpecific>>(
+  rest.get<IMockResponse<IStoreDetailsMock>>(
     `${BASE_URL}${API_URI.store.get.STORE_LIST}/:storeId`,
     (req, res, ctx) => {
       const { storeId } = req.params;
@@ -33,7 +32,7 @@ export const storeHandler = [
   ),
 
   // 스토어 메뉴 리스트 조회
-  rest.get<IMockResponse<IMenuListItemSimple[]>>(
+  rest.get<IMockResponse<IStoreMenuListItem[]>>(
     `${BASE_URL}${API_URI.store.get.STORE_LIST}/:storeId/menus`,
     (req, res, ctx) => {
       const { storeId } = req.params;
@@ -48,7 +47,7 @@ export const storeHandler = [
   ),
 
   // 스토어 리뷰 리스트 조회
-  rest.get<IMockResponse<IReviewListItemSpecific[]>>(
+  rest.get<IMockResponse<IReviewListItem[]>>(
     `${BASE_URL}${API_URI.store.get.STORE_LIST}/:storeId/reviews`,
     (req, res, ctx) => {
       const { storeId } = req.params;

@@ -1,6 +1,9 @@
 import { useState, ReactElement } from "react";
 import { useTheme } from "@emotion/react";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
+import { userQueryKey } from "@/constants/queryKey";
 import { resultTab } from "@/constants/tabs";
+import { useGetMenuBookmarkList } from "@/hooks/queries/user";
 import useBookmarkStore from "@/store/bookmark";
 
 import FilterBar from "@/components/shared/FilterBar/FilterBar";
@@ -14,8 +17,11 @@ import * as S from "./menu.styled";
 function BookmarkDesignPage() {
   const { colors } = useTheme();
   const [isEditMode, setIsEditMode] = useState(false);
-  const { editBookmarkList, bookmarkMenuList, deleteAllMenuBookmarkList, clearEditBookmarkList } =
-    useBookmarkStore();
+  const { editBookmarkList, deleteAllMenuBookmarkList, clearEditBookmarkList } = useBookmarkStore();
+  const { data: menuBookmarkList, isLoading, isError } = useGetMenuBookmarkList();
+
+  if (isLoading) return <h1>Loading...</h1>;
+  if (isError) return <h1>Error...</h1>;
 
   const startEditMode = () => {
     setIsEditMode(true);
@@ -69,7 +75,7 @@ function BookmarkDesignPage() {
         </S.ControlBoxWrap>
       )}
       <S.MenuWrap>
-        {bookmarkMenuList.map(menu => (
+        {menuBookmarkList.data.map(menu => (
           <MenuDoubleCard key={menu.id} data={menu} size="m" mode={isEditMode ? "edit" : "none"} />
         ))}
       </S.MenuWrap>
@@ -78,6 +84,17 @@ function BookmarkDesignPage() {
 }
 
 export default BookmarkDesignPage;
+
+export async function getServerSideProps() {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery(userQueryKey.menuBookmarks());
+
+  return {
+    props: {
+      dehydratedstate: dehydrate(queryClient),
+    },
+  };
+}
 
 BookmarkDesignPage.getLayout = function getLayout(page: ReactElement) {
   return (

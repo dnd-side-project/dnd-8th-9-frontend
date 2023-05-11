@@ -1,10 +1,10 @@
 import { API_URI } from "@/constants/api";
-import { IBaseResponse, IMenuListItem, IStoreListItem, IUserResponse } from "@/types/api";
+import { IBaseResponse, IMenuListItem, IStoreListItem, IUser } from "@/types/api";
 import { dangdoAuthApi } from "../config/auth";
 
 const userApi = {
   getUser: async () => {
-    const { data } = await dangdoAuthApi.get<IUserResponse>(API_URI.user.get.USER);
+    const { data } = await dangdoAuthApi.get<IBaseResponse<IUser>>(API_URI.user.get.USER);
     return data;
   },
   getStoreBookmarkList: async () => {

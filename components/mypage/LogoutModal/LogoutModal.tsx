@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import Sheet from "react-modal-sheet";
 import { useTheme } from "@emotion/react";
 import { ROUTES } from "@/constants/routes";
@@ -9,14 +8,13 @@ import * as S from "./LogoutModal.styled";
 
 function LogoutModal() {
   const { colors } = useTheme();
-  const { push } = useRouter();
   const { logoutModalOpen, toggleLogoutModal } = useModalStore();
   const { logoutUser } = useUserStore();
 
   const logoutHandler = () => {
     localStorage.removeItem("access_token");
     logoutUser();
-    push(ROUTES.HOME_RECOMMENDATION_PAGE);
+    window.location.href = ROUTES.HOME_RECOMMENDATION_PAGE;
   };
 
   return (
