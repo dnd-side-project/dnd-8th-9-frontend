@@ -1,21 +1,14 @@
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { useTheme } from "@emotion/react";
-
 import useBookmarkStore from "@/store/bookmark";
-import {
-  IStoreListItem,
-  IMenuDetails,
-  IMenuListItem,
-  IImage,
-  IStoreMenuListItem,
-} from "@/types/api";
+import { IStoreListItem, IMenuListItem, IImage, IStoreMenuListItem } from "@/types/api";
 
 import Carousel from "../Carousel/Carousel";
 import Icon from "../Icon/Icon";
 import Tag from "../Tag/Tag";
 import Text from "../Text/Text";
 import * as S from "./CardImage.styled";
+import Bookmark from "../Bookmark/Bookmark";
 
 interface IProp {
   data: IImage[] | string;
@@ -23,7 +16,7 @@ interface IProp {
   canDelivery?: boolean;
   canPickup?: boolean;
   mode?: "edit" | "none" | "bookmark";
-  bookmarkData: IStoreListItem | IMenuDetails | IMenuListItem | IStoreMenuListItem;
+  bookmarkData: IStoreListItem | IMenuListItem | IStoreMenuListItem;
   type: "store" | "menu";
 }
 
@@ -38,47 +31,7 @@ function CardImage({
 }: IProp) {
   const { colors } = useTheme();
   const isCarousel = Array.isArray(data);
-  const {
-    updateBookmarkStoreList,
-    updateBookmarkMenuList,
-    updateEditBookmarkList,
-    bookmarkMenuList,
-    bookmarkStoreList,
-    editBookmarkList,
-  } = useBookmarkStore();
-  const [isBookmarked, setIsBookmarked] = useState(false);
-
-  useEffect(() => {
-    if (type === "store") {
-      if (bookmarkStoreList.some(store => store.id === bookmarkData.id)) {
-        setIsBookmarked(true);
-      } else {
-        setIsBookmarked(false);
-      }
-    }
-
-    if (type === "menu") {
-      if (bookmarkMenuList.some(menu => menu.id === bookmarkData.id)) {
-        setIsBookmarked(true);
-      } else {
-        setIsBookmarked(false);
-      }
-    }
-  }, [bookmarkStoreList, bookmarkMenuList, bookmarkData, type]);
-
-  const handleBookmark = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    newBookmarkData: IStoreListItem | IMenuDetails | IMenuListItem | IStoreMenuListItem,
-  ) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (type === "store") {
-      updateBookmarkStoreList(newBookmarkData as IStoreListItem);
-    } else if (type === "menu") {
-      updateBookmarkMenuList(newBookmarkData as IMenuListItem);
-    }
-  };
+  const { updateEditBookmarkList, editBookmarkList } = useBookmarkStore();
 
   const handleCheck = (e: React.MouseEvent<HTMLButtonElement>, name: string) => {
     e.preventDefault();
@@ -103,17 +56,7 @@ function CardImage({
           />
         </S.CheckIconWrap>
       )}
-      {mode === "bookmark" && (
-        <S.BookmarkIconWrap onClick={e => handleBookmark(e, bookmarkData)}>
-          <Icon
-            name="saveBookmark"
-            size="m"
-            fill={isBookmarked ? colors.pink[700] : colors.grey[400]}
-            color={isBookmarked ? colors.pink[700] : colors.grey[400]}
-          />
-        </S.BookmarkIconWrap>
-        // <Bookmark type={type} data={bookmarkData} />
-      )}
+      {mode === "bookmark" && <Bookmark type={type} data={bookmarkData} />}
       <S.TagsWrap>
         {canDelivery && (
           <Tag type="icon" label="택배가능">

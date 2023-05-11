@@ -1,10 +1,4 @@
-import {
-  IImage,
-  IMenuDetails,
-  IMenuListItem,
-  IStoreListItem,
-  IStoreMenuListItem,
-} from "@/types/api";
+import { IImage, IMenuListItem, IStoreListItem, IStoreMenuListItem } from "@/types/api";
 import CardImage from "./CardImage";
 import * as S from "./Card.styled";
 
@@ -20,7 +14,7 @@ interface IProp {
   children: React.ReactNode;
   canDelivery?: boolean;
   canPickup?: boolean;
-  data: IStoreListItem | IMenuDetails | IMenuListItem | IStoreMenuListItem;
+  data: IStoreListItem | IMenuListItem | IStoreMenuListItem;
   type: "menu" | "store";
 }
 
