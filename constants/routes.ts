@@ -15,8 +15,8 @@ export const ROUTES = {
   HOME_RECOMMENDATION_PAGE: "/home/recommendation",
   HOME_STORE_PAGE: "/home/stores",
 
-  LOGIN_PAGE: "/login",
-  LOGIN_REDIRECT_PAGE: "/login/redirect",
+  LOGIN_PAGE: "/",
+  LOGIN_REDIRECT_PAGE: "/login",
 
   ONBOARD_WELCOME: "/onboard/welcome",
   ONBOARDING_LOCATION_PAGE: "/onboard/location",
