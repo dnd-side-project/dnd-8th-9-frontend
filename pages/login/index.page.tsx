@@ -1,39 +1,33 @@
-import { useRouter } from "next/router";
 import Image from "next/image";
 import { useTheme } from "@emotion/react";
-import { ROUTES } from "@/constants/routes";
-import { DangdoLogo } from "@/assets/images";
+import { LogoIcon } from "@/assets/images";
 import KakaoLogin from "@/components/login/KakaoLogin";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./login.styled";
 
-function LoginPage() {
+function LoginRedirectPage() {
   const { colors } = useTheme();
-  const { push } = useRouter();
-
-  const loginLater = () => {
-    push(ROUTES.HOME_RECOMMENDATION_PAGE);
-  };
 
   return (
-    <S.LoginWrap>
+    <S.Wrap>
       <S.LogoWrap>
-        <DangdoLogo />
-        <Text size={14} weight={500} color={colors.grey[100]}>
-          주문제작 케이크 탐색을 쉽고 빠르게
-        </Text>
+        <LogoIcon />
+        <S.LogoImageWrap>
+          <Image src="/logoText.svg" alt="logo" fill />
+        </S.LogoImageWrap>
       </S.LogoWrap>
+      <S.TextWrap>
+        <Text size={16} weight={500} color={colors.grey[100]}>
+          당도에 로그인해서 <br />
+          빠르고 쉬운 주문제작 케이크 탐색을 시작해보세요
+        </Text>
+      </S.TextWrap>
+      <KakaoLogin />
       <S.ImageWrap>
         <Image src="/mainCake.svg" alt="3d cake" fill />
       </S.ImageWrap>
-      <S.ButtonWrap>
-        <KakaoLogin />
-        <S.LaterButton label="login later" type="button" shape="square" onClick={loginLater}>
-          로그인 없이 둘러보기
-        </S.LaterButton>
-      </S.ButtonWrap>
-    </S.LoginWrap>
+    </S.Wrap>
   );
 }
 
-export default LoginPage;
+export default LoginRedirectPage;
