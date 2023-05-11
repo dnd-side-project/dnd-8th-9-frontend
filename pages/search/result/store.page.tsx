@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { resultTab } from "@/constants/tabs";
-import { IStoreItem } from "@/api/types/storeList";
-import { TCategory } from "@/api/types/shared";
 import { storeList } from "@/mocks/mockData/storeList";
 import useSearchStore from "@/store/search";
 import useFilterStore from "@/store/filter";
+import { IStoreListItem, TCategory } from "@/types/api";
 
 import SearchNav from "@/components/search/SearchNav/SearchNav";
 import StoreDoubleCard from "@/components/shared/Card/StoreDoubleCard";
@@ -17,9 +16,9 @@ import * as S from "../search.styled";
 function SearchResultStorePage() {
   const { currentSearch } = useSearchStore();
   const { selectedFilterOptions } = useFilterStore();
-  const [searchResult, setSearchResult] = useState<IStoreItem[]>([]);
-  const [filterResult, setFilterResult] = useState<IStoreItem[]>([]);
-  const [data, setData] = useState<IStoreItem[]>(searchResult || filterResult || []);
+  const [searchResult, setSearchResult] = useState<IStoreListItem[]>([]);
+  const [filterResult, setFilterResult] = useState<IStoreListItem[]>([]);
+  const [data, setData] = useState<IStoreListItem[]>(searchResult || filterResult || []);
 
   useEffect(() => {
     const result = storeList.filter(store => store.name.includes(currentSearch));

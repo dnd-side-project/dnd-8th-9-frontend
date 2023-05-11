@@ -8,13 +8,13 @@ import {
   useFormDetailStore,
   useButtonDisabledStore,
 } from "@/store/ReviewForm";
-import { TReviewOption } from "@/api/types/shared";
 import SelectMenu from "@/components/ReviewForm/SelectMenu/SelectMenu";
 import SelectSizeDangdo from "@/components/ReviewForm/SelectSizeDangdo/SelectSizeDangdo";
 import Detail from "@/components/ReviewForm/Detail/Detail";
 import Sumbitted from "@/components/ReviewForm/Submitted/Submitted";
 import Button from "@/components/shared/Button/Button";
 import { css } from "@emotion/react";
+import { TReviewOption } from "@/types/api";
 import * as S from "./form.styled";
 
 const multiStepForm = (currentPage: number) => {
@@ -55,14 +55,16 @@ export default function FormPage() {
         id,
         nickname: "random",
         profileImage: "",
-        source: "단골",
-        rating: dangdo,
-        menuOption: name,
-        reviewOption: best as TReviewOption,
-        text: comment,
+        reorder: true,
+        dangdo,
+        menuName: name,
+        goodPoint: best as TReviewOption,
+        content: comment,
         date: "2023-02-13 14:43:50",
         reviewImages: imgFiles,
         likes: 0,
+        storeId: 1,
+        storeName: "coco",
       });
     }
   };

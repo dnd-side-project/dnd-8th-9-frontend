@@ -51,7 +51,10 @@ export default function Detail() {
         setDetail({
           best,
           comment,
-          imgFiles: [...imgFiles, { id: imgIdx, url: reader.result as string }],
+          imgFiles: [
+            ...imgFiles,
+            { id: imgIdx, url: reader.result as string, type: "REVIEW_IMAGE", targetId: 7 },
+          ],
         });
       };
     }

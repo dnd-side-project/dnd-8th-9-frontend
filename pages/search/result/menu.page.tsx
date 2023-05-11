@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { resultTab } from "@/constants/tabs";
-import { IRandomMenuItem } from "@/api/types/randomMenuList";
 import { randomMenus } from "@/mocks/mockData/randomMenuList";
 import useSearchStore from "@/store/search";
 import useFilterStore from "@/store/filter";
@@ -12,18 +11,19 @@ import FilterModal from "@/components/shared/FilterModal/FilterModal";
 import Sort from "@/components/shared/Sort/Sort";
 import Tab from "@/components/shared/Tab/Tab";
 import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
+import { IMenuListItem } from "@/types/api";
 import * as S from "../search.styled";
 
 function SearchResultMenuPage() {
   const { currentSearch } = useSearchStore();
   const { selectedFilterOptions } = useFilterStore();
-  const [searchResult, setSearchResult] = useState<IRandomMenuItem[]>([]);
-  const [filterResult, setFilterResult] = useState<IRandomMenuItem[]>([]);
-  const [data, setData] = useState<IRandomMenuItem[]>(searchResult || filterResult || []);
+  const [searchResult, setSearchResult] = useState<IMenuListItem[]>([]);
+  const [filterResult, setFilterResult] = useState<IMenuListItem[]>([]);
+  const [data, setData] = useState<IMenuListItem[]>(searchResult || filterResult || []);
   const [noResult, setNoResult] = useState(false);
 
   useEffect(() => {
-    const result = randomMenus.menus.filter(menu => menu.name.includes(currentSearch));
+    const result = randomMenus.filter(menu => menu.name.includes(currentSearch));
     setSearchResult(result);
     setData(result);
   }, [currentSearch]);

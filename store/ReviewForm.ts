@@ -1,12 +1,14 @@
 import { create } from "zustand";
 import { IImage } from "@/types/api/shared";
+import { IStoreMenuListItem } from "@/types/api";
+import { IMAGE_MOCK } from "@/constants/api";
 
 interface FormMenuStore {
   id: number;
   name: string;
   menuImage: string;
 
-  setMenu: (menu: IMenu) => void;
+  setMenu: (menu: IStoreMenuListItem) => void;
 }
 
 interface IMenu {
@@ -55,7 +57,12 @@ export const useFormMenuStore = create<FormMenuStore>()(set => ({
   name: "",
   menuImage: "",
 
-  setMenu: (menu: IMenu) => set({ id: menu.id, name: menu.name, menuImage: menu.menuImage }),
+  setMenu: (menu: IStoreMenuListItem) =>
+    set({
+      id: menu.id,
+      name: menu.name,
+      menuImage: menu.menuImages ? menu.menuImages[0].url : IMAGE_MOCK,
+    }),
 }));
 
 export const useFormSizeDangdoStore = create<FormSizeDangdoStore>()(set => ({

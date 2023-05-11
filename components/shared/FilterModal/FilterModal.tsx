@@ -54,14 +54,7 @@ function FilterModal() {
               필터링
             </Text>
           </S.Header>
-          <S.FilterTab
-            target="filterTab"
-            menuList={filterTab}
-            type="fixed"
-            cssProp={css`
-              --size: ${filterTab.length};
-            `}
-          />
+          <S.FilterTab target="filterTab" menuList={filterTab} />
           {FILTER_TAB_MENU[currentFilterTab].type === "checkbox" ? (
             <CheckboxGroup
               options={FILTER_TAB_MENU[currentFilterTab].options}

@@ -11,5 +11,5 @@ const Template: Story<IProp> = args => <Review {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  review: reviews.reviewList[0],
+  review: reviews[0],
 };
