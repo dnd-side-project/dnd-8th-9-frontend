@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import Text from "../Text/Text";
+import Tag from "../Tag/Tag";
 
 export const Wrap = styled.div`
   border-radius: 0.8rem;
@@ -29,6 +30,14 @@ export const TagsWrap = styled.div`
   left: 0.6rem;
   top: 0.6rem;
   z-index: ${({ theme }) => theme["z-index"].navbar};
+`;
+
+export const IconTag = styled(Tag)<{ label: "택배가능" | "픽업가능" }>`
+  column-gap: 0.4rem;
+  padding: 0.4rem 1rem;
+  width: auto;
+  background-color: ${({ theme, label }) =>
+    label === "택배가능" ? theme.colors.blue[800] : theme.colors.blue[700]};
 `;
 
 export const RankBadge = styled.div`
