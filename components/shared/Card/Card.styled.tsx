@@ -63,12 +63,13 @@ export const InfoWrap = styled.div`
   display: flex;
   align-items: center;
 
-  :first-of-type::after {
+  span:first-child::after {
     content: "";
     display: inline-block;
+    width: 1px;
     height: 0.8rem;
     margin: 0 0.6rem;
-    background-color: ${({ theme }) => theme.colors.grey[900]};
+    background-color: ${({ theme }) => theme.colors.grey[300]};
   }
 `;
 
@@ -108,7 +109,6 @@ export const ReviewText = styled(Text)`
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  word-break: keep-all;
   line-height: 140%;
 `;
 

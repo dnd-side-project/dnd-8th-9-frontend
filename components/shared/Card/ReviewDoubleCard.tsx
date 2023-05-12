@@ -39,10 +39,10 @@ function ReviewDoubleCard({ data }: IProps) {
           <ReviewTag goodPoint={goodPoint} />
         </S.Review>
         <S.InfoWrap>
-          <Text weight={500} size={11} color={colors.grey[700]}>
+          <Text weight={500} size={11} color={colors.grey[800]}>
             {storeName}
           </Text>
-          <Text weight={500} size={11} color={colors.grey[800]}>
+          <Text weight={500} size={11} color={colors.grey[700]}>
             {menuName}
           </Text>
         </S.InfoWrap>
