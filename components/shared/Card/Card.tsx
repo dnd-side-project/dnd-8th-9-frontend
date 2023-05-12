@@ -4,7 +4,7 @@ import * as S from "./Card.styled";
 
 interface IProp {
   mode?: "edit" | "bookmark" | "none";
-  imgWidth: number;
+  imgWidth?: number;
   imgHeight: number;
   gap: number;
   dir: "row" | "col";
