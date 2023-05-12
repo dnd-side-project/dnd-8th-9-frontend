@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "@emotion/react";
-import { OnboardCake } from "@/assets/images";
 import { ROUTES } from "@/constants/routes";
 import { useGetUser } from "@/hooks/queries/user";
 import Button from "@/components/shared/Button/Button";
@@ -23,7 +23,7 @@ function WelcomePage() {
         </Text>
       </S.TextContainer>
       <S.ImageContainer>
-        <OnboardCake />
+        <Image src="/onboardCake.svg" alt="cake" fill />
       </S.ImageContainer>
       <S.ButtonContainer>
         <Link href={ROUTES.ONBOARDING_LOCATION_PAGE}>
