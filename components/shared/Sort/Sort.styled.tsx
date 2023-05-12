@@ -34,7 +34,7 @@ export const SortModal = styled.div<{ isOpen: boolean }>`
   width: 18rem;
   background-color: ${({ theme }) => theme.colors.grey[100]};
 
-  li:not(:last-child) {
+  button:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.grey[200]};
   }
 `;
