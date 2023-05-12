@@ -5,7 +5,7 @@ export const HeroWrap = styled.div`
   width: 100%;
   height: 56rem;
   padding-bottom: 4.2rem;
-  border-bottom: 0.6rem solid ${({ theme }) => theme.colors.blue[100]};
+  border-bottom: 0.6rem solid ${({ theme }) => theme.colors.section};
 `;
 
 export const HeroContainer = styled.div`
