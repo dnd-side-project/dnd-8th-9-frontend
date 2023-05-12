@@ -24,8 +24,8 @@ export const TextContainer = styled.div`
 export const ImageContainer = styled.div`
   width: 100%;
   position: absolute;
-  bottom: -14rem;
-  height: 50rem;
+  height: 24rem;
+  bottom: 5rem;
 `;
 
 export const LinkContainer = styled.div`

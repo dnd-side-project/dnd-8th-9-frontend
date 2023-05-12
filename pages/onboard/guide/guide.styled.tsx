@@ -7,6 +7,10 @@ export const CarouselWrap = styled.div`
     bottom: calc(100% - 5rem);
   }
 
+  .swiper-slide {
+    height: 100vh;
+  }
+
   .swiper-pagination-bullet {
     background-color: ${({ theme }) => theme.colors.grey[700]} !important;
   }

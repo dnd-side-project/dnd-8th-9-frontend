@@ -20,7 +20,7 @@ function WelcomeCard() {
         </Text>
       </S.TextContainer>
       <S.ImageContainer>
-        <Image src="/loginCake.svg" alt="cake" fill />
+        <Image src="/mainCake.svg" alt="cake" fill />
       </S.ImageContainer>
       <S.LinkContainer>
         <Link href={ROUTES.ONBOARDING_GUIDE_PAGE}>
