@@ -3,16 +3,16 @@ import styled from "@emotion/styled";
 export const StyleContainer = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 10.4rem);
-  grid-template-rows: repeat(auto-fill, 12.9rem);
   grid-row-gap: 2rem;
   grid-column-gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 11fr));
+  padding-bottom: 10rem;
 `;
 
 export const ImageWrap = styled.div`
   position: relative;
-  width: 10.4rem;
-  height: 10.4rem;
+  width: 100%;
+  aspect-ratio: 1/1;
   border-radius: 0.8rem;
   overflow: hidden;
 
