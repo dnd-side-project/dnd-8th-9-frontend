@@ -12,14 +12,15 @@ export const HeroContainer = styled.div`
   width: 100%;
   height: 31rem;
   background: linear-gradient(0deg, #e4e4f8 11.86%, #e5e0ff 97.82%);
-  padding-top: 2rem;
+  padding-top: 4.2rem;
 `;
 
 export const HeroTitle = styled.div`
   margin-top: 3.2rem;
   display: flex;
   align-items: center;
-  padding-left: 2rem;
+  padding-inline: 2rem;
+  column-gap: 2.3rem;
 `;
 
 export const TextWrap = styled.div`
@@ -43,9 +44,10 @@ export const Desc = styled(Text)`
 `;
 
 export const ImageWrap = styled.div`
-  .cake {
-    min-width: 12rem;
-  }
+  position: relative;
+  width: 13.5rem;
+  height: 12.6rem;
+  flex-shrink: 0;
 `;
 
 export const StoreWrap = styled.div`
