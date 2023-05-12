@@ -39,6 +39,7 @@ export const Rating = styled.div`
   margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
+  column-gap: 0.6rem;
 `;
 
 export const ReviewTag = styled(Tag)`
