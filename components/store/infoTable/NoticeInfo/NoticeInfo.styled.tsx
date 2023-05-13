@@ -3,7 +3,7 @@ import Text from "@/components/shared/Text/Text";
 import styled from "@emotion/styled";
 
 export const Content = styled.div`
-  padding: 2rem 1.6rem 0.8rem;
+  padding: 2rem 1.9rem 0.8rem;
   background-color: ${({ theme }) => theme.colors.grey[200]};
   border-radius: 8px;
   position: relative;

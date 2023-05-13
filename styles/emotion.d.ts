@@ -77,6 +77,7 @@ declare module "@emotion/react" {
         800: string;
         900: string;
       };
+      section: string;
     };
     "z-index": {
       gnb: number;

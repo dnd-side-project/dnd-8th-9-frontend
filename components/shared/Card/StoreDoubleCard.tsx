@@ -28,7 +28,6 @@ function StoreDoubleCard({ data, mode }: IProps) {
   return (
     <Link href={`/store/${data.id}`}>
       <Card
-        imgWidth={328}
         imgHeight={183}
         dir="col"
         image={storeImages}
@@ -52,7 +51,7 @@ function StoreDoubleCard({ data, mode }: IProps) {
               <CategoryTag key={categoryItem} category={categoryItem} />
             ))}
           </S.CategoryWrap>
-          <S.Price weight={600} size={15} color={colors.blue[800]}>
+          <S.Price weight={600} size={16} color={colors.blue[800]}>
             {generateRangePriceString(min, max)}
           </S.Price>
           <Platform links={links} />

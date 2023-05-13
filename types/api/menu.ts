@@ -19,6 +19,7 @@ export interface IMenuBasicInfo {
   맛: string;
   레터링: string;
   사이즈: string;
+  [key: string]: string;
 }
 
 // NOTE: description 필요

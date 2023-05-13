@@ -17,11 +17,13 @@ export const TextContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  margin: 6rem 0 13.7rem 0;
-  width: 100%;
+  margin: 6rem auto 13.7rem;
+  width: 26.7rem;
+  height: 17rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
 export const ButtonContainer = styled.div`

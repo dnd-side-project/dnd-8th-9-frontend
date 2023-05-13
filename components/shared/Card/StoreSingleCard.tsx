@@ -48,7 +48,7 @@ function StoreSingleCard({ data, rank }: IProps) {
               {`리뷰(${reviewCount})`}
             </Text>
           </S.Review>
-          <S.Price weight={600} size={13} color={colors.blue[800]}>
+          <S.Price weight={600} size={15} color={colors.blue[800]}>
             {generateRangePriceString(min, max)}
           </S.Price>
           <Platform links={links} />

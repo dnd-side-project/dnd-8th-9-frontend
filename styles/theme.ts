@@ -81,6 +81,7 @@ const theme: Theme = {
       800: "#414141",
       900: "#202020",
     },
+    section: "#F2F2F2",
   },
   "z-index": {
     gnb: Z_INDEX.BASE + Z_INDEX.ABOVE * 5,

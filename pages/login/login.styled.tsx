@@ -1,54 +1,49 @@
-import Button from "@/components/shared/Button/Button";
 import styled from "@emotion/styled";
 
-export const LoginWrap = styled.div`
-  background-color: #041449;
-  width: 100%;
-  height: 80rem;
+export const Wrap = styled.div`
   position: relative;
+  height: calc(100vh - 5.6rem);
+  overflow: hidden;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.blue[900]};
+  text-align: center;
+`;
+
+export const Content = styled.div`
+  width: 100%;
+  position: absolute;
+  bottom: -6rem;
+  left: 0;
 `;
 
 export const LogoWrap = styled.div`
-  position: absolute;
-  top: 18.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
   display: flex;
   flex-direction: column;
-  row-gap: 1.4rem;
-  text-align: center;
+  align-items: center;
+  row-gap: 1.3rem;
+`;
 
-  svg {
-    margin: 0 auto;
+export const LogoImageWrap = styled.div`
+  position: relative;
+  width: 8.8rem;
+  height: 2.3rem;
+`;
+
+export const MiddleWrap = styled.div`
+  margin-block: clamp(2rem, 3.8rem, 5.8rem);
+  padding: 0 1.6rem;
+`;
+
+export const TextWrap = styled.div`
+  margin-bottom: 2rem;
+  span {
+    line-height: 150%;
   }
 `;
 
 export const ImageWrap = styled.div`
-  position: absolute;
+  position: relative;
+  left: 0;
   width: 100%;
-  height: 50rem;
-  bottom: 2.8rem;
-`;
-
-export const ButtonWrap = styled.div`
-  position: absolute;
-  bottom: 6rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  padding: 0 1.6rem;
-`;
-
-export const LaterButton = styled(Button)`
-  background-color: transparent;
-  height: 4.8rem;
-  width: 100%;
-  color: ${({ theme }) => theme.colors.grey[100]};
-  font-weight: 500;
-  font-size: ${({ theme }) => theme.fontSizes[15]};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1.2rem;
+  aspect-ratio: 1.1/1;
 `;

@@ -10,6 +10,7 @@ import Nickname from "../Nickname/Nickname";
 import Tag from "../Tag/Tag";
 import Text from "../Text/Text";
 import * as S from "./Card.styled";
+import ReviewTag from "../Tag/common/ReviewTag";
 
 interface IProps {
   data: IReviewListItem;
@@ -35,15 +36,13 @@ function ReviewDoubleCard({ data }: IProps) {
         <Nickname name={nickname} dangol={reorder} />
         <S.Review>
           <Dangdo dangdo={dangdo} />
-          <Tag type="single" label={goodPoint}>
-            {goodPoint}
-          </Tag>
+          <ReviewTag goodPoint={goodPoint} />
         </S.Review>
         <S.InfoWrap>
-          <Text weight={500} size={11} color={colors.grey[700]}>
+          <Text weight={500} size={11} color={colors.grey[800]}>
             {storeName}
           </Text>
-          <Text weight={500} size={11} color={colors.grey[800]}>
+          <Text weight={500} size={11} color={colors.grey[700]}>
             {menuName}
           </Text>
         </S.InfoWrap>

@@ -7,7 +7,7 @@ export const Wrap = styled.div`
 
 export const CarouselWrap = styled.div`
   width: 100%;
-  height: 48.5rem;
+  height: 41.5rem;
 `;
 
 export const Main = styled.div`
@@ -16,7 +16,7 @@ export const Main = styled.div`
   top: 0;
   left: 0;
   z-index: ${({ theme }) => theme["z-index"].storeContent};
-  margin-top: 47rem;
+  margin-top: 38.5rem;
 `;
 
 export const Footer = styled.div`

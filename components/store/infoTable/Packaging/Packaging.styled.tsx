@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 export const Content = styled.div`
   padding: 1.6rem;
-  background-color: ${({ theme }) => theme.colors.navy[100]};
+  background-color: ${({ theme }) => theme.colors.grey[200]};
   border-radius: 8px;
 
   &:first-child {

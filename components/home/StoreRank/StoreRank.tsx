@@ -12,7 +12,7 @@ import Text from "@/components/shared/Text/Text";
 import StoreSingleCard from "@/components/shared/Card/StoreSingleCard";
 import * as S from "./StoreRank.styled";
 
-const CATEGORY_LIST = ["레터링", "캐릭터/입체", "포토", "꽃"];
+const CATEGORY_LIST = ["레터링", "캐릭터", "도시락", "포토", "생화"];
 
 function StoreRank() {
   const { colors } = useTheme();

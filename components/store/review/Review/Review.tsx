@@ -9,6 +9,7 @@ import Nickname from "@/components/shared/Nickname/Nickname";
 import Text from "@/components/shared/Text/Text";
 import Icon from "@/components/shared/Icon/Icon";
 import Dangdo from "@/components/shared/Dangdo/Dangdo";
+import ReviewTag from "@/components/shared/Tag/common/ReviewTag";
 import useModalStore from "@/store/modal";
 import * as S from "./Review.styled";
 
@@ -55,11 +56,7 @@ export default function Review({ review }: IProp) {
       )}
       <S.Rating>
         <Dangdo dangdo={dangdo} size="m" />
-        <S.ReviewTag type="single" label="overall review">
-          <Text size={13} weight={600} color={colors.pink[700]}>
-            {goodPoint}
-          </Text>
-        </S.ReviewTag>
+        <ReviewTag goodPoint={goodPoint} />
       </S.Rating>
       <S.ReviewText as="p" size={13} color={colors.grey[800]}>
         {content}

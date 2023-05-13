@@ -1,5 +1,5 @@
+import Image from "next/image";
 import { useTheme } from "@emotion/react";
-import { Cake } from "@/assets/images";
 import { useGetMenuList } from "@/hooks/queries/menu";
 import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
 import HomeHeader from "../HomeHeader/HomeHeader";
@@ -23,7 +23,7 @@ function HomeHero() {
             </S.Desc>
           </S.TextWrap>
           <S.ImageWrap>
-            <Cake className="cake" />
+            <Image src="/homeCake.svg" alt="cake" fill />
           </S.ImageWrap>
         </S.HeroTitle>
         <S.StoreWrap>

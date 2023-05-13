@@ -10,11 +10,15 @@ export const ButtonList = styled.div`
   align-items: center;
   column-gap: 1rem;
   margin: 1.2rem 0 2.4rem;
+  width: 100%;
+  overflow-x: scroll;
 `;
 
 export const CategoryButton = styled(Button)`
   padding: 0.9rem 1.4rem;
+  flex-shrink: 0;
   border: 1px solid ${({ theme }) => theme.colors.grey[300]};
+  border-radius: 2.4rem;
 
   &.isSelected {
     background-color: ${({ theme }) => theme.colors.blue[800]};

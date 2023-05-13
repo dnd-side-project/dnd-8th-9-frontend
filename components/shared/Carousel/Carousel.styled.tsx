@@ -14,7 +14,8 @@ export const Container = styled.div<{ bulletMargin: string }>`
   }
 
   .swiper-pagination-bullet {
-    background-color: ${({ theme }) => theme.colors.white[100]};
+    opacity: 1;
+    background-color: ${({ theme }) => theme.colors.grey[100]};
   }
   .swiper-pagination-bullet-active {
     background-color: ${({ theme }) => theme.colors.black};

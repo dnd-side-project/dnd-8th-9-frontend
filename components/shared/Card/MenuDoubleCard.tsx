@@ -50,7 +50,7 @@ function MenuDoubleCard({ data, mode, size = "m" }: IProps) {
           <S.Menu weight={600} size={15}>
             {name}
           </S.Menu>
-          <S.Price weight={700} size={16} color={colors.blue[800]}>
+          <S.Price weight={700} size={18} color={colors.blue[800]}>
             {generatePriceString(price)}
           </S.Price>
           <Platform links={links} />

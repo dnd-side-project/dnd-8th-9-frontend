@@ -1,13 +1,12 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
 import { INav } from "@/constants/navigation";
 import Icon from "../Icon/Icon";
 import Text from "../Text/Text";
 import * as S from "./Navbar.styled";
+import Bookmark from "../Bookmark/Bookmark";
 
 function Navbar(props?: INav) {
-  const [isBookmarked, setIsBookmarked] = useState(false);
   const { colors } = useTheme();
   const {
     back: previous,
@@ -17,11 +16,6 @@ function Navbar(props?: INav) {
 
   const previousPage = () => {
     previous();
-  };
-
-  const bookmark = () => {
-    setIsBookmarked(prev => !prev);
-    console.log("bookmarked");
   };
 
   const share = () => {
@@ -61,16 +55,7 @@ function Navbar(props?: INav) {
         </Text>
       </S.NavTitle>
       <S.NavRight>
-        {props?.bookmark && (
-          <button aria-label="bookmark" type="button" onClick={bookmark}>
-            <Icon
-              name="saveBookmarkWide"
-              size="l"
-              color={isBookmarked ? colors.pink[700] : colors.grey[400]}
-              fill={isBookmarked ? colors.pink[700] : colors.grey[400]}
-            />
-          </button>
-        )}
+        {props?.bookmark && <Bookmark type="store" location="nav" />}
         {props?.share && (
           <button aria-label="share" type="button" onClick={share}>
             <Icon name="share" size="l" color={colors.grey[700]} />

@@ -20,19 +20,21 @@ export const ImageWrap = styled.div`
 export const Container = styled.div<{
   dir: "row" | "col";
   gap: number;
-  imgWidth: number;
+  imgWidth?: number;
   imgHeight: number;
 }>`
   display: flex;
+  flex-shrink: 1;
   align-items: ${({ dir }) => dir === "row" && "center"};
   flex-direction: ${({ dir }) => (dir === "row" ? "row" : "column")};
   gap: ${({ gap }) => numberToRem(gap)};
-  width: ${({ dir, imgWidth }) => (dir === "col" ? numberToRem(imgWidth) : "100%")};
-  height: ${({ dir, imgHeight }) => (dir === "row" ? numberToRem(imgHeight) : "auto")};
+  width: ${({ dir, imgWidth }) => (dir === "col" && imgWidth ? numberToRem(imgWidth) : "100%")};
+  min-height: ${({ dir, imgHeight }) => (dir === "row" ? numberToRem(imgHeight) : "auto")};
 
   ${ImageWrap} {
-    max-width: ${({ imgWidth }) => numberToRem(imgWidth)};
+    max-width: ${({ imgWidth }) => (imgWidth ? numberToRem(imgWidth) : "100%")};
     height: ${({ imgHeight }) => numberToRem(imgHeight)};
+    aspect-ratio: 1/1;
   }
 `;
 
@@ -61,12 +63,13 @@ export const InfoWrap = styled.div`
   display: flex;
   align-items: center;
 
-  :first-of-type::after {
+  span:first-child::after {
     content: "";
     display: inline-block;
+    width: 1px;
     height: 0.8rem;
     margin: 0 0.6rem;
-    background-color: ${({ theme }) => theme.colors.grey[900]};
+    background-color: ${({ theme }) => theme.colors.grey[300]};
   }
 `;
 
@@ -106,7 +109,6 @@ export const ReviewText = styled(Text)`
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  word-break: keep-all;
   line-height: 140%;
 `;
 
@@ -139,11 +141,11 @@ export const variantCSS: IVariant = {
     }
 
     ${Review} {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
 
     ${Price} {
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
 
     ${CategoryWrap} {
@@ -188,8 +190,14 @@ export const storeDoubleCss = ({ colors }: Theme) => css`
   border: 1px solid ${colors.grey[300]};
   border-radius: 0.8rem;
   margin-bottom: 1.6rem;
+  width: 100%;
 
   ${ContentWrap} {
     padding: 0 1.6rem 1.6rem;
+  }
+
+  ${ImageWrap} {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 `;

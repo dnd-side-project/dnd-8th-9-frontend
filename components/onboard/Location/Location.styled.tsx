@@ -7,9 +7,10 @@ export const LocationContainer = styled.div`
   height: 48rem;
   overflow-y: scroll;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 10rem);
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 10fr));
   grid-row-gap: 1.4rem;
   grid-column-gap: 1.3rem;
+  padding-inline: 1rem;
 
   button {
     display: flex;
@@ -18,8 +19,8 @@ export const LocationContainer = styled.div`
     justify-content: center;
     border-radius: 1.2rem;
     border: 1px solid ${({ theme }) => theme.colors.grey[300]};
-    width: 10rem;
-    height: 10rem;
+    width: 100%;
+    aspect-ratio: 1/1;
     row-gap: 0.2rem;
     position: relative;
 

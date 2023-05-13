@@ -4,11 +4,10 @@ import useBookmarkStore from "@/store/bookmark";
 import { IStoreListItem, IMenuListItem, IImage, IStoreMenuListItem } from "@/types/api";
 
 import Carousel from "../Carousel/Carousel";
+import Bookmark from "../Bookmark/Bookmark";
 import Icon from "../Icon/Icon";
-import Tag from "../Tag/Tag";
 import Text from "../Text/Text";
 import * as S from "./CardImage.styled";
-import Bookmark from "../Bookmark/Bookmark";
 
 interface IProp {
   data: IImage[] | string;
@@ -56,23 +55,23 @@ function CardImage({
           />
         </S.CheckIconWrap>
       )}
-      {mode === "bookmark" && <Bookmark type={type} data={bookmarkData} />}
+      {mode === "bookmark" && <Bookmark type={type} targetId={bookmarkData.id} />}
       <S.TagsWrap>
         {canDelivery && (
-          <Tag type="icon" label="택배가능">
+          <S.IconTag type="icon" label="택배가능">
             <Icon name="delivery" size="xs" fill={colors.grey[100]} color={colors.grey[100]} />
-            <Text weight={500} size={12} color={colors.grey[100]}>
+            <Text weight={500} size={13} color={colors.grey[100]}>
               택배
             </Text>
-          </Tag>
+          </S.IconTag>
         )}
         {canPickup && (
-          <Tag type="icon" label="픽업가능">
+          <S.IconTag type="icon" label="픽업가능">
             <Icon name="store" size="xs" fill={colors.grey[100]} color={colors.grey[100]} />
-            <Text weight={500} size={12} color={colors.grey[100]}>
+            <Text weight={500} size={13} color={colors.grey[100]}>
               픽업
             </Text>
-          </Tag>
+          </S.IconTag>
         )}
       </S.TagsWrap>
       {rank && (

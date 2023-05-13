@@ -1,3 +1,4 @@
+import theme from "@/styles/theme";
 import { ROUTES } from "./routes";
 
 export interface INav {
@@ -48,7 +49,7 @@ export const ROUTES_NAV: IRouteNav = {
       previous: true,
       home: true,
       bgColor: "black",
-      color: "white",
+      color: theme.colors.grey[100],
     },
   },
   [ROUTES.STORE_IMAGE_REVIEWS_PAGE]: {
@@ -65,7 +66,7 @@ export const ROUTES_NAV: IRouteNav = {
       previous: true,
       home: true,
       bgColor: "black",
-      color: "white",
+      color: theme.colors.grey[100],
     },
   },
 
@@ -92,6 +93,8 @@ export const ROUTES_NAV: IRouteNav = {
   [ROUTES.LOGIN_REDIRECT_PAGE]: {
     nav: {
       previous: true,
+      bgColor: theme.colors.blue[900],
+      color: theme.colors.grey[100],
     },
   },
   [ROUTES.SEARCH_PAGE]: {
