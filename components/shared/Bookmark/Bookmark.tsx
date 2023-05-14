@@ -11,7 +11,7 @@ import * as S from "./Bookmark.styled";
 interface IProps {
   type: "store" | "menu";
   targetId?: number;
-  location?: "nav" | "store" | "card";
+  location?: "nav" | "page" | "card";
 }
 interface IBookmarkIcon {
   [key: string]: {
@@ -29,7 +29,7 @@ const BOOKMARK_ICON: IBookmarkIcon = {
     name: "saveBookmarkWide",
     size: "l",
   },
-  store: {
+  page: {
     name: "saveBookmarkWide",
     size: "m",
   },

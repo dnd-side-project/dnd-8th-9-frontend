@@ -27,7 +27,7 @@ function MainInfo({ data }: IProp) {
           <Text as="h1" weight={700} size={20}>
             {name}
           </Text>
-          <Bookmark type="store" targetId={Number(storeId)} location="store" />
+          <Bookmark type="store" targetId={Number(storeId)} location="page" />
         </div>
         <Icon name="share" size="l" color={colors.grey[800]} />
       </S.Header>
