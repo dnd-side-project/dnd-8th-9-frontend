@@ -17,6 +17,7 @@ export const Main = styled.div`
   left: 0;
   z-index: ${({ theme }) => theme["z-index"].storeContent};
   margin-top: 38.5rem;
+  padding-bottom: 3rem;
 `;
 
 export const Footer = styled.div`
