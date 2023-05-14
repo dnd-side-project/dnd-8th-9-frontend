@@ -24,10 +24,11 @@ function StoreSingleCard({ data, rank }: IProps) {
     priceRange: { max, min },
     storeImages,
     reviewCount,
+    id,
   } = data;
 
   return (
-    <Link href={`/store/${data.id}`}>
+    <Link href={`/store/${id}/menu`}>
       <Card
         data={data}
         type="store"
