@@ -49,7 +49,7 @@ const generatePath = (type: TTarget, asPath: string): [string, string] => {
 };
 
 function Tab({ menuList, target, className }: IProp) {
-  const [currentMenu, setCurrentMenu] = useState("");
+  const [currentMenu, setCurrentMenu] = useState<string>("");
   const { changeCurrentFilterTab, currentFilterTab } = useFilterStore();
   const { asPath } = useRouter();
 
@@ -57,13 +57,17 @@ function Tab({ menuList, target, className }: IProp) {
 
   useEffect(() => {
     if (target === "storeMenuTab") return;
+    if (target === "filterTab") {
+      setCurrentMenu(currentFilterTab);
+      return;
+    }
     const selectedMenu = menuList.find(menu => `${menu.link}` === `/${leafPath}`);
     if (selectedMenu) {
       setCurrentMenu(selectedMenu.label);
     } else {
       setCurrentMenu(menuList[0].label);
     }
-  }, [leafPath, menuList, asPath, target]);
+  }, [leafPath, menuList, asPath, target, currentFilterTab]);
 
   useEffect(() => {
     const scrollPosition = localStorage.getItem("tab_scroll_position");
