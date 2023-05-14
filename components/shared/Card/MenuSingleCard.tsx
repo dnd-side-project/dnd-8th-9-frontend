@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
 import { generatePriceString } from "@/utils/util";
 import { IStoreMenuListItem } from "@/types/api";
@@ -28,12 +27,11 @@ const SIZE_STYLE = {
 
 function MenuSingleCard({ data, mode, size = "m" }: IProps) {
   const { colors } = useTheme();
-  const { asPath } = useRouter();
 
-  const { name, menuImages, desc, basePrice } = data;
+  const { name, menuImages, desc, basePrice, id, storeId } = data;
 
   return (
-    <Link href={`${asPath}/${data.id}`}>
+    <Link href={`/store/${storeId}/menu/${id}`}>
       <Card
         imgWidth={SIZE_STYLE[size].imgWidth}
         imgHeight={SIZE_STYLE[size].imgHeight}
