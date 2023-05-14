@@ -9,6 +9,7 @@ import menuApi from "@/api/domains/menu";
 import { IDetailInfo } from "@/types/api";
 import { menu as mockMenu } from "@/mocks/mockData/menu";
 import { useGetMenuDetails, useGetMenuReviews } from "@/hooks/queries/menu";
+import { checkAuth } from "@/utils/util";
 
 import { MenuHero, MenuSize, MenuTaste, MenuDesign, MenuCaution } from "@/components/store/menu";
 import Review from "@/components/store/review/Review/Review";
@@ -54,6 +55,10 @@ function MenuDetailsPage() {
 
   if (menuDetailsData === undefined) return <h1>no data</h1>;
 
+  const handleAuthCheck = () => {
+    checkAuth();
+  };
+
   return (
     <div>
       <MenuHero data={menuDetailsData.data} />
@@ -68,7 +73,10 @@ function MenuDetailsPage() {
           <S.ReviewTitle as="p" size={16} weight={600}>
             이 메뉴의 리뷰 <strong>{menuReviewsData?.data.length}</strong>건
           </S.ReviewTitle>
-          <S.ReviewWriteButtonLink href={`/store/${storeId as string}/review/form`}>
+          <S.ReviewWriteButtonLink
+            href={`/store/${storeId as string}/review/form`}
+            onClick={handleAuthCheck}
+          >
             <Icon name="pencil" size="s" color={colors.grey[800]} />
             <Text weight={500} color={colors.grey[800]}>
               리뷰작성
