@@ -41,12 +41,12 @@ function SectionLayout({ children }: IProps) {
         {children}
       </S.Main>
       <S.Footer>
-        <S.FooterButton type="button" shape="round" label="write review">
+        <S.FloatingButtonLink href={`/store/${storeId as string}/review/form`}>
           <Icon name="pencil" size="m" color={colors.grey[100]} />
           <Text size={18} weight={600} color={colors.grey[100]}>
             리뷰 작성
           </Text>
-        </S.FooterButton>
+        </S.FloatingButtonLink>
       </S.Footer>
     </S.Wrap>
   );
