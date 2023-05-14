@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
+import Button from "@/components/shared/Button/Button";
 
 export const Container = styled.div`
-  padding: 0 1.6rem 7.4rem 1.6rem;
+  padding: 0 1.6rem 5rem 1.6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,7 +64,13 @@ export const TextBox = styled.div`
   font-weight: 400;
   line-height: 150%;
   color: ${({ theme }) => theme.colors.grey[700]};
-
-  width: 32.8rem;
+  width: 100%;
   margin: 0.8rem 0 1.6rem 0;
+`;
+
+export const CopyButton = styled(Button)`
+  background-color: ${({ theme }) => theme.colors.blue[200]};
+  color: ${({ theme }) => theme.colors.blue[700]};
+  width: 100%;
+  gap: 0.8rem;
 `;
