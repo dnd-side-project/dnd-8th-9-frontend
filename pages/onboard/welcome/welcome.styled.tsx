@@ -2,10 +2,12 @@ import styled from "@emotion/styled";
 
 export const Wrap = styled.div`
   padding: 0 1.6rem;
+  height: 100vh;
+  overflow: hidden;
 `;
 
 export const TextContainer = styled.div`
-  margin-top: 13.2rem;
+  margin-top: calc((100vh - 41rem) / 6 * 2);
 
   > * {
     line-height: 150%;
@@ -17,7 +19,7 @@ export const TextContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  margin: 6rem auto 13.7rem;
+  margin: calc((100vh - 41rem) / 6) auto calc((100vh - 41rem) / 6 * 2);
   width: 26.7rem;
   height: 17rem;
   display: flex;
@@ -27,7 +29,7 @@ export const ImageContainer = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-  margin-bottom: 6rem;
+  margin-bottom: calc((100vh - 41rem) / 6);
 
   button {
     width: 100%;
