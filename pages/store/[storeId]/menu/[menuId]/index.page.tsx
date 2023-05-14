@@ -45,7 +45,7 @@ const MENU_DATA = (parsedMockDetailInfo: IDetailInfo) => [
 function MenuDetailsPage() {
   const { colors } = useTheme();
   const {
-    query: { menuId },
+    query: { menuId, storeId },
   } = useRouter();
 
   const { data: menuDetailsData } = useGetMenuDetails(Number(menuId));
@@ -68,12 +68,12 @@ function MenuDetailsPage() {
           <S.ReviewTitle as="p" size={16} weight={600}>
             이 메뉴의 리뷰 <strong>{menuReviewsData?.data.length}</strong>건
           </S.ReviewTitle>
-          <S.ReviewWriteButton type="button" label="write review" shape="square">
+          <S.ReviewWriteButtonLink href={`/store/${storeId as string}/review/form`}>
             <Icon name="pencil" size="s" color={colors.grey[800]} />
             <Text weight={500} color={colors.grey[800]}>
               리뷰작성
             </Text>
-          </S.ReviewWriteButton>
+          </S.ReviewWriteButtonLink>
         </S.ReviewHeader>
         <ReviewFilter />
         <Sort />
