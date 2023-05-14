@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
 import { storeTab } from "@/constants/tabs";
 import { useGetStore } from "@/hooks/queries/store";
+import { checkAuth } from "@/utils/util";
 
 import Carousel from "@/components/shared/Carousel/Carousel";
 import Tab from "@/components/shared/Tab/Tab";
@@ -27,6 +28,10 @@ function SectionLayout({ children }: IProps) {
   const { canDelivery, canPickup, links, storeImages, reviewStats, reviewCount } =
     storeDetailsData.data;
 
+  const handleAuthCheck = () => {
+    checkAuth();
+  };
+
   return (
     <S.Wrap>
       <S.CarouselWrap>
@@ -41,12 +46,15 @@ function SectionLayout({ children }: IProps) {
         {children}
       </S.Main>
       <S.Footer>
-        <S.FooterButton type="button" shape="round" label="write review">
+        <S.FloatingButtonLink
+          href={`/store/${storeId as string}/review/form`}
+          onClick={handleAuthCheck}
+        >
           <Icon name="pencil" size="m" color={colors.grey[100]} />
           <Text size={18} weight={600} color={colors.grey[100]}>
             리뷰 작성
           </Text>
-        </S.FooterButton>
+        </S.FloatingButtonLink>
       </S.Footer>
     </S.Wrap>
   );

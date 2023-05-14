@@ -1,14 +1,14 @@
-import { css, useTheme } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
 import { store } from "@/mocks/mockData/store";
 import { useGetStore } from "@/hooks/queries/store";
 import useModalStore from "@/store/modal";
 
 import { Copy } from "@/assets/icons";
-import Button from "@/components/shared/Button/Button";
 import Modal from "@/components/shared/Modal/Modal";
 import ModalMessage from "@/components/shared/ModalMessage/ModalMessage";
 import SectionLayout from "@/components/store/SectionLayout/SectionLayout";
+import Text from "@/components/shared/Text/Text";
 import * as S from "./order.styled";
 
 const TEMPLATE_TITLE = "주문양식이 복사되었습니다!";
@@ -50,23 +50,17 @@ function OrderTemplatePage() {
             당도는 현재 예약/결제 서비스를 운영하고 있지 않습니다. 주문 양식은 업체에서 제공해준
             정보이며, 해당 업체를 통해 실제 결제가 이루어져야 케이크 주문/예약이 가능합니다.
           </S.TextBox>
-          <Button
+          <S.CopyButton
             type="button"
             label="복사하기"
             shape="square"
-            cssProp={css`
-              background-color: ${colors.blue[200]};
-              color: ${colors.blue[700]};
-              width: 32.8rem;
-              gap: 0.8rem;
-            `}
             onClick={toggleOrderFormModal}
           >
-            <>
-              <Copy height={16} width={16} viewBox="0 0 19 19" />
+            <Copy height={16} width={16} viewBox="0 0 19 19" />
+            <Text size={16} color={colors.blue[700]} weight={500}>
               복사하기
-            </>
-          </Button>
+            </Text>
+          </S.CopyButton>
         </S.Container>
       </SectionLayout>
     </>

@@ -1,4 +1,4 @@
-import Button from "@/components/shared/Button/Button";
+import Link from "next/link";
 import styled from "@emotion/styled";
 
 export const Wrap = styled.div`
@@ -17,6 +17,7 @@ export const Main = styled.div`
   left: 0;
   z-index: ${({ theme }) => theme["z-index"].storeContent};
   margin-top: 38.5rem;
+  padding-bottom: 3rem;
 `;
 
 export const Footer = styled.div`
@@ -32,13 +33,11 @@ export const Footer = styled.div`
   z-index: ${({ theme }) => theme["z-index"].gnb};
 `;
 
-export const FooterButton = styled(Button)`
-  height: 5.2rem;
+export const FloatingButtonLink = styled(Link)`
   border-radius: 3rem;
   background-color: ${({ theme }) => theme.colors.pink[700]};
   padding: 1.55rem 3rem;
-
-  span {
-    margin-left: 0.4rem;
-  }
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
 `;

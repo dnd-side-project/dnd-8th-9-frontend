@@ -7,4 +7,8 @@ export const InfoContentBox = styled(ContentBox)`
   h2 {
     margin-bottom: 1.6rem;
   }
+
+  &:last-child {
+    border: none;
+  }
 `;

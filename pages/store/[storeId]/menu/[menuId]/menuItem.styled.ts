@@ -1,4 +1,4 @@
-import Button from "@/components/shared/Button/Button";
+import Link from "next/link";
 import Text from "@/components/shared/Text/Text";
 import ContentBox from "@/components/store/ContentBox/ContentBox";
 import styled from "@emotion/styled";
@@ -49,9 +49,11 @@ export const ReviewTitle = styled(Text)`
   }
 `;
 
-export const ReviewWriteButton = styled(Button)`
+export const ReviewWriteButtonLink = styled(Link)`
   padding: 0.8rem 1.2rem;
   border: 1px solid ${({ theme }) => theme.colors.grey[300]};
   border-radius: 0.8rem;
   min-height: auto;
+  display: flex;
+  align-items: center;
 `;

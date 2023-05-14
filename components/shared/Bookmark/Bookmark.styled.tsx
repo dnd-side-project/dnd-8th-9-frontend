@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
-export const BookmarkIconWrap = styled.button<{ location: string }>`
+export const BookmarkIconWrap = styled.button<{ location: "nav" | "page" | "card" }>`
   ${({ location, theme }) =>
     location === "card" &&
     css`

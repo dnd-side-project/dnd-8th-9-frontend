@@ -29,10 +29,10 @@ const SIZE_STYLE = {
 // NOTE: IMenuListItem : menuImages로 변경
 function MenuDoubleCard({ data, mode, size = "m" }: IProps) {
   const { colors } = useTheme();
-  const { storeName, price, name, menuImage, links } = data;
+  const { storeName, price, name, menuImage, links, storeId, id } = data;
 
   return (
-    <Link href={`/store/${data.storeId}`}>
+    <Link href={`/store/${storeId}/menu/${id}`}>
       <Card
         imgWidth={SIZE_STYLE[size].imgWidth}
         imgHeight={SIZE_STYLE[size].imgHeight}

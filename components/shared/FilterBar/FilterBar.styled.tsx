@@ -5,6 +5,7 @@ export const Wrap = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  height: 100%;
   overflow-x: scroll;
   column-gap: 0.8rem;
   margin-bottom: 1.6rem;

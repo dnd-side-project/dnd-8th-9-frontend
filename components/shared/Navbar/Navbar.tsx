@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
 import { INav } from "@/constants/navigation";
+import { useGetStore } from "@/hooks/queries/store";
 import Icon from "../Icon/Icon";
 import Text from "../Text/Text";
 import * as S from "./Navbar.styled";
@@ -13,6 +14,8 @@ function Navbar(props?: INav) {
     query: { storeId },
     push,
   } = useRouter();
+
+  const { data: storeDetailsData } = useGetStore(Number(storeId));
 
   const previousPage = () => {
     previous();
@@ -51,7 +54,7 @@ function Navbar(props?: INav) {
       </S.NavLeft>
       <S.NavTitle>
         <Text weight={600} size={16}>
-          {props?.text === "업체이름" && storeId ? storeId : props?.text}
+          {props?.text === "업체이름" && storeId ? storeDetailsData?.data.name : props?.text}
         </Text>
       </S.NavTitle>
       <S.NavRight>
