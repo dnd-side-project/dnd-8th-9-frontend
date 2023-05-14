@@ -5,6 +5,7 @@ import { generatePriceString } from "@/utils/util";
 import Carousel from "@/components/shared/Carousel/Carousel";
 import Text from "@/components/shared/Text/Text";
 import Icon from "@/components/shared/Icon/Icon";
+import Bookmark from "@/components/shared/Bookmark/Bookmark";
 import * as S from "./MenuHero.styled";
 
 interface IProps {
@@ -25,12 +26,7 @@ function MenuHero({ data }: IProps) {
               <Text as="h1" weight={700} size={20}>
                 {storeName}
               </Text>
-              <Icon
-                name="saveBookmarkWide"
-                size="m"
-                color={colors.grey[400]}
-                fill={colors.grey[400]}
-              />
+              <Bookmark type="menu" location="page" />
             </div>
             <Icon name="share" size="l" color={colors.grey[800]} />
           </S.Header>
