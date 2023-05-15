@@ -26,10 +26,9 @@ const SIZE_STYLE = {
   },
 };
 
-// NOTE: IMenuListItem : menuImages로 변경
 function MenuDoubleCard({ data, mode, size = "m" }: IProps) {
   const { colors } = useTheme();
-  const { storeName, price, name, menuImage, links, storeId, id } = data;
+  const { storeName, price, name, menuImages, links, storeId, id } = data;
 
   return (
     <Link href={`/store/${storeId}/menu/${id}`}>
@@ -37,7 +36,7 @@ function MenuDoubleCard({ data, mode, size = "m" }: IProps) {
         imgWidth={SIZE_STYLE[size].imgWidth}
         imgHeight={SIZE_STYLE[size].imgHeight}
         dir="col"
-        image={!menuImage?.length ? IMAGE_MOCK : menuImage[0].url}
+        image={!menuImages?.length ? IMAGE_MOCK : menuImages[0].url}
         gap={SIZE_STYLE[size].gap}
         mode={mode}
         data={data}
