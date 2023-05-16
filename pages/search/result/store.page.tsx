@@ -11,6 +11,7 @@ import FilterBar from "@/components/shared/FilterBar/FilterBar";
 import FilterModal from "@/components/shared/FilterModal/FilterModal";
 import Sort from "@/components/shared/Sort/Sort";
 import Tab from "@/components/shared/Tab/Tab";
+import { IFilterStore } from "@/types/store/filter";
 import * as S from "../search.styled";
 
 function SearchResultStorePage() {
@@ -28,11 +29,13 @@ function SearchResultStorePage() {
 
   useEffect(() => {
     if (
-      Object.keys(selectedFilterOptions).some(filter => selectedFilterOptions[filter].length !== 0)
+      Object.keys(selectedFilterOptions).some(
+        filter => selectedFilterOptions[filter as keyof IFilterStore].length !== 0,
+      )
     ) {
       const result = searchResult.filter(store => {
         return selectedFilterOptions["카테고리"].map(category => {
-          return store.category.includes(category as TCategory);
+          return store.category.includes(category);
         });
       });
       setFilterResult(result);
@@ -42,11 +45,13 @@ function SearchResultStorePage() {
 
   useEffect(() => {
     if (
-      Object.keys(selectedFilterOptions).some(filter => selectedFilterOptions[filter].length !== 0)
+      Object.keys(selectedFilterOptions).some(
+        filter => selectedFilterOptions[filter as keyof IFilterStore].length !== 0,
+      )
     ) {
       const result = searchResult.filter(store => {
         return selectedFilterOptions["카테고리"].some(category => {
-          return store.category.includes(category as TCategory);
+          return store.category.includes(category);
         });
       });
 
