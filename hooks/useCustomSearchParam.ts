@@ -2,9 +2,9 @@
 import { useSearchParams } from "next/navigation";
 import { TCategory, TPlatform, TRecieveMethod } from "@/types/api";
 import { generateFilterPriceRangeOption } from "@/utils/util";
-import { IFilterPayload, IFilterStore, IMappingObject } from "@/types/store/filter";
+import { IFilterPayload, IFilterStore, IMappingPayloadToStoreObject } from "@/types/store/filter";
 
-const MAPPING_PAYLOAD_TO_FILTERSTORE: IMappingObject = {
+const MAPPING_PAYLOAD_TO_FILTERSTORE: IMappingPayloadToStoreObject = {
   keys: {
     categories: "카테고리",
     minPrice: "가격",
@@ -81,7 +81,9 @@ function useCustomSearchParam() {
 
     Object.keys(payload).forEach(payloadKey => {
       const mappedKey =
-        MAPPING_PAYLOAD_TO_FILTERSTORE.keys[payloadKey as keyof IMappingObject["keys"]];
+        MAPPING_PAYLOAD_TO_FILTERSTORE.keys[
+          payloadKey as keyof IMappingPayloadToStoreObject["keys"]
+        ];
 
       switch (payloadKey) {
         case "page":
@@ -100,7 +102,9 @@ function useCustomSearchParam() {
         case "receive":
           const value = payload[payloadKey];
           const mappedValue =
-            MAPPING_PAYLOAD_TO_FILTERSTORE[payloadKey][value as keyof IMappingObject["receive"]];
+            MAPPING_PAYLOAD_TO_FILTERSTORE[payloadKey][
+              value as keyof IMappingPayloadToStoreObject["receive"]
+            ];
           (filterStoreObject[mappedKey as keyof IFilterStore] as TRecieveMethod | string) =
             mappedValue;
           break;
@@ -117,11 +121,10 @@ function useCustomSearchParam() {
       }
     });
 
-    if (minPrice && maxPrice) {
+    if (minPrice >= 0 && maxPrice >= 0) {
       filterStoreObject["가격"] = generateFilterPriceRangeOption(minPrice, maxPrice);
     }
 
-    console.log("filter object", filterStoreObject);
     return filterStoreObject;
   };
 
