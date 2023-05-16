@@ -26,7 +26,7 @@ const FILTER_TAB_MENU: IFilterTabMenu = {
     type: "checkbox",
     options: ["인스타그램", "아이디어스", "네이버스토어", "카카오톡 채널", "업체 홈페이지"],
   },
-  수령방법: { type: "checkbox", options: ["매장에서 픽업", "택배로 배송"] },
+  수령방법: { type: "radio", options: ["매장에서 픽업", "택배로 배송"] },
 };
 
 function FilterModal() {
