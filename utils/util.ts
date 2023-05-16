@@ -55,3 +55,12 @@ export const checkAuth = () => {
 
   return authenticated;
 };
+
+export const generateFilterPriceRangeOption = (min: number, max: number) => {
+  const PRICE_UNIT = 10000;
+
+  const minPrice = Math.floor(min / PRICE_UNIT);
+  const maxPrice = Math.ceil(max / PRICE_UNIT);
+
+  return `${minPrice}만원 ~ ${maxPrice}만원`;
+};
