@@ -1,8 +1,13 @@
 /* eslint-disable no-case-declarations */
 import { useSearchParams } from "next/navigation";
 import { TCategory, TPlatform, TRecieveMethod } from "@/types/api";
-import { generateFilterPriceRangeOption } from "@/utils/util";
-import { IFilterPayload, IFilterStore, IMappingPayloadToStoreObject } from "@/types/store/filter";
+import { generateFilterPriceRangeOption, parsePriceRangeToMinAndMaxPrice } from "@/utils/util";
+import {
+  IFilterPayload,
+  IFilterStore,
+  IMappingPayloadToStoreObject,
+  IMappingStoreToPayloadObject,
+} from "@/types/store/filter";
 
 const MAPPING_PAYLOAD_TO_FILTERSTORE: IMappingPayloadToStoreObject = {
   keys: {
@@ -25,6 +30,25 @@ const MAPPING_PAYLOAD_TO_FILTERSTORE: IMappingPayloadToStoreObject = {
   },
 };
 
+const MAPPING_FILTERSTORE_TO_PAYLOAD: IMappingStoreToPayloadObject = {
+  keys: {
+    카테고리: "categories",
+    주문플랫폼: "platforms",
+    수령방법: "receive",
+  },
+  주문플랫폼: {
+    "카카오톡 채널": "KAKAO",
+    인스타그램: "INSTAGRAM",
+    "업체 홈페이지": "WEBSITE",
+    아이디어스: "IDIUS",
+    네이버스토어: "NAVER",
+  },
+  수령방법: {
+    "택배로 배송": "canDelivery",
+    "매장에서 픽업": "canPickup",
+  },
+};
+
 const initialPayload: IFilterPayload = {
   categories: [],
   minPrice: -1,
@@ -33,7 +57,7 @@ const initialPayload: IFilterPayload = {
   receive: "",
   search: "",
   sort: "",
-  page: -1,
+  page: 0,
 };
 
 const initialFilterStore: IFilterStore = {
@@ -128,7 +152,72 @@ function useCustomSearchParam() {
     return filterStoreObject;
   };
 
-  return { urlToPayload, payloadToFilterStore };
+  const filterStoreToPayload = (filterStore: IFilterStore) => {
+    const payload: IFilterPayload = { ...initialPayload };
+
+    Object.keys(filterStore).forEach(storeKey => {
+      const mappedKey =
+        MAPPING_FILTERSTORE_TO_PAYLOAD.keys[storeKey as keyof IMappingStoreToPayloadObject["keys"]];
+      switch (storeKey) {
+        case "주문플랫폼":
+          (payload[mappedKey as keyof IFilterPayload] as TPlatform[]) = [] as TPlatform[];
+          filterStore[storeKey].forEach(platform => {
+            const mappedValue =
+              MAPPING_FILTERSTORE_TO_PAYLOAD[storeKey][
+                platform as keyof IMappingStoreToPayloadObject["주문플랫폼"]
+              ];
+            (payload[mappedKey as keyof IFilterPayload] as TPlatform[]).push(
+              mappedValue as TPlatform,
+            );
+          });
+          break;
+        case "수령방법":
+          const value = filterStore[storeKey];
+          const mappedValue =
+            MAPPING_FILTERSTORE_TO_PAYLOAD[storeKey][
+              value as keyof IMappingStoreToPayloadObject["수령방법"]
+            ];
+          (payload[mappedKey as keyof IFilterPayload] as TRecieveMethod | string) = mappedValue;
+          break;
+        case "카테고리":
+          (payload[mappedKey as keyof IFilterPayload] as TCategory[]) = filterStore[storeKey];
+          break;
+        case "가격":
+          const [minPrice, maxPrice] = parsePriceRangeToMinAndMaxPrice(filterStore[storeKey]);
+          if (minPrice < 0 || maxPrice < 0) return;
+          payload.minPrice = minPrice;
+          payload.maxPrice = maxPrice;
+          break;
+        default:
+      }
+    });
+
+    return payload;
+  };
+
+  const payloadToUrl = (filterPayload: IFilterPayload) => {
+    const params = new URLSearchParams(searchParams);
+
+    Object.keys(filterPayload).forEach(key => {
+      params.delete(key);
+      const value = filterPayload[key as keyof IFilterPayload];
+
+      if (Array.isArray(value)) {
+        if (!value.length) return;
+        value.forEach(item => params.append(key, item));
+      } else if (typeof value === "number") {
+        if (value < 0) return;
+        params.set(key, String(value));
+      } else {
+        if (!value) return;
+        params.set(key, value);
+      }
+    });
+
+    return params.toString();
+  };
+
+  return { urlToPayload, payloadToFilterStore, filterStoreToPayload, payloadToUrl };
 }
 
 export default useCustomSearchParam;
