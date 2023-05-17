@@ -1,6 +1,9 @@
+import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import Sheet from "react-modal-sheet";
 import { filterTab } from "@/constants/tabs";
 import useFilterStore from "@/store/filter";
+import useCustomSearchParam from "@/hooks/useCustomSearchParam";
 import CheckboxGroup from "../Input/Checkbox/CheckboxGroup";
 import RadioGroup from "../Input/Radio/RadioGroup";
 import Text from "../Text/Text";
@@ -30,17 +33,26 @@ const FILTER_TAB_MENU: IFilterTabMenu = {
 };
 
 function FilterModal() {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const {
     filterModalOpen,
     toggleFilterModalOpen,
     currentFilterTab,
     syncSelectedAndAppliedFilterOptions,
     resetSelectedFilterOptions,
+    selectedFilterOptions,
   } = useFilterStore();
+
+  const { filterStoreToPayload, payloadToUrl } = useCustomSearchParam();
 
   const handleSubmit = () => {
     syncSelectedAndAppliedFilterOptions("selected");
     toggleFilterModalOpen();
+    const payload = filterStoreToPayload(selectedFilterOptions);
+    const url = payloadToUrl(payload);
+    router.push(`${pathname as string}?${url}`);
   };
 
   return (
