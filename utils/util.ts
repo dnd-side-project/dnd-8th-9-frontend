@@ -64,3 +64,14 @@ export const generateFilterPriceRangeOption = (min: number, max: number) => {
 
   return `${minPrice}만원 ~ ${maxPrice}만원`;
 };
+
+export const parsePriceRangeToMinAndMaxPrice = (priceRange: string) => {
+  const UNIT = 10000;
+  if (!priceRange) return [-1, -1];
+  const [min, max] = priceRange.split(" ~ ").map(str => {
+    const num = Number(str.split("만원")[0]);
+    return num * UNIT;
+  });
+
+  return [min, max];
+};

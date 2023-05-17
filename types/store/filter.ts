@@ -22,6 +22,25 @@ export interface IMappingPayloadToStoreObject {
   };
 }
 
+export interface IMappingStoreToPayloadObject {
+  keys: {
+    카테고리: string;
+    주문플랫폼: string;
+    수령방법: string;
+  };
+  주문플랫폼: {
+    "카카오톡 채널": string;
+    인스타그램: string;
+    "업체 홈페이지": string;
+    아이디어스: string;
+    네이버스토어: string;
+  };
+  수령방법: {
+    "택배로 배송": string;
+    "매장에서 픽업": string;
+  };
+}
+
 // NOTE: filter modal 저장값
 export interface IFilterStore {
   카테고리: TCategory[];
