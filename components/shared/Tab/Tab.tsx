@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import useFilterStore from "@/store/filter";
 import * as S from "./Tab.styled";
 
@@ -24,14 +25,14 @@ export interface IProp {
   className?: string;
 }
 
-const generatePath = (type: TTarget, asPath: string): [string, string] => {
+const generatePath = (type: TTarget, asPath: string, pathname: string): [string, string] => {
   let rootPath;
   let leafPath = "";
   switch (type) {
     case "storeTab":
     case "resultTab":
     case "homeTab": {
-      const splittedArr = asPath.split("/");
+      const splittedArr = pathname.split("/");
       leafPath = splittedArr[splittedArr.length - 1];
       rootPath = splittedArr.slice(0, -1).join("/");
       return [rootPath, leafPath];
@@ -40,7 +41,7 @@ const generatePath = (type: TTarget, asPath: string): [string, string] => {
       if (asPath.indexOf("#") !== -1) {
         rootPath = asPath.split("#");
       }
-      return [rootPath ? rootPath[0] : asPath, leafPath];
+      return [rootPath ? rootPath[0] : asPath, rootPath ? rootPath[1] : ""];
     case "filterTab":
       return [asPath, leafPath];
     default:
@@ -49,19 +50,24 @@ const generatePath = (type: TTarget, asPath: string): [string, string] => {
 };
 
 function Tab({ menuList, target, className }: IProp) {
+  const { asPath } = useRouter();
+  const pathname = usePathname();
+
   const [currentMenu, setCurrentMenu] = useState<string>("");
   const { changeCurrentFilterTab, currentFilterTab } = useFilterStore();
-  const { asPath } = useRouter();
 
-  const [rootPath, leafPath] = generatePath(target, asPath);
+  const [rootPath, leafPath] = generatePath(target, asPath, pathname as string);
 
   useEffect(() => {
-    if (target === "storeMenuTab") return;
     if (target === "filterTab") {
       setCurrentMenu(currentFilterTab);
       return;
     }
-    const selectedMenu = menuList.find(menu => `${menu.link}` === `/${leafPath}`);
+    const selectedMenu = menuList.find(menu =>
+      target === "storeMenuTab"
+        ? `${menu.link}` === `${leafPath}`
+        : `${menu.link}` === `/${leafPath}`,
+    );
     if (selectedMenu) {
       setCurrentMenu(selectedMenu.label);
     } else {
