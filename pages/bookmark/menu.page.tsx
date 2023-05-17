@@ -12,6 +12,7 @@ import Text from "@/components/shared/Text/Text";
 import GNB from "@/components/shared/GNB/GNB";
 import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
 import SingleNavbar from "@/components/shared/Navbar/SingleNavbar";
+import FilterModal from "@/components/shared/FilterModal/FilterModal";
 import * as S from "./menu.styled";
 
 function BookmarkDesignPage() {
@@ -79,6 +80,7 @@ function BookmarkDesignPage() {
           <MenuDoubleCard key={menu.id} data={menu} size="m" mode={isEditMode ? "edit" : "none"} />
         ))}
       </S.MenuWrap>
+      <FilterModal />
     </div>
   );
 }
