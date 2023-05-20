@@ -1,7 +1,7 @@
-import { IBaseResponse, IReviewListItem, IReviewPayloadBody } from "@/types/api";
+import { IBaseResponse, IReviewListItem } from "@/types/api";
 import { API_URI } from "@/constants/api";
-import createMultiFormData from "@/utils/multiFormData";
 import { dangdoApi } from "../config/basic";
+import { dangdoAuthApi } from "../config/auth";
 
 const reviewApi = {
   getReviewList: async () => {
@@ -16,11 +16,11 @@ const reviewApi = {
     );
     return data;
   },
-  postReview: async (body: IReviewPayloadBody) => {
-    const formData = createMultiFormData<IReviewPayloadBody>(body);
-    const { data } = await dangdoApi.post<IBaseResponse<number>>(
+  postReview: async (body: FormData) => {
+    // const formData = createMultiFormData<IReviewPayloadBody>(body);
+    const { data } = await dangdoAuthApi.post<IBaseResponse<number>>(
       API_URI.review.create.REVIEW,
-      formData,
+      body,
     );
     return data;
   },
