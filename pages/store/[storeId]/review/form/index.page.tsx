@@ -1,20 +1,9 @@
-import React, { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import useReviewStore from "@/store/review";
-import {
-  useFormMenuStore,
-  useFormSizeDangdoStore,
-  useFormDetailStore,
-  useButtonDisabledStore,
-} from "@/store/ReviewForm";
+import { useState } from "react";
+import useReviewStore, { IReviewState } from "@/store/review";
 import SelectMenu from "@/components/ReviewForm/SelectMenu/SelectMenu";
 import SelectSizeDangdo from "@/components/ReviewForm/SelectSizeDangdo/SelectSizeDangdo";
 import Detail from "@/components/ReviewForm/Detail/Detail";
 import Sumbitted from "@/components/ReviewForm/Submitted/Submitted";
-import Button from "@/components/shared/Button/Button";
-import { css } from "@emotion/react";
-import { TReviewOption } from "@/types/api";
 import * as S from "./form.styled";
 
 const multiStepForm = (currentPage: number) => {
@@ -32,85 +21,76 @@ const multiStepForm = (currentPage: number) => {
   }
 };
 
-export default function FormPage() {
-  const { id, name } = useFormMenuStore();
-  const { dangdo } = useFormSizeDangdoStore();
-  const { best, comment, imgFiles } = useFormDetailStore();
-  const { updateReviews } = useReviewStore();
+const RequiredField = [["menuId"], ["sizeOption", "dangdo"], ["content", "goodPoint"]];
 
-  const { asPath } = useRouter();
-  const backToReview = asPath
-    .split("/")
-    .slice(0, asPath.split("/").length - 1)
-    .join("/");
-  const { isDisabled } = useButtonDisabledStore(state => state);
+export default function FormPage() {
+  const { reviewState } = useReviewStore();
+
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handleSubmit = () => {
-    if (!isDisabled) {
-      setCurrentPage(currentPage + 1);
-    }
-    if (!isDisabled && currentPage === 4) {
-      updateReviews({
-        id,
-        nickname: "random",
-        profileImage: "",
-        reorder: true,
-        dangdo,
-        menuName: name,
-        goodPoint: best as TReviewOption,
-        content: comment,
-        date: "2023-02-13 14:43:50",
-        reviewImages: imgFiles,
-        likes: 0,
-        storeId: 1,
-        storeName: "coco",
-      });
-    }
+  const handleNextPage = () => {
+    setCurrentPage(prev => prev + 1);
   };
+
+  const handlePrevPage = () => {
+    setCurrentPage(prev => prev - 1);
+  };
+
+  const handleSubmit = () => {
+    console.log("submit");
+  };
+
+  const canMoveToNextPage = Object.keys(reviewState)
+    .filter(key => RequiredField[currentPage - 1].includes(key))
+    .map(key => reviewState[key as keyof IReviewState])
+    .every(Boolean);
 
   return (
     <S.Container>
       {multiStepForm(currentPage)}
       <S.ButtonWrap>
-        <Button
-          type="submit"
-          label="form"
-          shape="square"
-          disabled={isDisabled}
-          cssProp={
-            isDisabled
-              ? css`
-                  background-color: #c7c7c7;
-                  width: 100%;
-                `
-              : css`
-                  background-color: #f45c65;
-                  color: #fff;
-                  width: 100%;
-                `
-          }
-          onClick={() => handleSubmit()}
-        >
-          {currentPage === 4 ? "작성한 리뷰 보러가기" : "다음"}
-        </Button>
-
-        {currentPage === 4 && (
-          <Link href={backToReview}>
-            <Button
-              type="submit"
-              label="form"
+        {currentPage === 1 && (
+          <S.NextButton
+            type="button"
+            shape="square"
+            label="next"
+            disabled={!canMoveToNextPage}
+            onClick={handleNextPage}
+          >
+            다음
+          </S.NextButton>
+        )}
+        {currentPage === 2 && (
+          <>
+            <S.PrevButton type="button" shape="square" label="previous" onClick={handlePrevPage}>
+              이전
+            </S.PrevButton>
+            <S.NextButton
+              type="button"
               shape="square"
-              cssProp={css`
-                background-color: #fff;
-                color: #636363;
-                width: 100%;
-              `}
-              onClick={() => handleSubmit()}
+              label="next"
+              disabled={!canMoveToNextPage}
+              onClick={handleNextPage}
             >
-              작성 전 화면으로 돌아가기
-            </Button>
-          </Link>
+              다음
+            </S.NextButton>
+          </>
+        )}
+        {currentPage === 3 && (
+          <>
+            <S.PrevButton type="button" shape="square" label="previous" onClick={handlePrevPage}>
+              이전
+            </S.PrevButton>
+            <S.NextButton
+              type="submit"
+              shape="square"
+              label="submit form"
+              disabled={!canMoveToNextPage}
+              onClick={handleSubmit}
+            >
+              리뷰등록
+            </S.NextButton>
+          </>
         )}
       </S.ButtonWrap>
     </S.Container>
