@@ -7,7 +7,6 @@ import { IMAGE_MOCK } from "@/constants/api";
 
 import Dangdo from "../Dangdo/Dangdo";
 import Nickname from "../Nickname/Nickname";
-import Tag from "../Tag/Tag";
 import Text from "../Text/Text";
 import * as S from "./Card.styled";
 import ReviewTag from "../Tag/common/ReviewTag";
@@ -28,12 +27,13 @@ function ReviewDoubleCard({ data }: IProps) {
     nickname,
     storeId,
     storeName,
+    profileImage,
   } = data;
 
   return (
     <Link href={`/store/${storeId}/review`}>
       <S.ContentWrap type="reviewDouble">
-        <Nickname name={nickname} dangol={reorder} />
+        <Nickname name={nickname} dangol={reorder} profileImage={profileImage} />
         <S.Review>
           <Dangdo dangdo={dangdo} />
           <ReviewTag goodPoint={goodPoint} />

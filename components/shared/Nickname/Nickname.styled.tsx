@@ -5,9 +5,19 @@ export const Wrap = styled.div`
   display: flex;
   align-items: center;
   height: 2.6rem;
+`;
+
+export const ImageWrap = styled.div`
+  border-radius: 50%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  position: relative;
+  margin-right: 1rem;
 
   .icon {
-    margin-right: 1rem;
+    height: 100%;
+    width: 100%;
   }
 `;
 
