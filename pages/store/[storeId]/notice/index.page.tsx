@@ -21,7 +21,7 @@ const INFO_TAB_DATA = (notice: INotice | null, info: IInfo | null) => [
   },
   {
     title: "픽업 가능 시간",
-    children: <Table option="notice" data={(notice || NOTICE_MOCK)?.pickupHours} />,
+    children: <Table option="notice" tableData={(notice || NOTICE_MOCK)?.pickupHours} />,
   },
   {
     title: "포장 안내",
@@ -29,11 +29,11 @@ const INFO_TAB_DATA = (notice: INotice | null, info: IInfo | null) => [
   },
   {
     title: "판매자 정보",
-    children: <Table option="info" data={(info || INFO_MOCK)?.sellerInfo} />,
+    children: <Table option="info" tableData={(info || INFO_MOCK)?.sellerInfo} />,
   },
   {
     title: "식품 정보",
-    children: <Table option="info" data={(info || INFO_MOCK)?.foodInfo} />,
+    children: <Table option="info" tableData={(info || INFO_MOCK)?.foodInfo} />,
   },
 ];
 
