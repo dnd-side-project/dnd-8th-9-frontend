@@ -1,195 +1,161 @@
 import styled from "@emotion/styled";
-import { css, Theme } from "@emotion/react";
 
 export const Container = styled.div`
   padding: 2rem 1.4rem 0 2rem;
 `;
 
-export const InfoWrap = styled.div`
-  margin-left: 1.2rem;
+export const MenuCard = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.8rem;
+  column-gap: 1.2rem;
+  margin-bottom: 4rem;
 `;
 
-export const Name = styled.div`
-  font-size: ${({ theme }) => theme.fontSizes[14]};
-  font-weight: 500;
-  color: #414141;
-  height: 1.7rem;
-  line-height: 1.7rem;
-  margin-bottom: 0.8rem;
-`;
+export const ImageWrap = styled.div<{ isPreviewMode?: boolean }>`
+  width: ${({ isPreviewMode }) => (isPreviewMode ? "7rem" : "7.6rem")};
+  aspect-ratio: 1/1;
+  position: relative;
+  border-radius: ${({ isPreviewMode }) => (isPreviewMode ? "0.4rem" : "0.8rem")};
+  overflow: hidden;
 
-export const Size = styled.div`
-  font-size: ${({ theme }) => theme.fontSizes[12]};
-  font-weight: 500;
-  color: #636363;
-  height: 1.4rem;
-  line-height: 1.4rem;
-  margin-bottom: 0.8rem;
-`;
-
-export const DangdoComment = styled.div`
-  height: 1.6rem;
-  line-height: 1.6rem;
-  display: flex;
-  gap: 0.4rem;
-  align-items: center;
-`;
-
-export const Dangdo = styled.div`
-  color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.fontSizes[12]};
-  font-weight: 600;
-  height: 1.4rem;
-  line-height: 1.4rem;
-  display: flex;
-  align-items: center;
-  svg {
-    margin-right: 0.2rem;
+  .deleteIcon {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
   }
 `;
 
-export const Comment = styled.div`
-  color: #414141;
-  font-size: ${({ theme }) => theme.fontSizes[10]};
-  font-weight: 500;
-  height: 1.2rem;
-  line-height: 1.2rem;
-`;
-
-export const Menu = styled.div`
+export const InfoWrap = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 0.8rem;
 `;
 
-export const Best = styled.div`
-  margin-top: 3.2rem;
+export const DangdoComment = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 0.8rem;
 `;
 
-export const Detail = styled.div`
-  margin-top: 3.2rem;
+export const Section = styled.div`
+  margin-bottom: 3.2rem;
+
+  &:last-child {
+    margin-bottom: 1.6rem;
+  }
+
+  h2 {
+    margin-bottom: 1.6rem;
+  }
+
+  small {
+    font-weight: 400;
+    font-size: ${({ theme }) => theme.fontSizes[14]};
+    color: ${({ theme }) => theme.colors.grey[600]};
+  }
+
+  .contentLength {
+    display: block;
+    width: 100%;
+    text-align: right;
+    margin-top: 0.6rem;
+  }
 `;
 
-export const Title = styled.div`
-  color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.fontSizes[16]};
-  font-weight: 600;
-  line-height: 1.9rem;
-  margin-bottom: 1.6rem;
-`;
-
-export const LikeList = styled.div`
+export const ReviewOptionList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
-  font-weight: 500;
-  font-size: ${({ theme }) => theme.fontSizes[15]};
-  line-height: 1.8rem;
-`;
 
-export const Button = css`
-  border: 1px solid #e9e9e9;
-  color: #414141;
-`;
+  button {
+    border: 1px solid ${({ theme }) => theme.colors.grey[300]};
+    padding: 0.9rem 1.6rem;
+    font-size: ${({ theme }) => theme.fontSizes[15]};
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.grey[800]};
+    border-radius: 2.4rem;
 
-export const ClickedButton = ({ colors }: Theme) => css`
-  background-color: ${colors.navy[400]};
-  color: ${colors.white[100]};
-`;
-
-export const Top = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const OrderedTwice = styled.div`
-  font-weight: 500;
-  font-size: ${({ theme }) => theme.fontSizes[12]};
-  line-height: 1.9rem;
-  color: #414141;
+    &.isSelected {
+      border: 1px solid transparent;
+      background-color: ${({ theme }) => theme.colors.blue[700]};
+      color: ${({ theme }) => theme.colors.grey[100]};
+    }
+  }
 `;
 
 export const UploadImage = styled.div`
   display: flex;
-  gap: 0.8rem;
-`;
+  column-gap: 1.2rem;
 
-export const UploadImageText = styled.div`
-  /* border: 1px solid blue; */
-  width: 20rem;
-  /* margin-left: 1.2rem; */
-  padding: 0.85rem 0 0.85rem 1.2rem;
-
-  .title {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-    color: #414141;
+  input[type="file"] {
+    display: none;
   }
 
-  .detail {
-    margin-top: 0.8rem;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    color: #636363;
+  label {
+    width: 7rem;
+    height: 7rem;
+    aspect-ratio: 1/1;
+    border-radius: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed ${({ theme }) => theme.colors.grey[400]};
+    row-gap: 0.4rem;
   }
 `;
 
-export const Textarea = styled.div`
-  margin-top: 1.2rem;
+export const Textarea = styled.textarea`
+  border: 0.16rem solid ${({ theme }) => theme.colors.grey[300]};
+  border-radius: 0.8rem;
+  resize: none;
+  width: 100%;
+  min-height: 18rem;
+  padding: 1.4rem 1.6rem;
+  outline: none;
+  transition: 0.3s;
+  line-height: 150%;
+  font-size: ${({ theme }) => theme.fontSizes[14]};
 
-  textarea {
-    border: 1.6px solid #e9e9e9;
-    border-radius: 8px;
-    resize: none;
-    width: 100%;
-    height: 18rem;
-    padding: 1.4rem 0.8rem 0 0.8rem;
-    outline: none;
-    box-sizing: border-box;
-    transition: 0.3s;
-
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 150%;
-  }
-
-  textarea:focus {
-    border-color: dodgerBlue;
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.blue[500]};
     box-shadow: 0 0 8px 0 dodgetBlue;
   }
-`;
 
-export const FileUpload = styled.div`
-  display: none;
-`;
-
-export const ImageWrap = styled.div`
-  width: 70px;
-  height: 70px;
-  position: relative;
-
-  img {
-    border-radius: 4px;
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.grey[600]};
   }
 `;
 
-export const ImageBackground = styled.div`
-  position: absolute;
-  margin-top: -74px;
+export const Caution = styled.div`
+  padding: 2.5rem 1.6rem;
+  background-color: ${({ theme }) => theme.colors.grey[200]};
+`;
 
-  width: 70px;
-  height: 70px;
-  background-color: rgba(32, 32, 32, 0.3);
-  border-radius: 4px;
+export const ReorderCheckbox = styled.div`
+  margin-block: 1.2rem;
 
-  text-align: right;
-  padding: 6px 6px 0 0;
+  span {
+    margin-left: 1rem;
+    display: inline-block;
+    padding: 0.5rem 0;
+  }
 
-  svg {
-    z-index: ${({ theme }) => theme["z-index"].imageIcon};
+  label {
+    display: flex;
+    align-items: center;
+
+    small {
+      margin-left: 0.4rem;
+      font-weight: 500;
+      color: ${({ theme }) => theme.colors.grey[600]};
+    }
+  }
+
+  input[type="checkbox"] {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.16rem;
+    border-radius: 0.2rem;
   }
 `;

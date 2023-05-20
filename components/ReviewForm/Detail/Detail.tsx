@@ -1,166 +1,158 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useRef, useMemo, useCallback } from "react";
-import {
-  useFormMenuStore,
-  useFormSizeDangdoStore,
-  useFormDetailStore,
-  useButtonDisabledStore,
-} from "@/store/ReviewForm";
-import ImageWrap from "@/components/shared/ImageWrap/ImageWrap";
-import { Heart, Delete } from "@/assets/icons";
+import { useRef } from "react";
+import Image from "next/image";
+import { useTheme } from "@emotion/react";
+import useReviewStore from "@/store/review";
+import { Delete, ImagePlaceholder } from "@/assets/icons";
 import Button from "@/components/shared/Button/Button";
-import { UploadImage } from "@/assets/images";
+import Dangdo from "@/components/shared/Dangdo/Dangdo";
+import Text from "@/components/shared/Text/Text";
 import * as S from "./Detail.styled";
 
-const likeList = ["맛있어요", "가성비가 좋아요", "친절해요", "선물하기 좋아요", "응답이 빨라요"];
+const reviewOptions = [
+  "맛있어요",
+  "가성비가 좋아요",
+  "친절해요",
+  "선물하기 좋아요",
+  "응답이 빨라요",
+];
 
 export default function Detail() {
-  const { name, menuImage } = useFormMenuStore(state => state);
-  const { size, dangdo } = useFormSizeDangdoStore(state => state);
-  const { best, comment, imgFiles, setDetail } = useFormDetailStore(state => state);
-  const { setButtonDisabled, setButtonAbled } = useButtonDisabledStore(state => state);
+  const { colors } = useTheme();
+  const { reviewState, updateReviewState } = useReviewStore();
+  const { menuImage, menuName, sizeOption, dangdo, goodPoint, content, reorder, files } =
+    reviewState;
 
-  let imgIdx = 1;
+  const imageRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    setButtonDisabled();
-  }, [setButtonAbled, setButtonDisabled]);
-
-  useEffect(() => {
-    if (best !== "" && comment !== "" && imgFiles.length) setButtonAbled();
-  }, [best, comment, imgFiles, setButtonAbled]);
-
-  const selectFile = useRef<HTMLInputElement>(null);
-
-  const handleFileUpload = () => {
-    selectFile.current?.click();
+  const handleSelectReviewOption = (option: string) => {
+    updateReviewState("goodPoint", option);
   };
 
-  const saveImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const fileList = e.target.files;
+  const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    updateReviewState("content", e.target.value);
+  };
 
-    if (fileList && fileList[0]) {
-      imgIdx += 1;
-      const reader = new FileReader();
-      reader.readAsDataURL(fileList[0]);
-      reader.onloadend = () => {
-        if (imgFiles.length >= 3) return;
-        // setDetail({ best, comment, imgFiles: [...imgFiles, reader.result] });
-
-        setDetail({
-          best,
-          comment,
-          imgFiles: [
-            ...imgFiles,
-            { id: imgIdx, url: reader.result as string, type: "REVIEW_IMAGE", targetId: 7 },
-          ],
-        });
+  const handleAddImage = () => {
+    if (!imageRef || !imageRef.current || !imageRef.current.files) return;
+    const currentFile = imageRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(currentFile);
+    reader.onloadend = () => {
+      const newFile = {
+        file: currentFile,
+        url: reader.result as string,
       };
-    }
+      updateReviewState("files", [...files, newFile]);
+    };
   };
 
-  const deleteImage = useCallback(
-    (clickedImg: string) => {
-      setDetail({ best, comment, imgFiles: imgFiles.filter(img => img.url !== clickedImg) });
-    },
-    [best, comment, imgFiles, setDetail],
-  );
+  const handleDeleteImage = (targetImageUrl: string) => {
+    const filterFiles = files.filter(file => file.url !== targetImageUrl);
+    updateReviewState("files", filterFiles);
+  };
 
-  const showImage = useMemo(() => {
-    if (imgFiles !== null)
-      return (
-        <>
-          {imgFiles.map((clickedImg, idx) => (
-            <S.ImageWrap key={idx}>
-              {clickedImg && (
-                <>
-                  <img src={clickedImg.url.toString()} alt="업로드" width="70px" height="70px" />
-                  <S.ImageBackground>
-                    <Delete onClick={() => deleteImage(clickedImg.toString())} />
-                  </S.ImageBackground>
-                </>
-              )}
-            </S.ImageWrap>
-          ))}
-        </>
-      );
-    return <></>;
-  }, [imgFiles, deleteImage]);
+  const handleReorderCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateReviewState("reorder", e.target.checked);
+  };
 
   return (
     <S.Container>
-      <S.Menu>
-        <ImageWrap percent={30} borderRadius={8}>
-          <img src={menuImage} alt="menu" className="menu" />
-        </ImageWrap>
+      <S.MenuCard>
+        <S.ImageWrap>
+          <Image src={menuImage} alt="menu" fill />
+        </S.ImageWrap>
         <S.InfoWrap>
-          <S.Name>{name}</S.Name>
-          <S.Size>사이즈: {size} </S.Size>
+          <Text weight={600} size={16}>
+            {menuName}
+          </Text>
+          <Text weight={500} size={13} color={colors.grey[700]}>
+            사이즈: {sizeOption}
+          </Text>
           <S.DangdoComment>
-            <S.Dangdo>
-              <Heart height={16} width={16} viewBox="0 0 19 19" />
-              {dangdo}%
-            </S.Dangdo>
-            <S.Comment>당도가 훌륭해요!</S.Comment>
+            <Dangdo dangdo={dangdo} size="m" />
+            <Text weight={600} size={13} color={colors.blue[800]}>
+              당도가 훌륭해요!
+            </Text>
           </S.DangdoComment>
         </S.InfoWrap>
-      </S.Menu>
-      <S.Best>
-        <S.Title>이런 점이 가장 좋았어요</S.Title>
-        <S.LikeList>
-          {likeList.map(like => (
+      </S.MenuCard>
+      <S.Section>
+        <Text as="h2" weight={600} size={16}>
+          이런 점이 가장 좋았어요
+        </Text>
+        <S.ReviewOptionList>
+          {reviewOptions.map(option => (
             <Button
-              key={like}
+              key={option}
               label="like"
               type="button"
               shape="round"
-              cssProp={like === best ? S.ClickedButton : S.Button}
-              onClick={() => setDetail({ best: like, comment, imgFiles })}
+              className={goodPoint === option ? "isSelected" : ""}
+              onClick={() => handleSelectReviewOption(option)}
             >
-              {like}
+              {option}
             </Button>
           ))}
-        </S.LikeList>
-      </S.Best>
-      <S.Detail>
-        <S.Top>
-          <S.Title>상세 리뷰</S.Title>
-          <S.OrderedTwice>두 번 이상 주문했어요!</S.OrderedTwice>
-        </S.Top>
+        </S.ReviewOptionList>
+      </S.Section>
+      <S.Section>
+        <Text as="h2" weight={600} size={16}>
+          사진을 등록해주세요 <small>(선택)</small>
+        </Text>
         <S.UploadImage>
-          <>
-            <S.FileUpload>
-              <input
-                type="file"
-                className="fileUpload"
-                accept="image/*"
-                ref={selectFile}
-                onChange={saveImage}
-              />
-            </S.FileUpload>
-
-            <UploadImage width={73} height={73} onClick={handleFileUpload} />
-            {imgFiles ? (
-              showImage
-            ) : (
-              <S.UploadImageText>
-                <p className="title">사진 등록</p>
-                <p className="detail">
-                  도안 사진을 함께 첨부해주시면 다른 분들의 선택에 많은 도움이 될 거예요:)
-                </p>
-              </S.UploadImageText>
-            )}
-          </>
-        </S.UploadImage>
-        <S.Textarea>
-          <textarea
-            placeholder="주문한 메뉴, 업체에 대한 후기를 20자 이상 남겨주시면 다른 구매자들에게도 도움이 됩니다."
-            value={comment}
-            onChange={e => setDetail({ best, comment: e.target.value, imgFiles })}
+          <label htmlFor="fileInput">
+            <ImagePlaceholder />
+            <Text weight={500} size={12} color={colors.grey[500]}>
+              {files.length}/3
+            </Text>
+          </label>
+          <input
+            id="fileInput"
+            type="file"
+            className="fileUpload"
+            accept="image/*"
+            ref={imageRef}
+            onChange={handleAddImage}
+            disabled={files.length >= 3}
           />
-        </S.Textarea>
-      </S.Detail>
+          {files.length ? (
+            files.map(file => (
+              <S.ImageWrap key={file.url} isPreviewMode>
+                <Image src={file.url} alt="preview" fill />
+                <Delete className="deleteIcon" onClick={() => handleDeleteImage(file.url)} />
+              </S.ImageWrap>
+            ))
+          ) : (
+            <></>
+          )}
+        </S.UploadImage>
+      </S.Section>
+      <S.Section>
+        <Text as="h2" weight={600} size={16}>
+          상세한 후기를 작성해주세요
+        </Text>
+        <S.Textarea
+          placeholder="주문한 메뉴, 업체에 대한 후기를 20자 이상 남겨주시면 다른 구매자들에게도 도움이 됩니다."
+          value={content}
+          onChange={handleCommentChange}
+        />
+        <Text className="contentLength" weight={500} color={colors.grey[600]}>
+          {content.length} / 최소 20자
+        </Text>
+      </S.Section>
+      <S.Caution>
+        <Text size={12} color={colors.grey[700]}>
+          작성한 내용이 실제 주문한 사실과 다를 경우 검토 후, <br /> 혹은 업체 측의 요청으로 삭제
+          처리될 수 있습니다. <br /> 업체를 모함하거나 의도적으로 비난하는 것은 삼가해 주세요.
+        </Text>
+      </S.Caution>
+      <S.ReorderCheckbox>
+        <label htmlFor="reorder">
+          <input type="checkbox" id="reorder" checked={reorder} onChange={handleReorderCheck} />
+          <Text weight={500}>이 스토어에서 두 번 이상 주문했어요!</Text>
+          <small>(선택)</small>
+        </label>
+      </S.ReorderCheckbox>
     </S.Container>
   );
 }
