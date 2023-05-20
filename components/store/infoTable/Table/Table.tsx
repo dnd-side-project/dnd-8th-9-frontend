@@ -1,46 +1,29 @@
-import React from "react";
-import { IKeyValue, ITime } from "@/types/api/shared";
+import { Fragment } from "react";
+import { IKeyValue } from "@/types/api/shared";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./Table.styled";
 
 interface IInfo {
   option: "notice" | "info";
-  data: (IKeyValue | ITime)[];
+  tableData: IKeyValue;
 }
 
-interface IOptions {
-  [key: string]: { [key: string]: string };
-}
-
-const optionList: IOptions = {
-  notice: {
-    key: "day",
-    value: "hour",
-  },
-  info: {
-    key: "key",
-    value: "value",
-  },
-};
-
-export default function TableBox({ option, data }: IInfo) {
-  const { key, value } = optionList[option];
-
+export default function TableBox({ option, tableData }: IInfo) {
   return (
     <S.Grid option={option}>
-      {data.map(tableItem => (
-        <React.Fragment key={tableItem[key]}>
+      {Object.keys(tableData).map(key => (
+        <Fragment key={key}>
           <S.Key>
             <Text weight={500} as="h3">
-              {tableItem[key]}
+              {key}
             </Text>
           </S.Key>
           <S.Value>
             <Text weight={400} as="p">
-              {tableItem[value]}
+              {tableData[key]}
             </Text>
           </S.Value>
-        </React.Fragment>
+        </Fragment>
       ))}
     </S.Grid>
   );

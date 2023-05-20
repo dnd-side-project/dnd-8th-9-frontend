@@ -1,9 +1,10 @@
-import { IInfo, INotice, IOrderForm, IStoreDetails } from "@/types/api";
+import { IKeyValue, IInfo, INotice, IStoreDetails } from "@/types/api";
 
 export interface IStoreDetailsMock extends IStoreDetails {
-  orderForm: IOrderForm[];
+  orderForm: IKeyValue;
   notice: INotice;
   info: IInfo;
+  businessHours: IKeyValue;
 }
 
 export const store: IStoreDetailsMock = {
@@ -13,9 +14,16 @@ export const store: IStoreDetailsMock = {
   category: ["레터링", "캐릭터"],
   rating: 70,
   reviewCount: 10,
+  bookmarkCount: 15,
+  phone: "070-2345-4356",
   canPickup: true,
   canDelivery: true,
+  minOrderDue: 10,
   priceRange: { max: 100000, min: 30000 },
+  businessHours: {
+    수목토: "12:00-20:00",
+    월화금: "10:00-20:00",
+  },
   links: [
     {
       id: 1,
@@ -30,17 +38,17 @@ export const store: IStoreDetailsMock = {
       role: "실시간 문의",
     },
   ],
-  orderForm: [
-    { value: "예약자 성함", placeholder: "입금자명과 같아야 합니다" },
-    { value: "연락처", placeholder: "'-'없이 작성해주세요" },
-    { value: "예약희망 날짜", placeholder: "최소 2주 전부터 예약 가능합니다" },
-    { value: "디자인", placeholder: "메뉴를 선택해주세요" },
-    { value: "사이즈", placeholder: "예시) 미니사이즈" },
-    { value: "맛", placeholder: "예시) 1번 바닐라" },
-    { value: "레터링", placeholder: "한글 10자 이내 or 영어 15자 이내" },
-    { value: "밑판 문구", placeholder: "한글 5자 이내 or 영어 10자 이내" },
-    { value: "요청사항", placeholder: "예시) \n1. 레터링 색깔 분홍색, 보라색\n2. 초 곰돌이 모양" },
-  ],
+  orderForm: {
+    "예약자 성함": "입금자명과 같아야 합니다",
+    연락처: "'-'없이 작성해주세요",
+    "예약희망 날짜": "최소 2주 전부터 예약 가능합니다",
+    디자인: "메뉴를 선택해주세요",
+    사이즈: "예시) 미니사이즈",
+    맛: "예시) 1번 바닐라",
+    레터링: "한글 10자 이내 or 영어 15자 이내",
+    "밑판 문구": "한글 5자 이내 or 영어 10자 이내",
+    요청사항: "예시) \n1. 레터링 색깔 분홍색, 보라색\n2. 초 곰돌이 모양",
+  },
   notice: {
     packaging: [
       {
@@ -49,11 +57,11 @@ export const store: IStoreDetailsMock = {
       },
       { name: "추가 포장", value: ["리본"] },
     ],
-    pickupHours: [
-      { day: "월화목금", hour: "10:00 ~ 20:00" },
-      { day: "수요일", hour: "10:00 ~ 20:00" },
-      { day: "토,일,공휴일", hour: "9:00 ~ 17:00" },
-    ],
+    pickupHours: {
+      월화목금: "10:00 ~ 20:00",
+      수요일: "10:00 ~ 20:00",
+      "토,일,공휴일": "9:00 ~ 17:00",
+    },
     noticeInfo: {
       profileImage:
         "https://images.unsplash.com/photo-1665625252609-687d2e3ea212?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
@@ -63,24 +71,21 @@ export const store: IStoreDetailsMock = {
     },
   },
   info: {
-    sellerInfo: [
-      { key: "상호", value: "당도" },
-      { key: "주소", value: "서울시 마포구 마포대로 93번길 11 (망원동, 송학빌라) 1층" },
-      { key: "사업자등록번호", value: "000-01-012345" },
-      { key: "통신판매업번호", value: "2022-OOOO-1023" },
-      { key: "전화번호", value: "0507-1234-1234" },
-    ],
-    foodInfo: [
-      { key: "식품의 유형", value: "빵류" },
-      { key: "생산자", value: "주식회사 스위트블러썸" },
-      { key: "품질 유지기한", value: "수령일을 기준으로 유통기한이 3일" },
-      { key: "포장단위별 용량", value: "바닐라크림치즈 SS:240g / M:512g / L:695g" },
-      {
-        key: "원산지 표기",
-        value:
-          "전란액/국산, 박력분(미국산/밀), 설탕, 크림치즈[스페인산/버터밀크, 우유, 유크림, 유고형분(유당), 정제소금,카라기난)],식물성크림 [(정제수, D-소르비톨액, 팜핵경화유(말레이시아산),쇼트닝(대두경화유(대두),아르헨티나산), 유화제], 가공버터(무수유지방,팜유,유크림), 천연버터, 우유, 난백, 마스카포네크림치즈, 물엿,유화제, 정제수, 합성팽창제 [산성피로인산Na,탄산수소Na,전분(수입산),제일인산칼슘,젖산칼슘],정제소금, 젤라틴(돼지),쇼트닝,CMC,혼합제제식품첨가물 [희석제(고과당콘시럽,설탕,글리세린,정제수,히드록시프로필전분),착색료 식용색소(황색제4호,황색제5호,적색제40호, 청색제1호,청색제2호),증점제(카라기난검, 잔탄검),산도조절제(구연산),보존료(소브산칼륨,안식향산나트륨)",
-      },
-    ],
+    sellerInfo: {
+      상호: "당도",
+      주소: "서울시 마포구 마포대로 93번길 11 (망원동, 송학빌라) 1층",
+      사업자등록번호: "000-01-012345",
+      통신판매업번호: "2022-OOOO-1023",
+      전화번호: "0507-1234-1234",
+    },
+    foodInfo: {
+      "식품의 유형": "빵류",
+      생산자: "주식회사 스위트블러썸",
+      "품질 유지기한": "수령일을 기준으로 유통기한이 3일",
+      "포장단위별 용량": "바닐라크림치즈 SS:240g / M:512g / L:695g",
+      "원산지 표기":
+        "전란액/국산, 박력분(미국산/밀), 설탕, 크림치즈[스페인산/버터밀크, 우유, 유크림, 유고형분(유당), 정제소금,카라기난)],식물성크림 [(정제수, D-소르비톨액, 팜핵경화유(말레이시아산),쇼트닝(대두경화유(대두),아르헨티나산), 유화제], 가공버터(무수유지방,팜유,유크림), 천연버터, 우유, 난백, 마스카포네크림치즈, 물엿,유화제, 정제수, 합성팽창제 [산성피로인산Na,탄산수소Na,전분(수입산),제일인산칼슘,젖산칼슘],정제소금, 젤라틴(돼지),쇼트닝,CMC,혼합제제식품첨가물 [희석제(고과당콘시럽,설탕,글리세린,정제수,히드록시프로필전분),착색료 식용색소(황색제4호,황색제5호,적색제40호, 청색제1호,청색제2호),증점제(카라기난검, 잔탄검),산도조절제(구연산),보존료(소브산칼륨,안식향산나트륨)",
+    },
   },
   storeImages: [
     {

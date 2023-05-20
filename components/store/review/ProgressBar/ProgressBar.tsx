@@ -1,5 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { IStoreDetails } from "@/types/api";
+import { IReviewStats, IStoreDetails } from "@/types/api";
 import Text from "@/components/shared/Text/Text";
 import * as S from "./ProgressBar.styled";
 
@@ -33,11 +33,11 @@ export default function ProgressBar({ totals, stats, isPreview = false }: IProp)
           <Text size={isPreview ? 14 : 13} weight={600} color={colors.grey[800]}>
             {statName} {isPreview && EMOJI[statName]}
           </Text>
-          <S.Bar count={stats[statName]} totals={totals} rank={idx}>
+          <S.Bar count={stats[statName as keyof IReviewStats]} totals={totals} rank={idx}>
             <div />
           </S.Bar>
           <Text size={isPreview ? 14 : 13} weight={500} color={colors.grey[800]}>
-            {stats[statName]}
+            {stats[statName as keyof IReviewStats]}
           </Text>
         </S.StatItem>
       ))}

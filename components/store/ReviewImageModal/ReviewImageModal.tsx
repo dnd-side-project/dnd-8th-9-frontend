@@ -11,6 +11,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { useGetReviewDetails } from "@/hooks/queries/review";
 import useModalStore from "@/store/modal";
 import { IImage } from "@/types/api";
+
 import Modal from "@/components/shared/Modal/Modal";
 import Text from "@/components/shared/Text/Text";
 import Nickname from "@/components/shared/Nickname/Nickname";
@@ -36,7 +37,7 @@ function ReviewModal({ data, imageId }: IProps) {
   if (isLoading) return <h1>Loading...</h1>;
   if (isError) return <h1>Error...</h1>;
 
-  const { menuName, content, nickname, reorder } = reviewDetailsData.data;
+  const { menuName, content, nickname, reorder, profileImage } = reviewDetailsData.data;
 
   const updateIndex = (swiperInstance: SwiperType) => {
     if (swiperInstance === null) return;
@@ -59,7 +60,12 @@ function ReviewModal({ data, imageId }: IProps) {
             <SwiperSlide key={imgIdx}>
               <S.Content>
                 <S.NicknameWrap>
-                  <Nickname name={nickname} dangol={reorder} color={colors.grey[100]} />
+                  <Nickname
+                    name={nickname}
+                    dangol={reorder}
+                    color={colors.grey[100]}
+                    profileImage={profileImage}
+                  />
                   <Text as="button" color={colors.grey[400]} weight={500} size={13}>
                     본문보기
                   </Text>

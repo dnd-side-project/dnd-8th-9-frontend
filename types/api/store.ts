@@ -1,8 +1,8 @@
-import { TCategory, IKeyValue, ITime, IImage, ILink } from "./shared";
+import { TCategory, IImage, ILink, IKeyValue } from "./shared";
 
 export interface INotice {
   packaging: { name: string; value: string[] }[];
-  pickupHours: ITime[];
+  pickupHours: IKeyValue;
   noticeInfo: {
     profileImage: string;
     date: string;
@@ -11,8 +11,8 @@ export interface INotice {
 }
 
 export interface IInfo {
-  sellerInfo: IKeyValue[];
-  foodInfo: IKeyValue[];
+  sellerInfo: IKeyValue;
+  foodInfo: IKeyValue;
 }
 
 export interface IOrderForm {
@@ -21,7 +21,11 @@ export interface IOrderForm {
 }
 
 export interface IReviewStats {
-  [key: string]: number;
+  맛있어요: number;
+  "응답이 빨라요": number;
+  "가성비가 좋아요": number;
+  친절해요: number;
+  "선물하기 좋아요": number;
 }
 
 export interface IStoreListItem {
@@ -30,6 +34,7 @@ export interface IStoreListItem {
   location: string;
   rating: number;
   reviewCount: number;
+  bookmarkCount: number;
   priceRange: {
     min: number;
     max: number;
@@ -42,10 +47,13 @@ export interface IStoreListItem {
 }
 
 export interface IStoreDetails extends IStoreListItem {
-  orderForm: null | IOrderForm[];
+  orderForm: null | IKeyValue;
+  businessHours: null | IKeyValue;
   notice: null | INotice;
   info: null | IInfo;
   reviewStats: IReviewStats;
+  phone: null | string;
+  minOrderDue: number;
 }
 
 export interface IStorePayloadBody {

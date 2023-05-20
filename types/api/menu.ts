@@ -51,5 +51,5 @@ export interface IStoreMenuListItem {
   name: string;
   basePrice: number;
   desc: string;
-  menuImages?: IImage[];
+  menuImages: IImage[];
 }
