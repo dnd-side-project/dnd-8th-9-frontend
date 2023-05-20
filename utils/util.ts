@@ -55,3 +55,23 @@ export const checkAuth = () => {
 
   return authenticated;
 };
+
+export const generateFilterPriceRangeOption = (min: number, max: number) => {
+  const PRICE_UNIT = 10000;
+
+  const minPrice = Math.floor(min / PRICE_UNIT);
+  const maxPrice = Math.ceil(max / PRICE_UNIT);
+
+  return `${minPrice}만원 ~ ${maxPrice}만원`;
+};
+
+export const parsePriceRangeToMinAndMaxPrice = (priceRange: string) => {
+  const UNIT = 10000;
+  if (!priceRange) return [-1, -1];
+  const [min, max] = priceRange.split(" ~ ").map(str => {
+    const num = Number(str.split("만원")[0]);
+    return num * UNIT;
+  });
+
+  return [min, max];
+};

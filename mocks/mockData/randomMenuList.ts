@@ -4,7 +4,7 @@ export const randomMenus: IMenuListItem[] = [
   {
     id: 4,
     name: "레터링 케이크 3호",
-    menuImage: [
+    menuImages: [
       {
         id: 44,
         targetId: 4,
@@ -34,7 +34,7 @@ export const randomMenus: IMenuListItem[] = [
     id: 5,
     name: "레터링 케이크 5호",
     price: 40000,
-    menuImage: [
+    menuImages: [
       {
         id: 34,
         targetId: 4,
@@ -62,7 +62,7 @@ export const randomMenus: IMenuListItem[] = [
   {
     id: 6,
     name: "레터링 케이크 6호",
-    menuImage: [
+    menuImages: [
       {
         id: 34,
         targetId: 4,
@@ -91,7 +91,7 @@ export const randomMenus: IMenuListItem[] = [
   {
     id: 1,
     name: "도시락 케이크",
-    menuImage: [
+    menuImages: [
       {
         id: 34,
         targetId: 4,
@@ -120,7 +120,7 @@ export const randomMenus: IMenuListItem[] = [
   {
     id: 2,
     name: "레터링 케이크 1호",
-    menuImage: [
+    menuImages: [
       {
         id: 34,
         targetId: 4,
@@ -149,7 +149,7 @@ export const randomMenus: IMenuListItem[] = [
   {
     id: 3,
     name: "레터링 케이크 2호",
-    menuImage: [
+    menuImages: [
       {
         id: 34,
         targetId: 4,

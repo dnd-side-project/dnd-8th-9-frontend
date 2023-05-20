@@ -6,28 +6,27 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
+import { TCategory } from "@/types/api";
+import { IFilterStore } from "@/types/store/filter";
 
 type TFilterTab = "카테고리" | "가격" | "주문플랫폼" | "수령방법";
-interface ISelectedOptions {
-  카테고리: string[];
-  가격: string;
-  주문플랫폼: string[];
-  수령방법: string[];
-  [key: string]: string | string[];
-}
 
 interface FilterState {
   currentFilterTab: TFilterTab;
   filterModalOpen: boolean;
-  selectedFilterOptions: ISelectedOptions;
-  appliedFilterOptions: ISelectedOptions;
 
-  clearSelectedFilterSection: (target: TFilterTab) => void;
-  resetSelectedFilterOptions: () => void;
-  applySelectedFilterOptions: () => void;
-  toggleFilterModalOpen: () => void;
+  selectedFilterOptions: IFilterStore;
+  appliedFilterOptions: IFilterStore;
+
   changeCurrentFilterTab: (newFilterTab: TFilterTab) => void;
+  toggleFilterModalOpen: () => void;
+
   updateSelectedFilterOptions: (target: TFilterTab, newOption: string) => void;
+  resetSelectedFilterOptions: () => void;
+  syncSelectedAndAppliedFilterOptions: (direction: "selected" | "applied") => void;
+
+  clearAppliedFilterSection: (target: TFilterTab) => void;
+  updateAppliedFilterOptions: (updatedSelectedOptions?: IFilterStore) => void;
 }
 
 const useFilterStore = create(
@@ -35,41 +34,30 @@ const useFilterStore = create(
     immer<FilterState>(set => ({
       currentFilterTab: "카테고리",
       filterModalOpen: false,
+
       selectedFilterOptions: {
         카테고리: [],
         가격: "",
         주문플랫폼: [],
-        수령방법: [],
+        수령방법: "",
       },
       appliedFilterOptions: {
         카테고리: [],
         가격: "",
         주문플랫폼: [],
-        수령방법: [],
+        수령방법: "",
       },
 
-      clearSelectedFilterSection: (target: TFilterTab) =>
-        set(state => {
-          if (target === "가격") {
-            state.appliedFilterOptions[target] = "";
-            state.selectedFilterOptions[target] = "";
-          } else {
-            state.appliedFilterOptions[target] = [];
-            state.selectedFilterOptions[target] = [];
-          }
-        }),
-      resetSelectedFilterOptions: () =>
-        set(state => {
-          const initial = { 카테고리: [], 가격: "", 주문플랫폼: [], 수령방법: [] };
-          state.selectedFilterOptions = initial;
-        }),
-      applySelectedFilterOptions: () =>
-        set(state => {
-          state.appliedFilterOptions = state.selectedFilterOptions;
-        }),
+      // NOTE: 현재 filterTab 업데이트
+      changeCurrentFilterTab: (newFilterTab: TFilterTab) => set({ currentFilterTab: newFilterTab }),
+
+      // NOTE: filter Modal 상태값
+      toggleFilterModalOpen: () => set(state => ({ filterModalOpen: !state.filterModalOpen })),
+
+      // NOTE: 선택한 filter option update (임시)
       updateSelectedFilterOptions: (target: TFilterTab, newOption: string) =>
         set(state => {
-          if (target === "가격") {
+          if (target === "가격" || target === "수령방법") {
             if (state.selectedFilterOptions[target] !== newOption) {
               state.selectedFilterOptions[target] = newOption;
             }
@@ -81,11 +69,47 @@ const useFilterStore = create(
             );
             state.selectedFilterOptions[target].splice(index, 1);
           } else {
-            state.selectedFilterOptions[target].push(newOption);
+            state.selectedFilterOptions[target].push(newOption as TCategory);
           }
         }),
-      toggleFilterModalOpen: () => set(state => ({ filterModalOpen: !state.filterModalOpen })),
-      changeCurrentFilterTab: (newFilterTab: TFilterTab) => set({ currentFilterTab: newFilterTab }),
+
+      // NOTE: 선택한 임시 필터값 초기화 -> 초기화 버튼 클릭시
+      resetSelectedFilterOptions: () =>
+        set(state => {
+          const initial = { 카테고리: [], 가격: "", 주문플랫폼: [], 수령방법: "" };
+          state.selectedFilterOptions = initial;
+        }),
+
+      // NOTE: 임시로 선택한 필터값 적용 -> 필터 적용 버튼 클릭시
+      syncSelectedAndAppliedFilterOptions: (direction: "selected" | "applied") =>
+        set(state => {
+          if (direction === "applied") {
+            state.selectedFilterOptions = state.appliedFilterOptions;
+          } else if (direction === "selected") {
+            state.appliedFilterOptions = state.selectedFilterOptions;
+          }
+        }),
+
+      // NOTE: 적용된 필터값 섹션별로 삭제 -> filter bar내 X 버튼 클릭시
+      clearAppliedFilterSection: (target: TFilterTab) =>
+        set(state => {
+          if (target === "가격" || target === "수령방법") {
+            state.appliedFilterOptions[target] = "";
+            state.selectedFilterOptions[target] = "";
+          } else {
+            state.appliedFilterOptions[target] = [];
+            state.selectedFilterOptions[target] = [];
+          }
+        }),
+
+      // NOTE: 적용된 필터 옵션 변경시 -> 페이지 첫 진입시 url에 따른 필터링값 반영시
+      updateAppliedFilterOptions: (updatedSelectedOptions?: IFilterStore) =>
+        set(state => {
+          if (updatedSelectedOptions) {
+            state.appliedFilterOptions = updatedSelectedOptions;
+            state.selectedFilterOptions = updatedSelectedOptions;
+          }
+        }),
     })),
   ),
 );

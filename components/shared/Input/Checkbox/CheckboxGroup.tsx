@@ -1,4 +1,5 @@
 import useFilterStore from "@/store/filter";
+import { TCategory } from "@/types/api";
 import * as S from "./CheckboxGroup.styled";
 
 interface IProp {
@@ -20,7 +21,7 @@ function CheckboxGroup({ options, type }: IProp) {
           <S.CheckboxInput
             type="checkbox"
             id={option}
-            checked={selectedFilterOptions[type].indexOf(option) !== -1}
+            checked={selectedFilterOptions[type]?.indexOf(option as TCategory) !== -1}
           />
           <label htmlFor={option}>{option}</label>
         </S.Wrap>

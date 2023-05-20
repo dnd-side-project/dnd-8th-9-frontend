@@ -22,7 +22,6 @@ export interface IMenuBasicInfo {
   [key: string]: string;
 }
 
-// NOTE: description 필요
 export interface IMenuDetails {
   id: number;
   name: string;
@@ -39,7 +38,7 @@ export interface IMenuListItem {
   id: number;
   name: string;
   price: number;
-  menuImage: IImage[];
+  menuImages: IImage[];
   storeId: number;
   storeName: string;
   links: ILink[];

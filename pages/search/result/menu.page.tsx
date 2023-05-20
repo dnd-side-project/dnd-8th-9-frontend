@@ -12,6 +12,7 @@ import Sort from "@/components/shared/Sort/Sort";
 import Tab from "@/components/shared/Tab/Tab";
 import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
 import { IMenuListItem } from "@/types/api";
+import { IFilterStore } from "@/types/store/filter";
 import * as S from "../search.styled";
 
 function SearchResultMenuPage() {
@@ -30,7 +31,9 @@ function SearchResultMenuPage() {
 
   useEffect(() => {
     if (
-      Object.keys(selectedFilterOptions).some(filter => selectedFilterOptions[filter].length !== 0)
+      Object.keys(selectedFilterOptions).some(
+        filter => selectedFilterOptions[filter as keyof IFilterStore].length !== 0,
+      )
     ) {
       const result = searchResult.filter(menu => menu.price > 40000);
       setFilterResult(result);

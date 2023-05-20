@@ -1,7 +1,9 @@
+import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import Sheet from "react-modal-sheet";
-import { css, useTheme } from "@emotion/react";
 import { filterTab } from "@/constants/tabs";
 import useFilterStore from "@/store/filter";
+import useCustomSearchParam from "@/hooks/useCustomSearchParam";
 import CheckboxGroup from "../Input/Checkbox/CheckboxGroup";
 import RadioGroup from "../Input/Radio/RadioGroup";
 import Text from "../Text/Text";
@@ -27,22 +29,30 @@ const FILTER_TAB_MENU: IFilterTabMenu = {
     type: "checkbox",
     options: ["인스타그램", "아이디어스", "네이버스토어", "카카오톡 채널", "업체 홈페이지"],
   },
-  수령방법: { type: "checkbox", options: ["매장에서 픽업", "택배로 배송"] },
+  수령방법: { type: "radio", options: ["매장에서 픽업", "택배로 배송"] },
 };
 
 function FilterModal() {
-  const { colors } = useTheme();
+  const router = useRouter();
+  const pathname = usePathname();
+
   const {
     filterModalOpen,
     toggleFilterModalOpen,
     currentFilterTab,
-    applySelectedFilterOptions,
+    syncSelectedAndAppliedFilterOptions,
     resetSelectedFilterOptions,
+    selectedFilterOptions,
   } = useFilterStore();
 
+  const { filterStoreToPayload, payloadToUrl } = useCustomSearchParam();
+
   const handleSubmit = () => {
-    applySelectedFilterOptions();
+    syncSelectedAndAppliedFilterOptions("selected");
     toggleFilterModalOpen();
+    const payload = filterStoreToPayload(selectedFilterOptions);
+    const url = payloadToUrl(payload);
+    router.push(`${pathname as string}?${url}`);
   };
 
   return (

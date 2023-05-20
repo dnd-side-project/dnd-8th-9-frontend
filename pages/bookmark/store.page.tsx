@@ -12,6 +12,7 @@ import StoreDoubleCard from "@/components/shared/Card/StoreDoubleCard";
 import FilterBar from "@/components/shared/FilterBar/FilterBar";
 import SingleNavbar from "@/components/shared/Navbar/SingleNavbar";
 import GNB from "@/components/shared/GNB/GNB";
+import FilterModal from "@/components/shared/FilterModal/FilterModal";
 import * as S from "./menu.styled";
 
 function BookmarkStorePage() {
@@ -80,6 +81,7 @@ function BookmarkStorePage() {
           <StoreDoubleCard key={store.id} data={store} mode={isEditMode ? "edit" : "none"} />
         ))}
       </S.StoreWrap>
+      <FilterModal />
     </div>
   );
 }

@@ -92,7 +92,7 @@ export const ROUTES_NAV: IRouteNav = {
   },
   [ROUTES.LOGIN_REDIRECT_PAGE]: {
     nav: {
-      previous: true,
+      home: true,
       bgColor: theme.colors.blue[900],
       color: theme.colors.grey[100],
     },
