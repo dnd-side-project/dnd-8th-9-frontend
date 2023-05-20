@@ -25,7 +25,7 @@ function SectionLayout({ children }: IProps) {
   if (isLoading) return <h1>Loading...</h1>;
   if (isError) return <h1>Error...</h1>;
 
-  const { canDelivery, canPickup, links, storeImages, reviewStats, reviewCount } =
+  const { canDelivery, canPickup, links, storeImages, reviewStats, reviewCount, minOrderDue } =
     storeDetailsData.data;
 
   const handleAuthCheck = () => {
@@ -41,7 +41,7 @@ function SectionLayout({ children }: IProps) {
         <MainInfo data={storeDetailsData.data} />
         <ReviewInfo reviewStats={reviewStats} reviewCount={reviewCount} />
         <RecieveMethod canDelivery={canDelivery} canPickup={canPickup} />
-        <OrderLink links={links} time={10} />
+        <OrderLink links={links} minOrderDue={minOrderDue} />
         <Tab menuList={storeTab} target="storeTab" />
         {children}
       </S.Main>
