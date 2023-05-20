@@ -19,8 +19,6 @@ export interface ITable {
 }
 
 export interface IKeyValue {
-  key: string;
-  value: string;
   [key: string]: string;
 }
 
