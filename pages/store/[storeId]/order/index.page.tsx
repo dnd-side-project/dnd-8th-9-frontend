@@ -1,5 +1,5 @@
-import { useTheme } from "@emotion/react";
 import { useRouter } from "next/router";
+import { useTheme } from "@emotion/react";
 import { store } from "@/mocks/mockData/store";
 import { useGetStore } from "@/hooks/queries/store";
 import useModalStore from "@/store/modal";
@@ -29,6 +29,8 @@ function OrderTemplatePage() {
   if (isLoading) return <h1>Loading...</h1>;
   if (isError) return <h1>Error...</h1>;
 
+  const orderData = storeDetailsData.data.orderForm || ORDER_FORM_MOCK;
+
   return (
     <>
       {orderFormModalOpen && (
@@ -39,10 +41,10 @@ function OrderTemplatePage() {
       <SectionLayout>
         <S.Container>
           <S.FormBox>
-            {(storeDetailsData.data.orderForm || ORDER_FORM_MOCK)?.map(el => (
-              <S.FormCell key={el.value}>
-                <S.Title>{el.value}</S.Title>
-                <input placeholder={el.placeholder} />
+            {Object.keys(orderData).map(key => (
+              <S.FormCell key={key}>
+                <S.Title>{key}</S.Title>
+                <input placeholder={orderData[key]} />
               </S.FormCell>
             ))}
           </S.FormBox>
