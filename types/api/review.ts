@@ -1,6 +1,6 @@
 import { IImage, TReviewOption } from "./shared";
 
-// NOTE: date, like 필요
+// NOTE: like 필요
 export interface IReviewListItem {
   id: number;
   menuName: string;
@@ -13,7 +13,7 @@ export interface IReviewListItem {
   storeName: string;
   nickname: string;
   profileImage: string;
-  date?: string;
+  createDate: string;
   likes?: number;
 }
 
@@ -22,7 +22,7 @@ export interface IReviewPayloadBody {
   storeId: number;
   content: string;
   dangdo: number;
-  goodPoint: TReviewOption;
+  goodPoint: TReviewOption | string;
   reorder: boolean;
   files: File[];
 }
