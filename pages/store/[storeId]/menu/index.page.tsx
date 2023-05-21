@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 
@@ -22,9 +23,11 @@ function MenuPage() {
     <SectionLayout>
       <S.ListWrap>
         {storeMenusData.data.map(menu => (
-          <S.CardWrapper key={menu.id}>
-            <MenuSingleCard data={menu} />
-          </S.CardWrapper>
+          <Link href={`/store/${menu.storeId}/menu/${menu.id}`} key={menu.id}>
+            <S.CardWrapper>
+              <MenuSingleCard data={menu} />
+            </S.CardWrapper>
+          </Link>
         ))}
       </S.ListWrap>
     </SectionLayout>

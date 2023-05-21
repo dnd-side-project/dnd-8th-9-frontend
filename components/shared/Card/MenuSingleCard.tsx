@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useTheme } from "@emotion/react";
 import { generatePriceString } from "@/utils/util";
 import { IStoreMenuListItem } from "@/types/api";
@@ -28,35 +27,33 @@ const SIZE_STYLE = {
 function MenuSingleCard({ data, mode, size = "m" }: IProps) {
   const { colors } = useTheme();
 
-  const { name, menuImages, desc, basePrice, id, storeId } = data;
+  const { name, menuImages, desc, basePrice } = data;
 
   return (
-    <Link href={`/store/${storeId}/menu/${id}`}>
-      <Card
-        imgWidth={SIZE_STYLE[size].imgWidth}
-        imgHeight={SIZE_STYLE[size].imgHeight}
-        dir="row"
-        image={menuImages || IMAGE_MOCK}
-        gap={16}
-        mode={mode}
-        data={data}
-        type="menu"
-      >
-        <S.ContentWrap type="menuSingle">
-          <S.Menu weight={600} size={15}>
-            {name}
-          </S.Menu>
-          <S.Desc size={12} color={colors.grey[700]}>
-            {desc}
-          </S.Desc>
-          {size === "m" && (
-            <S.Price weight={600} size={18} color={colors.blue[800]}>
-              {generatePriceString(basePrice)}
-            </S.Price>
-          )}
-        </S.ContentWrap>
-      </Card>
-    </Link>
+    <Card
+      imgWidth={SIZE_STYLE[size].imgWidth}
+      imgHeight={SIZE_STYLE[size].imgHeight}
+      dir="row"
+      image={menuImages || IMAGE_MOCK}
+      gap={16}
+      mode={mode}
+      data={data}
+      type="menu"
+    >
+      <S.ContentWrap type="menuSingle">
+        <S.Menu weight={600} size={15}>
+          {name}
+        </S.Menu>
+        <S.Desc size={12} color={colors.grey[700]}>
+          {desc}
+        </S.Desc>
+        {size === "m" && (
+          <S.Price weight={600} size={18} color={colors.blue[800]}>
+            {generatePriceString(basePrice)}
+          </S.Price>
+        )}
+      </S.ContentWrap>
+    </Card>
   );
 }
 
