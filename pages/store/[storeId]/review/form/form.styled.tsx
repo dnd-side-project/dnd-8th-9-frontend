@@ -17,6 +17,7 @@ export const ButtonWrap = styled.div`
   bottom: 0;
   display: flex;
   column-gap: 1rem;
+  z-index: ${({ theme }) => theme["z-index"].button};
 `;
 
 export const PrevButton = styled(Button)`

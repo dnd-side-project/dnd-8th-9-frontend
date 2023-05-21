@@ -87,6 +87,7 @@ const theme: Theme = {
     gnb: Z_INDEX.BASE + Z_INDEX.ABOVE * 5,
     navbar: Z_INDEX.BASE + Z_INDEX.ABOVE * 5,
     sortModal: Z_INDEX.BASE + Z_INDEX.ABOVE * 4,
+    button: Z_INDEX.BASE + Z_INDEX.ABOVE * 4,
     imageIcon: Z_INDEX.BASE + Z_INDEX.ABOVE * 3,
     storeContent: Z_INDEX.BASE + Z_INDEX.ABOVE * 2,
   },

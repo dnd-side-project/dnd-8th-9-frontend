@@ -83,6 +83,7 @@ declare module "@emotion/react" {
       gnb: number;
       navbar: number;
       sortModal: number;
+      button: number;
       imageIcon: number;
       storeContent: number;
     };
