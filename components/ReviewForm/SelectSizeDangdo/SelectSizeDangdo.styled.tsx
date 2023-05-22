@@ -55,7 +55,7 @@ export const SizeButton = styled(Button)`
 `;
 
 export const DangdoBox = styled.div`
-  margin-top: 7.7rem;
+  margin-top: 8vh;
 `;
 
 export const DangdoComment = styled.div`
@@ -81,10 +81,10 @@ export const InputContainer = styled.div<{ dangdo: number }>`
     margin: 0;
     background: linear-gradient(
       to right,
-      rgb(80, 41, 156),
-      rgb(122, 0, 255) ${({ dangdo }) => `${dangdo}%`},
-      rgb(211, 237, 255) ${({ dangdo }) => `${dangdo}%`},
-      rgb(222, 225, 226) 100%
+      ${({ theme }) => theme.colors.blue[800]},
+      ${({ theme }) => theme.colors.blue[800]} ${({ dangdo }) => `${dangdo}%`},
+      ${({ theme }) => theme.colors.blue[200]} ${({ dangdo }) => `${dangdo}%`},
+      ${({ theme }) => theme.colors.blue[200]} 100%
     );
   }
 
@@ -95,15 +95,17 @@ export const InputContainer = styled.div<{ dangdo: number }>`
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #7a00ff;
-    border: #f9ca24 5px solid;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    background: ${({ theme }) => theme.colors.blue[800]};
+    border: ${({ theme }) => theme.colors.grey[100]} 5px solid;
     cursor: pointer;
     -webkit-transition: background 0.15s ease-in-out;
     transition: background 0.15s ease-in-out;
   }
 
-  [type="range"]::-webkit-slider-thumb:hover {
-    background: #f0932b;
+  [type="range"]::-webkit-slider-thumb:hover,
+  [type="range"]::-moz-range-thumb:hover {
+    background: ${({ theme }) => theme.colors.blue[700]};
   }
 
   [type="range"]::-moz-range-thumb {
@@ -111,18 +113,13 @@ export const InputContainer = styled.div<{ dangdo: number }>`
     height: 20px;
     border: 0;
     border-radius: 50%;
-    background: #f0932b;
-    border: #f9ca24 5px solid;
+    background: ${({ theme }) => theme.colors.blue[800]};
+    border: ${({ theme }) => theme.colors.grey[100]} 5px solid;
     cursor: pointer;
     -webkit-transition: background 0.15s ease-in-out;
     transition: background 0.15s ease-in-out;
   }
 
-  [type="range"]::-moz-range-thumb:hover {
-    background: #f9ca24;
-  }
-
-  /* remove border */
   input::-moz-focus-inner,
   input::-moz-focus-outer {
     border: 0;

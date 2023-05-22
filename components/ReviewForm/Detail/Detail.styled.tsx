@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-  padding: 2rem 1.4rem 0 2rem;
+  padding-block: 2rem 10rem;
 `;
 
 export const MenuCard = styled.div`
