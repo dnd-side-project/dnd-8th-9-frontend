@@ -9,7 +9,8 @@ export const URI_PATH = {
 export const API_URI = {
   store: {
     get: {
-      STORE_LIST: `${URI_PATH.STORE}`,
+      STORE_LIST: (encodedOption?: string) =>
+        encodedOption ? `${URI_PATH.STORE}?cond=${encodedOption}` : `${URI_PATH.STORE}`,
       STORE_DETAIL: (storeId: number) => `${URI_PATH.STORE}/${storeId}`,
       STORE_MENUS: (storeId: number) => `${URI_PATH.STORE}/${storeId}/menus`,
       STORE_REVIEWS: (storeId: number) => `${URI_PATH.STORE}/${storeId}/reviews`,
@@ -28,7 +29,8 @@ export const API_URI = {
   },
   menu: {
     get: {
-      MENU_LIST: `${URI_PATH.MENU}`,
+      MENU_LIST: (encodedOption?: string) =>
+        encodedOption ? `${URI_PATH.MENU}?cond=${encodedOption}` : `${URI_PATH.MENU}`,
       MENU_DETAIL: (menuId: number) => `${URI_PATH.MENU}/${menuId}`,
       MENU_REVIEWS: (menuId: number) => `${URI_PATH.MENU}/${menuId}/reviews`,
     },
