@@ -1,26 +1,21 @@
 import styled from "@emotion/styled";
-import { css, Theme } from "@emotion/react";
+import Text from "@/components/shared/Text/Text";
+import Button from "@/components/shared/Button/Button";
 
 export const Container = styled.div`
   margin-top: 3.2rem;
 `;
 
-export const FormTitle = styled.div`
+export const FormTitle = styled(Text)`
   padding: 1rem;
-  height: 4.1rem;
-  font-size: ${({ theme }) => theme.fontSizes[18]};
-  font-weight: 600;
-  line-height: 21px;
   text-align: center;
 `;
 
-export const Explanation = styled.div`
+export const Explanation = styled(Text)`
   text-align: center;
-  font-size: ${({ theme }) => theme.fontSizes[14]};
-  font-weight: 400;
-  color: ${({ theme }) => theme.colors.gray[400]};
   white-space: pre-line;
-  margin-bottom: 6.8rem;
+  line-height: 150%;
+  margin-bottom: 4.9rem;
 `;
 
 export const Size = styled.div`
@@ -30,85 +25,103 @@ export const Size = styled.div`
   align-items: center;
 `;
 
-export const Name = styled.div`
-  font-size: ${({ theme }) => theme.fontSizes[16]};
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.black};
-  line-height: 1.9rem;
-  margin: 1.6rem 0;
+export const ImageWrap = styled.div`
+  position: relative;
+  width: 12rem;
+  aspect-ratio: 1/1;
+  border-radius: 0.8rem;
+  overflow: hidden;
+`;
+
+export const Name = styled(Text)`
+  margin-block: 2rem;
 `;
 
 export const SizeList = styled.div`
   display: flex;
-  gap: 0.8rem;
+  column-gap: 0.8rem;
 `;
 
-export const SizeButton = css`
-  border: 1px solid #e9e9e9;
-`;
+export const SizeButton = styled(Button)`
+  border: 1px solid ${({ theme }) => theme.colors.grey[300]};
+  border-radius: 2.4rem;
+  font-size: ${({ theme }) => theme.fontSizes[15]};
+  padding: 0.9rem 1.6rem;
 
-export const ClickedSizeButton = ({ colors }: Theme) => css`
-  background-color: ${colors.navy[400]};
-  color: ${colors.white[100]};
+  &.selected {
+    background-color: ${({ theme }) => theme.colors.blue[700]};
+    color: ${({ theme }) => theme.colors.grey[100]};
+  }
 `;
 
 export const DangdoBox = styled.div`
-  margin-top: 4rem;
+  margin-top: 8vh;
 `;
 
 export const DangdoComment = styled.div`
   width: 28rem;
   display: flex;
   justify-content: space-between;
-  font-size: ${({ theme }) => theme.fontSizes[14]};
-  font-weight: 500;
-  line-height: 1.7rem;
+  align-items: center;
 `;
 
-export const Dangdo = styled.div`
-  color: ${({ theme }) => theme.colors.black};
-  display: flex;
-  gap: 0.3rem;
-`;
-
-export const Comment = styled.div`
-  color: ${({ theme }) => theme.colors.primary};
-`;
-
-// TODO: input styling
-
-export const InputWrap = styled.div`
-  margin-top: 1.2rem;
+export const InputContainer = styled.div<{ dangdo: number }>`
+  margin-top: 1.6rem;
+  position: relative;
+  width: 100%;
 
   input[type="range"] {
-    overflow: hidden;
-    height: 0.8rem;
+    width: 100%;
     -webkit-appearance: none;
-    margin: 10px 0;
-    width: 100%;
-    background: transparent;
-    border-radius: 8px;
-  }
-
-  input[type="range"]:focus {
+    height: 13px;
+    border-radius: 6px;
+    background: #f1f1f1;
     outline: none;
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(
+      to right,
+      ${({ theme }) => theme.colors.blue[800]},
+      ${({ theme }) => theme.colors.blue[800]} ${({ dangdo }) => `${dangdo}%`},
+      ${({ theme }) => theme.colors.blue[200]} ${({ dangdo }) => `${dangdo}%`},
+      ${({ theme }) => theme.colors.blue[200]} 100%
+    );
   }
 
-  input[type="range"]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 0.8rem;
-    cursor: pointer;
-    border-radius: 8px;
-    background: #edeff8;
-  }
-
+  /* custom thumb */
   input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-
-    width: 10px;
-    height: 10px;
-    background: #fff;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    background: ${({ theme }) => theme.colors.blue[800]};
+    border: ${({ theme }) => theme.colors.grey[100]} 5px solid;
     cursor: pointer;
-    box-shadow: -100vw 0 0 100vw #031962;
+    -webkit-transition: background 0.15s ease-in-out;
+    transition: background 0.15s ease-in-out;
+  }
+
+  [type="range"]::-webkit-slider-thumb:hover,
+  [type="range"]::-moz-range-thumb:hover {
+    background: ${({ theme }) => theme.colors.blue[700]};
+  }
+
+  [type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border: 0;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.colors.blue[800]};
+    border: ${({ theme }) => theme.colors.grey[100]} 5px solid;
+    cursor: pointer;
+    -webkit-transition: background 0.15s ease-in-out;
+    transition: background 0.15s ease-in-out;
+  }
+
+  input::-moz-focus-inner,
+  input::-moz-focus-outer {
+    border: 0;
   }
 `;

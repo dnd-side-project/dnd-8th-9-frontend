@@ -1,73 +1,81 @@
-/* eslint-disable @next/next/no-img-element */
-import { useEffect } from "react";
-import {
-  useFormMenuStore,
-  useFormSizeDangdoStore,
-  useButtonDisabledStore,
-} from "@/store/ReviewForm";
-import Button from "@/components/shared/Button/Button";
-import ImageWrap from "@/components/shared/ImageWrap/ImageWrap";
-import Heart from "assets/icons/heart.svg";
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import Image from "next/image";
+import { useTheme } from "@emotion/react";
+import useReviewStore from "@/store/review";
+import { getOverallComment } from "@/utils/util";
+import Dangdo from "@/components/shared/Dangdo/Dangdo";
+import Text from "@/components/shared/Text/Text";
 import * as S from "./SelectSizeDangdo.styled";
 
-const FORM_TITLE = "케이크는 어땠나요?";
-const EXPLANATION = "실제 상품을 받고 나서 느낀 감상을\n솔직하게 작성해주세요";
+const FORM_TITLE = (storeName: string) => `${storeName}의 케이크는 어땠나요?`;
+const EXPLANATION = "실제 케이크를 받고 나서 느낀 감상을\n솔직하게 작성해주세요";
 
 const sizeList = ["미니", "1호", "2호", "3호"];
 
 export default function SelectSizeDangdo() {
-  const { name, menuImage } = useFormMenuStore(state => state);
-  const { size, dangdo, setSizeDangdo } = useFormSizeDangdoStore(state => state);
-  const { setButtonDisabled, setButtonAbled } = useButtonDisabledStore(state => state);
+  const { colors } = useTheme();
+  const { reviewState, updateReviewState } = useReviewStore();
+  const { storeName, menuImage, menuName, dangdo, sizeOption } = reviewState;
 
-  useEffect(() => {
-    setButtonDisabled();
-  }, [setButtonAbled, setButtonDisabled]);
+  const handleSizeChange = (size: string) => {
+    updateReviewState("sizeOption", size);
+  };
 
-  useEffect(() => {
-    if (size !== "" && dangdo) setButtonAbled();
-  }, [size, dangdo, setButtonAbled]);
+  const handleDangdoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateReviewState("dangdo", Number(e.target.value));
+  };
 
   return (
     <S.Container>
-      <S.FormTitle>{FORM_TITLE}</S.FormTitle>
-      <S.Explanation>{EXPLANATION}</S.Explanation>
+      <S.FormTitle as="h1" weight={600} size={18}>
+        {FORM_TITLE(storeName)}
+      </S.FormTitle>
+      <S.Explanation as="p" color={colors.grey[700]}>
+        {EXPLANATION}
+      </S.Explanation>
       <S.Size>
-        <ImageWrap percent={50} borderRadius={8}>
-          <img src={menuImage} alt="menu" className="menu" />
-        </ImageWrap>
-        <S.Name>{name}</S.Name>
+        <S.ImageWrap>
+          <Image src={menuImage} alt="menu" fill />
+        </S.ImageWrap>
+        <S.Name size={16} weight={600}>
+          {menuName}
+        </S.Name>
         <S.SizeList>
           {sizeList.map(cakeSize => (
-            <Button
+            <S.SizeButton
               key={cakeSize}
               type="button"
               label="size"
               shape="round"
-              cssProp={cakeSize === size ? S.ClickedSizeButton : S.SizeButton}
-              onClick={() => setSizeDangdo({ size: cakeSize, dangdo })}
+              className={cakeSize === sizeOption ? "selected" : ""}
+              onClick={() => handleSizeChange(cakeSize)}
             >
               {cakeSize}
-            </Button>
+            </S.SizeButton>
           ))}
         </S.SizeList>
         <S.DangdoBox>
           <S.DangdoComment>
-            <S.Dangdo>
-              <Heart height={16} width={16} viewBox="0 0 19 19" />
-              당도 {dangdo}%
-            </S.Dangdo>
-            <S.Comment>훌륭해요!</S.Comment>
+            <Dangdo dangdo={dangdo} size="l" />
+            <Text weight={600} color={colors.blue[900]}>
+              당도가 {getOverallComment(dangdo)}!
+            </Text>
           </S.DangdoComment>
-          <S.InputWrap>
+          <S.InputContainer dangdo={dangdo}>
+            <datalist id="custom-list">
+              <option value="20" />
+              <option value="40" />
+              <option value="60" />
+              <option value="80" />
+            </datalist>
             <input
               className="slider"
               type="range"
               value={dangdo}
               step="1"
-              onChange={e => setSizeDangdo({ size, dangdo: +e.target.value })}
+              onChange={handleDangdoChange}
             />
-          </S.InputWrap>
+          </S.InputContainer>
         </S.DangdoBox>
       </S.Size>
     </S.Container>

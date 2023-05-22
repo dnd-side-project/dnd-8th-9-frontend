@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { IReviewListItem, IBaseResponse, IErrorResponse, IReviewPayloadBody } from "@/types/api";
 import reviewApi from "@/api/domains/review";
-import { reviewQueryKey } from "@/constants/queryKey";
+import { reviewQueryKey, storeQueryKey } from "@/constants/queryKey";
 
 export const useGetReviewList = () => {
   return useQuery<IBaseResponse<IReviewListItem[]>, AxiosError<IErrorResponse>>({
@@ -18,13 +18,14 @@ export const useGetReviewDetails = (reviewId: number) => {
   });
 };
 
-export const usePostReview = (reviewId: number) => {
+export const usePostReview = (storeId: number, successFn: () => void) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (newReview: IReviewPayloadBody) => reviewApi.postReview(newReview),
+    mutationFn: (newReview: FormData) => reviewApi.postReview(newReview),
     onSuccess: () => {
-      queryClient.invalidateQueries(reviewQueryKey.detail(reviewId));
+      queryClient.invalidateQueries(storeQueryKey.reviews(storeId));
+      successFn();
     },
   });
 };

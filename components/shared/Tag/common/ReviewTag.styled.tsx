@@ -6,4 +6,5 @@ export const Container = styled(Tag)`
   background-color: ${({ theme }) => theme.colors.pink[200]};
   border: none;
   border-radius: 1.3rem;
+  flex-shrink: 0;
 `;

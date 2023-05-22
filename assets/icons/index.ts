@@ -14,6 +14,7 @@ export { default as Heart } from "./heart.svg";
 export { default as HomeNav } from "./home_nav.svg";
 export { default as HomeSelected } from "./home-selected.svg";
 export { default as Home } from "./home.svg";
+export { default as ImagePlaceholder } from "./imagePlaceholder.svg";
 export { default as Info } from "./info.svg";
 export { default as Instagram } from "./instagram.svg";
 export { default as Kakao } from "./kakao.svg";

@@ -1,35 +1,55 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { useState, useEffect } from "react";
-import { useFormMenuStore, useButtonDisabledStore } from "@/store/ReviewForm";
-import MenuCard from "@/components/shared/MenuCard/MenuCard";
-import { menuList } from "@/mocks/mockData/menuList";
+/* eslint-disable @typescript-eslint/no-shadow */
+import { useRouter } from "next/router";
+import { useTheme } from "@emotion/react";
+import useReviewStore from "@/store/review";
+import { IStoreMenuListItem } from "@/types/api";
+import { useGetStore, useGetStoreMenus } from "@/hooks/queries/store";
+import Icon from "@/components/shared/Icon/Icon";
+import MenuSingleCard from "@/components/shared/Card/MenuSingleCard";
 import * as S from "./SelectMenu.styed";
 
 export default function SelectMenu() {
-  const [isClicked, setIsClicked] = useState(0);
-  const { setMenu } = useFormMenuStore(state => state);
-  const { setButtonDisabled, setButtonAbled } = useButtonDisabledStore(state => state);
+  const { colors } = useTheme();
+  const {
+    query: { storeId },
+  } = useRouter();
 
-  useEffect(() => {
-    setButtonDisabled();
-  }, [setButtonAbled, setButtonDisabled]);
+  const { updateReviewState, reviewState } = useReviewStore();
+  const { data: storeDetailsData } = useGetStore(Number(storeId));
+  const { data: storeMenusData } = useGetStoreMenus(Number(storeId));
+
+  const handleClick = (menu: IStoreMenuListItem) => {
+    const { id, storeId, storeName, menuImages, name } = menu;
+    updateReviewState("menuId", id);
+    updateReviewState("menuName", name);
+    updateReviewState("menuImage", menuImages[0].url);
+    updateReviewState("storeId", storeId);
+    updateReviewState("storeName", storeName);
+  };
 
   return (
-    <S.Container>
-      <S.FormTitle>주문하신 메뉴는 무엇인가요?</S.FormTitle>
-      {menuList.map(menu => (
-        <S.MenuCardClick
-          key={menu.id}
-          onClick={() => {
-            setIsClicked(menu.id);
-            setMenu(menu);
-            setButtonAbled();
-          }}
-          className={isClicked === menu.id ? "isActive" : "isNotActive"}
-        >
-          <MenuCard menu={menu} />
-        </S.MenuCardClick>
-      ))}
-    </S.Container>
+    <div>
+      <S.FormTitle as="h1" size={18} weight={600}>
+        {storeDetailsData?.data.name}에서 <br /> 주문하신 메뉴를 선택해주세요.
+      </S.FormTitle>
+      <S.MenuList>
+        {storeMenusData?.data.map(menu => (
+          <S.MenuCardContainer
+            key={menu.id}
+            onClick={() => handleClick(menu)}
+            className={reviewState.menuId === menu.id ? "isActive" : "isNotActive"}
+          >
+            <S.IconWrap>
+              <Icon
+                name="check"
+                size="s"
+                color={reviewState.menuId === menu.id ? colors.grey[100] : colors.grey[500]}
+              />
+            </S.IconWrap>
+            <MenuSingleCard mode="none" size="s" data={menu} />
+          </S.MenuCardContainer>
+        ))}
+      </S.MenuList>
+    </div>
   );
 }

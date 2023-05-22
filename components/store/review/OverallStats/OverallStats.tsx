@@ -20,7 +20,7 @@ export default function OverallStats({ reviewCount, reviewStats, rating }: IProp
   return (
     <S.Container>
       <S.Review>
-        <Dangdo dangdo={rating} size="l" />
+        <Dangdo dangdo={rating} size="xl" />
         <Text weight={500} size={12} color={colors.grey[700]}>
           ({reviewCount}명 참여)
         </Text>

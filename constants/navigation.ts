@@ -69,7 +69,12 @@ export const ROUTES_NAV: IRouteNav = {
       color: theme.colors.grey[100],
     },
   },
-
+  [ROUTES.STORE_REVIEWS_FORM]: {
+    nav: {
+      previous: true,
+      text: "리뷰작성",
+    },
+  },
   [ROUTES.STORE_ORDER_FORM_PAGE]: {
     nav: {
       previous: true,
