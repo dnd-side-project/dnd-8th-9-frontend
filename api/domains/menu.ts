@@ -1,12 +1,22 @@
 import { API_URI } from "@/constants/api";
-import { IBaseResponse, IMenuDetails, IMenuListItem, IReviewListItem } from "@/types/api";
+import {
+  IBaseResponse,
+  IMenuDetails,
+  IMenuListItem,
+  IReviewListItem,
+  ISearchOption,
+} from "@/types/api";
 import { dangdoApi } from "../config/basic";
 import { dangdoAuthApi } from "../config/auth";
 
 const menuApi = {
-  getMenuList: async () => {
+  getMenuList: async (options?: Partial<ISearchOption>) => {
+    let encoded = "";
+    if (options) {
+      encoded = encodeURIComponent(JSON.stringify(options));
+    }
     const { data } = await dangdoApi.get<IBaseResponse<IMenuListItem[]>>(
-      API_URI.menu.get.MENU_LIST,
+      API_URI.menu.get.MENU_LIST(encoded),
     );
     return data;
   },
