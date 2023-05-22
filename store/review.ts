@@ -22,7 +22,6 @@ export interface IReviewState {
 }
 
 type ReviewStore = {
-  currentPage: number;
   reviewState: IReviewState;
   updateReviewState: <K extends keyof IReviewState>(key: K, value: IReviewState[K]) => void;
   clearReviewState: () => void;
@@ -44,7 +43,6 @@ const initialState: IReviewState = {
 
 const useReviewStore = create<ReviewStore>()(
   devtools(set => ({
-    currentPage: 1,
     reviewState: initialState,
     updateReviewState: (key, value) =>
       set(state => {
