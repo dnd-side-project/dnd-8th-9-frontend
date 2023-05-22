@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import useReviewStore, { IReviewState } from "@/store/review";
 import { IReviewPayloadBody, TReviewOption } from "@/types/api";
 import { usePostReview } from "@/hooks/queries/review";
 import SelectMenu from "@/components/ReviewForm/SelectMenu/SelectMenu";
 import SelectSizeDangdo from "@/components/ReviewForm/SelectSizeDangdo/SelectSizeDangdo";
 import Detail from "@/components/ReviewForm/Detail/Detail";
-import Sumbitted from "@/components/ReviewForm/Submitted/Submitted";
 import * as S from "./form.styled";
 
 const multiStepForm = (currentPage: number) => {
@@ -16,8 +16,6 @@ const multiStepForm = (currentPage: number) => {
       return <SelectSizeDangdo />;
     case 3:
       return <Detail />;
-    case 4:
-      return <Sumbitted />;
     default:
       return <></>;
   }
@@ -26,8 +24,11 @@ const multiStepForm = (currentPage: number) => {
 const RequiredField = [["menuId"], ["sizeOption", "dangdo"], ["content", "goodPoint"]];
 
 export default function FormPage() {
+  const router = useRouter();
   const { reviewState } = useReviewStore();
-  const { mutate } = usePostReview(reviewState.storeId);
+  const { mutate } = usePostReview(reviewState.storeId, () => {
+    router.push(`${router.asPath}/done`);
+  });
 
   const [currentPage, setCurrentPage] = useState(1);
 

@@ -18,13 +18,14 @@ export const useGetReviewDetails = (reviewId: number) => {
   });
 };
 
-export const usePostReview = (storeId: number) => {
+export const usePostReview = (storeId: number, successFn: () => void) => {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: (newReview: FormData) => reviewApi.postReview(newReview),
     onSuccess: () => {
       queryClient.invalidateQueries(storeQueryKey.reviews(storeId));
+      successFn();
     },
   });
 };

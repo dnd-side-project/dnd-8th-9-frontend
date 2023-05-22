@@ -17,10 +17,12 @@ const reviewApi = {
     return data;
   },
   postReview: async (body: FormData) => {
-    // const formData = createMultiFormData<IReviewPayloadBody>(body);
     const { data } = await dangdoAuthApi.post<IBaseResponse<number>>(
       API_URI.review.create.REVIEW,
       body,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      },
     );
     return data;
   },
