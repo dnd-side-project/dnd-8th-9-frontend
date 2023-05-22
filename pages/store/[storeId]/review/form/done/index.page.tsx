@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTheme } from "@emotion/react";
@@ -12,14 +13,22 @@ export default function Sumbitted() {
   const { colors } = useTheme();
   const router = useRouter();
 
-  const { reviewState } = useReviewStore();
-  const { menuImage, menuName, sizeOption, goodPoint, dangdo } = reviewState;
+  const { reviewState, clearReviewState } = useReviewStore();
+  const { menuImage, menuName, sizeOption, goodPoint, dangdo, menuId } = reviewState;
+
+  useEffect(() => {
+    if (!menuId) {
+      router.push("/home/recommendation");
+    }
+  }, [menuId, router]);
 
   const redirectToHome = () => {
+    clearReviewState();
     router.push("/home/recommendation");
   };
 
   const redirectToReviews = () => {
+    clearReviewState();
     const { storeId } = router.query;
     if (!storeId) {
       redirectToHome();
