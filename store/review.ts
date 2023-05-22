@@ -43,17 +43,17 @@ const initialState: IReviewState = {
 
 const useReviewStore = create<ReviewStore>()(
   devtools(set => ({
-    reviewState: initialState,
+    reviewState: { ...initialState },
     updateReviewState: (key, value) =>
       set(state => {
         state.reviewState[key] = value;
         return { reviewState: state.reviewState };
       }),
-    clearReviewState: () => {
-      set(() => {
-        return { reviewState: initialState };
-      });
-    },
+    clearReviewState: () =>
+      set(state => {
+        state.reviewState = initialState;
+        return { reviewState: state.reviewState };
+      }),
   })),
 );
 
