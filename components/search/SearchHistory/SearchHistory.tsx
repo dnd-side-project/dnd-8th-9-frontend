@@ -2,16 +2,21 @@ import { useTheme } from "@emotion/react";
 import useSearchStore from "@/store/search";
 import Button from "@/components/shared/Button/Button";
 import Text from "@/components/shared/Text/Text";
+import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import * as S from "./SearchHistory.styled";
 
 function SearchHistory() {
   const { colors } = useTheme();
+  const { push } = useRouter();
+  const pathname = usePathname();
   const { searchHistory, clearSearchHistory, updateCurrentSearch } = useSearchStore();
   const deleteAll = () => {
     clearSearchHistory();
   };
   const handleHistoryClick = (history: string) => {
     updateCurrentSearch(history);
+    push({ pathname: `${pathname as string}/result/menu`, query: { key: history } });
   };
 
   return (
