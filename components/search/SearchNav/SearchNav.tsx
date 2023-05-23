@@ -7,24 +7,37 @@ import Icon from "@/components/shared/Icon/Icon";
 import Button from "@/components/shared/Button/Button";
 import * as S from "./SearchNav.styled";
 
-interface IProp {
-  mode: "search" | "result";
+interface IProps {
+  mode: "menu" | "store" | "search";
 }
 
-function SearchNav({ mode }: IProp) {
+function SearchNav({ mode }: IProps) {
   const { colors } = useTheme();
-  const { back: previous, push, pathname } = useRouter();
-  const { addSearchHistory, updateCurrentSearch, currentSearch } = useSearchStore();
-  const [searchKeyword, setSearchKeyword] = useState<string>(
-    mode === "result" ? currentSearch : "",
-  );
+  const {
+    back: previous,
+    push,
+    pathname,
+    replace,
+    query: { key },
+  } = useRouter();
+  const { addSearchHistory, updateCurrentSearch } = useSearchStore();
+  const [searchKeyword, setSearchKeyword] = useState<string>((key as string) || "");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     addSearchHistory(searchKeyword);
     updateCurrentSearch(searchKeyword);
-    if (mode === "search") {
-      push(`${pathname}/result/menu`);
+
+    if (!key) {
+      if (mode === "search") {
+        push({ pathname: `${pathname}/result/menu`, query: { key: searchKeyword } });
+      } else {
+        push({ pathname: `${pathname}`, query: { key: searchKeyword } });
+      }
+    } else {
+      replace({
+        query: { key: searchKeyword },
+      });
     }
   };
 

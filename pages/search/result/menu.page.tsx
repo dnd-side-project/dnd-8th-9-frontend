@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import { resultTab } from "@/constants/tabs";
-import { randomMenus } from "@/mocks/mockData/randomMenuList";
-import useSearchStore from "@/store/search";
-import useFilterStore from "@/store/filter";
-
+import { useGetMenuList } from "@/hooks/queries/menu";
 import NoResult from "@/components/search/NoResult/NoResult";
 import SearchNav from "@/components/search/SearchNav/SearchNav";
 import FilterBar from "@/components/shared/FilterBar/FilterBar";
@@ -11,53 +10,30 @@ import FilterModal from "@/components/shared/FilterModal/FilterModal";
 import Sort from "@/components/shared/Sort/Sort";
 import Tab from "@/components/shared/Tab/Tab";
 import MenuDoubleCard from "@/components/shared/Card/MenuDoubleCard";
-import { IMenuListItem } from "@/types/api";
-import { IFilterStore } from "@/types/store/filter";
 import * as S from "../search.styled";
 
 function SearchResultMenuPage() {
-  const { currentSearch } = useSearchStore();
-  const { selectedFilterOptions } = useFilterStore();
-  const [searchResult, setSearchResult] = useState<IMenuListItem[]>([]);
-  const [filterResult, setFilterResult] = useState<IMenuListItem[]>([]);
-  const [data, setData] = useState<IMenuListItem[]>(searchResult || filterResult || []);
-  const [noResult, setNoResult] = useState(false);
+  const {
+    query: { key },
+  } = useRouter();
+  const { data: menusData, refetch } = useGetMenuList({ search: key as string });
 
   useEffect(() => {
-    const result = randomMenus.filter(menu => menu.name.includes(currentSearch));
-    setSearchResult(result);
-    setData(result);
-  }, [currentSearch]);
-
-  useEffect(() => {
-    if (
-      Object.keys(selectedFilterOptions).some(
-        filter => selectedFilterOptions[filter as keyof IFilterStore].length !== 0,
-      )
-    ) {
-      const result = searchResult.filter(menu => menu.price > 40000);
-      setFilterResult(result);
-      setData(result);
-    }
-  }, [searchResult, selectedFilterOptions]);
-
-  useEffect(() => {
-    if (data.length) setNoResult(false);
-    if (!data.length) setNoResult(true);
-  }, [data]);
+    refetch();
+  }, [key]);
 
   return (
     <S.Layout>
-      <SearchNav mode="result" />
-      {noResult ? (
-        <NoResult currentSearch={currentSearch} />
+      <SearchNav mode="menu" />
+      {!menusData?.data.length ? (
+        <NoResult currentSearch={key as string} />
       ) : (
         <>
           <Tab menuList={resultTab} target="resultTab" />
           <Sort />
           <FilterBar />
           <S.MenuGrid>
-            {data.map(menu => (
+            {menusData?.data.map(menu => (
               <MenuDoubleCard key={menu.id} data={menu} />
             ))}
           </S.MenuGrid>

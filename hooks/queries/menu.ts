@@ -6,14 +6,15 @@ import {
   IMenuDetails,
   IMenuListItem,
   IReviewListItem,
+  ISearchOption,
 } from "@/types/api";
 import menuApi from "@/api/domains/menu";
 import { menuQueryKey, userQueryKey } from "@/constants/queryKey";
 
-export const useGetMenuList = () => {
+export const useGetMenuList = (options?: Partial<ISearchOption>) => {
   return useQuery<IBaseResponse<IMenuListItem[]>, AxiosError<IErrorResponse>>({
     queryKey: menuQueryKey.list,
-    queryFn: () => menuApi.getMenuList(),
+    queryFn: () => menuApi.getMenuList(options),
   });
 };
 

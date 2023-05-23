@@ -1,6 +1,7 @@
 import {
   IBaseResponse,
   IReviewListItem,
+  ISearchOption,
   IStoreDetails,
   IStoreListItem,
   IStoreMenuListItem,
@@ -12,9 +13,14 @@ import { dangdoApi } from "../config/basic";
 import { dangdoAuthApi } from "../config/auth";
 
 const storeApi = {
-  getStoreList: async () => {
+  getStoreList: async (options?: Partial<ISearchOption>) => {
+    let encoded = "";
+    if (options) {
+      encoded = encodeURIComponent(JSON.stringify(options));
+    }
+
     const { data } = await dangdoApi.get<IBaseResponse<IStoreListItem[]>>(
-      API_URI.store.get.STORE_LIST,
+      API_URI.store.get.STORE_LIST(encoded),
     );
     return data;
   },

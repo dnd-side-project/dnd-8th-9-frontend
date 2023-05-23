@@ -4,6 +4,7 @@ import {
   IBaseResponse,
   IErrorResponse,
   IReviewListItem,
+  ISearchOption,
   IStoreDetails,
   IStoreListItem,
   IStoreMenuListItem,
@@ -11,10 +12,10 @@ import {
 import storeApi from "@/api/domains/store";
 import { storeQueryKey, userQueryKey } from "@/constants/queryKey";
 
-export const useGetStoreList = () => {
+export const useGetStoreList = (options?: Partial<ISearchOption>) => {
   return useQuery<IBaseResponse<IStoreListItem[]>, AxiosError<IErrorResponse>>({
     queryKey: storeQueryKey.list,
-    queryFn: () => storeApi.getStoreList(),
+    queryFn: () => storeApi.getStoreList(options),
   });
 };
 

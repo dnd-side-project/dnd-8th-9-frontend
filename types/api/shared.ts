@@ -44,3 +44,15 @@ export type TReviewOption =
   | "가성비가 좋아요"
   | "친절해요"
   | "선물하기 좋아요";
+
+export interface ISearchOption {
+  search: string;
+  categories: string[];
+  minPrice: number;
+  maxPrice: number;
+  platforms: string[];
+  receive: "canPickup" | "canDelivery";
+  sort: "latest" | "dangdo" | "recommend";
+  page: number;
+  [key: string]: any;
+}
