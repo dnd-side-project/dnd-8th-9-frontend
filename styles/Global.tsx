@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 export const supportDeviceSize = 480;
 
 const style = css`
-  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css");
 
   ${emotionNormalize}
 
