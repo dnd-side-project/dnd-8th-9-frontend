@@ -10,7 +10,9 @@
 ## 🍰 쉽고 즐거운 주문제작 케이크 업체 탐색입니당도 🍰
 
 ```
-최근 3년간 주문제작 케이크에 대한 폭발적인 수요 증가와 많은 소비자들이 주문제작 케이크 업체 탐색에 불편함을 느끼고 있다는 점을 기반하여, 주문제작 케이크 업체 탐색과정을 편리하게 만들어주는 앱 서비스를 기획했습니다.
+최근 3년간 주문제작 케이크에 대한 폭발적인 수요 증가와
+많은 소비자들이 주문제작 케이크 업체 탐색에 불편함을 느끼고 있다는 점을 기반하여, 
+주문제작 케이크 업체 탐색과정을 편리하게 만들어주는 앱 서비스를 기획했습니다.
 
 ```
 </div>
@@ -34,8 +36,7 @@
 
 ## 🗳 &nbsp;사용한 기술 스택
 
-<img src="https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=Next.js&logoColor=white&border">
-<img src="https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=Typescript&logoColor=white"> 
+<img src="https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=Next.js&logoColor=white&border"> <img src="https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=Typescript&logoColor=white"> 
 <img src="https://img.shields.io/badge/Emotion-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white&border"> 
 <img src="https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=React-Query&logoColor=white&border">
 <img src="https://img.shields.io/badge/Zustand-443E38?style=for-the-badge&logo=Zustand&logoColor=white&border"> 
