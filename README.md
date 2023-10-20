@@ -25,7 +25,12 @@
 
 ## 🖥 &nbsp;배포 주소
 
-👉 [서비스 바로가기](https://dnd-dangdo.netlify.app/)
+👉 서비스 바로가기 (서버 내려갔습니다! gif를 참고해주세요)
+
+
+
+https://github.com/dnd-side-project/dnd-8th-9-frontend/assets/72786354/f20d370f-9aee-4f75-9409-43e38ff1d730
+
 
 👉 [프로젝트 소개 바로가기](https://www.dnd.ac/project/55)
 
