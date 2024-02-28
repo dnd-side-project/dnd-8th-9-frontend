@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode, useState } from "react";
 import { NextPage } from "next";
+import Head from "next/head";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "@emotion/react";
 import { DehydratedState, Hydrate, QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -28,14 +29,19 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? (page => <SubLayout>{page}</SubLayout>);
 
   return (
-    <ThemeProvider theme={theme}>
-      <QueryClientProvider client={queryClient}>
-        <Hydrate state={pageProps.dehydratedState}>
-          <GlobalStyle />
-          <MainLayout>{getLayout(<Component {...pageProps} />)}</MainLayout>
-          <ReactQueryDevtools position="bottom-right" initialIsOpen={false} />
-        </Hydrate>
-      </QueryClientProvider>
-    </ThemeProvider>
+    <>
+      <Head>
+        <title>당도</title>
+      </Head>
+      <ThemeProvider theme={theme}>
+        <QueryClientProvider client={queryClient}>
+          <Hydrate state={pageProps.dehydratedState}>
+            <GlobalStyle />
+            <MainLayout>{getLayout(<Component {...pageProps} />)}</MainLayout>
+            <ReactQueryDevtools position="bottom-right" initialIsOpen={false} />
+          </Hydrate>
+        </QueryClientProvider>
+      </ThemeProvider>
+    </>
   );
 }
